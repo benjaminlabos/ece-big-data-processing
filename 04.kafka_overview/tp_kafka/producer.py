@@ -1,15 +1,25 @@
 """Lab, étape 4 : lire le livre ligne par ligne et envoyer chaque ligne."""
 import socket
+from pathlib import Path
+from urllib.request import urlopen
 
 from confluent_kafka import Producer
 from confluent_kafka.admin import AdminClient
 
-from config import BOOK_PATH, BOOTSTRAP_SERVERS, TOPIC
+BOOTSTRAP_SERVERS = "localhost:9092"
+TOPIC = "gutenberg-book-lines"
+BOOK_PATH = Path(__file__).with_name("around_the_world_in_80_days.txt")
+BOOK_URL = "https://www.gutenberg.org/ebooks/2154.txt.utf-8"
 
 
 def main():
     if not BOOK_PATH.is_file():
-        raise FileNotFoundError("Lancer d'abord : python download_book.py")
+        with urlopen(BOOK_URL, timeout=30) as response:
+            data = response.read()
+        if "*** START OF THE PROJECT GUTENBERG EBOOK" not in data.decode("utf-8-sig"):
+            raise ValueError("La réponse ne contient pas le livre attendu.")
+        BOOK_PATH.write_bytes(data)
+        print(f"Livre téléchargé : {BOOK_PATH.name}")
     metadata = AdminClient({"bootstrap.servers": BOOTSTRAP_SERVERS}).list_topics(timeout=10)
     if TOPIC not in metadata.topics or metadata.topics[TOPIC].error is not None:
         raise RuntimeError("Le topic est absent ou indisponible. Lancer python admin.py.")
@@ -69,4 +79,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

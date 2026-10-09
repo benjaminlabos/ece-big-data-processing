@@ -2,7 +2,8 @@
 from confluent_kafka import KafkaError, KafkaException
 from confluent_kafka.admin import AdminClient, NewTopic
 
-from config import BOOTSTRAP_SERVERS, TOPIC
+BOOTSTRAP_SERVERS = "localhost:9092"
+TOPIC = "gutenberg-book-lines"
 
 
 def main():
@@ -34,4 +35,3 @@ if __name__ == "__main__":
         main()
     except (KafkaException, TimeoutError, RuntimeError) as exc:
         raise SystemExit(f"Création impossible : {exc}. Vérifier Docker/Kafka.")
-

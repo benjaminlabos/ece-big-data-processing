@@ -3,12 +3,47 @@
 À lancer APRÈS la fin du producer. On lit les offsets présents au démarrage,
 du début à la fin : pas d'arrêt arbitraire après quelques secondes de silence.
 """
+import re
 import time
+from pathlib import Path
 
 from confluent_kafka import Consumer, KafkaException, TopicPartition
 
-from config import BOOTSTRAP_SERVERS, OUTPUT_PATH, TOPIC
-from text_cleaning import GutenbergCleaner
+BOOTSTRAP_SERVERS = "localhost:9092"
+TOPIC = "gutenberg-book-lines"
+OUTPUT_PATH = Path(__file__).with_name("livre_nettoye.txt")
+
+STOP_WORDS = set("""
+a an the and or but if then as at by for from in into of on to with
+is are was were be been being it its this that these those
+i me my we us our you your he him his she her they them their
+s t d ll ve re m
+""".split())
+
+
+def clean_text(line):
+    words = re.findall(r"[^\W\d_]+", line.lower(), flags=re.UNICODE)
+    return " ".join(word for word in words if word not in STOP_WORDS)
+
+
+class GutenbergCleaner:
+    """Ne conserver que le texte entre les deux balises Gutenberg."""
+
+    def __init__(self):
+        self.started = False
+        self.finished = False
+
+    def process(self, line):
+        if line.startswith("*** START OF THE PROJECT GUTENBERG EBOOK"):
+            self.started = True
+            self.finished = False
+            return ""
+        if line.startswith("*** END OF THE PROJECT GUTENBERG EBOOK"):
+            self.finished = True
+            return ""
+        if not self.started or self.finished:
+            return ""
+        return clean_text(line)
 
 
 def main():
