@@ -1,0 +1,12 @@
+.runtime/
+__pycache__/
+# Fichiers locaux d'exercice : uniquement des identifiants fictifs du cours.
+lab-2/secret-ceph-credentials.yaml
+lab-2/s3-credentials.txt
+# Copies locales des supports du cours et traces détaillées non publiées.
+/index.md
+/lab-1.md
+/lab-2.md
+/lab-3.md
+/assets/
+/results/*.txt

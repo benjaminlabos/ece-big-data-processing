@@ -1,0 +1,18 @@
+{
+  "lab": 2,
+  "started_at": "2026-10-16T13:16:29.266804+00:00",
+  "finished_at": "2026-10-16T13:18:12.231081+00:00",
+  "status": "passed",
+  "checks": {
+    "configmaps": 3,
+    "secrets": 3,
+    "env_configmap_verified": true,
+    "env_secret_verified": true,
+    "decoded_secret_verified": true,
+    "mounted_config_files_verified": 2,
+    "mounted_secret_file_verified": true,
+    "secret_file_mode": "600",
+    "namespace_deleted": true,
+    "credentials": "Exemples fictifs fournis par le cours ; aucun accès Ceph/S3 réel."
+  }
+}

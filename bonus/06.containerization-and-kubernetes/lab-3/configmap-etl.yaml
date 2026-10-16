@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: etl-config
+  namespace: lab-job-cronjob
+data:
+  BATCH_SIZE: "1000"
+  SOURCE_LAYER: bronze
+  TARGET_LAYER: silver

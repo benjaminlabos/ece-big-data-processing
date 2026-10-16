@@ -1,0 +1,29 @@
+{
+  "lab": 3,
+  "started_at": "2026-10-16T13:15:53.097636+00:00",
+  "finished_at": "2026-10-16T13:18:26.377671+00:00",
+  "status": "passed",
+  "checks": {
+    "simple_job": "Complete",
+    "retry_pods": 4,
+    "retry_failure_reason": "BackoffLimitExceeded",
+    "deadline_failure_reason": "DeadlineExceeded",
+    "parallel_succeeded": 4,
+    "completed_indexes": "0-3",
+    "shards": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "manual_etl": "Complete",
+    "etl_batch_size": 1000,
+    "manual_backup": "Complete",
+    "backup_timezone": "Europe/Paris",
+    "scheduled_job": "bronze-to-silver-pipeline-29869278",
+    "scheduled_job_complete": true,
+    "suspend_resume_verified": true,
+    "namespace_deleted": true,
+    "data_processing": "Simulations Python du cours, sans stockage externe."
+  }
+}

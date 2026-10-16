@@ -1,0 +1,38 @@
+{
+  "lab": 1,
+  "started_at": "2026-10-16T13:08:29.715005+00:00",
+  "finished_at": "2026-10-16T13:13:18.053175+00:00",
+  "status": "passed",
+  "checks": {
+    "replicas_up": 5,
+    "replicas_down": 2,
+    "balanced_pods_at_5": [
+      "kubernetes-bootcamp-67fbdd6b79-7qtks",
+      "kubernetes-bootcamp-67fbdd6b79-9vxzn",
+      "kubernetes-bootcamp-67fbdd6b79-g96vp",
+      "kubernetes-bootcamp-67fbdd6b79-jms8n",
+      "kubernetes-bootcamp-67fbdd6b79-nlv8w"
+    ],
+    "declarative_replicas": 3,
+    "balanced_pods_at_3": [
+      "kubernetes-bootcamp-6b8bd7c8db-4qbwm",
+      "kubernetes-bootcamp-6b8bd7c8db-bd2ck",
+      "kubernetes-bootcamp-6b8bd7c8db-tg6qd"
+    ],
+    "http_samples": 44,
+    "http_errors": 0,
+    "versions_observed": [
+      "v=1",
+      "v=2"
+    ],
+    "bad_image_reasons": [
+      null,
+      null,
+      "ErrImagePull",
+      null,
+      null
+    ],
+    "rollback_v2": true,
+    "rollback_v1": true
+  }
+}
