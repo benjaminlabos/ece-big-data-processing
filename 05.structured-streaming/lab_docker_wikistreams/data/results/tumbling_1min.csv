@@ -1,0 +1,5 @@
+window_start,window_end,wiki,bot,edit_count,edits_with_size,net_bytes,added_bytes,removed_bytes,avg_abs_bytes,max_abs_bytes
+2026-10-16 08:59:00,2026-10-16 09:00:00,frwiki,True,2,2,870,870,0,435.0,825
+2026-10-16 09:00:00,2026-10-16 09:01:00,frwiki,True,3,3,525,842,317,386.3333333333333,713
+2026-10-16 08:59:00,2026-10-16 09:00:00,frwiki,False,14,14,2682,2766,84,203.57142857142858,2219
+2026-10-16 09:00:00,2026-10-16 09:01:00,frwiki,False,10,10,-801,116,917,103.3,618

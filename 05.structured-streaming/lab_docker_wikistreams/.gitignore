@@ -1,0 +1,9 @@
+__pycache__/
+.ipynb_checkpoints/
+.validation/
+data/*
+!data/.gitkeep
+!data/results/
+!data/results/*.csv
+!data/results/validation.json
+data/results/*.tmp

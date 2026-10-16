@@ -14,3 +14,4 @@ Repository for the Big Data Processing labs and project at ECE.
 ## Labs
 
 - [Spark RDD word count](02.introduction-and-rdds/lab_pyspark_jupyter_docker/word_count.ipynb)
+- [Structured Streaming — Wikimedia](05.structured-streaming/lab_docker_wikistreams/notebooks/wikistream_pyspark.ipynb)

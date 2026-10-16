@@ -1,0 +1,21 @@
+{
+  "spark_version": "4.2.0",
+  "finite_run": true,
+  "queries": {
+    "wiki_demo_bots": {
+      "input_rows": 29,
+      "batches": 2,
+      "exception": null
+    },
+    "wiki_tumbling": {
+      "input_rows": 29,
+      "batches": 2,
+      "exception": null
+    },
+    "wiki_sliding": {
+      "input_rows": 29,
+      "batches": 2,
+      "exception": null
+    }
+  }
+}
