@@ -23,3 +23,5 @@ Les exports d'intégration disposent de preuves distinctes :
 - `integration-consumer-compatibility.json` : lecture des CSV par le lecteur de
   référence de Benjamin et son schéma de candidats sous Spark 4.2.0, avec les
   commits source utilisés. Cela ne réexécute pas le streaming ni la collecte.
+- `integration-exports-windows-2026-11-10.json` : exécutions réelles des exports
+  contrôlé et IMDb sur le PC Windows avec Docker Desktop.

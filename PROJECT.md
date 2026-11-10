@@ -420,8 +420,12 @@ docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_p
 ```
 
 La redirection par `cmd` préserve les octets UTF-8 de la référence Git, y compris
-les accents, avec Windows PowerShell 5.1. La validation de ces nouveaux exports
-Docker sera précisée ci-dessous après l'essai sur le PC.
+les accents, avec Windows PowerShell 5.1. Les deux commandes d'export ci-dessus
+ont été exécutées avec succès sur le PC Windows sous Docker 28.5.1/Spark 4.2.0.
+Leurs compteurs correspondent au cloud : 8 identifiants et 2 liens pour le jeu
+contrôlé, puis 2 000 identifiants et 14 liens sur l'échantillon réel. Le second
+lancement n'a pas reçu de sélection de films et n'a donc pas créé de CSV de crédits.
+Preuve : `validation/integration-exports-windows-2026-11-10.json`.
 
 ### Validation des exports et limites actuelles
 

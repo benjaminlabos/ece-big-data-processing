@@ -15,6 +15,8 @@ du catalogue pilote. L'extrait ne contient aucun film de 1980–2025 : les deux 
 du pilote d'enrichissement sont explicitement signalés absents, sans candidats
 fabriqués. Le lecteur streaming exact et le schéma d'enrichissement ont relu les
 CSV sous Spark 4.2.0. Les preuves agrégées figurent dans `validation/`.
+Les deux exports ont aussi réussi sous Docker sur le PC Windows, avec les mêmes
+compteurs de catalogue et de référence que les exécutions cloud.
 
 Cette PR dépend de la PR #1 et vise sa branche pour montrer uniquement les
 exports. Après approbation et fusion de #1, la cible pourra devenir `main`.
