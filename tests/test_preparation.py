@@ -6,7 +6,7 @@ from pyspark.sql import SparkSession
 from imdb_preparation.download import sha256
 from imdb_preparation.fixture import fixture_rows, write_fixture
 from imdb_preparation.prepare import inspect_snapshot, prepare
-from imdb_preparation.quality import profile
+from imdb_preparation.quality import clean_values, normalize, partition_keys, profile
 from imdb_preparation.schema import TABLES, raw_schema
 
 
@@ -101,10 +101,15 @@ def test_dates_types_and_raw_string_preservation(spark, prepared):
         == "bigint"
     )
     akas = read_table(spark, output, "title.akas").collect()
-    assert len(akas) == 1  # 01 and 1 conflict on canonical key; no arbitrary winner
-    assert akas[0].title == 'Titre "cité"'
-    assert akas[0].types == ["alternative", "festival"]
-    assert akas[0].isOriginalTitle is None
+    assert (
+        len(akas) == 2
+    )  # Equivalent 01/1 rows collapse instead of becoming conflicts.
+    first = next(row for row in akas if row.titleId == "tt0000001")
+    canonical = next(row for row in akas if row.titleId == "tt0000003")
+    assert canonical.ordering == 1
+    assert first.title == 'Titre "cité"'
+    assert first.types == ["alternative", "festival"]
+    assert first.isOriginalTitle is None
 
 
 def test_references_and_audit(spark, prepared):
@@ -209,3 +214,65 @@ def test_malformed_tsv_fails_without_publishing_output(tmp_path, spark):
     with pytest.raises(Exception, match="MALFORMED_RECORD"):
         prepare(spark, raw, output, 2026)
     assert not output.exists()
+
+
+@pytest.mark.parametrize("table", ["title.akas", "title.principals"])
+def test_canonical_ordering_collapses_only_identical_rows(spark, table):
+    columns = TABLES[table]
+    identity = "titleId" if table == "title.akas" else "tconst"
+    payload = "title" if table == "title.akas" else "category"
+    base = {c: "same" for c in columns}
+    base.update({identity: "tt0000001", "ordering": "01", payload: "same"})
+    equivalent = {**base, "ordering": "1"}
+    conflict_a = {**base, identity: "tt0000002", payload: "different A"}
+    conflict_b = {**conflict_a, "ordering": "1", payload: "different B"}
+    raw = spark.createDataFrame(
+        [
+            tuple(row[c] for c in columns)
+            for row in (base, equivalent, conflict_a, conflict_b)
+        ],
+        raw_schema(table),
+    )
+    distinct, good, rejected = partition_keys(table, normalize(raw))
+    assert distinct.count() == 3
+    assert good.count() == 1 and good.first().ordering == "1"
+    assert rejected.count() == 2
+    assert {r.reason for r in rejected.collect()} == {"conflicting_primary_key"}
+
+
+def test_invalid_ordering_values_remain_distinct_in_quarantine(spark):
+    table = "title.akas"
+    rows = [
+        ("tt0000001", value, "Same", "US", "en", None, None, "0")
+        for value in ("0", "x", "9223372036854775808", None)
+    ]
+    distinct, good, rejected = partition_keys(
+        table, spark.createDataFrame(rows, raw_schema(table))
+    )
+    assert distinct.count() == 4 and good.count() == 0
+    assert rejected.count() == 4
+    assert {r.reason for r in rejected.collect()} == {"invalid_primary_key"}
+
+
+def test_unicode_whitespace_is_missing_and_edges_are_normalized(spark):
+    raw = spark.createDataFrame(
+        [
+            ("tt0000001", "\u00a0\u202f\t ", "\u2007"),
+            ("tt0000002", " \u00a0\\N\u202f ", "\u00a0nm0000001\u202f"),
+            ("tt0000003", "nm0000001,\u00a0nm0000002\u202f", "Name\u00a0Inside"),
+        ],
+        raw_schema("title.crew"),
+    )
+    count, entries = profile("title.crew", raw)
+    assert count == 3 and entries[1]["missing_rows"] == 2
+    assert entries[1]["missing_percent"] == pytest.approx(200 / 3)
+    assert entries[2]["missing_rows"] == 1
+    normalized = {r.tconst: r for r in normalize(raw).collect()}
+    assert normalized["tt0000001"].directors is None
+    assert normalized["tt0000002"].writers == "nm0000001"
+    assert normalized["tt0000003"].writers == "Name\u00a0Inside"
+    typed, _ = clean_values("title.crew", normalize(raw), 2026)
+    assert typed.filter("tconst = 'tt0000003'").first().directors == [
+        "nm0000001",
+        "nm0000002",
+    ]

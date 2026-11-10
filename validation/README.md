@@ -5,6 +5,9 @@
   chacune des sept tables IMDb, périmètre `sample`.
 - `windows-docker-2026-11-10.json` : résumés des deux exécutions Docker Desktop
   sur le PC Windows et vérification des empreintes/profils par rapport au cloud.
+- `preparation-review-fixes-2026-11-10.json` : tests et exécutions après correction
+  des trois points signalés en relecture. Les preuves précédentes restent celles
+  du commit `376b434`, avant correction du faux conflit `ordering=01/1`.
 
 Les deux premiers fichiers rassemblent sans modification les sorties JSON `summary`,
 `missing_profile`, `top5_missing` et `input_manifest` des exécutions indiquées.

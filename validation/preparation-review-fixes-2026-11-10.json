@@ -1,0 +1,342 @@
+{
+  "reviewed_commit": "376b434904f51c080556bf9057c1d93e34d7d77a",
+  "regressions_reproduced_before_fix": 6,
+  "preparation_test_suite": "21 passed in 45.01s",
+  "download_transport_tests": "Controlled HTTP byte streams; advertised length, gzip EOF/CRC, HTTP status, sample prefix",
+  "full_imdb_run": false,
+  "real_sample_profile_unchanged": true,
+  "fixture_summary": {
+    "scope": "fixture",
+    "reference_policy": "repair_against_clean_parents",
+    "as_of_year": 2026,
+    "started_at": "2026-11-10T18:01:33.084896+00:00",
+    "completed_at": "2026-11-10T18:02:07.904912+00:00",
+    "spark_version": "4.2.0",
+    "python_version": "3.12.14",
+    "java_version": "21.0.13",
+    "tables": {
+      "title.basics": {
+        "raw_rows": 9,
+        "normalized_duplicate_rows_removed": 1,
+        "invalid_or_conflicting_key_rows": 3,
+        "quarantined_rows": 3,
+        "clean_rows": 5,
+        "anomalies": [
+          {
+            "column": "endYear",
+            "rule": "end_before_start",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "genres",
+            "rule": "duplicate_array_element",
+            "action": "deduplicate_elements",
+            "count": 1
+          },
+          {
+            "column": "genres",
+            "rule": "missing_array_element",
+            "action": "remove_missing_elements",
+            "count": 1
+          },
+          {
+            "column": "isAdult",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "runtimeMinutes",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "runtimeMinutes",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          }
+        ]
+      },
+      "name.basics": {
+        "raw_rows": 3,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 3,
+        "anomalies": [
+          {
+            "column": "birthYear",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "deathYear",
+            "rule": "death_before_birth",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "knownForTitles",
+            "rule": "duplicate_array_element",
+            "action": "deduplicate_elements",
+            "count": 1
+          },
+          {
+            "column": "knownForTitles",
+            "rule": "reference_not_in_clean_parent",
+            "action": "remove_reference",
+            "count": 1
+          }
+        ]
+      },
+      "title.akas": {
+        "raw_rows": 5,
+        "normalized_duplicate_rows_removed": 1,
+        "invalid_or_conflicting_key_rows": 1,
+        "quarantined_rows": 2,
+        "clean_rows": 2,
+        "anomalies": [
+          {
+            "column": "isOriginalTitle",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "titleId",
+            "rule": "reference_not_in_clean_parent",
+            "action": "quarantine_row",
+            "count": 1
+          }
+        ]
+      },
+      "title.crew": {
+        "raw_rows": 4,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 1,
+        "clean_rows": 3,
+        "anomalies": [
+          {
+            "column": "directors",
+            "rule": "duplicate_array_element",
+            "action": "deduplicate_elements",
+            "count": 1
+          },
+          {
+            "column": "directors",
+            "rule": "reference_not_in_clean_parent",
+            "action": "remove_reference",
+            "count": 2
+          },
+          {
+            "column": "tconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "quarantine_row",
+            "count": 1
+          }
+        ]
+      },
+      "title.episode": {
+        "raw_rows": 2,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 2,
+        "anomalies": [
+          {
+            "column": "episodeNumber",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "parentTconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "seasonNumber",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 1
+          }
+        ]
+      },
+      "title.principals": {
+        "raw_rows": 4,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 1,
+        "quarantined_rows": 2,
+        "clean_rows": 2,
+        "anomalies": [
+          {
+            "column": "nconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "tconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "quarantine_row",
+            "count": 1
+          }
+        ]
+      },
+      "title.ratings": {
+        "raw_rows": 5,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 2,
+        "clean_rows": 3,
+        "anomalies": [
+          {
+            "column": "averageRating",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "averageRating",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "numVotes",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 2
+          },
+          {
+            "column": "tconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "quarantine_row",
+            "count": 2
+          }
+        ]
+      }
+    }
+  },
+  "real_sample_summary": {
+    "scope": "sample",
+    "reference_policy": "report_only_sample_parents_incomplete",
+    "as_of_year": 2026,
+    "started_at": "2026-11-10T18:02:12.162143+00:00",
+    "completed_at": "2026-11-10T18:02:42.588215+00:00",
+    "spark_version": "4.2.0",
+    "python_version": "3.12.14",
+    "java_version": "21.0.13",
+    "tables": {
+      "title.basics": {
+        "raw_rows": 1000,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 1000,
+        "anomalies": []
+      },
+      "name.basics": {
+        "raw_rows": 1000,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 1000,
+        "anomalies": [
+          {
+            "column": "knownForTitles",
+            "rule": "reference_not_in_snapshot",
+            "action": "retained_unverified",
+            "count": 3996
+          }
+        ]
+      },
+      "title.akas": {
+        "raw_rows": 1000,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 1000,
+        "anomalies": []
+      },
+      "title.crew": {
+        "raw_rows": 1000,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 1000,
+        "anomalies": [
+          {
+            "column": "directors",
+            "rule": "reference_not_in_snapshot",
+            "action": "retained_unverified",
+            "count": 843
+          },
+          {
+            "column": "writers",
+            "rule": "reference_not_in_snapshot",
+            "action": "retained_unverified",
+            "count": 305
+          }
+        ]
+      },
+      "title.episode": {
+        "raw_rows": 1000,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 1000,
+        "anomalies": [
+          {
+            "column": "parentTconst",
+            "rule": "reference_not_in_snapshot",
+            "action": "retained_unverified",
+            "count": 1000
+          },
+          {
+            "column": "tconst",
+            "rule": "reference_not_in_snapshot",
+            "action": "retained_unverified",
+            "count": 1000
+          }
+        ]
+      },
+      "title.principals": {
+        "raw_rows": 1000,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 1000,
+        "anomalies": [
+          {
+            "column": "nconst",
+            "rule": "reference_not_in_snapshot",
+            "action": "retained_unverified",
+            "count": 998
+          }
+        ]
+      },
+      "title.ratings": {
+        "raw_rows": 1000,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 1000,
+        "anomalies": [
+          {
+            "column": "tconst",
+            "rule": "reference_not_in_snapshot",
+            "action": "retained_unverified",
+            "count": 111
+          }
+        ]
+      }
+    }
+  }
+}

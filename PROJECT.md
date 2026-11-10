@@ -72,6 +72,16 @@ La saison 0 reste autorisée pour les épisodes spéciaux.
 Le téléchargement conserve les octets des lignes source et écrit un manifeste
 avec URL, date, ETag/Last-Modified si disponibles, taille et SHA256 de chaque
 fichier. Les fichiers limités sont des TSV ; les fichiers complets restent gzip.
+Pour les fichiers complets, la taille reçue doit correspondre au `Content-Length`
+lorsqu'il est fourni ; une lecture gzip jusqu'à EOF vérifie aussi les en-têtes,
+les sommes CRC et les fins de membres avant publication du fichier. Un échec
+conserve le `.part` et ne produit pas de manifeste final. Cette vérification ne
+requiert pas d'écrire une copie décompressée sur disque. Les réponses HTTP autres
+que 200 sont refusées.
+Le manifeste indique `source_compressed_content_length` et
+`gzip_integrity_verified`. Pour un échantillon, on ne demande qu'un préfixe de
+lignes : la taille du TSV n'est donc pas comparée à celle du gzip source, et
+`gzip_integrity_verified` vaut `false`.
 IMDb est actualisé quotidiennement : un téléchargement ultérieur peut produire
 des résultats différents. Les sept téléchargements ne forment pas une transaction
 atomique côté IMDb ; les en-têtes HTTP sont conservés pour tracer leur version.
@@ -162,7 +172,9 @@ pas une preuve de la langue originale du film.
 
 Le profil est calculé sur les colonnes source lues comme chaînes, **avant** toute
 suppression ou conversion. Une cellule est manquante si elle est nulle, vide,
-blanche, ou égale à `\N` après suppression des espaces périphériques. Chaque ligne
+blanche, ou égale à `\N` après suppression des espaces périphériques Unicode,
+y compris les espaces insécables U+00A0/U+202F. Les espaces internes d'un texte
+non vide sont préservés. Chaque ligne
 source, doublons compris, compte dans le dénominateur de sa table. Une table vide
 donne un pourcentage JSON `null`, pas zéro. Le top 5 départage les égalités par
 table puis colonne et exclut les colonnes sans dénominateur.
@@ -171,8 +183,11 @@ Le nettoyage normalise les champs manquants en null et enlève les espaces
 périphériques. Il fusionne les lignes identiques après cette normalisation et
 compte leur nombre dans `normalized_duplicate_rows_removed`. Il ne choisit pas
 arbitrairement entre des lignes différentes ayant la même clé : elles sont toutes
-mises en quarantaine. `ordering` est normalisé numériquement avant le contrôle
-d'unicité, donc `01` et `1` représentent la même clé. Les clés composites sont
+mises en quarantaine. Un `ordering` valide est normalisé numériquement **avant
+le dédoublonnage des lignes**, puis avant le contrôle d'unicité : deux lignes
+identiques sauf `01`/`1` deviennent une ligne, tandis que deux contenus différents
+sur cette clé restent un conflit. Les valeurs invalides gardent leur texte pour
+la quarantaine. Les clés composites sont
 `(titleId, ordering)` pour les titres alternatifs et `(tconst, ordering)` pour les
 principaux participants ; les autres clés sont `tconst` ou `nconst`.
 
@@ -235,7 +250,7 @@ des résultats complets existants, conserver les bruts et choisir un nouveau nom
 de sortie. Le TSV doit respecter exactement l'en-tête et le nombre de colonnes ;
 les erreurs de parsing font échouer le traitement, sans ignorer de lignes.
 
-## Validation exécutée
+## Validation de la première version (376b434)
 
 Vérifications réalisées le 10 novembre 2026 dans le cloud Linux, puis sur le PC
 Windows avec Docker Desktop :
@@ -275,15 +290,23 @@ jeu complet : `title.basics.endYear` 100 %, `title.akas.attributes` 91,9 %,
 `title.akas.language` 91,7 %, `title.principals.job` 80,8 % et
 `title.principals.characters` 79 %.
 
-## Interface proposée à Benjamin — en attente d'accord
+## Interfaces IMDb convenues avec Benjamin
 
-Proposition : consommer les dossiers Parquet `clean/title.basics`,
-`clean/name.basics`, `clean/title.principals` et `clean/title.akas`, en vérifiant le
+Les identifiants nettoyés `tconst`/`nconst` ont été acceptés pour filtrer son
+catalogue Wikipédia, et le CSV `tconst,nconst` doit contenir un couple distinct
+et non nul par ligne. Les dossiers Parquet disponibles sont `clean/title.basics`,
+`clean/name.basics`, `clean/title.principals`, `clean/title.akas` et
+`clean/title.ratings`, en vérifiant le
 `scope` dans `summary.json` et la présence de `SUCCESS.json`. Les identifiants
 `tconst`/`nconst` restent des chaînes IMDb ; `genres`, `directors`, `writers`,
 `knownForTitles` sont des tableaux de chaînes. Les noms de colonnes IMDb sont
 conservés. Aucun identifiant Wikipédia n'est inventé par cette préparation.
 Le rapprochement IMDb↔Wikipédia relève de sa branche streaming/enrichissement.
+`clean/title.ratings` fournit `tconst` (string), `averageRating` (double) et
+`numVotes` (bigint) ; il est déjà écrit par la préparation et les exports peuvent
+le joindre au catalogue de films. Le seuil de durée, le minimum de votes et les
+catégories de participants pour la sélection définitive restent à convenir entre
+les étudiants. Aucune valeur n'a été décidée par l'assistant.
 
 Pour limiter les conflits de documentation, Nicolas tient cette première section
 préparation ; Benjamin pourra ajouter des sections streaming et enrichissement à
@@ -315,3 +338,45 @@ vers le dépôt Windows propre, puis poussé depuis le PowerShell du PC. Le push
 le jeton de l'environnement cloud renvoyait 403, tandis que l'authentification
 Git locale Windows a fonctionné. La [PR n° 1](https://github.com/benjaminlabos/ece-big-data-processing/pull/1)
 est ouverte vers `main`, avec Benjamin demandé en relecture.
+
+## Corrections après la relecture de Benjamin — PR n° 1
+
+Les trois cas signalés ont été reproduits avant correction : acceptation d'un
+transfert HTTP tronqué, faux conflits entre lignes identiques avec `ordering=01`
+et `ordering=1`, et omission des cellules composées d'espaces insécables dans le
+profil. Six cas paramétrés échouaient sur le commit relu.
+
+Le téléchargement complet exige maintenant HTTP 200, vérifie le `Content-Length`
+quand il est annoncé, puis lit tout le gzip pour valider sa structure et ses CRC.
+Un transfert tronqué, un gzip incomplet/corrompu ou une réponse partielle 206 ne
+peut pas produire de manifeste final. Les `.part` restent disponibles. Les tests
+de transport utilisent des réponses contrôlées, avec et sans taille HTTP ; ils
+ne représentent pas un téléchargement du lot IMDb complet.
+
+La normalisation d'un `ordering` valide précède le dédoublonnage. Les lignes qui
+ne diffèrent que par `01`/`1` sont fusionnées, mais les vrais conflits restent en
+quarantaine. Les valeurs invalides ne sont pas converties en null avant cette
+quarantaine. Le profil et la normalisation utilisent les espaces Unicode, y
+compris U+00A0, U+202F et U+2007, également aux bords des éléments de listes.
+
+La suite de préparation compte désormais **21 tests réussis** sous Spark 4.2.0,
+dont 10 tests de transport et 4 nouveaux cas de qualité. Le jeu contrôlé conserve
+les mêmes 32 lignes brutes et donne maintenant **20 lignes nettoyées, 10 en
+quarantaine et 2 doublons retirés**. Le changement provient du faux conflit
+`01`/`1` corrigé. Les fichiers `validation/fixture-v1.json` et
+`validation/windows-docker-2026-11-10.json` conservent les résultats historiques
+avant correction ; la nouvelle preuve est
+`validation/preparation-review-fixes-2026-11-10.json`.
+
+Pour relancer les bruts existants sans écraser leurs anciens résultats :
+
+```bash
+.venv/bin/python -m pytest -q tests
+.venv/bin/python -m imdb_preparation.prepare --raw-dir data/raw/fixture-v1 --output results/fixture-review-v2 --as-of-year 2026
+.venv/bin/python -m imdb_preparation.prepare --raw-dir data/raw/imdb-sample-2026-11-10 --output results/sample-review-v2 --as-of-year 2026
+```
+
+Le lot IMDb complet reste à valider. Les explications et justifications du rapport
+restent à rédiger par les étudiants. La PR attend une nouvelle relecture de
+Benjamin sur les corrections ; aucune approbation de pair n'est remplacée par
+les tests automatiques.

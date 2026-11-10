@@ -1,25 +1,26 @@
-La préparation couvre les sept tables IMDb et calcule le taux de valeurs
-manquantes des 39 colonnes sur les lignes brutes, puis le top 5 global.
-Le nettoyage PySpark produit des tables Parquet typées, un audit des corrections
-et des quarantaines pour les clés invalides, conflictuelles ou orphelines.
-Les compteurs réconcilient toutes les lignes, y compris les doublons retirés.
+La préparation couvre les sept tables IMDb : profil des valeurs manquantes des
+39 colonnes sur les lignes brutes, top 5, Parquet typés, audit et quarantaines.
+Les compteurs réconcilient les lignes nettoyées, rejetées et dédupliquées. Les
+références absentes d'un échantillon sont signalées sans suppression.
 
-Le téléchargement conserve des manifestes et SHA256, distingue échantillons et
-jeu complet et sépare les bruts des résultats. Les références absentes d'un
-échantillon sont signalées sans suppression. `PROJECT.md` décrit l'installation,
-les commandes, les sorties, les relances et l'usage de Codex. Le streaming, les
-anciens TP et `REPORT.md` ne sont pas modifiés.
+Les trois points signalés par Benjamin sur `376b434` sont corrigés : contrôle du
+Content-Length et de l'intégrité gzip avant publication d'un téléchargement
+complet ; normalisation de `ordering` avant le dédoublonnage ; reconnaissance
+des espaces Unicode, notamment insécables. Les vrais conflits restent en
+quarantaine et les transferts incomplets ne produisent aucun manifeste final.
 
-Validation Linux native : 7 tests réussis ; jeu contrôlé de 32 lignes (19 nettoyées,
-12 en quarantaine, 1 doublon retiré) ; échantillon IMDb réel de 7 000 lignes,
-sept tables et 39 colonnes profilées. Les preuves agrégées sont dans `validation/`.
-Ruff et validation de configuration Compose réussis. Le lancement Docker/Windows
-est également validé sur le jeu contrôlé et les 7 000 lignes réelles, après
-configuration du chemin Python de Spark dans Compose. Les empreintes des sept
-entrées et les 39 profils manquants correspondent à ceux du cloud. Le traitement
-complet IMDb reste à vérifier.
+Validation Linux sous Spark 4.2.0 : **21 tests réussis**, dont les régressions
+reproduites avant correction. Le jeu contrôlé donne désormais 32 lignes brutes,
+20 nettoyées, 10 en quarantaine et 2 doublons retirés. Le nouvel essai IMDb réel
+traite les 7 000 lignes et les 39 colonnes ; son profil reste identique à celui
+de la première version. Les preuves anciennes restent historiques et la preuve
+actuelle figure dans `validation/preparation-review-fixes-2026-11-10.json`.
 
-À relire par Benjamin : règles de correction et de quarantaine, dénominateurs,
-couverture des références, commandes de lancement et interface Parquet proposée
-à sa branche streaming/enrichissement. L'interface et le partage des sections de
-`PROJECT.md` restent des propositions. Fusion après son approbation réelle.
+Le lancement Docker/Windows de la première version a été validé sur les deux jeux.
+Le lot IMDb complet reste à vérifier ; les tests de transport complets utilisent
+des réponses HTTP contrôlées. `PROJECT.md` documente les commandes, les relances,
+les règles corrigées et l'usage de Codex. L'interface inclut `clean/title.ratings`
+avec `averageRating` et `numVotes`. Le classement définitif reste à convenir entre
+les étudiants. Les anciens TP et `REPORT.md` ne sont pas modifiés.
+
+Une nouvelle relecture de Benjamin est attendue avant approbation et fusion.
