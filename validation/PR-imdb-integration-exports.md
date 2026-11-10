@@ -9,7 +9,8 @@ signalent les films ayant moins de trois candidats et réconcilient les lignes.
 Les CSV sont de vrais fichiers UTF-8, compatibles avec les consommateurs de
 Benjamin ; les gros catalogues restent des Parquet distribués.
 
-Validation Linux : 13 tests réussis, exécutions contrôlée et réelle, Ruff et
+Validation Linux après réintégration des corrections de #1 : **27 tests réussis**,
+exécutions contrôlée et réelle, Ruff et
 contrôle Git réussis. L'essai réel exporte 2 000 identifiants et 14 des 32 liens
 du catalogue pilote. L'extrait ne contient aucun film de 1980–2025 : les deux films
 du pilote d'enrichissement sont explicitement signalés absents, sans candidats
@@ -20,7 +21,15 @@ compteurs de catalogue et de référence que les exécutions cloud.
 
 Cette PR dépend de la PR #1 et vise sa branche pour montrer uniquement les
 exports. Après approbation et fusion de #1, la cible pourra devenir `main`.
+Les identifiants nettoyés et les couples distincts non nuls ont été confirmés par
+Benjamin ; l'interface inclut `clean/title.ratings`. La documentation conserve
+les sections de préparation, de correction après relecture et d'exports.
 À relire par Benjamin : contrats CSV/Parquet, couverture des crédits et traitements
-des références hors échantillon. L'utilisation commune reste à confirmer.
+des références hors échantillon.
+Le contrôle Arrow de la fonction `extract_text` exacte de Benjamin a réussi dans
+le conteneur Spark 4.2.0 : trois lignes synthétiques, UDF Arrow effectivement
+exécutée et `toPandas` sans repli. Ce contrôle ne remplace pas le pilote réel ni
+une relecture de ses PR. Le script reproductible et la preuve sont dans
+`validation/`.
 La sélection top 10 et le traitement complet IMDb restent hors du périmètre de
 cette PR. Les textes du rapport reviennent aux étudiants.

@@ -1,0 +1,108 @@
+{
+  "description": "Preparation review fixes integrated into dependent exports branch",
+  "preparation_head": "630fd4d",
+  "native_test_suite": "27 passed in 51.41s",
+  "preparation_docker_test_suite": "21 passed in 112.94s",
+  "reference_interfaces_confirmed": [
+    "tconst/nconst cleaned identifiers",
+    "distinct non-null tconst,nconst pairs",
+    "clean/title.ratings: averageRating,numVotes"
+  ],
+  "ranking_thresholds_chosen": false,
+  "full_imdb_run": false,
+  "runs": {
+    "fixture": {
+      "scope": "fixture",
+      "spark_version": "4.2.0",
+      "started_at": "2026-11-10T18:13:46.878645+00:00",
+      "inputs": {
+        "prepared_summary_sha256": "84c285260fc0f76494d197f1c35f571369b143ff300656af781ed5cd3a8c1135",
+        "selected_titles": {
+          "path": "/workspace/ece-big-data-processing/examples/integration/fixture-selected.csv",
+          "sha256": "575d558b1bdd17c77c6b1e5b47905c13d964528f3ed60b75afb799254eca3243"
+        },
+        "wiki_reference": {
+          "path": "/workspace/ece-big-data-processing/examples/integration/fixture-reference.csv",
+          "sha256": "14052a948a42814fd60067c4ab9ee0349e226aac9deff3e0609da717a90fc3b6"
+        }
+      },
+      "movie_catalog_definition": "IMDb titleType=movie, startYear 1980..2025; no runtime threshold or ranking",
+      "selection_method": "external_tconst_list",
+      "imdb_identifiers": 8,
+      "movies_1980_2025": 1,
+      "enrichment": {
+        "requested_rows": 1,
+        "distinct_requested_titles": 1,
+        "duplicate_selection_rows_collapsed": 0,
+        "status_counts": {
+          "selected": 1
+        },
+        "candidate_pairs": 1,
+        "principal_rows": 1,
+        "duplicate_credit_pairs_collapsed": 0,
+        "rejected_credit_rows": 0,
+        "films_with_fewer_than_three_candidates": 1,
+        "consumer_ready": true
+      },
+      "streaming_reference": {
+        "input_rows": 3,
+        "matched_rows": 2,
+        "duplicate_rows_collapsed": 0,
+        "rejected_rows": 1,
+        "rejection_counts": {
+          "identifier_not_in_prepared_snapshot": 1
+        },
+        "absent_identifiers_are_unverified": false,
+        "consumer_ready": true
+      },
+      "completed_at": "2026-11-10T18:13:55.067664+00:00"
+    },
+    "real_sample": {
+      "scope": "sample",
+      "spark_version": "4.2.0",
+      "started_at": "2026-11-10T18:14:04.353176+00:00",
+      "inputs": {
+        "prepared_summary_sha256": "edd4b086636eb33a48b7685f157b29791fe426c5fba12d88788176acb6f457e1",
+        "selected_titles": {
+          "path": "/workspace/ece-big-data-processing/data/reference/benjamin-selected-pilot.csv",
+          "sha256": "429fff15d6a0450d3e02fa8cfcc19635bdf43791778a6d47667b5286af8b778a"
+        },
+        "wiki_reference": {
+          "path": "/workspace/ece-big-data-processing/data/reference/benjamin-pilot.csv",
+          "sha256": "3a16823f0e028061d1031cd1b1702ffd4012f6b8f10c94e2110f5d338d2fea2a"
+        }
+      },
+      "movie_catalog_definition": "IMDb titleType=movie, startYear 1980..2025; no runtime threshold or ranking",
+      "selection_method": "external_tconst_list",
+      "imdb_identifiers": 2000,
+      "movies_1980_2025": 0,
+      "enrichment": {
+        "requested_rows": 2,
+        "distinct_requested_titles": 2,
+        "duplicate_selection_rows_collapsed": 0,
+        "status_counts": {
+          "not_in_prepared_titles": 2
+        },
+        "candidate_pairs": 0,
+        "principal_rows": 0,
+        "duplicate_credit_pairs_collapsed": 0,
+        "rejected_credit_rows": 0,
+        "films_with_fewer_than_three_candidates": 0,
+        "consumer_ready": false
+      },
+      "streaming_reference": {
+        "input_rows": 32,
+        "matched_rows": 14,
+        "duplicate_rows_collapsed": 0,
+        "rejected_rows": 18,
+        "rejection_counts": {
+          "identifier_not_in_prepared_snapshot": 18
+        },
+        "absent_identifiers_are_unverified": true,
+        "consumer_ready": true
+      },
+      "completed_at": "2026-11-10T18:14:12.719029+00:00"
+    }
+  },
+  "arrow_compatibility_evidence": "validation/enrichment-arrow-review-2026-11-10.json"
+}

@@ -5,6 +5,9 @@
   chacune des sept tables IMDb, périmètre `sample`.
 - `windows-docker-2026-11-10.json` : résumés des deux exécutions Docker Desktop
   sur le PC Windows et vérification des empreintes/profils par rapport au cloud.
+- `preparation-review-fixes-2026-11-10.json` : tests et exécutions après correction
+  des trois points signalés en relecture. Les preuves précédentes restent celles
+  du commit `376b434`, avant correction du faux conflit `ordering=01/1`.
 
 Les deux premiers fichiers rassemblent sans modification les sorties JSON `summary`,
 `missing_profile`, `top5_missing` et `input_manifest` des exécutions indiquées.
@@ -25,3 +28,9 @@ Les exports d'intégration disposent de preuves distinctes :
   commits source utilisés. Cela ne réexécute pas le streaming ni la collecte.
 - `integration-exports-windows-2026-11-10.json` : exécutions réelles des exports
   contrôlé et IMDb sur le PC Windows avec Docker Desktop.
+- `integration-after-review-2026-11-10.json` : 27 tests et nouveaux exports après
+  réintégration des corrections de la PR #1 dans la PR #4.
+- `enrichment-arrow-review-2026-11-10.json` : fonction d'extraction exacte de
+  Benjamin exécutée avec Arrow sur trois lignes synthétiques dans le conteneur,
+  avec conversion `toPandas` sans repli. Aucun pilote réel ou collecte n'est répété.
+  `check_enrichment_arrow.py` permet de reproduire ce contrôle.

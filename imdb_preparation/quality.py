@@ -10,9 +10,15 @@ AUDIT_SCHEMA = "table string, key_json string, column string, rule string, origi
 QUARANTINE_SCHEMA = "table string, key_json string, row_json string, reason string"
 
 
+def trim_whitespace(column):
+    """Trim Unicode whitespace at edges, preserving spaces inside real text."""
+    return F.regexp_replace(column, r"(?U)^\s+|\s+$", "")
+
+
 def missing(column):
     value = F.col(column)
-    return value.isNull() | (F.trim(value) == "") | (F.trim(value) == "\\N")
+    trimmed = trim_whitespace(value)
+    return value.isNull() | (trimmed == "") | (trimmed == "\\N")
 
 
 def key_json(table):
@@ -52,7 +58,7 @@ def normalize(raw):
     return raw.select(
         *[
             F.when(missing(c), F.lit(None).cast("string"))
-            .otherwise(F.trim(F.col(c)))
+            .otherwise(trim_whitespace(c))
             .alias(c)
             for c in raw.columns
         ]
@@ -73,7 +79,15 @@ def valid_id(column, prefix):
 
 
 def partition_keys(table, frame):
-    """Exact duplicates collapse; every conflicting-key row is quarantined."""
+    """Canonicalize valid ordering, collapse identical rows, quarantine conflicts."""
+    if "ordering" in KEYS[table]:
+        number = F.expr("try_cast(ordering as bigint)")
+        valid_ordering = F.col("ordering").rlike(r"^[0-9]+$") & (number > 0)
+        # Invalid values stay intact for quarantine; they must not collapse to null.
+        frame = frame.withColumn(
+            "ordering",
+            F.when(valid_ordering, number.cast("string")).otherwise(F.col("ordering")),
+        )
     distinct = frame.dropDuplicates()
     checks = []
     for c in KEYS[table]:
@@ -89,11 +103,6 @@ def partition_keys(table, frame):
         table, tagged.filter(~F.col("_valid_key")), "invalid_primary_key"
     )
     keyed = tagged.filter("_valid_key").drop("_valid_key")
-    # Canonical ordering prevents "01" and "1" from evading uniqueness checks.
-    if "ordering" in KEYS[table]:
-        keyed = keyed.withColumn(
-            "ordering", F.expr("try_cast(ordering as bigint)").cast("string")
-        )
     keyed = keyed.withColumn(
         "_key_count", F.count(F.lit(1)).over(Window.partitionBy(*KEYS[table]))
     )
@@ -205,7 +214,7 @@ def clean_values(table, frame, as_of_year):
 
     array_rules = []
     for c, delimiter in ARRAYS.get(table, {}).items():
-        tokens = F.transform(F.split(F.col(c), delimiter), lambda x: F.trim(x))
+        tokens = F.transform(F.split(F.col(c), delimiter), lambda x: trim_whitespace(x))
         good_tokens = F.filter(tokens, lambda x: (x != "") & (x != "\\N"))
         array_rules.extend(
             [
@@ -225,7 +234,7 @@ def clean_values(table, frame, as_of_year):
         )
     events = events.unionByName(audit_events(table, typed, array_rules))
     for c, delimiter in ARRAYS.get(table, {}).items():
-        tokens = F.transform(F.split(F.col(c), delimiter), lambda x: F.trim(x))
+        tokens = F.transform(F.split(F.col(c), delimiter), lambda x: trim_whitespace(x))
         values = F.array_distinct(F.filter(tokens, lambda x: (x != "") & (x != "\\N")))
         typed = typed.withColumn(
             c,
