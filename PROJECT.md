@@ -315,3 +315,143 @@ vers le dépôt Windows propre, puis poussé depuis le PowerShell du PC. Le push
 le jeton de l'environnement cloud renvoyait 403, tandis que l'authentification
 Git locale Windows a fonctionné. La [PR n° 1](https://github.com/benjaminlabos/ece-big-data-processing/pull/1)
 est ouverte vers `main`, avec Benjamin demandé en relecture.
+
+## Exports d'intégration — branche `feat/imdb-integration-exports`
+
+Cette tâche dépend de la préparation de la PR n° 1. Sa PR vise la branche de
+préparation pour isoler les changements ; la cible pourra devenir `main` une fois
+la préparation fusionnée après approbation. Les interfaces reprennent les formats
+des PR de Benjamin, mais leur utilisation commune reste à confirmer avec lui.
+
+Le module `imdb_preparation.exports` lit uniquement un résultat préparé contenant
+`SUCCESS.json`, son `summary.json` cohérent et les tables Parquet attendues.
+Il vérifie les types et l'unicité des clés parentes avant les jointures.
+Les transformations, filtres, dédoublonnages et jointures sont réalisés en Spark.
+
+### Sorties
+
+| Chemin sous `--output` | Contenu |
+| --- | --- |
+| `imdb_ids/` | Parquet `imdb_id,entity_type` : tous les titres et personnes nettoyés |
+| `movie_catalog/` | Parquet des `titleType=movie` sortis de 1980 à 2025, avec genres, durée, note et votes ; films sans note conservés |
+| `candidates.csv` | Si sélection fournie : fichier UTF-8 unique, en-tête exact `tconst,nconst`, un couple distinct par film/personne |
+| `enrichment_coverage/` | Parquet : statut de chaque titre demandé, nombres de crédits et personnes disponibles, indicateur de moins de trois candidats |
+| `rejected_credits/` | Crédits sans identifiant de personne ou absents de `name.basics` nettoyée |
+| `streaming_reference.csv` | Si référence fournie : fichier UTF-8 unique `wiki,title,imdb_id,wikidata_id`, filtré par les identifiants nettoyés |
+| `rejected_reference/` | Références mal formées ou identifiants absents du résultat préparé |
+| `summary.json`, `SUCCESS.json` | Périmètre hérité (`fixture`, `sample`, `full`), empreintes des entrées, compteurs et marqueur final |
+
+Le catalogue de films n'applique ni classement, ni seuil de votes, ni seuil de
+durée. Il prépare les données pour vos choix ultérieurs. La sélection pour
+l'enrichissement vient d'un CSV externe contenant **uniquement** la colonne
+`tconst`. Les doublons y sont normalisés et comptés. Chaque titre distinct demandé
+reste dans la couverture, même s'il est invalide, absent, hors période ou d'un
+autre type qu'un film. L'export de crédits retient tous les participants principaux
+présents dans les noms nettoyés ; une personne cumulant plusieurs rôles ne crée
+qu'un couple. Aucun participant n'est inventé pour atteindre trois personnes.
+
+Un indicateur de moins de trois candidats signale un manque à traiter ; même
+trois candidats ne garantissent pas trois biographies disponibles chez la source.
+Un film sans crédit exportable reste dans `enrichment_coverage`, mais ne peut pas
+être transmis par le CSV à deux colonnes actuel. Il faudra en tenir compte lors
+du branchement du collecteur. `consumer_ready` signifie seulement que le CSV
+concerné contient au moins une ligne.
+
+Le streaming conserve les identifiants de toutes les tables parentes, sans filtre
+1980–2025 ou sélection de films. Il utilise le catalogue Wikipédia **fourni** par
+Benjamin : aucune nouvelle requête Wikidata ou Wikipédia n'est faite ici. Les
+titres, accents, casse et identifiants Q sont conservés. Les correspondances
+écartées d'un échantillon restent non vérifiées, et non des erreurs établies d'IMDb.
+
+Les deux CSV sont des fichiers, et non des dossiers `part-*`, pour être lisibles
+par les scripts de Benjamin. Spark écrit une partition triée, déplacée en fichier
+sans collecte des lignes dans le pilote Python. Cette consolidation ne concerne
+pas les grands catalogues Parquet distribués. Les CSV vides contiennent l'en-tête ;
+consulter les compteurs avant de lancer un consommateur qui exige des lignes.
+
+Les réconciliations vérifiées sont :
+
+```text
+crédits des films retenus = couples candidats + doublons de couples retirés + crédits rejetés
+références d'entrée = liens exportés + doublons de liens retirés + références rejetées
+```
+
+Les bruts et résultats préparés restent inchangés. Comme pour la préparation,
+l'export refuse l'écrasement et les chemins imbriqués avec son entrée préparée,
+écrit dans un dossier `.incomplete-*` puis renomme le résultat seulement si tout
+réussit. Une relance utilise un nouveau nom de sortie ; un échec ne publie pas de
+dossier final.
+
+### Lancement natif Linux testé
+
+Après les étapes précédentes de préparation, à la racine du dépôt :
+
+```bash
+.venv/bin/python -m pytest -q tests
+.venv/bin/python -m imdb_preparation.exports --prepared-dir results/fixture-v1 --output results/integration-fixture-v1 --selected-titles examples/integration/fixture-selected.csv --wiki-reference examples/integration/fixture-reference.csv
+git fetch origin
+mkdir -p data/reference
+git show 4855223aa45a0af1cf9f1a582d3806083aa3a2f8:05.structured-streaming/lab_docker_wikistreams/jobs/pilot_reference.csv > data/reference/benjamin-pilot.csv
+.venv/bin/python -m imdb_preparation.exports --prepared-dir results/sample-2026-11-10 --output results/integration-sample-v1 --wiki-reference data/reference/benjamin-pilot.csv
+```
+
+Le répertoire du résultat réel du dernier essai cloud est
+`results/sample-2026-11-10-final` ; la commande ci-dessus réutilise le nom de la
+recette initiale depuis zéro. La référence pilote est figée au commit indiqué.
+`--reference-source URL` peut enregistrer son URI de provenance dans le résumé.
+Pour l'enrichissement réel, ajouter `--selected-titles chemin/selection.csv`
+uniquement une fois votre sélection préparée ; le module n'en choisit pas une.
+
+Les fichiers `examples/integration/fixture-*.csv` sont **synthétiques** et servent
+uniquement avec le jeu contrôlé. Leurs correspondances Wikipédia ne doivent pas
+alimenter une collecte ou une capture réelle.
+
+### Lancement Docker/Windows
+
+Depuis `C:\Users\nriha\ece-big-data-processing`, après la préparation Docker
+décrite plus haut :
+
+```powershell
+docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_preparation.exports --prepared-dir results/fixture-win-v1 --output results/integration-fixture-win-v1 --selected-titles examples/integration/fixture-selected.csv --wiki-reference examples/integration/fixture-reference.csv
+git fetch origin
+New-Item -ItemType Directory -Force data/reference | Out-Null
+cmd /d /c "git show 4855223aa45a0af1cf9f1a582d3806083aa3a2f8:05.structured-streaming/lab_docker_wikistreams/jobs/pilot_reference.csv > data\reference\benjamin-pilot.csv"
+docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_preparation.exports --prepared-dir results/sample-win-v1 --output results/integration-sample-win-v1 --wiki-reference data/reference/benjamin-pilot.csv
+```
+
+La redirection par `cmd` préserve les octets UTF-8 de la référence Git, y compris
+les accents, avec Windows PowerShell 5.1. La validation de ces nouveaux exports
+Docker sera précisée ci-dessous après l'essai sur le PC.
+
+### Validation des exports et limites actuelles
+
+La suite complète passe avec **13 tests** : les 7 tests de préparation et 6 tests
+d'exports. Les nouveaux tests couvrent notamment les films sans note, les bornes
+1980–2025, les sélections invalides, les clés parentes dupliquées, les multiples
+rôles d'une même personne, les personnes absentes, les CSV vides, les accents,
+guillemets et les réconciliations. Ruff et le contrôle d'espaces Git passent.
+
+Le lancement contrôlé exporte 8 identifiants nettoyés, 1 film, 1 couple candidat et
+2 liens Wikipédia synthétiques sur 3. La couverture signale qu'il manque des
+candidats pour atteindre trois personnes sur ce film.
+
+L'essai réel exporte **2 000 identifiants** et **14 des 32 liens** du catalogue
+pilote de Benjamin. Les 18 autres sont signalés comme absents de cet échantillon.
+Les premières 1 000 lignes de `title.basics` ne contiennent aucun film de
+1980–2025. *Inception* et *The Dark Knight*, sélection pilote de Benjamin testée
+séparément, sont tous deux signalés `not_in_prepared_titles`, avec zéro couple
+exportable. Il faut un périmètre IMDb plus large pour alimenter réellement leur
+enrichissement. Ce contrôle n'est pas un classement top 10 ni une validation
+sur IMDb complet.
+
+Les deux CSV ont été relus sous Spark 4.2.0 avec le lecteur de référence exact de
+la PR streaming (commit `4855223`) et le schéma candidat de la PR enrichissement
+(commit `9754537`). Cela valide les interfaces de lecture ; aucune nouvelle
+capture de 15 minutes ou collecte Wikipédia n'a été effectuée par cette tâche.
+Preuves agrégées : `validation/integration-exports-2026-11-10.json` et
+`validation/integration-consumer-compatibility.json`.
+
+Codex a assisté Nicolas pour vérifier les contrats des PR de Benjamin, développer
+ces exports Spark, écrire/exécuter leurs tests et documenter cette interface.
+Aucun texte n'a été ajouté à `REPORT.md`. Le classement et ses justifications
+restent à définir et rédiger par les étudiants.

@@ -1,0 +1,17 @@
+{
+  "spark_version": "4.2.0",
+  "streaming_source_commit": "4855223aa45a0af1cf9f1a582d3806083aa3a2f8",
+  "enrichment_source_commit": "9754537447bdfc8c8cab3e822a59bf3011677ecd",
+  "checks": [
+    {
+      "scope": "fixture",
+      "reference_links_loaded_by_ben_reader": 2,
+      "candidate_pairs_loaded_with_ben_schema": 1
+    },
+    {
+      "scope": "sample",
+      "reference_links_loaded_by_ben_reader": 14,
+      "candidate_pairs_loaded_with_ben_schema": 0
+    }
+  ]
+}
