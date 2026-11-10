@@ -104,11 +104,13 @@ au-delà de la taille des fichiers compressés. Les essais enregistrés ici port
 sur le jeu contrôlé et un échantillon réel, pas sur IMDb complet. Le dimensionnement
 et la durée de l'exécution intégrale restent à mesurer.
 
-## Windows PowerShell avec Docker — chemin à valider sur le PC
+## Windows PowerShell avec Docker — chemin validé
 
 Prérequis : Docker Desktop actif, moteur Linux, Compose v2, dépôt cloné.
 Le service réutilise exactement l'image Spark épinglée du TP05. Il ne démarre ni
 Kafka ni Jupyter. La préparation ne dépend pas du travail streaming de Benjamin.
+Il expose les chemins Python Spark/py4j comme le service du TP05 et désactive le
+contrôle de santé Jupyter hérité de l'image, inutile pour un traitement batch.
 
 Depuis `C:\Users\nriha\ece-big-data-processing` :
 
@@ -126,14 +128,13 @@ docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_p
 Résultat attendu : sept tables annoncées, un fichier `SUCCESS.json` dans chaque
 dossier final, ainsi que les sorties décrites ci-dessous. Les chemins `data/` et
 `results/` sont montés depuis le dépôt Windows et restent disponibles après la
-fermeture du conteneur. Le daemon Docker a été vérifié dans le cloud ; la validation
-Compose et le statut des exécutions sont précisés dans la section de validation.
-Les commandes Docker de traitement restent à valider sur le PC Windows.
-Après reconnexion du PC le 10 novembre, `docker info` et `docker image ls` ont été
-tentés sous PowerShell : le daemon renvoie **`Docker Desktop is unable to start`**.
-La validation `docker compose -f compose.preparation.yaml config -q` réussit sur
-ce PC, mais aucun traitement en conteneur n'a pu démarrer. WSL indique Ubuntu
-en version 2 ; la cause du refus de démarrage Docker n'a pas été déterminée.
+fermeture du conteneur. Le jeu contrôlé a été exécuté avec ces commandes sur le
+PC Windows le 10 novembre : Docker 28.5.1, PySpark 4.2.0, Python 3.13.15 et Java
+21.0.12. Le téléchargement et le traitement de l'échantillon réel ont également
+réussi. Les compteurs et le profil manquant correspondent à ceux du test cloud.
+Un premier essai renvoyait `Docker Desktop is unable to start` ; le redémarrage
+manuel de Docker Desktop par Nicolas a rétabli l'accès au daemon. En cas de même
+message, vérifier d'abord que `docker info` fonctionne avant de lancer les jobs.
 Pour une erreur de droits sur un hôte Linux, donner à l'utilisateur du conteneur
 un accès en écriture aux dossiers de données et résultats du montage.
 
@@ -236,7 +237,8 @@ les erreurs de parsing font échouer le traitement, sans ignorer de lignes.
 
 ## Validation exécutée
 
-Vérifications réalisées le 10 novembre 2026 dans le cloud Linux :
+Vérifications réalisées le 10 novembre 2026 dans le cloud Linux, puis sur le PC
+Windows avec Docker Desktop :
 
 - Installation native, lancement des modules `fixture`, `download` et `prepare`.
 - `.venv/bin/python -m pytest -q tests` : **7 tests réussis** (39,24 s lors du
@@ -256,9 +258,15 @@ Vérifications réalisées le 10 novembre 2026 dans le cloud Linux :
   facultatif, installé séparément).
 - `git diff --check`, exclusion Git des données/caches et validation
   `docker compose -f compose.preparation.yaml config -q` réussies.
-- Docker cloud : daemon 29.9.2 accessible. Sur le PC Windows, `docker info` et
-  `docker image ls` échouent avec `Docker Desktop is unable to start` ; Compose
-  valide la configuration. Aucun traitement de données en conteneur n'a été validé.
+- Docker cloud : daemon 29.9.2 accessible. Sur le PC Windows, daemon 28.5.1
+  accessible après redémarrage de Docker Desktop ; configuration Compose valide.
+  Le job contrôlé conteneurisé a traité les sept tables en environ 151 secondes
+  hors démarrage/arrêt de Spark, avec les mêmes compteurs que le test cloud :
+  32 lignes brutes, 19 nettoyées, 12 en quarantaine et 1 doublon retiré.
+  Le téléchargement et le traitement de 7 000 lignes IMDb réelles ont également
+  réussi sur ce PC, en environ 145 secondes de traitement hors démarrage/arrêt de
+  Spark. Les sept empreintes source et les 39 profils manquants correspondent à
+  l'exécution cloud. Preuve : `validation/windows-docker-2026-11-10.json`.
 
 Les preuves JSON agrégées et les empreintes des entrées se trouvent dans
 `validation/`. Elles sont distinctes du rapport et n'incluent aucun fichier IMDb

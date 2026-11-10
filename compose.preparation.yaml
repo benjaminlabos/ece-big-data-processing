@@ -5,11 +5,14 @@ services:
     # Reuse the exact base image from TP05, without Kafka or notebook servers.
     image: quay.io/jupyter/pyspark-notebook@sha256:80430186e2e97c5e0a9a3c117798d4007bc0a289b8a72cf3a9fc92f044b4c4f1
     init: true
+    healthcheck:
+      disable: true
     entrypoint: []
     command: ["python", "-m", "imdb_preparation.prepare", "--help"]
     working_dir: /home/jovyan/project
     volumes:
       - .:/home/jovyan/project
     environment:
+      PYTHONPATH: /usr/local/spark/python:/usr/local/spark/python/lib/py4j-0.10.9.9-src.zip
       PYSPARK_PYTHON: python
       SPARK_LOCAL_IP: 127.0.0.1
