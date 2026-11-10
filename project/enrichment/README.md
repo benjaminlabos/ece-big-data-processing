@@ -12,7 +12,7 @@ Pour l’étape complète, le classement Spark fournit les films sélectionnés 
 
 ## Exécution
 
-Depuis ce dossier, avec Python 3.9+ et un environnement PySpark 4.x disponible. Installer `beautifulsoup4` aussi dans l’environnement Python des workers Spark.
+Depuis ce dossier, avec un environnement PySpark 4.x disponible. Spark 4.2.0 requiert Python 3.10 ou ultérieur. Installer `beautifulsoup4` aussi dans l’environnement Python des workers Spark. [Prérequis Spark 4.2.0](https://spark.apache.org/docs/4.2.0/)
 
 ```sh
 python -m pip install -r requirements.txt
@@ -44,6 +44,8 @@ Le dossier `work/` contient le cache et les résultats générés localement.
 ## Contrôle de l’essai
 
 Les appels en direct à Wikidata et à Wikipédia ont fourni huit révisions pour neuf identifiants recherchés. Le 10 novembre 2026, Spark 4.0.1 a nettoyé les fragments, effectué les deux jointures et relu les résultats Parquet sous Ubuntu WSL. Les sorties contiennent deux synopsis et six introductions biographiques, soit trois par film, avec leur URL de révision. La ligne de Jordan Goldberg, coproducteur crédité sur *Inception*, conserve le statut `no_wikidata_item`.
+
+Le même cache a ensuite été retraité sous Spark 4.2.0 et Java 21 sous Ubuntu WSL. Les contenus, les champs de provenance et le statut d’absence sont identiques dans les deux sorties Parquet.
 
 | IMDb | Article vérifié | Fragment |
 | --- | --- | --- |
