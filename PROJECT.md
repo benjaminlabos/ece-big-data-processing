@@ -40,6 +40,8 @@ Chaque dossier `data/project-runs/project-wiki-*` contient `summary.json`, `prod
 
 Le 10 novembre 2026, l’essai anglais a utilisé une référence figée de 39 951 liens Wikipédia–IMDb. En 15 min 3,149 s, confirmation des envois incluse, le producteur a lu 31 405 messages Wikimedia. Kafka a confirmé 1 824 livraisons et Spark a relu 1 824 événements distincts, dont 1 425 modifications admissibles et 10 correspondances IMDb sur 8 articles. Les compteurs ont été recalculés à partir de la capture brute, du catalogue et des Parquet Spark. Les dix numéros de révision et heures de modification correspondent à l’API de Wikipédia. [Compteurs et exemples](project/streaming/evidence/live.json)
 
+Le contrôle de compatibilité sous Ubuntu WSL avec Spark 4.2.0 et Kafka 4.1.1 a confirmé la livraison d’une nouvelle modification réelle. Le rejeu de la capture du 10 novembre a restitué les 1 824 identifiants et offsets, les 1 425 modifications admissibles et les mêmes 10 liens événement–IMDb. L’exercice du watermark a également réussi sous Spark 4.2.0.
+
 Si l’essai donne moins de deux correspondances, produire un CSV avec plus de langues, passer les mêmes langues au consommateur et relancer sur un nouveau topic.
 
 ```powershell
