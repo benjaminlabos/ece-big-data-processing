@@ -1,0 +1,17 @@
+# Project-local runtime, input snapshots and generated results
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.env
+.env.*
+!.env.example
+/data/
+/results/
+/artifacts/
+/spark-warehouse/
+/metastore_db/
+/derby.log
+*.log
+*.part
