@@ -16,7 +16,8 @@ traite les 7 000 lignes et les 39 colonnes ; son profil reste identique à celui
 de la première version. Les preuves anciennes restent historiques et la preuve
 actuelle figure dans `validation/preparation-review-fixes-2026-11-10.json`.
 
-Le lancement Docker/Windows de la première version a été validé sur les deux jeux.
+Les **21 tests ont aussi réussi sous Docker sur le PC Windows**, avec pytest 9.0.2
+installé dans le conteneur éphémère, sous Spark 4.2.0/Python 3.13.15.
 Le lot IMDb complet reste à vérifier ; les tests de transport complets utilisent
 des réponses HTTP contrôlées. `PROJECT.md` documente les commandes, les relances,
 les règles corrigées et l'usage de Codex. L'interface inclut `clean/title.ratings`

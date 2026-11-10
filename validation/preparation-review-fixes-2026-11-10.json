@@ -338,5 +338,14 @@
         ]
       }
     }
+  },
+  "docker_windows": {
+    "tested_commit": "30526026ad8c05ef418e0f82c2c9cc499a37fd21",
+    "test_suite": "21 passed in 112.94s",
+    "docker_server_version": "28.5.1",
+    "spark_version": "4.2.0",
+    "python_version": "3.13.15",
+    "pytest_version": "9.0.2",
+    "pytest_installation": "ephemeral container user site; no host Python change"
   }
 }

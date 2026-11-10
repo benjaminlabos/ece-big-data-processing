@@ -368,6 +368,15 @@ quarantaine et 2 doublons retirés**. Le changement provient du faux conflit
 avant correction ; la nouvelle preuve est
 `validation/preparation-review-fixes-2026-11-10.json`.
 
+Les **21 tests ont également réussi dans l'image Docker sur le PC Windows**
+(112,94 s de tests, Spark 4.2.0/Python 3.13.15). `pytest 9.0.2`, absent de l'image,
+a été installé dans le compte utilisateur du conteneur éphémère, sans modifier
+le Python de l'hôte. Commande à la racine du dépôt :
+
+```powershell
+docker compose -f compose.preparation.yaml run --rm preparation bash -c 'python -m pip install --user pytest==9.0.2 && python -m pytest -q tests'
+```
+
 Pour relancer les bruts existants sans écraser leurs anciens résultats :
 
 ```bash
