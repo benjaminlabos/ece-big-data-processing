@@ -14,7 +14,9 @@ Validation Linux native : 7 tests réussis ; jeu contrôlé de 32 lignes (19 net
 12 en quarantaine, 1 doublon retiré) ; échantillon IMDb réel de 7 000 lignes,
 sept tables et 39 colonnes profilées. Les preuves agrégées sont dans `validation/`.
 Ruff et validation de configuration Compose réussis. Le traitement complet IMDb
-et l'exécution Docker/Windows restent à vérifier.
+reste à vérifier. Sur le PC Windows, la configuration Compose est valide mais
+`docker info` échoue avec `Docker Desktop is unable to start` : aucun traitement
+en conteneur n'a donc pu être validé sur ce PC.
 
 À relire par Benjamin : règles de correction et de quarantaine, dénominateurs,
 couverture des références, commandes de lancement et interface Parquet proposée

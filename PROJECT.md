@@ -128,7 +128,12 @@ dossier final, ainsi que les sorties décrites ci-dessous. Les chemins `data/` e
 `results/` sont montés depuis le dépôt Windows et restent disponibles après la
 fermeture du conteneur. Le daemon Docker a été vérifié dans le cloud ; la validation
 Compose et le statut des exécutions sont précisés dans la section de validation.
-Les commandes Docker de traitement et le PC Windows n'ont pas encore été testés.
+Les commandes Docker de traitement restent à valider sur le PC Windows.
+Après reconnexion du PC le 10 novembre, `docker info` et `docker image ls` ont été
+tentés sous PowerShell : le daemon renvoie **`Docker Desktop is unable to start`**.
+La validation `docker compose -f compose.preparation.yaml config -q` réussit sur
+ce PC, mais aucun traitement en conteneur n'a pu démarrer. WSL indique Ubuntu
+en version 2 ; la cause du refus de démarrage Docker n'a pas été déterminée.
 Pour une erreur de droits sur un hôte Linux, donner à l'utilisateur du conteneur
 un accès en écriture aux dossiers de données et résultats du montage.
 
@@ -251,8 +256,9 @@ Vérifications réalisées le 10 novembre 2026 dans le cloud Linux :
   facultatif, installé séparément).
 - `git diff --check`, exclusion Git des données/caches et validation
   `docker compose -f compose.preparation.yaml config -q` réussies.
-- Docker cloud : daemon 29.9.2 accessible. Aucun traitement de données en conteneur
-  ni lancement sur le PC Windows n'a encore été validé.
+- Docker cloud : daemon 29.9.2 accessible. Sur le PC Windows, `docker info` et
+  `docker image ls` échouent avec `Docker Desktop is unable to start` ; Compose
+  valide la configuration. Aucun traitement de données en conteneur n'a été validé.
 
 Les preuves JSON agrégées et les empreintes des entrées se trouvent dans
 `validation/`. Elles sont distinctes du rapport et n'incluent aucun fichier IMDb
@@ -295,3 +301,9 @@ relue et approuvée par Benjamin avant fusion ; aucun changement direct sur `mai
 Les bruts, résultats, environnements, caches et secrets sont exclus par `.gitignore`.
 La validation et le descriptif de PR permettent la relecture sans données brutes
 dans Git. Vérifier les fichiers indexés avant chaque commit.
+
+Le 10 novembre, le commit de préparation a été transféré par bundle Git vérifié
+vers le dépôt Windows propre, puis poussé depuis le PowerShell du PC. Le push via
+le jeton de l'environnement cloud renvoyait 403, tandis que l'authentification
+Git locale Windows a fonctionné. La [PR n° 1](https://github.com/benjaminlabos/ece-big-data-processing/pull/1)
+est ouverte vers `main`, avec Benjamin demandé en relecture.
