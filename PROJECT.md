@@ -38,6 +38,8 @@ docker compose exec -T pyspark-notebook python /home/jovyan/jobs/project_stream.
 
 Chaque dossier `data/project-runs/project-wiki-*` contient `summary.json`, `producer.log`, une copie du CSV utilisé, les événements en Parquet et les fichiers locaux d’audit et de reprise. Les références générées et les sorties locales sont ignorées par Git. `producer.seen` compte les messages lus sur EventStreams avant filtrage. `kafka_records` compte les messages effectivement relus par Spark, `eligible_wikipedia_edits` les modifications d’articles Wikipédia retenues, `matched_events` les identifiants d’événement distincts associés à IMDb et `matched_pages` les articles distincts correspondants. Un article lié à deux identifiants IMDb ne compte qu’une fois par modification. Les exemples contiennent l’URL de la page, le numéro de révision, les identifiants et les horaires. La durée mesurée inclut la confirmation des derniers envois à Kafka.
 
+Le 10 novembre 2026, l’essai anglais a utilisé une référence figée de 39 951 liens Wikipédia–IMDb. En 15 min 3,149 s, confirmation des envois incluse, le producteur a lu 31 405 messages Wikimedia. Kafka a confirmé 1 824 livraisons et Spark a relu 1 824 événements distincts, dont 1 425 modifications admissibles et 10 correspondances IMDb sur 8 articles. Les compteurs ont été recalculés à partir de la capture brute, du catalogue et des Parquet Spark. Les dix numéros de révision et heures de modification correspondent à l’API de Wikipédia. [Compteurs et exemples](project/streaming/evidence/live.json)
+
 Si l’essai donne moins de deux correspondances, produire un CSV avec plus de langues, passer les mêmes langues au consommateur et relancer sur un nouveau topic.
 
 ```powershell

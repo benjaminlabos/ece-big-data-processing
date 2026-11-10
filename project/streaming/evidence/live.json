@@ -1,0 +1,238 @@
+{
+  "topic": "project-wiki-1393eb7ba0d9",
+  "capture_started_utc": "2026-11-10T16:47:30.047014+00:00",
+  "capture_seconds_requested": 900,
+  "capture_seconds_including_flush": 903.149,
+  "spark_version": "4.0.1",
+  "reference_sha256": "e1eba2378b826c7bd118ed9145066e0f364279611c35c9206c3beb6571440efc",
+  "producer": {
+    "seen": 31405,
+    "sent": 1824,
+    "delivered": 1824,
+    "duplicates": 0,
+    "errors": 0,
+    "pending": 0,
+    "topic": "project-wiki-1393eb7ba0d9",
+    "languages": [
+      "en"
+    ]
+  },
+  "kafka_records": 1824,
+  "distinct_event_ids": 1824,
+  "eligible_wikipedia_edits": 1425,
+  "matched_events": 10,
+  "matched_pages": 8,
+  "smoke_event_id_verified": false,
+  "examples": [
+    {
+      "wiki": "enwiki",
+      "title": "The Last Supper (2012 film)",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "bb8f4727-8e24-4e1c-8577-2ed066cf346f",
+      "page_url": "https://en.wikipedia.org/wiki/The_Last_Supper_(2012_film)",
+      "revision_id": 1384885459,
+      "event_time": "2026-11-10T16:47:50.000Z",
+      "processing_time": "2026-11-10T16:47:56.153Z",
+      "partition": 0,
+      "offset": 43,
+      "kafka_time": "2026-11-10T16:47:51.646Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt1919137",
+          "wikidata_id": "Q387096"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "The Last Supper (2012 film)",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "be34a80d-fe8c-42c9-9c98-7ee09853f16a",
+      "page_url": "https://en.wikipedia.org/wiki/The_Last_Supper_(2012_film)",
+      "revision_id": 1384885587,
+      "event_time": "2026-11-10T16:48:48.000Z",
+      "processing_time": "2026-11-10T16:49:00.010Z",
+      "partition": 0,
+      "offset": 162,
+      "kafka_time": "2026-11-10T16:48:50.321Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt1919137",
+          "wikidata_id": "Q387096"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Mutya Buena",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "eb4c4d4f-d4cd-4c13-8f27-d39fd46d41b5",
+      "page_url": "https://en.wikipedia.org/wiki/Mutya_Buena",
+      "revision_id": 1384885635,
+      "event_time": "2026-11-10T16:49:11.000Z",
+      "processing_time": "2026-11-10T16:49:20.010Z",
+      "partition": 0,
+      "offset": 205,
+      "kafka_time": "2026-11-10T16:49:15.471Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm1104787",
+          "wikidata_id": "Q233268"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "The Wizard of Oz",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "5b360c72-47d9-4727-8844-fb2cc90fb281",
+      "page_url": "https://en.wikipedia.org/wiki/The_Wizard_of_Oz",
+      "revision_id": 1384885650,
+      "event_time": "2026-11-10T16:49:19.000Z",
+      "processing_time": "2026-11-10T16:49:30.012Z",
+      "partition": 0,
+      "offset": 232,
+      "kafka_time": "2026-11-10T16:49:28.741Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt0032138",
+          "wikidata_id": "Q193695"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Martin Landau",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "7450d41b-d2bc-46c5-9e49-286eb4a5e450",
+      "page_url": "https://en.wikipedia.org/wiki/Martin_Landau",
+      "revision_id": 1384885674,
+      "event_time": "2026-11-10T16:49:30.000Z",
+      "processing_time": "2026-11-10T16:49:40.016Z",
+      "partition": 0,
+      "offset": 243,
+      "kafka_time": "2026-11-10T16:49:33.767Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0001445",
+          "wikidata_id": "Q294641"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Asmongold",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "4d6e62e8-94df-4f87-8f33-292a3b9ba7bd",
+      "page_url": "https://en.wikipedia.org/wiki/Asmongold",
+      "revision_id": 1384886377,
+      "event_time": "2026-11-10T16:55:18.000Z",
+      "processing_time": "2026-11-10T16:55:30.007Z",
+      "partition": 0,
+      "offset": 908,
+      "kafka_time": "2026-11-10T16:55:20.500Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm10602552",
+          "wikidata_id": "Q104589878"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Pan (2015 film)",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "8fcd8f40-3f76-4698-907a-ee971c0d9643",
+      "page_url": "https://en.wikipedia.org/wiki/Pan_(2015_film)",
+      "revision_id": 1384886608,
+      "event_time": "2026-11-10T16:57:09.000Z",
+      "processing_time": "2026-11-10T16:57:20.007Z",
+      "partition": 0,
+      "offset": 1137,
+      "kafka_time": "2026-11-10T16:57:13.585Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt3332064",
+          "wikidata_id": "Q15713892"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Farewell My Concubine (film)",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "b10d9653-fc0c-4336-980e-d8999d1a8bab",
+      "page_url": "https://en.wikipedia.org/wiki/Farewell_My_Concubine_(film)",
+      "revision_id": 1384886884,
+      "event_time": "2026-11-10T16:59:16.000Z",
+      "processing_time": "2026-11-10T16:59:20.007Z",
+      "partition": 0,
+      "offset": 1402,
+      "kafka_time": "2026-11-10T16:59:19.226Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt0106332",
+          "wikidata_id": "Q696413"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Mutya Buena",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "4bc1c484-7e6e-453e-816a-824205c2c809",
+      "page_url": "https://en.wikipedia.org/wiki/Mutya_Buena",
+      "revision_id": 1384887225,
+      "event_time": "2026-11-10T17:01:35.000Z",
+      "processing_time": "2026-11-10T17:01:50.008Z",
+      "partition": 0,
+      "offset": 1721,
+      "kafka_time": "2026-11-10T17:01:41.496Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm1104787",
+          "wikidata_id": "Q233268"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Sean Bean",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "dd583745-7f10-4a66-9a53-3da3ebef2f57",
+      "page_url": "https://en.wikipedia.org/wiki/Sean_Bean",
+      "revision_id": 1384887255,
+      "event_time": "2026-11-10T17:01:49.000Z",
+      "processing_time": "2026-11-10T17:02:00.009Z",
+      "partition": 0,
+      "offset": 1756,
+      "kafka_time": "2026-11-10T17:01:59.018Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0000293",
+          "wikidata_id": "Q191104"
+        }
+      ]
+    }
+  ]
+}
