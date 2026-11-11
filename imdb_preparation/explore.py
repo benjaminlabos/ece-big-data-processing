@@ -525,12 +525,44 @@ def run(spark, prepared, output, config, languages=None):
             continue
         path = stage / key
         frame.write.mode("errorifexists").parquet(str(path))
+        written = spark.read.parquet(str(path))
         if key == "top10_per_genre_year":
-            single_csv(frame.select("tconst").distinct(), stage / "selected_titles.csv")
+            single_csv(
+                written.select("tconst").distinct(), stage / "selected_titles.csv"
+            )
+            single_csv(
+                written.select(
+                    "startYear",
+                    "genre",
+                    "genre_year_rank",
+                    "tconst",
+                    "primaryTitle",
+                    "runtimeMinutes",
+                    "averageRating",
+                    "numVotes",
+                ).orderBy("startYear", "genre", "genre_year_rank"),
+                stage / "top10_per_genre_year.csv",
+            )
         summary["questions"][key] = {
             "status": "provisional" if not config["student_validated"] else "computed",
-            "rows": spark.read.parquet(str(path)).count(),
+            "rows": written.count(),
         }
+        # Export bounded raw values for inspection; full results remain in Parquet.
+        preview_dir = stage / "previews"
+        preview_dir.mkdir(exist_ok=True)
+        order = [
+            c
+            for c in ("startYear", "genre", "nconst", "parentTconst", "tconst")
+            if c in written.columns
+        ]
+        preview = written.orderBy(*order) if order else written
+        json_write(
+            preview_dir / (key + ".json"),
+            [r.asDict(recursive=True) for r in preview.limit(20).collect()],
+        )
+        json_write(stage / "progress.tmp", summary)
+        os.replace(stage / "progress.tmp", stage / "progress.json")
+        print(f"{key}: {summary['questions'][key]['rows']} rows written", flush=True)
     json_write(stage / "summary.json", summary)
     json_write(
         stage / "SUCCESS.json",

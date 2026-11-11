@@ -680,3 +680,9 @@ avec le premier instantané Wikidata réconcilie les 369 502 lignes : 364 117
 énoncés valides mappés, 20 lignes invalides, 5 272 non résolues et 93 doublons
 créés par les alias ISO fusionnés. Ce contrôle ne mesure pas encore la couverture
 des films complets admissibles.
+
+Chaque requête produit aussi un aperçu JSON limité à 20 lignes, extrait des
+Parquet effectivement écrits, et un état `progress.json` actualisé après chaque
+calcul. Le classement complet, avec titre, année, genre, rang, durée, note et
+votes, est disponible en CSV dans `top10_per_genre_year.csv` ; le CSV dédupliqué
+`selected_titles.csv` conserve l'interface attendue par l'export des crédits.
