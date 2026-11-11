@@ -44,6 +44,8 @@ def test_all_explorations_and_top10_on_controlled_data(spark):
     titles.append(("tt0099999", "tvSeries", "Series", 2000, None, None))
     titles.append(("tt0040000", "movie", "Unrated direction", 2000, 100, ["Drama"]))
     titles.append(("tt0040001", "movie", "Unrated long film", 2000, 900, ["Drama"]))
+    titles.append(("tt0040002", "movie", "Invalidated rating", 2000, 100, ["Mystery"]))
+    ratings.append(("tt0040002", None, 2000))
     principals.append(("tt0010000", 2, "nm0000004", "actor"))
     crew.append(("tt0040000", ["nm0000004"], None))
     for i in range(15):
@@ -127,3 +129,4 @@ def test_all_explorations_and_top10_on_controlled_data(spark):
         == 10
     )
     assert analyses(tables, config)["q6"] is None
+    assert outputs["top10_per_genre_year"].filter("tconst='tt0040002'").count() == 0

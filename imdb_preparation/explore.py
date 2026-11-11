@@ -43,10 +43,7 @@ def apply_language_vocabulary(statements, vocabulary):
     return mapped, unknown
 
 
-def analyses(tables, config, languages=None):
-    titles, ratings, people = (
-        tables[t] for t in ("title.basics", "title.ratings", "name.basics")
-    )
+def movie_analyses(titles, ratings, config):
     films = titles.filter(
         (F.col("titleType") == "movie")
         & (
@@ -56,7 +53,8 @@ def analyses(tables, config, languages=None):
         & (F.col("runtimeMinutes") >= config["minimum_runtime"])
     )
     rated = films.join(ratings, "tconst").filter(
-        F.col("numVotes") >= config["minimum_votes"]
+        (F.col("numVotes") >= config["minimum_votes"])
+        & F.col("averageRating").isNotNull()
     )
     feature_genres = films.withColumn("genre", F.explode("genres"))
     by_genre = rated.withColumn("genre", F.explode("genres"))
@@ -107,6 +105,30 @@ def analyses(tables, config, languages=None):
             ).alias("mean_rating_per_genre_membership"),
         )
     )
+    selected = (
+        by_genre.filter(F.col("startYear").between(1980, 2025))
+        .withColumn(
+            "genre_year_rank",
+            F.row_number().over(
+                Window.partitionBy("startYear", "genre").orderBy(
+                    F.desc("averageRating"), F.desc("numVotes"), F.asc("tconst")
+                )
+            ),
+        )
+        .filter("genre_year_rank <= 10")
+    )
+    return (
+        films,
+        rated,
+        {"q1": q1, "q2": q2, "q3": q3, "top10_per_genre_year": selected},
+    )
+
+
+def analyses(tables, config, languages=None):
+    titles, ratings, people = (
+        tables[t] for t in ("title.basics", "title.ratings", "name.basics")
+    )
+    films, rated, movie_queries = movie_analyses(titles, ratings, config)
     directors = (
         tables["title.crew"]
         .join(rated.select("tconst"), "tconst", "left_semi")
@@ -318,28 +340,16 @@ def analyses(tables, config, languages=None):
         )
         .join(people.select("nconst", "primaryName"), "nconst")
     )
-    selected = (
-        by_genre.filter(F.col("startYear").between(1980, 2025))
-        .withColumn(
-            "genre_year_rank",
-            F.row_number().over(
-                Window.partitionBy("startYear", "genre").orderBy(
-                    F.desc("averageRating"), F.desc("numVotes"), F.asc("tconst")
-                )
-            ),
-        )
-        .filter("genre_year_rank <= 10")
-    )
     return {
-        "q1": q1,
-        "q2": q2,
-        "q3": q3,
+        "q1": movie_queries["q1"],
+        "q2": movie_queries["q2"],
+        "q3": movie_queries["q3"],
         "q4": q4,
         "q5": q5,
         "q6": q6,
         "q7": q7,
         "q8": q8,
-        "top10_per_genre_year": selected,
+        "top10_per_genre_year": movie_queries["top10_per_genre_year"],
     }
 
 

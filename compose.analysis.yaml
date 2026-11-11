@@ -1,0 +1,8 @@
+services:
+  title-analysis:
+    extends:
+      file: compose.preparation.yaml
+      service: preparation
+    mem_limit: 3g
+    environment:
+      PYSPARK_SUBMIT_ARGS: --driver-memory 1536m pyspark-shell

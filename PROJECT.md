@@ -725,3 +725,22 @@ en cours ; `-Publish` ajoute un commit de cette seule preuve sur
 
 Dernière validation de la partie Python : 33 tests réussis sous Spark 4.2.0,
 61,96 s, avec un film sans note inclus dans le contrôle des durées de Q1.
+
+Pour calculer Q1–Q3 et le top 10 avant la fin des autres tables, le module
+facultatif `imdb_preparation.explore_titles` réutilise la table des titres dont
+`progress.json` certifie la fin, et nettoie séparément les notes avec les mêmes
+fonctions de clés, valeurs et références. Il vérifie l'empreinte du fichier de
+notes et le manifeste du profil complet. Les calculs sont partagés avec le module
+d'exploration complet, sans seconde définition des requêtes.
+
+```powershell
+docker compose -f compose.analysis.yaml run --rm title-analysis python -m imdb_preparation.explore_titles --prepared results/imdb-full-2026-11-11 --snapshot data/raw/imdb-full-2026-11-11 --raw-profile results/imdb-full-raw-profile-2026-11-11 --output results/title-queries-full-provisional-2026-11-11 --config examples/exploration/provisional.json
+```
+
+Pendant le nettoyage, remplacer `--prepared` par le chemin `.incomplete-*`
+imprimé par ce lancement et contenant la table des titres terminée. Le service
+est limité à 3 GiB, avec un pilote de 1,5 GiB et deux threads. Les sorties portent
+le périmètre `full_title_tables_subset` et `PROVISIONAL_SUCCESS.json` : elles ne
+valident pas les autres tables ou les cinq autres questions. Les notes nulles
+sont exclues du classement. L'essai CLI contrôlé réconcilie les lignes des notes ;
+les 33 tests passent après extraction des calculs communs (61,62 s).
