@@ -2,8 +2,9 @@
 
 Guide technique de lancement. Les explications, choix méthodologiques et
 interprétations du rapport sont à écrire par les étudiants dans `REPORT.md`.
-Ce guide couvre uniquement la première tâche de préparation ; les autres parties
-du projet restent à réaliser sur leurs branches respectives.
+Ce guide couvre la préparation IMDb, les interfaces d’intégration, l’exploration
+et la sélection des films. Les pipelines de Benjamin sont développés dans leurs
+PR respectives ; ce guide ne décrit pas encore une exécution fusionnée complète.
 
 ## Contributeurs
 
@@ -588,12 +589,18 @@ place les fichiers temporaires dans son disque Linux. Le lanceur surveille le
 disque hôte et arrête uniquement les conteneurs nommés de cette tâche sous 5 GiB
 libres. Les données brutes et sorties partielles restent conservées.
 
-Depuis la racine du dépôt dans PowerShell, une fois le téléchargement complet
-terminé et Docker Desktop actif :
+Depuis la racine du dépôt dans PowerShell, Docker Desktop actif, sur une nouvelle
+installation où ces chemins ne sont pas encore présents :
 
 ```powershell
+docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_preparation.download --destination data/raw/imdb-full-2026-11-11
+docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_preparation.languages --output data/reference/original-languages-2026-11-11.csv
 .\run_full_imdb.ps1
 ```
+
+Si les entrées existent déjà avec leurs manifestes, les conserver et lancer
+uniquement le script. Pour une nouvelle exécution avec sorties existantes,
+fournir de nouveaux chemins via `-PreparedOutput` et `-AnalysisOutput`.
 
 Ce lanceur enchaîne préparation complète (4 threads, 64 partitions de mélange),
 exploration provisoire, puis export des crédits des films sélectionnés. Logs :
