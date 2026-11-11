@@ -65,3 +65,8 @@ profil brut mesuré, recalcule les tables, collecte les langues avec provenance
 et publie les sorties dérivées après contrôle de tous les marqueurs et des
 réconciliations. Les journaux sont conservés même en cas d'échec. La préparation
 du workflow ne constitue pas une preuve d'exécution cloud réussie.
+
+Le workflow est désormais publié et l'exécution hébergée a démarré :
+https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43087424074
+La preuve de lancement précise le runner et le commit. Elle ne certifie pas
+encore la réussite du lot complet. Le PC n'est plus requis pour ce job.
