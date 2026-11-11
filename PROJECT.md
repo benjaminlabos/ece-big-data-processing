@@ -1042,3 +1042,33 @@ reste signalée après cette tentative de sauvegarde. Ces mécanismes ne garanti
 pas l'absence de panne de calcul ou d'éviction de cache. La validation de syntaxe
 et du graphe figure dans validation/cloud-recovery-validation-2026-11-11.json ;
 le succès sur le lot réel reste à contrôler dans les runs GitHub.
+
+### Vérification des sorties d'exploration et tableaux de relecture
+
+La finition appelle maintenant `imdb_preparation.review_outputs` après le handoff.
+Ce contrôle relit les Parquet matérialisés, leur compteur déclaré et les marqueurs
+SUCCESS. Il lie les analyses au résumé exact de préparation, contrôle les clés et
+les domaines de valeurs des huit questions, les rangs et leurs départages, puis
+réconcilie Q2/Q3 et la sélection du classement. Il vérifie les invariants des
+sorties sans prétendre recalculer indépendamment toutes les requêtes sources.
+
+```bash
+python -m imdb_preparation.review_outputs --prepared results/cloud-prepared --analysis artifacts/verified/analysis --output artifacts/query-review --preview-rows 100
+```
+
+`QUERY_REVIEW.json` contient les comptes complets et les contrôles. Chaque table
+a aussi un aperçu CSV et JSON borné à 100 lignes, avec les tableaux imbriqués
+sérialisés en JSON pour le CSV. Ce sont des aperçus techniques, les résultats
+intégraux restent dans les Parquet de l'artefact. Le contrôle ne valide pas les
+choix méthodologiques à la place des étudiants et ne rédige pas REPORT.md.
+Les petits tableaux sont ajoutés à la branche de sortie si celle-ci est inchangée.
+Même si une validation échoue, les sorties déjà disponibles sont sauvegardées en
+cache/artefact pour le diagnostic ; la publication sur la branche reste bloquée.
+
+La commande `python validation/check_query_review.py` a été exécutée dans le
+worktree d'intégration Docker avec les sorties synthétiques existantes sous
+`results/cross-pipeline-v1`. Elle accepte les neuf tables et refuse des rangs de
+popularité inversés, un réalisateur ayant deux films très bien notés et des
+compteurs modifiés. La preuve est dans
+`validation/query-review-validation-2026-11-11.json`. Ce test ne constitue pas
+une validation du lot réel en cours sur GitHub.

@@ -256,13 +256,21 @@ jobs:
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
               out.write(f"Verified provisional handoff: {s['films']} films, {s['input_pairs']} bounded film-person pairs, {s['thresholds_compared']} threshold combinations.\n\nSelection criteria and result interpretations still require student review.\n")
           PY
-      - name: Back up verified outputs in the run-scoped cache
+      - name: Audit all materialized query outputs and export bounded CSV review tables
+        id: query_review
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.review_outputs 2>&1 | tee results/query-review.log
+      - name: Back up available outputs in the run-scoped cache
+        if: always()
         continue-on-error: true
         uses: actions/cache/save@v4
         with:
           path: artifacts
           key: imdb-${{ steps.request.outputs.source_id }}-handoff-${{ github.run_id }}-${{ github.run_attempt }}
-      - name: Preserve all derived outputs and the handoff
+      - name: Preserve available derived outputs and the handoff
+        if: always()
         id: delivery
         continue-on-error: true
         timeout-minutes: 10
@@ -273,6 +281,7 @@ jobs:
           if-no-files-found: error
           retention-days: 7
       - name: Publish machine outputs on Nicolas's existing PR branch
+        if: success() && steps.query_review.outcome == 'success'
         env:
           SOURCE_ID: ${{ steps.request.outputs.source_id }}
         run: |
@@ -286,6 +295,8 @@ jobs:
           publish_dir="validation/overnight-${SOURCE_ID}"
           mkdir -p "$publish_dir"
           cp artifacts/handoff/*.csv artifacts/handoff/*.json "$publish_dir/"
+          mkdir -p "$publish_dir/query-review"
+          cp artifacts/query-review/*.csv artifacts/query-review/*.json "$publish_dir/query-review/"
           git add -- "$publish_dir"
           git -c user.name='Nicolas Rihana' -c user.email='nrihana1@gmail.com' commit --only -m 'Record verified overnight IMDb outputs for student review' -- "$publish_dir"
           git push origin HEAD:refs/heads/feat/imdb-full-analysis
