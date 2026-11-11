@@ -80,9 +80,15 @@ docker compose exec -T pyspark-notebook python /home/jovyan/jobs/checkpoint_chec
 
 Le premier test vérifie la reprise de l'identifiant de requête Spark, le changement d'identifiant d'exécution et la progression des offsets. Il compare aussi les identifiants de l'audit du producteur aux identifiants lus en ordre Kafka. Le deuxième test publie trois messages synthétiques, dont un événement répété, et vérifie deux événements rapprochés, trois offsets distincts et deux identifiants IMDb par correspondance. Ses sorties sont écrites dans un dossier `project-wiki-checkpoint-*`.
 
+La capture Docker du 11 novembre a utilisé le catalogue anglais de 39 951 liens. Le contrôleur a mesuré 15 min 25,948 s jusqu'à la fin du producteur, confirmations Kafka incluses, pour une durée demandée de 15 minutes. Le producteur a vu 29 263 messages Wikimedia et livré 1 845 événements. Spark a relu 1 845 identifiants et offsets distincts, dont 1 311 modifications admissibles et 7 correspondances sur 6 articles. Les sept révisions et heures de modification ont été vérifiées via l'API de Wikipédia. [Capture Docker et contrôles](project/streaming/evidence/docker-live-2026-11-11.json)
+
+L'arrêt volontaire a interrompu un micro-lot à 300,130 s. La requête a repris avec le même checkpoint et un nouvel identifiant d'exécution. L'offset de fin exclusif est passé de 578 à 1 845. La relecture des Parquet confirmés par le journal Spark retrouve les 1 845 identifiants de l'audit dans l'ordre des offsets, sans doublon.
+
 Dans le test synthétique du 11 novembre exécuté sous Docker, le même checkpoint a repris après l'offset exclusif 1 et a atteint l'offset exclusif 3. Les trois enregistrements occupent les offsets 0, 1 et 2. Deux identifiants Wikimedia distincts correspondent au même article. Le titre avec espaces et sa variante avec tirets bas donnent les mêmes deux identifiants IMDb. [Sortie du contrôle de reprise](project/streaming/evidence/docker-checkpoint-2026-11-11.json)
 
 Le résumé de la capture mesure les délais modification–Kafka, Kafka–Spark et modification–Spark en millisecondes. Les statistiques portent sur la première occurrence Kafka de chaque événement rapproché. `p50_p95` contient la médiane et le 95e percentile calculés dans Spark. `negative_count` dénombre les écarts négatifs entre les horloges. Les exemples associent ces mesures au numéro de révision, à la partition et à l'offset.
+
+Sur les sept correspondances Docker, la médiane et le 95e percentile sont respectivement de 4,806 s et 6,769 s entre modification et Kafka, de 15,359 s et 73,415 s entre Kafka et Spark et de 20,165 s et 78,908 s entre modification et Spark. Plusieurs micro-lots ont dépassé la cadence demandée de 10 s pendant cet essai.
 
 Pour rejouer une capture locale avec un autre catalogue, remplacer `$capture` par le chemin de son fichier `capture.jsonl` dans le conteneur. Le script crée un topic et un checkpoint distincts. La sortie porte le périmètre `replay_of_existing_wikimedia_capture` et réconcilie tous les offsets et les identifiants avec l'audit d'origine.
 
