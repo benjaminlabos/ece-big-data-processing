@@ -58,3 +58,10 @@ exige une assertion explicite de son année ; les nouveaux checkpoints tracent
 aussi les empreintes des entrées et des règles. Les tests comparent la reprise
 au traitement complet des sept tables de fixture et vérifient la conservation
 du checkpoint source. La validation du traitement global réel reste attendue.
+
+Un workflow GitHub hébergé prépare une exécution indépendante du PC, bornée à
+350 minutes. Il exige le même lot IMDb par empreintes, réutilise seulement le
+profil brut mesuré, recalcule les tables, collecte les langues avec provenance
+et publie les sorties dérivées après contrôle de tous les marqueurs et des
+réconciliations. Les journaux sont conservés même en cas d'échec. La préparation
+du workflow ne constitue pas une preuve d'exécution cloud réussie.

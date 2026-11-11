@@ -1,0 +1,17 @@
+{
+  "scope": "controlled_tests_and_workflow_configuration_not_cloud_batch_success",
+  "tests": {
+    "passed": 40,
+    "seconds": 75.04,
+    "spark": "4.2.0"
+  },
+  "checks": [
+    "Cloud raw profile reuse accepts identical seven source hashes and rejects changed snapshot",
+    "Incomplete pipeline cannot produce verified artifact",
+    "Workflow YAML and embedded shell syntax parsed",
+    "Triggers restricted to Nicolas branch and explicit workflow/request changes",
+    "Read-only repository permission; bounded runtime 350 minutes"
+  ],
+  "cloud_batch_started": false,
+  "pc_batch_stopped": false
+}

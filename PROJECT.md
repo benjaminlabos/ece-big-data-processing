@@ -889,3 +889,37 @@ et exports avec la surveillance du disque existante. Il repartitionne aussi les
 champs bruts sur 64 partitions avant la normalisation Unicode : la lecture gzip
 reste séquentielle, tandis que les transformations suivantes peuvent utiliser les
 quatre threads. Les règles de nettoyage et les seuils ne changent pas.
+
+### Exécution indépendante du PC avec GitHub Actions
+
+Le workflow `.github/workflows/imdb-cloud.yml` propose une exécution sur un
+runner GitHub `ubuntu-24.04`. Il ne dépend pas de Desktop Commander ni du PC
+Windows. Il exige au moins quatre CPU, 12 Gio de mémoire et 25 Gio de disque
+libre après retrait des SDK inutilisés du runner jetable. Il installe Python
+3.13, Java 21 et Spark 4.2.0 et lance les tests contrôlés avant le lot complet.
+
+Sur la branche de Nicolas uniquement, une modification du workflow ou de
+`.github/imdb-cloud-request.json` déclenche le traitement. Une modification du
+code seule ne lance pas de lot lourd. `workflow_dispatch` est aussi déclaré,
+mais ce déclenchement manuel exige que le workflow soit sur la branche par
+défaut ; aucune fusion de main n'est nécessaire pour le déclenchement par push.
+
+Les sept téléchargements sont vérifiés et doivent avoir les mêmes empreintes
+que le profil complet mesuré le 11 novembre. Une mise à jour quotidienne IMDb
+fait échouer cette exécution plutôt que de mélanger deux lots. Les 39 taux bruts
+sont réutilisés avec cette preuve de concordance ; le nettoyage repart du début
+sur le runner, sans prétendre réutiliser les cinq tables conservées sur Windows.
+Les langues originales font l'objet d'une nouvelle collecte P364 avec manifeste.
+
+Le job est limité à 350 minutes (5 h 50), indépendamment des limites de chaque
+étape. Une exécution échouée conserve les diagnostics disponibles, sans annoncer
+le succès du traitement. Un succès publie des artefacts de résultats dérivés,
+avec marqueur `VERIFIED.json`, pour sept jours : qualité, analyses, classement,
+crédits sélectionnés et couverture. Les sept tables sources et les tables
+nettoyées complètes ne sont pas publiées. Les checkpoints complets restent
+éphémères sur ce runner ; un échec du job nécessite un nouveau calcul.
+
+L'ajout du fichier de workflow peut exiger la portée OAuth GitHub `workflow` en
+plus de `repo`. Une exécution n'est considérée indépendante du PC qu'après
+vérification de son démarrage effectif sur GitHub. La fermeture de ce chat ne
+constitue pas une garantie de conservation de son environnement de calcul.
