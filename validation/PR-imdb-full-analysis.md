@@ -16,7 +16,7 @@ préparation, exploration et export des crédits, avec ressources bornées et ga
 disque. Le collecteur de preuves refuse les sorties incomplètes et compare les
 39 profils aux résultats du profil brut séparé avant publication.
 
-Validation : 34 tests Python contrôlés réussis sous Spark 4.2.0 (66,02 s), contrôle
+Validation : 35 tests Python contrôlés réussis sous Spark 4.2.0 (66,48 s), contrôle
 CLI, réconciliation de 369 502 énoncés de langues et profil complet réel. Les
 premières sorties réelles sont publiées : Q1 (13 640 lignes), Q2 (138), Q3 (92),
 9 089 places de classement pour 6 257 films distincts. Les cinq autres analyses
@@ -30,3 +30,8 @@ couverture des seuls films sélectionnés à partir des tables parentes terminé
 Il conserve les contrôles de qualité en évitant de normaliser les crédits hors
 sélection ; un test compare ce filtrage au calcul non filtré, avec Unicode et
 clés conflictuelles. Son périmètre ne certifie pas le nettoyage global.
+
+Le pool réel comprend 113 273 couples pour 6 257 films, après réconciliation des
+124 499 crédits sélectionnés. Un crédit est rejeté et cinq films ont moins de
+trois personnes disponibles. La sélection de travail limite l'entrée de collecte
+à trois personnes et deux réserves par film, sans doublon de personne entre rôles.

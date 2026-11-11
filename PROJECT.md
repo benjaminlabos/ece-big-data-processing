@@ -791,3 +791,28 @@ rôles, l'ordre et les films ayant moins de trois personnes disponibles. Aucune
 collecte de biographies ou de synopsis n'est effectuée. Le filtrage anticipé est
 comparé au nettoyage non filtré sur un cas contrôlé avec doublons Unicode,
 numéros d'ordre équivalents et clés conflictuelles : 34 tests passent (66,02 s).
+
+Le pool réel des 6 257 films est obtenu : 124 499 crédits sélectionnés dans les
+102 683 165 lignes source, 113 273 couples distincts valides, 11 225 répétitions
+de couples liées aux crédits et une ligne de crédit rejetée. Aucun doublon de
+ligne normalisée ni clé conflictuelle n'a été trouvé dans ce sous-ensemble.
+Cinq films ont moins de trois personnes disponibles ; cette information reste
+explicite dans la couverture et ne doit pas être transformée en biographies.
+
+Le module `imdb_preparation.choose_principals` produit une entrée de travail
+bornée pour le collecteur de Benjamin : un réalisateur puis deux autres
+interprètes, en remplaçant les rôles manquants par d'autres crédits disponibles,
+et jusqu'à deux personnes de réserve distinctes. Ce choix est provisoire et
+reste `student_validated: false`. Un réalisateur également interprète n'est
+compté qu'une fois par film. Le pool complet reste conservé.
+
+```powershell
+docker compose -f compose.analysis.yaml run --rm title-analysis python -m imdb_preparation.choose_principals --source results/selected-credits-full-provisional-2026-11-11 --output results/enrichment-input-full-provisional-2026-11-11
+```
+
+`primary.csv`, `reserves.csv` et leur union `enrichment-input.csv` ont exactement
+les colonnes `tconst,nconst`. La couverture conserve les films ayant moins de
+trois personnes. Le CSV d'union peut alimenter sans changement le collecteur de
+la PR #3 ; aucun texte Wikipédia n'est recueilli par cette commande. Les 35 tests
+passent (66,48 s), et la commande a également été exécutée sur un cas contrôlé
+avec une seule personne disponible.
