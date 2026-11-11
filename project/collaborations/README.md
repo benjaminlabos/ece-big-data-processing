@@ -29,6 +29,42 @@ PYTHONPATH="/clone/imdb-preparation:${PYTHONPATH:-}" spark-submit \
   --output /data/collaboration-inputs --as-of-year 2026
 ```
 
+### Historique complet sous Docker Desktop
+
+Depuis la racine du clone de la question libre, indiquer le dossier qui contient le `manifest.json` et les sept fichiers gzip vérifiés. Indiquer aussi la racine du clone de préparation. Dans un dépôt intégré, cette dernière est la racine courante. La projection s’exécute sur le disque Linux du conteneur et conserve l’empreinte du lot brut.
+
+```powershell
+$raw = (Resolve-Path 'data/raw/imdb-full-2026-11-11').Path
+$preparationRoot = (Get-Location).Path
+$container = 'gr04-collaborations-full'
+docker run -d --name $container --pull=never --cpus 5 --memory 5200m `
+  --entrypoint /bin/sleep tp05-wikistreams-notebook:local infinity
+docker exec $container mkdir -p /tmp/gr04/raw /tmp/gr04/project /tmp/gr04/prep /tmp/gr04/results /tmp/gr04/shuffle
+docker cp "$raw/." "${container}:/tmp/gr04/raw/"
+docker cp "project/collaborations/." "${container}:/tmp/gr04/project/"
+docker cp "$preparationRoot/imdb_preparation/." "${container}:/tmp/gr04/prep/imdb_preparation"
+docker exec -w /tmp/gr04 -e PYTHONPATH=/tmp/gr04/prep `
+  -e SPARK_LOCAL_DIRS=/tmp/gr04/shuffle -e SPARK_LOCAL_IP=127.0.0.1 $container `
+  spark-submit --master 'local[4]' --driver-memory 3600m --conf spark.sql.shuffle.partitions=48 `
+  --conf spark.ui.enabled=false project/prepare_inputs.py --raw-dir raw `
+  --output results/projected-clean --as-of-year 2026
+docker exec -w /tmp/gr04 -e SPARK_LOCAL_DIRS=/tmp/gr04/shuffle -e SPARK_LOCAL_IP=127.0.0.1 $container `
+  spark-submit --master 'local[4]' --driver-memory 3600m --conf spark.sql.shuffle.partitions=48 `
+  --conf spark.ui.enabled=false project/analyse.py --clean-dir results/projected-clean/clean `
+  --input-manifest results/projected-clean/input_manifest.json --scope full --output results/full `
+  --start-year 1980 --end-year 2025 --min-votes 0 100 1000 5000 10000 --min-history-years 2 3
+New-Item -ItemType Directory -Path results -Force | Out-Null
+docker cp "${container}:/tmp/gr04/results/full" results/collaborations-full
+docker cp "${container}:/tmp/gr04/results/projected-clean" results/collaboration-inputs
+```
+
+Pour recalculer indépendamment les effectifs et les moyennes à partir des quatre Parquet utilisés, exécuter le contrôle SQL. Son entrée `clean` doit être copiée hors du conteneur si l’analyse a tourné dans Docker. Ce contrôle a relu les six cellules et tous les diagnostics de l’essai provisoire.
+
+```powershell
+python -m pip install duckdb==1.4.3
+python project/collaborations/audit_sql.py results/collaboration-inputs/clean results/collaborations-full/summary.json
+```
+
 Pour reproduire l’essai sur la sélection provisoire, `slice_source.py` recopie les lignes TSV des titres choisis et des personnes référencées, sans modifier leurs valeurs. Il vérifie les SHA-256 des cinq fichiers gzip pendant la lecture. Spark vérifie le manifeste de cet extrait puis normalise, déduplique et valide les références. Cette projection évite de lire tout le gzip dans un seul cœur du conteneur Spark.
 
 ```bash
