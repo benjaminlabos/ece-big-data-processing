@@ -258,7 +258,7 @@
     "matched_pages": 6,
     "examples_verified": 7,
     "capture_seconds_including_flush": 925.948,
-    "parquet_verified": false,
+    "parquet_verified": true,
     "committed_parquet_files": 32,
     "records_in_offset_order_verified": 1845,
     "matched_event_latencies_ms": {

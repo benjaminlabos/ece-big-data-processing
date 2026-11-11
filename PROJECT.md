@@ -71,6 +71,8 @@ Si les deux Parquet nettoyés sont encore sur la machine de Nicolas, les deux fi
 
 Le 11 novembre, ce mode a été exécuté sous Docker avec Spark 4.2.0 et les deux fichiers IMDb complets dont les empreintes correspondent à l'instantané publié par Nicolas dans la PR #5. Sur 39 951 liens Wikipédia–IMDb, Spark a retenu 39 926 liens pour 39 924 pages et 39 922 identifiants IMDb distincts. Les 25 autres liens ont un identifiant absent après validation des clés. Le CSV et les rejets Parquet ont été relus et réconciliés. [Preuve et empreintes](project/streaming/evidence/docker-reference-2026-11-11.json)
 
+Le chemin des Parquet préparés a aussi été contrôlé sous Docker sur un jeu synthétique. Sur sept lignes de référence, trois sont relues par le consommateur Spark, deux variantes sont réunies en une seule, deux entrées invalides sont rejetées et un identifiant absent est signalé. Le lecteur conserve aussi le saut de ligne d'un titre CSV cité. [Contrôle du contrat Parquet](project/streaming/evidence/docker-prepared-reference-contract-2026-11-11.json)
+
 Depuis le dossier du TP, lancer la capture avec le catalogue filtré et demander un redémarrage de la requête Spark après cinq minutes. Le producteur continue d'écrire sur le même topic pendant la reprise.
 
 ```powershell
@@ -82,7 +84,7 @@ Le premier test vérifie la reprise de l'identifiant de requête Spark, le chang
 
 La capture Docker du 11 novembre a utilisé le catalogue anglais de 39 951 liens. Le contrôleur a mesuré 15 min 25,948 s jusqu'à la fin du producteur, confirmations Kafka incluses, pour une durée demandée de 15 minutes. Le producteur a vu 29 263 messages Wikimedia et livré 1 845 événements. Spark a relu 1 845 identifiants et offsets distincts, dont 1 311 modifications admissibles et 7 correspondances sur 6 articles. Les sept révisions et heures de modification ont été vérifiées via l'API de Wikipédia. [Capture Docker et contrôles](project/streaming/evidence/docker-live-2026-11-11.json)
 
-L'arrêt volontaire a interrompu un micro-lot à 300,130 s. La requête a repris avec le même checkpoint et un nouvel identifiant d'exécution. L'offset de fin exclusif est passé de 578 à 1 845. La relecture des Parquet confirmés par le journal Spark retrouve les 1 845 identifiants de l'audit dans l'ordre des offsets, sans doublon.
+La demande d'arrêt à 300,130 s a interrompu un micro-lot. La requête a repris avec le même checkpoint et un nouvel identifiant d'exécution. L'offset de fin exclusif est passé de 578 à 1 845. La relecture des Parquet confirmés par le journal Spark retrouve les 1 845 identifiants de l'audit dans l'ordre des offsets, sans doublon.
 
 Dans le test synthétique du 11 novembre exécuté sous Docker, le même checkpoint a repris après l'offset exclusif 1 et a atteint l'offset exclusif 3. Les trois enregistrements occupent les offsets 0, 1 et 2. Deux identifiants Wikimedia distincts correspondent au même article. Le titre avec espaces et sa variante avec tirets bas donnent les mêmes deux identifiants IMDb. [Sortie du contrôle de reprise](project/streaming/evidence/docker-checkpoint-2026-11-11.json)
 
@@ -90,12 +92,15 @@ Le résumé de la capture mesure les délais modification–Kafka, Kafka–Spark
 
 Sur les sept correspondances Docker, la médiane et le 95e percentile sont respectivement de 4,806 s et 6,769 s entre modification et Kafka, de 15,359 s et 73,415 s entre Kafka et Spark et de 20,165 s et 78,908 s entre modification et Spark. Plusieurs micro-lots ont dépassé la cadence demandée de 10 s pendant cet essai.
 
-Pour rejouer une capture locale avec un autre catalogue, remplacer `$capture` par le chemin de son fichier `capture.jsonl` dans le conteneur. Le script crée un topic et un checkpoint distincts. La sortie porte le périmètre `replay_of_existing_wikimedia_capture` et réconcilie tous les offsets et les identifiants avec l'audit d'origine.
+Pour rejouer une capture locale, renseigner les chemins de l'audit et du catalogue intégré dans le conteneur. Le script crée un topic et un checkpoint distincts. La sortie porte le périmètre `replay_of_existing_wikimedia_capture` et réconcilie tous les offsets et les identifiants avec l'audit d'origine.
 
 ```powershell
-$capture = '/home/jovyan/data/project-runs/project-wiki-1393eb7ba0d9/capture.jsonl'
-docker compose exec -T pyspark-notebook python /home/jovyan/jobs/replay_capture.py --capture $capture --reference /home/jovyan/data/project-runs/integrated-reference/streaming_reference.csv
+$capture = '/home/jovyan/data/project-runs/docker-live-2026-11-11/project-wiki-76da32d10fe6/capture.jsonl'
+$reference = '/home/jovyan/data/project-runs/integrated-reference-2026-11-11/streaming_reference.csv'
+docker compose exec -T pyspark-notebook python /home/jovyan/jobs/replay_capture.py --capture $capture --reference $reference --output /tmp/gr04-streaming-replay-2026-11-11
 ```
+
+Le rejeu Docker de la capture du 11 novembre avec le catalogue intégré de 39 926 liens a restitué les 1 845 identifiants dans le même ordre Kafka, aux offsets 0 à 1 844. La comparaison des Parquet a confirmé les 1 311 modifications admissibles et les mêmes sept associations événement–IMDb sur six articles. [Preuve du rejeu intégré](project/streaming/evidence/docker-integrated-replay-2026-11-11.json)
 
 ### Horaires et test des événements tardifs
 
