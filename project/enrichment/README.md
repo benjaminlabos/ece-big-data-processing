@@ -46,6 +46,21 @@ python collect.py --titles "$inputs/selected-titles-$suffix" `
   --candidates "$inputs/enrichment-input-$suffix" --cache work/provisional/raw
 ```
 
+### Reprendre le cache Windows
+
+Pour reprendre sur le même PC, relancer la commande ci-dessus avec les mêmes CSV et le même dossier `work/provisional/raw`, après l’arrêt du collecteur précédent. Le processus Python Windows a besoin d’un PC allumé et connecté à Internet. Docker sert à transformer le cache dans Spark. Une mise en veille suspend les requêtes et une extinction ou fermeture de session met fin à ce lancement.
+
+La sauvegarde ZIP contient un JSON finalisé par identifiant. Vérifier son SHA-256 puis la décompresser dans un dossier neuf avant de l’utiliser. Le cache de travail existant reste disponible pendant la restauration.
+
+```powershell
+Get-FileHash work/provisional/backups/cache-2026-11-11-4247.zip -Algorithm SHA256
+Expand-Archive work/provisional/backups/cache-2026-11-11-4247.zip work/provisional/restored-4247
+python collect.py --titles "$inputs/selected-titles-$suffix" `
+  --candidates "$inputs/enrichment-input-$suffix" --cache work/provisional/restored-4247
+```
+
+Conserver le ZIP et son reçu hors Git. Lors d’un changement de sélection, vérifier les ensembles d’identifiants et les empreintes des nouveaux CSV. Relancer sur un cache existant conserve les réponses valides pour les identifiants communs.
+
 Le calcul Spark peut être exécuté pendant la collecte. Il utilise les fichiers JSON finalisés qui étaient visibles au début de la lecture et crée un nouveau dossier à chaque exécution. Choisir un nom différent pour un deuxième instantané.
 
 Pour lire un seul fichier dans Spark, figer les réponses finalisées avec la commande ci-dessous. Elle affiche le nombre d’enregistrements et l’empreinte SHA-256. Passer ensuite `--raw work/provisional/cache-snapshot.json` à la commande Spark.
@@ -117,5 +132,7 @@ Spark 4.2.0 sous Docker Desktop a produit six synopsis et 33 biographies. Sept f
 Pour reproduire le pilote, filtrer les quatre CSV d’entrée sur les `film_ids` de la preuve et exécuter les commandes de la sélection provisoire avec ces fichiers et un cache dédié. Le premier passage utilisait `--max-new 15`. Une relance sur le même cache après interruption a complété les identifiants restants.
 
 L’[instantané du lot provisoire](evidence/provisional-snapshot-2026-11-11.json) couvre les 6 257 films et les 31 230 crédits candidats. Il indique les réponses en cache au moment de la lecture, les informations disponibles et les demandes en attente. Le [contrôle Arrow ciblé](evidence/arrow-provisional-2026-11-11.json) a aussi passé trois cas dans Docker avec la fonction d’extraction de cette version.
+
+L’[instantané suivant et son reçu de sauvegarde](evidence/provisional-continuation-2026-11-11.json) portent sur 4 247 réponses figées. Les quatre tables Parquet ont été relues et la couverture a été recalculée à partir des lignes détaillées. Les sept exemples vérifient les identifiants IMDb dans Wikidata et les numéros de révision de Wikipédia en anglais.
 
 OpenAI Codex a aidé à préparer les échantillons, écrire la collecte et les transformations Spark, vérifier la reprise, contrôler les URL et les statuts d’absence, calculer la couverture et documenter l’exécution. À inclure dans la déclaration du `PROJECT.md` du groupe.

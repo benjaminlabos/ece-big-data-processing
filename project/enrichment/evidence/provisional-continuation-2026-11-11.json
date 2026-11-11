@@ -1,0 +1,251 @@
+{
+  "input_source": {
+    "pr": "https://github.com/benjaminlabos/ece-big-data-processing/pull/5",
+    "commit": "0f82d8349a9dae7c9c43fea53fc559d4bd8e9b23",
+    "student_validated": false
+  },
+  "transformation_environment": "Docker Desktop on Windows",
+  "spark_image": "tp05-wikistreams-notebook:local",
+  "collection_environment": "Windows Python 3.10, requests 2.32.3",
+  "source_language": "en",
+  "coverage": {
+    "spark_version": "4.2.0",
+    "input_sha256": {
+      "candidates": "71989e318aedf0cd31c382f27a9f1370d5f6c989a75487f19ad591f15ce952e0",
+      "titles": "72a6ae26406a33da81116e18f9d6321be4a7c5502943488495786470d674c581",
+      "priority": "dcf2d80b85c65cc2199129508bcdc41fa666051b83ef85c9e760d8106c4f1731",
+      "top": "64335aee81da5819e334d1105b32f474d8fd4fd84cf13a6e5c0df4b78ceb08df"
+    },
+    "films_requested": 6257,
+    "people_requested": 19375,
+    "candidate_pairs": 31230,
+    "films_by_status": {
+      "plot_not_found": 59,
+      "not_collected": 5353,
+      "ambiguous_wikidata_match": 1,
+      "available": 821,
+      "no_wikidata_item": 3,
+      "no_english_wikipedia_article": 20
+    },
+    "people_by_status": {
+      "not_collected": 16032,
+      "ambiguous_wikidata_match": 6,
+      "no_wikidata_item": 295,
+      "available": 2761,
+      "no_english_wikipedia_article": 281
+    },
+    "credits_by_status": {
+      "not_collected": 23389,
+      "ambiguous_wikidata_match": 11,
+      "available": 7223,
+      "no_wikidata_item": 298,
+      "no_english_wikipedia_article": 309
+    },
+    "films_with_three_biographies": 1189,
+    "films_with_fewer_than_three_candidates": 5,
+    "films_reaching_three_with_reserves": 274,
+    "collection_complete": false
+  },
+  "audit": {
+    "verified_parquet_rows": {
+      "films": 6257,
+      "principals": 31230,
+      "coverage": 6257,
+      "coverage_by_year_genre": 979
+    },
+    "structural_shortages": [
+      "tt18687124",
+      "tt2415372",
+      "tt3665486",
+      "tt38164776",
+      "tt5375100"
+    ],
+    "examples": {
+      "films": [
+        {
+          "page_title": "Commissar (film)",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1366476175",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q1213999",
+          "retrieved_at_utc": "2026-11-11T19:38:13.343849+01:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0061876",
+          "text_characters": 1128
+        },
+        {
+          "page_title": "Trial on the Road",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1359576091",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q3213961",
+          "retrieved_at_utc": "2026-11-11T19:38:22.223276+01:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0067625",
+          "text_characters": 1286
+        },
+        {
+          "page_title": "Who's Singin' Over There?",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1370958460",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q280962",
+          "retrieved_at_utc": "2026-11-11T19:38:36.431565+01:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0076276",
+          "text_characters": 1897
+        }
+      ],
+      "people": [
+        {
+          "page_title": "John Belushi",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383285377",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q23858",
+          "retrieved_at_utc": "2026-11-11T19:44:38.52727+01:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000004",
+          "text_characters": 985
+        },
+        {
+          "page_title": "Ingmar Bergman",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381465221",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q7546",
+          "retrieved_at_utc": "2026-11-11T20:20:23.342408+01:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000005",
+          "text_characters": 1335
+        },
+        {
+          "page_title": "Richard Burton",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384609669",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q151973",
+          "retrieved_at_utc": "2026-11-11T20:52:38.800011+01:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000009",
+          "text_characters": 466
+        }
+      ]
+    }
+  },
+  "raw_snapshot": {
+    "cache_records": 4247,
+    "sha256": "ac24da99b09957ba1f49b65f3e501162f59b82d3343c92376dccb36e48b520b3"
+  },
+  "source_audit": [
+    {
+      "source_url": "https://en.wikipedia.org/w/index.php?oldid=1370958460",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q280962",
+      "section": "Plot",
+      "page_title": "Who's Singin' Over There?",
+      "retrieved_at_utc": "2026-11-11T19:38:36.431565+01:00",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "tconst": "tt0076276",
+      "startYear": "1980",
+      "primaryTitle": "Who's Singin' Over There?",
+      "text_characters": 1897,
+      "language": "en",
+      "verified_revision_timestamp_utc": "2026-08-23T22:48:26Z"
+    },
+    {
+      "source_url": "https://en.wikipedia.org/w/index.php?oldid=1372180801",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q213108",
+      "section": "Plot",
+      "page_title": "Barking at the Stars",
+      "retrieved_at_utc": "2026-11-11T19:32:00.562389+01:00",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "tconst": "tt0187231",
+      "startYear": "1998",
+      "primaryTitle": "Barking at the Stars",
+      "text_characters": 1415,
+      "language": "en",
+      "verified_revision_timestamp_utc": "2026-08-30T19:26:26Z"
+    },
+    {
+      "source_url": "https://en.wikipedia.org/w/index.php?oldid=1378828973",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q2558109",
+      "section": "Plot",
+      "page_title": "Barfi!",
+      "retrieved_at_utc": "2026-11-11T19:35:44.937551+01:00",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "tconst": "tt2082197",
+      "startYear": "2012",
+      "primaryTitle": "Barfi!",
+      "text_characters": 4325,
+      "language": "en",
+      "verified_revision_timestamp_utc": "2026-10-06T10:16:15Z"
+    },
+    {
+      "source_url": "https://en.wikipedia.org/w/index.php?oldid=1374637784",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q64413685",
+      "section": "Plot",
+      "page_title": "Chaal Jeevi Laiye!",
+      "retrieved_at_utc": "2026-11-11T19:36:04.571557+01:00",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "tconst": "tt9610262",
+      "startYear": "2019",
+      "primaryTitle": "Chaal Jeevi Laiye",
+      "text_characters": 722,
+      "language": "en",
+      "verified_revision_timestamp_utc": "2026-09-13T06:58:49Z"
+    },
+    {
+      "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381005196",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q8006",
+      "section": "Lead",
+      "page_title": "Akira Kurosawa",
+      "retrieved_at_utc": "2026-11-11T19:51:37.358723+01:00",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "nconst": "nm0000041",
+      "text_characters": 1079,
+      "language": "en",
+      "verified_revision_timestamp_utc": "2026-10-19T11:17:19Z"
+    },
+    {
+      "source_url": "https://en.wikipedia.org/w/index.php?oldid=1375890669",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q1378684",
+      "section": "Lead",
+      "page_title": "Paul Freeman (actor)",
+      "retrieved_at_utc": "2026-11-11T19:52:34.752493+01:00",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "nconst": "nm0293550",
+      "text_characters": 821,
+      "language": "en",
+      "verified_revision_timestamp_utc": "2026-09-20T18:23:35Z"
+    },
+    {
+      "source_url": "https://en.wikipedia.org/w/index.php?oldid=1379915649",
+      "wikidata_url": "https://www.wikidata.org/wiki/Q3629983",
+      "section": "Lead",
+      "page_title": "Ileana D'Cruz",
+      "retrieved_at_utc": "2026-11-11T19:35:54.364369+01:00",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "nconst": "nm2299825",
+      "text_characters": 934,
+      "language": "en",
+      "verified_revision_timestamp_utc": "2026-10-12T17:19:32Z"
+    }
+  ],
+  "backup": {
+    "files": 4247,
+    "sha256": "71822400332cc92f86295bd4e2fa5b3588e55f4559a2d07aa104614c958e30f3"
+  },
+  "cache_audit": {
+    "at_utc": "2026-11-11T21:45:37.761742+01:00",
+    "films_requested": 6257,
+    "people_requested": 19375,
+    "unique_pairs": 31230,
+    "expected": 25632,
+    "finalized_cache_files_scanned": 4423,
+    "valid_responses": 4423,
+    "remaining": 21209,
+    "malformed_cache_files": 0,
+    "statuses_before_spark_extraction": {
+      "source_html": 3725,
+      "no_english_wikipedia_article": 324,
+      "no_wikidata_item": 310,
+      "ambiguous_wikidata_match": 7,
+      "plot_not_found": 57
+    },
+    "backup_sha256": "ac24da99b09957ba1f49b65f3e501162f59b82d3343c92376dccb36e48b520b3"
+  }
+}
