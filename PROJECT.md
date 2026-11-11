@@ -693,3 +693,8 @@ Parquet effectivement écrits, et un état `progress.json` actualisé après cha
 calcul. Le classement complet, avec titre, année, genre, rang, durée, note et
 votes, est disponible en CSV dans `top10_per_genre_year.csv` ; le CSV dédupliqué
 `selected_titles.csv` conserve l'interface attendue par l'export des crédits.
+
+La population de Q1 comprend tous les films candidats dont la durée est connue,
+y compris les films sans note. Le seuil de votes ne modifie pas la moyenne de
+durée de leur genre ; il reste appliqué aux analyses portant sur les notes et
+la popularité ainsi qu'au classement provisoire.

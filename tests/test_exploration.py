@@ -43,6 +43,7 @@ def test_all_explorations_and_top10_on_controlled_data(spark):
             )
     titles.append(("tt0099999", "tvSeries", "Series", 2000, None, None))
     titles.append(("tt0040000", "movie", "Unrated direction", 2000, 100, ["Drama"]))
+    titles.append(("tt0040001", "movie", "Unrated long film", 2000, 900, ["Drama"]))
     principals.append(("tt0010000", 2, "nm0000004", "actor"))
     crew.append(("tt0040000", ["nm0000004"], None))
     for i in range(15):
@@ -100,6 +101,7 @@ def test_all_explorations_and_top10_on_controlled_data(spark):
     )
     outputs = analyses(tables, config, langs)
     assert outputs["q1"].filter("tconst='tt0010015'").count() == 1
+    assert outputs["q1"].filter("tconst='tt0040001'").count() == 1
     assert outputs["q2"].groupBy("startYear").count().filter("count > 3").count() == 0
     assert outputs["q3"].count() > 0
     assert {r.nconst for r in outputs["q4"].collect()} == {"nm0000002"}

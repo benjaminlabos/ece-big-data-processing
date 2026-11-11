@@ -58,14 +58,15 @@ def analyses(tables, config, languages=None):
     rated = films.join(ratings, "tconst").filter(
         F.col("numVotes") >= config["minimum_votes"]
     )
+    feature_genres = films.withColumn("genre", F.explode("genres"))
     by_genre = rated.withColumn("genre", F.explode("genres"))
-    moments = by_genre.groupBy("genre").agg(
+    moments = feature_genres.groupBy("genre").agg(
         F.avg("runtimeMinutes").alias("mean_runtime"),
         F.stddev_pop("runtimeMinutes").alias("stddev_runtime"),
         F.count("*").alias("genre_films"),
     )
     q1 = (
-        by_genre.join(moments, "genre")
+        feature_genres.join(moments, "genre")
         .withColumn(
             "runtime_zscore",
             (F.col("runtimeMinutes") - F.col("mean_runtime"))
@@ -456,7 +457,7 @@ def run(spark, prepared, output, config, languages=None):
         "questions": {},
         "definitions": {
             "popularity": "sum of votes; multi-genre films contribute to each genre",
-            "q1_population": "rated feature candidates meeting minimum votes",
+            "q1_population": "all feature candidates with known eligible duration, including unrated movies; no vote threshold",
             "q4_other_movies": "all eligible directed films with rating below 8",
             "q5": "at least 3 seasons with >=10 known episodes; season 0 excluded; ties accepted existentially; ratings only for scored episodes",
             "q7": "observed feature-candidate film career including unrated titles; all sufficiently voted maximum-rating occurrences within early fraction; plateaus excluded",
