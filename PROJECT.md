@@ -42,7 +42,7 @@ Chaque dossier `data/project-runs/project-wiki-*` contient `summary.json`, `prod
 
 Le 10 novembre 2026, l’essai anglais a utilisé une référence figée de 39 951 liens Wikipédia–IMDb. En 15 min 3,149 s, confirmation des envois incluse, le producteur a lu 31 405 messages Wikimedia. Kafka a confirmé 1 824 livraisons et Spark a relu 1 824 événements distincts, dont 1 425 modifications admissibles et 10 correspondances IMDb sur 8 articles. Les compteurs ont été recalculés à partir de la capture brute, du catalogue et des Parquet Spark. Les dix numéros de révision et heures de modification correspondent à l’API de Wikipédia. [Compteurs et exemples](project/streaming/evidence/live.json)
 
-Le contrôle de compatibilité sous Ubuntu WSL avec Spark 4.2.0 et Kafka 4.1.1 a confirmé la livraison d’une nouvelle modification réelle. Le rejeu de la capture du 10 novembre a restitué les 1 824 identifiants et offsets, les 1 425 modifications admissibles et les mêmes 10 liens événement–IMDb. L’exercice du watermark a également réussi sous Spark 4.2.0.
+Le contrôle de compatibilité sous Ubuntu WSL avec Spark 4.2.0 et Kafka 4.1.1 a confirmé la livraison d’une nouvelle modification réelle. Le rejeu de la capture du 10 novembre a restitué les 1 824 identifiants et offsets, les 1 425 modifications admissibles et les mêmes 10 liens événement–IMDb. Le rejeu séparé dans Docker Compose avec Spark 4.2.0 a retrouvé les mêmes valeurs et liens. [Sortie du rejeu Docker](project/streaming/evidence/docker-replay-2026-11-10.json)
 
 Si l’essai donne moins de deux correspondances, produire un CSV avec plus de langues, passer les mêmes langues au consommateur et relancer sur un nouveau topic.
 
@@ -69,6 +69,8 @@ docker run --rm --memory 2304m --cpus 2 --mount "type=bind,source=$imdbCode,targ
 
 Si les deux Parquet nettoyés sont encore sur la machine de Nicolas, les deux fichiers complets `title.basics.tsv.gz` et `name.basics.tsv.gz` permettent de reproduire le contrôle des clés. Faire pointer `$imdbInput` sur ce dossier et passer `--imdb-raw-dir /imdb`. Ce mode applique les mêmes règles de normalisation, de déduplication et de rejet des clés conflictuelles aux identifiants candidats du catalogue. La sortie contient `streaming_reference.csv`, les motifs de rejet en Parquet et un résumé avec les empreintes des entrées et de la sortie.
 
+Le 11 novembre, ce mode a été exécuté sous Docker avec Spark 4.2.0 et les deux fichiers IMDb complets dont les empreintes correspondent à l'instantané publié par Nicolas dans la PR #5. Sur 39 951 liens Wikipédia–IMDb, Spark a retenu 39 926 liens pour 39 924 pages et 39 922 identifiants IMDb distincts. Les 25 autres liens ont un identifiant absent après validation des clés. Le CSV et les rejets Parquet ont été relus et réconciliés. [Preuve et empreintes](project/streaming/evidence/docker-reference-2026-11-11.json)
+
 Depuis le dossier du TP, lancer la capture avec le catalogue filtré et demander un redémarrage de la requête Spark après cinq minutes. Le producteur continue d'écrire sur le même topic pendant la reprise.
 
 ```powershell
@@ -82,9 +84,16 @@ Dans le test synthétique du 11 novembre exécuté sous Docker, le même checkpo
 
 Le résumé de la capture mesure les délais modification–Kafka, Kafka–Spark et modification–Spark en millisecondes. Les statistiques portent sur la première occurrence Kafka de chaque événement rapproché. `p50_p95` contient la médiane et le 95e percentile calculés dans Spark. `negative_count` dénombre les écarts négatifs entre les horloges. Les exemples associent ces mesures au numéro de révision, à la partition et à l'offset.
 
+Pour rejouer une capture locale avec un autre catalogue, remplacer `$capture` par le chemin de son fichier `capture.jsonl` dans le conteneur. Le script crée un topic et un checkpoint distincts. La sortie porte le périmètre `replay_of_existing_wikimedia_capture` et réconcilie tous les offsets et les identifiants avec l'audit d'origine.
+
+```powershell
+$capture = '/home/jovyan/data/project-runs/project-wiki-1393eb7ba0d9/capture.jsonl'
+docker compose exec -T pyspark-notebook python /home/jovyan/jobs/replay_capture.py --capture $capture --reference /home/jovyan/data/project-runs/integrated-reference/streaming_reference.csv
+```
+
 ### Horaires et test des événements tardifs
 
-`event_time` vient du timestamp Wikimedia de la modification. `kafka_time` est le timestamp du message Kafka. `processing_time` est l’heure à laquelle Spark traite le micro-lot. Les trois valeurs sont en UTC.
+`event_time` vient du timestamp Wikimedia de la modification. `kafka_time` est le timestamp de création du message Kafka (`CreateTime`). `processing_time` est l’horodatage du micro-lot calculé par Spark. Les trois valeurs sont en UTC.
 
 ```powershell
 docker compose exec -T pyspark-notebook python /home/jovyan/jobs/late_events.py
@@ -92,7 +101,7 @@ docker compose exec -T pyspark-notebook python /home/jovyan/jobs/late_events.py
 
 L’exercice synthétique injecte d’abord `12:00:20`, puis `12:05:00` pour avancer le watermark à `12:03:00`. Il injecte ensuite `12:04:30` et `12:00:30`. Avec des fenêtres d’une minute et un watermark de deux minutes, le test attend une ligne acceptée dans la fenêtre de 12 h 04 et une ligne rejetée pour une fenêtre déjà close. La mesure `numRowsDroppedByWatermark` doit valoir 1. Cet exercice utilise une agrégation Spark avec état. La jointure du flux avec le catalogue statique traite aussi les événements désordonnés. [Documentation Spark](https://spark.apache.org/docs/4.0.1/streaming/apis-on-dataframes-and-datasets.html#semantics-of-aggregation-with-watermarking)
 
-Le test sous Spark 4.0.1 a confirmé les trois fenêtres attendues et un rejet par le watermark. [Sortie du test synthétique](project/streaming/evidence/late-events.jsonl)
+Le test sous Ubuntu WSL avec Spark 4.0.1 a confirmé les trois fenêtres attendues et un rejet par le watermark. Le contrôle sous Docker Compose avec Spark 4.2.0 a obtenu les mêmes trois fenêtres et un rejet. [Sortie WSL](project/streaming/evidence/late-events.jsonl), [sortie Docker](project/streaming/evidence/docker-late-events-2026-11-10.jsonl)
 
 ### Déclaration d’usage de l’IA
 

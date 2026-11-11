@@ -1,0 +1,36 @@
+{
+  "execution": "windows_docker",
+  "imdb_preparation_commit": "0f82d8349a9dae7c9c43fea53fc559d4bd8e9b23",
+  "matches_nicolas_published_parent_snapshot_hashes": true,
+  "reference_and_rejected_parquet_reconciled": true,
+  "spark_version": "4.2.0",
+  "input_kind": "raw_parent_keys_normalized_and_validated",
+  "source": {
+    "title.basics": {
+      "path": "/imdb/title.basics.tsv.gz",
+      "sha256_by_file": {
+        "title.basics.tsv.gz": "0c79f4e44df509b6cc05d614acc4d243bd8864c81d01920beaf219af21703e9c"
+      }
+    },
+    "name.basics": {
+      "path": "/imdb/name.basics.tsv.gz",
+      "sha256_by_file": {
+        "name.basics.tsv.gz": "3898bacdbd6b04dd3285f4e709983c4b4db4ea7b3fefd092612f41baf23659b7"
+      }
+    }
+  },
+  "wikimedia_catalog_sha256": "e1eba2378b826c7bd118ed9145066e0f364279611c35c9206c3beb6571440efc",
+  "streaming_reference_sha256": "279eb0ddf4fd58515e6b0039575e7490bdacdaabe8e6c13005563dcbdd2dd74b",
+  "input_rows": 39951,
+  "matched_rows": 39926,
+  "matched_pages": 39924,
+  "matched_imdb_ids": 39922,
+  "duplicate_rows_collapsed": 0,
+  "rejected_counts": {
+    "identifier_not_in_prepared_snapshot": 25
+  },
+  "retained_links_by_imdb_prefix": {
+    "nm": 10542,
+    "tt": 29384
+  }
+}
