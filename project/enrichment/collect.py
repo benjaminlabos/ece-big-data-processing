@@ -5,8 +5,10 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from itertools import islice
 import json
+from math import ceil
 import os
 from pathlib import Path
+import sys
 import tempfile
 import time
 
@@ -50,7 +52,10 @@ def get_json(session, url, params):
                 return result
         wait = retry_seconds(response.headers.get("Retry-After"), attempt)
         if attempt == 2 or wait > 120:
-            raise RuntimeError(f"Source temporarily unavailable: {url} (HTTP {response.status_code})")
+            raise RuntimeError(
+                f"Source temporarily unavailable: {url} (HTTP {response.status_code}). "
+                f"Retry after at least {ceil(wait)} seconds."
+            )
         time.sleep(wait)
     raise RuntimeError(f"No response from {url}")
 
@@ -160,6 +165,33 @@ def write_record(cache, record):
         temporary.unlink(missing_ok=True)
 
 
+def cached_record_is_valid(cache, imdb_id):
+    path = cache / f"{imdb_id}.json"
+    try:
+        with path.open(encoding="utf-8") as stream:
+            record = json.load(stream)
+    except FileNotFoundError:
+        return False
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        record = None
+    valid = (
+        isinstance(record, dict) and record.get("imdb_id") == imdb_id
+        and (
+            isinstance(record.get("missing_reason"), str) and bool(record["missing_reason"])
+            or all(isinstance(record.get(field), str) and record[field]
+                   for field in ("html", "section", "source_url", "wikidata_url"))
+        )
+    )
+    if valid:
+        try:
+            valid = datetime.fromisoformat(record.get("retrieved_at_utc")).utcoffset() is not None
+        except (TypeError, ValueError):
+            valid = False
+    if not valid:
+        print(f"Ignoring invalid cache record: {path}", file=sys.stderr, flush=True)
+    return valid
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--candidates", type=Path, default=Path("candidates.csv"))
@@ -178,7 +210,7 @@ def main():
     except ValueError as error:
         parser.error(str(error))
     args.cache.mkdir(parents=True, exist_ok=True)
-    missing = [imdb_id for imdb_id in ids if not (args.cache / f"{imdb_id}.json").is_file()]
+    missing = [imdb_id for imdb_id in ids if not cached_record_is_valid(args.cache, imdb_id)]
     pending = iter(missing[:args.max_new])
     written = 0
     started = time.monotonic()

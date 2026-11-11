@@ -5,7 +5,7 @@ from unittest.mock import Mock, patch
 
 import requests
 
-from collect import candidate_ids, get_json, write_record
+from collect import cached_record_is_valid, candidate_ids, get_json, write_record
 from inputs import CANDIDATE_COLUMNS, read_ids
 
 
@@ -58,6 +58,25 @@ class EnrichmentInputsTest(unittest.TestCase):
         with patch("collect.time.sleep") as sleep:
             self.assertEqual(get_json(session, "https://example.org", {}), {"query": "ok"})
         self.assertEqual([call.args[0] for call in sleep.call_args_list], [1, 1, 1, 9, 1])
+
+    def test_reports_retry_delay_when_it_cannot_retry_in_this_run(self):
+        limited = Mock(status_code=429, headers={"Retry-After": "180"})
+        with patch("collect.time.sleep"):
+            with self.assertRaisesRegex(RuntimeError, "Retry after at least 180 seconds"):
+                get_json(Mock(**{"get.return_value": limited}), "https://example.org", {})
+
+    def test_corrupt_cache_is_pending_until_a_complete_record_replaces_it(self):
+        imdb_id = "nm0000001"
+        path = self.root / f"{imdb_id}.json"
+        path.write_text("{", encoding="utf-8")
+        with patch("collect.sys.stderr"):
+            self.assertFalse(cached_record_is_valid(self.root, imdb_id))
+        write_record(self.root, {
+            "imdb_id": imdb_id,
+            "retrieved_at_utc": "2026-11-11T00:00:00+00:00",
+            "missing_reason": "no_wikidata_item",
+        })
+        self.assertTrue(cached_record_is_valid(self.root, imdb_id))
 
 
 if __name__ == "__main__":
