@@ -20,29 +20,29 @@
     "people_requested": 19375,
     "candidate_pairs": 31230,
     "films_by_status": {
-      "plot_not_found": 5,
-      "available": 33,
-      "not_collected": 6214,
+      "not_collected": 5998,
+      "no_english_wikipedia_article": 7,
       "no_wikidata_item": 2,
-      "no_english_wikipedia_article": 3
+      "plot_not_found": 24,
+      "available": 226
     },
     "people_by_status": {
-      "ambiguous_wikidata_match": 1,
-      "available": 156,
-      "not_collected": 19182,
-      "no_wikidata_item": 20,
-      "no_english_wikipedia_article": 16
+      "not_collected": 18233,
+      "ambiguous_wikidata_match": 3,
+      "no_wikidata_item": 80,
+      "no_english_wikipedia_article": 73,
+      "available": 986
     },
     "credits_by_status": {
-      "ambiguous_wikidata_match": 1,
-      "available": 445,
-      "not_collected": 30747,
-      "no_english_wikipedia_article": 17,
-      "no_wikidata_item": 20
+      "not_collected": 28193,
+      "ambiguous_wikidata_match": 7,
+      "no_english_wikipedia_article": 81,
+      "no_wikidata_item": 81,
+      "available": 2868
     },
-    "films_with_three_biographies": 41,
+    "films_with_three_biographies": 331,
     "films_with_fewer_than_three_candidates": 5,
-    "films_reaching_three_with_reserves": 11,
+    "films_reaching_three_with_reserves": 81,
     "collection_complete": false
   },
   "audit": {
@@ -94,36 +94,40 @@
       ],
       "people": [
         {
-          "page_title": "Burt Lancaster",
+          "page_title": "John Belushi",
           "section": "Lead",
-          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384473210",
-          "wikidata_url": "https://www.wikidata.org/wiki/Q160528",
-          "retrieved_at_utc": "2026-11-11T18:42:28.882136+00:00",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383285377",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q23858",
+          "retrieved_at_utc": "2026-11-11T18:44:38.527270+00:00",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-          "imdb_id": "nm0000044",
-          "text_characters": 1344
+          "imdb_id": "nm0000004",
+          "text_characters": 985
         },
         {
-          "page_title": "Bruce Lee",
+          "page_title": "Bette Davis",
           "section": "Lead",
-          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384362161",
-          "wikidata_url": "https://www.wikidata.org/wiki/Q16397",
-          "retrieved_at_utc": "2026-11-11T18:38:31.120769+00:00",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381285548",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q71206",
+          "retrieved_at_utc": "2026-11-11T18:58:27.572206+00:00",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-          "imdb_id": "nm0000045",
-          "text_characters": 1734
+          "imdb_id": "nm0000012",
+          "text_characters": 1799
         },
         {
-          "page_title": "Orson Welles",
+          "page_title": "Kirk Douglas",
           "section": "Lead",
-          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384377873",
-          "wikidata_url": "https://www.wikidata.org/wiki/Q24829",
-          "retrieved_at_utc": "2026-11-11T18:40:48.152919+00:00",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1384022142",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q104027",
+          "retrieved_at_utc": "2026-11-11T18:48:51.585356+00:00",
           "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-          "imdb_id": "nm0000080",
-          "text_characters": 1224
+          "imdb_id": "nm0000018",
+          "text_characters": 1324
         }
       ]
     }
+  },
+  "raw_snapshot": {
+    "cache_records": 1401,
+    "sha256": "eb6f9baea09fb38a5bc290953d1a99c7ee23a531aad4b69daf0537cda0adb87f"
   }
 }

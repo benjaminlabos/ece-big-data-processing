@@ -48,6 +48,12 @@ python collect.py --titles "$inputs/selected-titles-$suffix" `
 
 Le calcul Spark peut être exécuté pendant la collecte. Il utilise les fichiers JSON finalisés qui étaient visibles au début de la lecture et crée un nouveau dossier à chaque exécution. Choisir un nom différent pour un deuxième instantané.
 
+Pour lire un seul fichier dans Spark, figer les réponses finalisées avec la commande ci-dessous. Elle affiche le nombre d’enregistrements et l’empreinte SHA-256. Passer ensuite `--raw work/provisional/cache-snapshot.json` à la commande Spark.
+
+```powershell
+python freeze_cache.py --cache work/provisional/raw --output work/provisional/cache-snapshot.json
+```
+
 ```powershell
 spark-submit --master 'local[2]' enrich.py `
   --titles "$inputs/selected-titles-$suffix" --candidates "$inputs/enrichment-input-$suffix" `
