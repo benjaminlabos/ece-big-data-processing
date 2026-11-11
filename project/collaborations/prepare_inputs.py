@@ -51,7 +51,7 @@ def inspect_slice(directory, selected):
     return manifest, paths
 
 
-def prepare(spark, raw_dir, output, selected, as_of_year, is_slice):
+def prepare(spark, raw_dir, output, selected, as_of_year, is_slice, expanded_dir=None):
     output = output.resolve()
     raw_dir = raw_dir.resolve()
     if output.exists():
@@ -65,6 +65,21 @@ def prepare(spark, raw_dir, output, selected, as_of_year, is_slice):
         manifest, paths = inspect_snapshot(raw_dir)
         if manifest["scope"] != "full":
             raise ValueError("Complete IMDb source tables are required for the reference checks")
+    if expanded_dir:
+        expanded_dir = expanded_dir.resolve()
+        expanded_manifest = expanded_dir / "manifest.json"
+        expansion = json.loads(expanded_manifest.read_bytes())
+        if (
+            expansion["scope"] != "expanded_full_sources"
+            or expansion["source_manifest_sha256"] != sha256(raw_dir / "manifest.json")
+            or set(expansion["files"]) != set(TABLES)
+        ):
+            raise ValueError("Expanded inputs do not match the complete source.")
+        for table in TABLES:
+            path = (expanded_dir / f"{table}.tsv").resolve()
+            if path.parent != expanded_dir or sha256(path) != expansion["files"][table]:
+                raise ValueError(f"Expanded input checksum mismatch: {table}")
+            paths[table] = path
     selected_scope = None
     if selected:
         requested = (
@@ -130,6 +145,7 @@ def prepare(spark, raw_dir, output, selected, as_of_year, is_slice):
                 manifest["source_manifest_sha256"] if is_slice else sha256(raw_dir / "manifest.json")
             ),
             "slice_manifest_sha256": sha256(raw_dir / "manifest.json") if is_slice else None,
+            "expanded_manifest_sha256": sha256(expanded_manifest) if expanded_dir else None,
             "sources": {
                 table: manifest["files"][table]["source_sha256" if is_slice else "sha256"]
                 for table in TABLES
@@ -154,18 +170,21 @@ if __name__ == "__main__":
     source.add_argument("--raw-slice", type=Path, help="Byte-exact slice from slice_source.py")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--selected", type=Path, help="Optional CSV with one tconst column")
+    parser.add_argument("--expanded-dir", type=Path, help="Splittable copies bound to --raw-dir")
     parser.add_argument("--as-of-year", type=int, default=date.today().year)
     args = parser.parse_args()
     if not 1 <= args.as_of_year <= 9999:
         parser.error("--as-of-year must be in 1..9999")
     if args.raw_slice and not args.selected:
         parser.error("--raw-slice requires --selected to verify the cohort")
+    if args.expanded_dir and not args.raw_dir:
+        parser.error("--expanded-dir requires --raw-dir")
     spark = SparkSession.builder.appName("IMDb collaboration inputs").getOrCreate()
     spark.sparkContext.setLogLevel("WARN")
     try:
         prepare(
             spark, args.raw_slice or args.raw_dir, args.output,
-            args.selected, args.as_of_year, args.raw_slice is not None,
+            args.selected, args.as_of_year, args.raw_slice is not None, args.expanded_dir,
         )
     finally:
         spark.stop()

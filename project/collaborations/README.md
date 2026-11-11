@@ -58,6 +58,14 @@ docker cp "${container}:/tmp/gr04/results/full" results/collaborations-full
 docker cp "${container}:/tmp/gr04/results/projected-clean" results/collaboration-inputs
 ```
 
+Pour répartir la lecture d’un gros gzip, préparer des copies TSV sur le disque Linux avant la commande `prepare_inputs.py`. La copie est liée au manifeste gzip et chaque TSV a sa propre empreinte.
+
+```powershell
+docker exec -w /tmp/gr04 $container python project/expand_source.py --raw-dir raw --output expanded
+```
+
+Ajouter `--expanded-dir expanded` aux arguments de `prepare_inputs.py` et `--conf spark.sql.files.maxPartitionBytes=67108864` aux options de `spark-submit`. Les quatre Parquet de sortie et les règles de préparation sont les mêmes. Le conteneur conserve les deux copies de l’entrée pendant le calcul.
+
 Pour recalculer indépendamment les effectifs et les moyennes à partir des quatre Parquet utilisés, exécuter le contrôle SQL. Son entrée `clean` doit être copiée hors du conteneur si l’analyse a tourné dans Docker. Ce contrôle a relu les six cellules et tous les diagnostics de l’essai provisoire.
 
 ```powershell
