@@ -45,6 +45,8 @@ spark-submit --master 'local[2]' --conf spark.sql.shuffle.partitions=16 \
   --scope sample --output /data/collaboration-top10 --min-votes 1000 5000 10000
 ```
 
+L’essai du 11 novembre 2026 sous Spark 4.2.0 dans Docker couvre les 6 257 films de la sélection provisoire. Avec au moins 1 000 votes et deux années distinctes, le tableau contient 2 389 binômes, une moyenne de 7,5765 en première année observée et de 7,4823 sur les années suivantes. Les six comparaisons et les diagnostics ont été recalculés indépendamment à partir des Parquet. [Résultat et empreintes des entrées](../../validation/collaborations-top10-2026-11-11.json)
+
 ## Test contrôlé
 
 ```bash
