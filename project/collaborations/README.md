@@ -41,4 +41,6 @@ python project/collaborations/fixture.py --verify /data/collab-test/summary.json
 
 Le test vérifie deux films de première année, des doublons de crédits, des rôles non pertinents, deux apparitions en tant que réalisateur-interprète, un film sans note, une année inconnue, une première collaboration avant la période, un film après la période et l’effet des seuils sur neuf comparaisons.
 
+Le 11 novembre 2026, les neuf comparaisons et les diagnostics ont été vérifiés dans Docker sous Spark 4.2.0 et Java 21, puis recalculés à partir des Parquet. [Résultat du jeu contrôlé](../../validation/collaborations-fixture-2026-11-11.json)
+
 Déclaration à intégrer à `PROJECT.md` lors du regroupement. OpenAI Codex a assisté le développement de l’analyse Spark, du jeu contrôlé et des contrôles d’exécution.

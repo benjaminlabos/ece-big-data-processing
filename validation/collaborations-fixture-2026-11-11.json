@@ -1,0 +1,110 @@
+{
+  "scope": "fixture",
+  "student_validated": false,
+  "spark_version": "4.2.0",
+  "completed_at_utc": "2026-11-11T18:50:49.105199+00:00",
+  "input_manifest_sha256": null,
+  "start_year": 1980,
+  "end_year": 2025,
+  "include_self": false,
+  "diagnostics": {
+    "movie_pair_films_before_self_policy": 14,
+    "self_pair_films": 2,
+    "pair_films_unknown_year": 1,
+    "pair_films_in_period_without_rating": 1,
+    "first_year_pair_films_in_period_before_vote_filter": 4,
+    "later_year_pair_films_in_period_before_vote_filter": 6
+  },
+  "comparisons": [
+    {
+      "min_votes": 0,
+      "min_history_years": 2,
+      "pairs": 2,
+      "first_year_pair_films": 3,
+      "later_year_pair_films": 3,
+      "mean_first_year_rating_per_pair": 5.5,
+      "mean_later_year_rating_per_pair": 7.0,
+      "mean_within_pair_change": 1.5
+    },
+    {
+      "min_votes": 0,
+      "min_history_years": 3,
+      "pairs": 1,
+      "first_year_pair_films": 2,
+      "later_year_pair_films": 2,
+      "mean_first_year_rating_per_pair": 7.0,
+      "mean_later_year_rating_per_pair": 8.0,
+      "mean_within_pair_change": 1.0
+    },
+    {
+      "min_votes": 0,
+      "min_history_years": 4,
+      "pairs": 0,
+      "first_year_pair_films": 0,
+      "later_year_pair_films": 0,
+      "mean_first_year_rating_per_pair": null,
+      "mean_later_year_rating_per_pair": null,
+      "mean_within_pair_change": null
+    },
+    {
+      "min_votes": 100,
+      "min_history_years": 2,
+      "pairs": 1,
+      "first_year_pair_films": 2,
+      "later_year_pair_films": 2,
+      "mean_first_year_rating_per_pair": 7.0,
+      "mean_later_year_rating_per_pair": 8.0,
+      "mean_within_pair_change": 1.0
+    },
+    {
+      "min_votes": 100,
+      "min_history_years": 3,
+      "pairs": 1,
+      "first_year_pair_films": 2,
+      "later_year_pair_films": 2,
+      "mean_first_year_rating_per_pair": 7.0,
+      "mean_later_year_rating_per_pair": 8.0,
+      "mean_within_pair_change": 1.0
+    },
+    {
+      "min_votes": 100,
+      "min_history_years": 4,
+      "pairs": 0,
+      "first_year_pair_films": 0,
+      "later_year_pair_films": 0,
+      "mean_first_year_rating_per_pair": null,
+      "mean_later_year_rating_per_pair": null,
+      "mean_within_pair_change": null
+    },
+    {
+      "min_votes": 1000,
+      "min_history_years": 2,
+      "pairs": 1,
+      "first_year_pair_films": 1,
+      "later_year_pair_films": 2,
+      "mean_first_year_rating_per_pair": 8.0,
+      "mean_later_year_rating_per_pair": 8.0,
+      "mean_within_pair_change": 0.0
+    },
+    {
+      "min_votes": 1000,
+      "min_history_years": 3,
+      "pairs": 1,
+      "first_year_pair_films": 1,
+      "later_year_pair_films": 2,
+      "mean_first_year_rating_per_pair": 8.0,
+      "mean_later_year_rating_per_pair": 8.0,
+      "mean_within_pair_change": 0.0
+    },
+    {
+      "min_votes": 1000,
+      "min_history_years": 4,
+      "pairs": 0,
+      "first_year_pair_films": 0,
+      "later_year_pair_films": 0,
+      "mean_first_year_rating_per_pair": null,
+      "mean_later_year_rating_per_pair": null,
+      "mean_within_pair_change": null
+    }
+  ]
+}
