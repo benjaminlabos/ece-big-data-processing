@@ -97,3 +97,12 @@ l'éviction des anciens caches lourds. Un checkpoint partiel n'a pas de marqueur
 global de réussite. Les 42 tests passent (121,52 s), dont la comparaison des
 trois phases avec le traitement continu des sept tables. Les chemins de cache,
 les dépendances du workflow et les scripts embarqués ont été contrôlés.
+
+Une finition automatique attend la fin du run amont désigné, sans redémarrer le
+calcul actif. Elle recalcule le classement, compare les seuils, prépare les CSV
+prioritaires/réserves et mesure les écarts avec les entrées de Benjamin. Les
+artefacts sont vérifiés, les critères restent provisoires et les petits résultats
+peuvent être ajoutés à cette PR sans merge ni modification des branches de Ben.
+Une reprise de l'analyse est bornée et exige la préparation complète.
+Les tests ciblés couvrent toute la chaîne, la sensibilité aux seuils, les écarts
+d'entrée et les sidecars CRC absents des artefacts GitHub.

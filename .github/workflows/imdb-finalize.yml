@@ -1,0 +1,152 @@
+name: Finalize IMDb outputs for student review
+
+on:
+  push:
+    branches: [feat/imdb-full-analysis]
+    paths:
+      - .github/workflows/imdb-finalize.yml
+      - .github/imdb-finalize-request.json
+  workflow_dispatch:
+
+# Same group as the source workflow: wait without allocating a runner.
+concurrency:
+  group: imdb-complete-cloud
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  PYSPARK_PYTHON: python
+  PYSPARK_SUBMIT_ARGS: --driver-memory 5g pyspark-shell
+  SPARK_LOCAL_IP: 127.0.0.1
+  SPARK_LOCAL_DIRS: /tmp/imdb-spark
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  finalize:
+    name: Verify results and prepare the Benjamin handoff
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/imdb-runtime
+      - name: Check postprocessing contracts on controlled data
+        run: |
+          set -euo pipefail
+          python -m pytest -q tests/test_cloud.py | tee results/finalization-tests.log
+      - name: Validate the exact upstream run
+        id: request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, re, subprocess
+          from pathlib import Path
+          request = json.loads(Path('.github/imdb-finalize-request.json').read_text())
+          run_id = int(request['source_run_id'])
+          commit = request['source_commit']
+          assert re.fullmatch('[0-9a-f]{40}', commit)
+          assert request['student_validated'] is False
+          repo = os.environ['GITHUB_REPOSITORY']
+          def api(path):
+              return json.loads(subprocess.check_output(['gh', 'api', f'repos/{repo}/{path}']))
+          source = api(f'actions/runs/{run_id}')
+          assert source['head_sha'] == commit and source['head_branch'] == 'feat/imdb-full-analysis'
+          assert source['status'] == 'completed' and source['conclusion'] in ('success', 'failure')
+          jobs = api(f'actions/runs/{run_id}/jobs?per_page=100')['jobs']
+          assert any(j['name'] == 'Prepare credits and ratings' and j['conclusion'] == 'success' for j in jobs), 'Prepared source phase did not finish; refusing partial data'
+          artifacts = api(f'actions/runs/{run_id}/artifacts?per_page=100')['artifacts']
+          names = [a['name'] for a in artifacts if not a['expired'] and re.fullmatch(f'imdb-verified-{run_id}-[0-9]+', a['name'])]
+          verified = max(names, key=lambda name: int(name.rsplit('-', 1)[1])) if names else ''
+          Path('results/finalization-parent.json').write_text(json.dumps({'run_id': run_id, 'commit': commit, 'conclusion': source['conclusion'], 'verified_artifact': verified}, indent=2)+'\n')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
+              out.write(f'source_id={run_id}\nverified_artifact={verified}\n')
+          PY
+      - uses: actions/cache/restore@v4
+        with:
+          path: results/cloud-prepared
+          key: imdb-${{ steps.request.outputs.source_id }}-prepared-v1
+          fail-on-cache-miss: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: imdb-raw-profile-${{ steps.request.outputs.source_id }}
+          path: results/cloud-profile
+          run-id: ${{ steps.request.outputs.source_id }}
+          github-token: ${{ github.token }}
+      - name: Fetch the parent's verified derived outputs
+        if: steps.request.outputs.verified_artifact != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ steps.request.outputs.verified_artifact }}
+          path: artifacts/verified
+          run-id: ${{ steps.request.outputs.source_id }}
+          github-token: ${{ github.token }}
+      - name: Restore language reference if analysis needs retrying
+        id: language
+        if: steps.request.outputs.verified_artifact == ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: imdb-original-languages-${{ steps.request.outputs.source_id }}
+          path: data/reference
+          run-id: ${{ steps.request.outputs.source_id }}
+          github-token: ${{ github.token }}
+      - name: Retry missing language reference with its own provenance
+        if: steps.request.outputs.verified_artifact == '' && steps.language.outcome == 'failure'
+        timeout-minutes: 10
+        run: python -m imdb_preparation.languages --output data/reference/cloud-original-languages.csv
+      - name: Retry analysis once if prepared data succeeded but output is absent
+        if: steps.request.outputs.verified_artifact == ''
+        timeout-minutes: 180
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.explore --prepared-dir results/cloud-prepared --output results/cloud-analysis --config examples/exploration/provisional.json --original-languages data/reference/cloud-original-languages.csv --shuffle-partitions 64 2>&1 | tee results/finalization-analysis.log
+      - name: Retry missing integration exports
+        if: steps.request.outputs.verified_artifact == ''
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.exports --prepared-dir results/cloud-prepared --output results/cloud-credits --selected-titles results/cloud-analysis/selected_titles.csv 2>&1 | tee results/finalization-exports.log
+          python -m imdb_preparation.cloud package
+          cp data/reference/cloud-original-languages.manifest.json artifacts/verified/
+      - name: Cross-check rankings, compare thresholds and rebuild bounded inputs
+        timeout-minutes: 80
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.finalize 2>&1 | tee results/finalization-handoff.log
+          cp results/finalization-parent.json artifacts/handoff/
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          s = json.loads(Path('artifacts/handoff/READY_FOR_REVIEW.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+              out.write(f"Verified provisional handoff: {s['films']} films, {s['input_pairs']} bounded film-person pairs, {s['thresholds_compared']} threshold combinations.\n\nSelection criteria and result interpretations still require student review.\n")
+          PY
+      - name: Preserve all derived outputs and the handoff
+        uses: actions/upload-artifact@v4
+        with:
+          name: imdb-completed-for-review-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Publish machine outputs on Nicolas's existing PR branch
+        env:
+          SOURCE_ID: ${{ steps.request.outputs.source_id }}
+        run: |
+          set -euo pipefail
+          git fetch origin feat/imdb-full-analysis
+          if [ "$(git rev-parse FETCH_HEAD)" != "$GITHUB_SHA" ]; then
+            echo 'Branch moved; verified files remain in the artifact for review.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git checkout -B feat/imdb-full-analysis "$GITHUB_SHA"
+          publish_dir="validation/overnight-${SOURCE_ID}"
+          mkdir -p "$publish_dir"
+          cp artifacts/handoff/*.csv artifacts/handoff/*.json "$publish_dir/"
+          git add -- "$publish_dir"
+          git -c user.name='Nicolas Rihana' -c user.email='nrihana1@gmail.com' commit --only -m 'Record verified overnight IMDb outputs for student review' -- "$publish_dir"
+          git push origin HEAD:refs/heads/feat/imdb-full-analysis
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()

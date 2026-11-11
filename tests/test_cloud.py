@@ -109,9 +109,85 @@ def test_cloud_full_pipeline_publishes_only_verified_derived_outputs(tmp_path, s
         assert (published / "integration" / relative / "_SUCCESS").exists()
     for relative, expected in verified["sha256"].items():
         assert sha256(published / relative) == expected
+    from imdb_preparation.finalize import run as finalize
+
+    old_titles, old_pairs = tmp_path / "old-titles.csv", tmp_path / "old-pairs.csv"
+    old_titles.write_text("tconst\ntt0000001\ntt9999999\n")
+    old_pairs.write_text("tconst,nconst\ntt0000001,nm0000001\ntt9999999,nm0000001\n")
+    handoff = tmp_path / "handoff"
+    review = finalize(spark, prepared, published, handoff, old_titles, old_pairs)
+    assert review["ready_for_student_review"] and not review["student_validated"]
+    assert review["films"] == review["primary_pairs"] == review["input_pairs"] == 1
+    assert review["reserve_pairs"] == review["new_people_to_lookup"] == 0
+    assert review["thresholds_compared"] == 12
+    assert review["changes_from_previous_inputs"] == {
+        "films_added": 0,
+        "films_removed": 1,
+        "pairs_added": 0,
+        "pairs_removed": 1,
+    }
+    for filename, expected in review["files_sha256"].items():
+        assert sha256(handoff / filename) == expected
     measured_summary = json.loads((measured / "summary.json").read_text())
     measured_summary["manifest_sha256"] = "0" * 64
     (measured / "summary.json").write_text(json.dumps(measured_summary))
     with pytest.raises(ValueError, match="Profile preparation source mismatch"):
         package(prepared, analysis, credits, tmp_path / "wrong-profile")
     assert not (tmp_path / "wrong-profile").exists()
+
+
+def test_downloaded_parent_artifact_checks_payload_without_optional_crc(tmp_path):
+    from imdb_preparation.download import sha256
+    from imdb_preparation.finalize import verify_published
+
+    payload, crc = tmp_path / "data.csv", tmp_path / ".data.csv.crc"
+    payload.write_text("tconst\ntt0000001\n")
+    crc.write_bytes(b"Hadoop auxiliary sidecar")
+    (tmp_path / "VERIFIED.json").write_text(
+        json.dumps(
+            {
+                "scope": "full",
+                "sha256": {"data.csv": sha256(payload), ".data.csv.crc": sha256(crc)},
+            }
+        )
+    )
+    crc.unlink()
+    assert verify_published(tmp_path) == [".data.csv.crc"]
+    payload.write_text("corrupted payload")
+    with pytest.raises(ValueError, match="checksum mismatch"):
+        verify_published(tmp_path)
+
+
+def test_threshold_comparison_keeps_vote_duration_and_ranking_rules(spark):
+    from imdb_preparation.finalize import rankings_for_thresholds
+
+    rows = [
+        (f"tt{i:07d}", 2000, ["Drama"], 90, 8.0, 10000 if i == 12 else 1000)
+        for i in range(1, 13)
+    ]
+    rows.append(("tt0000013", 2000, ["Drama"], 60, 9.0, 10000))
+    catalog = spark.createDataFrame(
+        rows,
+        "tconst string,startYear long,genres array<string>,runtimeMinutes long,averageRating double,numVotes long",
+    )
+    settings, _, _, ranked = rankings_for_thresholds(
+        catalog, {"minimum_runtime": 40, "minimum_votes": 1000}
+    )
+    assert settings.count() == 9
+
+    def ids(duration, votes):
+        return [
+            r.tconst
+            for r in ranked.filter(
+                f"minimum_runtime={duration} AND minimum_votes={votes}"
+            )
+            .orderBy("genre_year_rank")
+            .collect()
+        ]
+
+    assert ids(40, 1000) == ["tt0000013", "tt0000012"] + [
+        f"tt{i:07d}" for i in range(1, 9)
+    ]
+    assert ids(90, 1000) == ["tt0000012"] + [f"tt{i:07d}" for i in range(1, 10)]
+    assert ids(40, 10000) == ["tt0000013", "tt0000012"]
+    assert ids(90, 10000) == ["tt0000012"]

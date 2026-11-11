@@ -975,3 +975,46 @@ les phases suivantes ne dépendent donc pas d'une mise à jour quotidienne IMDb.
 Les caches intermédiaires sont destinés à la reprise et ne remplacent pas les
 artefacts de résultats dérivés conservés sept jours. Une relance des seuls jobs
 en échec peut réutiliser les étapes amont tant que leurs caches sont disponibles.
+
+### Finition automatique après le calcul, sans agent de chat actif
+
+Le workflow `imdb-finalize.yml` est déclenché explicitement sur la branche de
+Nicolas et partage le groupe de concurrence du workflow de calcul. Il reste
+en attente sans runner pendant ce calcul, puis démarre sa propre machine.
+La requête `.github/imdb-finalize-request.json` fixe exactement le run amont
+et son commit. Le calcul déjà lancé n'est ni modifié ni redémarré.
+
+La finition exige que les sept tables soient prêtes. Elle restaure leur cache,
+télécharge les références et résultats du run désigné et vérifie les empreintes.
+Si la préparation a réussi mais que l'analyse ou l'export a échoué, une seule
+reprise bornée de ces étapes est prévue ; une préparation incomplète est refusée.
+Elle vérifie le classement par un calcul indépendant sur le catalogue et compare
+les combinaisons durée 40/60/90 minutes et votes 100/1 000/10 000, plus les
+paramètres actuels s'ils sont différents. Les effectifs et la disponibilité de
+trois candidats sont mesurés par année–genre et par film distinct. Ce contrôle
+porte sur des candidats, pas sur la disponibilité réelle de biographies.
+
+`finalize.py` réutilise la politique de trois personnes prioritaires et deux
+réserves, produit les CSV bornés, la couverture, les changements de films/couples
+et les nouvelles personnes par rapport aux entrées déjà livrées à Benjamin.
+Le cache Wikimedia de Benjamin reste à conserver. Les anciennes entrées ne
+sont pas écrasées. La provenance, les empreintes et `student_validated: false`
+restent explicites dans `READY_FOR_REVIEW.json`.
+
+Les anciens paquets peuvent déclarer les empreintes de sidecars Hadoop `.crc`
+que l'envoi d'artefacts masque par défaut. Leur absence est documentée et tolérée
+uniquement pour ces fichiers auxiliaires cachés ; chaque fichier de données
+déclaré doit être présent et correspondre à son SHA256. Un contenu modifié ou
+un chemin sortant de l'artefact est refusé.
+
+La finition sauvegarde un artefact pour sept jours et peut committer les petits
+CSV/JSON dans `validation/overnight-<run-amont>/` sur la seule branche
+`feat/imdb-full-analysis`, avec l'identité de Nicolas déjà convenue. Si cette
+branche a changé depuis le lancement de la finition, elle conserve les fichiers
+en artefact au lieu de forcer un push. Aucun merge, aucune approbation, aucun
+changement aux branches de Benjamin et aucun texte de REPORT.md n'est effectué.
+
+Ce sont des actions programmées, pas un assistant qui reprend spontanément
+la conversation : une panne imprévue reste à diagnostiquer. La validation humaine
+des critères et des interprétations, les relectures croisées et l'essai intégré
+restent nécessaires avant de déclarer le projet terminé.
