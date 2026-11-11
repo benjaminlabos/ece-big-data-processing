@@ -41,15 +41,15 @@ $preparedManifest = Read-Json ($PreparedOutput + '/input_manifest.json')
 foreach ($table in $manifest.files.PSObject.Properties) {
     if ($table.Value.sha256 -ne $preparedManifest.files.($table.Name).sha256) { throw 'Input manifest mismatch' }
 }
-$profile = @(Read-Json ($PreparedOutput + '/missing_profile.json'))
-if ($profile.Count -ne 39) { throw 'Expected 39 column profiles' }
+$columnProfiles = @(Read-Json ($PreparedOutput + '/missing_profile.json'))
+if ($columnProfiles.Count -ne 39) { throw 'Expected 39 column profiles' }
 if (Test-Path ($RawProfile + '/PROFILE_SUCCESS.json')) {
     $independent = Read-Json ($RawProfile + '/summary.json')
     if ($independent.manifest_sha256 -ne (File-Sha ($Snapshot + '/manifest.json'))) { throw 'Raw profile source mismatch' }
     $byColumn = @{}
     foreach ($entry in @(Read-Json ($RawProfile + '/missing_profile.json'))) { $byColumn[$entry.table + '.' + $entry.column] = $entry }
     if ($byColumn.Count -ne 39) { throw 'Independent profile incomplete' }
-    foreach ($entry in $profile) {
+    foreach ($entry in $columnProfiles) {
         $other = $byColumn[$entry.table + '.' + $entry.column]
         if ($null -eq $other -or $entry.total_rows -ne $other.total_rows -or $entry.missing_rows -ne $other.missing_rows) {
             throw 'Independent and preparation column profiles differ'
@@ -65,7 +65,7 @@ $evidence = [ordered]@{
     collection_commit = (git rev-parse HEAD)
     input_manifest_sha256 = (File-Sha ($Snapshot + '/manifest.json'))
     preparation = $prepared
-    missing_profile = $profile
+    missing_profile = $columnProfiles
     top5_missing = @(Read-Json ($PreparedOutput + '/top5_missing.json'))
     exploration = $analysis
     query_previews = $previews

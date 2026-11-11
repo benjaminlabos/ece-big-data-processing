@@ -816,3 +816,30 @@ trois personnes. Le CSV d'union peut alimenter sans changement le collecteur de
 la PR #3 ; aucun texte Wikipédia n'est recueilli par cette commande. Les 35 tests
 passent (66,48 s), et la commande a également été exécutée sur un cas contrôlé
 avec une seule personne disponible.
+
+### Entrées d'enrichissement publiées pour Benjamin
+
+La sélection de personnes réelle fournit 18 764 couples prioritaires et 12 466
+couples de réserve. Leur union contient 31 230 couples distincts, correspondant
+à 19 375 identifiants de personnes, pour les 6 257 films. Les cinq films ayant
+moins de trois personnes dans le pool restent dans la couverture.
+
+Les fichiers versionnés suivants peuvent être récupérés depuis la PR #5 :
+
+- `validation/enrichment-input-full-provisional-2026-11-11.csv` : union des
+  priorités et réserves, entrée directe `tconst,nconst` du collecteur de la PR #3 ;
+- `validation/enrichment-primary-full-provisional-2026-11-11.csv` et
+  `validation/enrichment-reserves-full-provisional-2026-11-11.csv` : lots séparés ;
+- `validation/enrichment-coverage-full-provisional-2026-11-11.csv` : effectifs et
+  rôles disponibles par film ;
+- `validation/selected-credits-full-provisional-2026-11-11.json` et
+  `validation/principal-choice-full-provisional-2026-11-11.json` : provenance et
+  résultats des deux phases ;
+- `validation/principal-choice-verification-2026-11-11.json` : vérification des
+  identifiants, colonnes, unicité, union disjointe, effectifs par film, empreintes
+  et réconciliation des crédits.
+
+Ces entrées ne contiennent aucun synopsis ni biographie. Leur politique de
+sélection reste provisoire ; le nettoyage de tout le corpus et les cinq autres
+questions d'exploration restent suivis par le lanceur complet. Le brouillon
+`validation/message-ben-2026-11-11.md` résume ce point de coordination.

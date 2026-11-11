@@ -48,3 +48,17 @@ Le lot complet possède un profil brut séparé :
 `collect_full_results.ps1` crée `full-analysis-windows-2026-11-11.json` uniquement
 après les trois marqueurs de succès préparation/exploration/crédits. Tant que ce
 fichier n'existe pas, les résultats d'analyse complète restent à vérifier.
+
+Les premières analyses réelles et les entrées d'enrichissement sont disponibles :
+
+- `title-queries-full-provisional-2026-11-11.json` et `title-query-verification-2026-11-11.json` : Q1–Q3 et validation du classement ;
+- `top10-full-provisional-2026-11-11.csv` : 9 089 places dans 979 groupes année–genre ;
+- `selected-titles-full-provisional-2026-11-11.csv` : 6 257 films distincts ;
+- `genres-by-year-full-provisional-2026-11-11.csv` et `genre-comparison-full-provisional-2026-11-11.csv` : 138 et 92 lignes ;
+- `selected-credits-full-provisional-2026-11-11.json` et `credit-coverage-full-provisional-2026-11-11.csv` : contrôle des crédits des films retenus ;
+- `principal-choice-full-provisional-2026-11-11.json`, `principal-choice-verification-2026-11-11.json` et les quatre CSV `enrichment-*` : 31 230 couples film–personne bornés à trois priorités et deux réserves, avec cinq films ayant moins de trois personnes.
+
+Les périmètres `full_title_tables_subset` et `full_selected_credits_subset`
+désignent des tables sources complètes utilisées pour des sorties ciblées. Ils
+ne certifient pas la fin du nettoyage des sept tables. Les critères de sélection
+restent non validés par les étudiants ; ces fichiers ne sont pas le rapport.

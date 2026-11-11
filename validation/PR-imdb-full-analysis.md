@@ -35,3 +35,11 @@ Le pool réel comprend 113 273 couples pour 6 257 films, après réconciliation 
 124 499 crédits sélectionnés. Un crédit est rejeté et cinq films ont moins de
 trois personnes disponibles. La sélection de travail limite l'entrée de collecte
 à trois personnes et deux réserves par film, sans doublon de personne entre rôles.
+
+L'entrée de collecte est maintenant publiée : 18 764 couples prioritaires et
+12 466 réserves, soit 31 230 couples pour 19 375 personnes distinctes. Les CSV
+à deux colonnes respectent le contrat de la PR #3. La vérification des effectifs
+par film, identifiants, unicité, union disjointe et empreintes est versionnée.
+Cinq films restent sous trois personnes disponibles. Les seuils et la politique
+de sélection restent provisoires. Un brouillon de coordination est fourni pour
+Benjamin, sans envoi automatique.
