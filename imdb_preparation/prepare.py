@@ -211,6 +211,7 @@ def prepare(
     raw_profile=None,
     legacy_as_of_year=None,
     input_partitions=None,
+    stop_after=None,
 ):
     raw_dir, output = Path(raw_dir).resolve(), Path(output).resolve()
     if output == raw_dir or raw_dir in output.parents or output in raw_dir.parents:
@@ -222,6 +223,8 @@ def prepare(
     manifest, paths = inspect_snapshot(raw_dir)
     if input_partitions is not None and input_partitions < 1:
         raise ValueError("Input partitions must be positive")
+    if stop_after is not None and stop_after not in TABLES:
+        raise ValueError("Unknown checkpoint stop table")
     if resume_from and not raw_profile:
         raise ValueError("Recovery requires a completed raw profile")
     if resume_from:
@@ -265,6 +268,8 @@ def prepare(
             frames, metrics, recovery = adopt_checkpoint(
                 spark, resume_from, staging, context, precomputed, legacy_as_of_year
             )
+            if stop_after and list(TABLES).index(stop_after) < len(metrics):
+                raise ValueError("Checkpoint stop table must follow resumed tables")
             for table in metrics:
                 profiles.extend(precomputed[table])
             json_write(
@@ -381,6 +386,8 @@ def prepare(
                 f"{table}: {raw_count} raw -> {clean_count} clean, {quarantine_count} quarantined",
                 flush=True,
             )
+            if table == stop_after:
+                break
 
         json_write(staging / "missing_profile.json", profiles)
         ranked = sorted(
@@ -412,14 +419,21 @@ def prepare(
             else None,
             "input_partitions": input_partitions,
             "preparation_module_sha256": sha256(Path(__file__)),
+            "checkpoint_only": len(metrics) != len(TABLES),
         }
         json_write(staging / "summary.json", summary)
         json_write(staging / "input_manifest.json", manifest)
         json_write(
-            staging / "SUCCESS.json",
-            {"scope": manifest["scope"], "completed_at": summary["completed_at"]},
+            staging
+            / ("CHECKPOINT.json" if summary["checkpoint_only"] else "SUCCESS.json"),
+            {
+                "scope": manifest["scope"],
+                "completed_at": summary["completed_at"],
+                "checkpoint_only": summary["checkpoint_only"],
+                "completed_tables": list(metrics),
+            },
         )
-        # The final directory becomes visible only once every table has succeeded.
+        # Partial prefixes have CHECKPOINT only; consumers still require SUCCESS.
         os.rename(staging, output)
         return summary
     finally:
@@ -437,6 +451,7 @@ def main():
     parser.add_argument("--raw-profile", type=Path)
     parser.add_argument("--legacy-as-of-year", type=int)
     parser.add_argument("--input-partitions", type=int)
+    parser.add_argument("--stop-after", choices=TABLES)
     args = parser.parse_args()
     if not 1 <= args.as_of_year <= 9999 or args.shuffle_partitions < 1:
         parser.error("Invalid --as-of-year or --shuffle-partitions")
@@ -459,6 +474,7 @@ def main():
             args.raw_profile,
             args.legacy_as_of_year,
             args.input_partitions,
+            args.stop_after,
         )
         print(
             json.dumps(
@@ -466,6 +482,7 @@ def main():
                     "output": str(args.output.resolve()),
                     "scope": summary["scope"],
                     "tables": len(summary["tables"]),
+                    "checkpoint_only": summary["checkpoint_only"],
                 }
             )
         )

@@ -281,6 +281,56 @@ def test_recovery_rejects_incomplete_checkpoint(tmp_path, spark, prepared):
         )
 
 
+def test_published_checkpoints_chain_across_jobs_without_early_success(
+    tmp_path, spark, prepared
+):
+    from imdb_preparation.profile_full import run as raw_profile_run
+
+    raw, original, baseline = prepared
+    profile_dir = tmp_path / "profile"
+    raw_profile_run(spark, raw, profile_dir, workers=2)
+    previous = None
+    for index, stop_after in enumerate(
+        ("name.basics", "title.episode", "title.ratings")
+    ):
+        output = tmp_path / f"phase-{index}"
+        result = prepare(
+            spark,
+            raw,
+            output,
+            2026,
+            resume_from=previous,
+            raw_profile=profile_dir,
+            input_partitions=4,
+            stop_after=stop_after,
+        )
+        prefix = list(TABLES)[: list(TABLES).index(stop_after) + 1]
+        assert list(result["tables"]) == prefix
+        assert (output / "SUCCESS.json").exists() == (index == 2)
+        assert (output / "CHECKPOINT.json").exists() == (index != 2)
+        assert result["checkpoint_only"] == (index != 2)
+        if previous:
+            assert not result["recovery"]["legacy_context_asserted"]
+        if index == 0:
+            from imdb_preparation.exports import load_prepared
+
+            with pytest.raises(FileNotFoundError):
+                load_prepared(spark, output)
+        previous = output
+    assert result["tables"] == baseline["tables"]
+    for table in TABLES:
+        expected = read_table(spark, original, table)
+        actual = read_table(spark, previous, table)
+        assert (
+            expected.exceptAll(actual).count()
+            == actual.exceptAll(expected).count()
+            == 0
+        )
+    assert json.loads((previous / "missing_profile.json").read_text()) == json.loads(
+        (original / "missing_profile.json").read_text()
+    )
+
+
 def test_malformed_tsv_fails_without_publishing_output(tmp_path, spark):
     raw, output = tmp_path / "raw", tmp_path / "output"
     write_fixture(raw)

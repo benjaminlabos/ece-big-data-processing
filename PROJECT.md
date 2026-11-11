@@ -912,13 +912,14 @@ provenance figure dans les résultats. Le nettoyage repart du début sur le runn
 sans prétendre réutiliser les cinq tables conservées sur Windows.
 Les langues originales font l'objet d'une nouvelle collecte P364 avec manifeste.
 
-Le job est limité à 350 minutes (5 h 50), indépendamment des limites de chaque
-étape. Une exécution échouée conserve les diagnostics disponibles, sans annoncer
+La limite de 350 minutes (5 h 50) s’applique à chaque job de calcul, pas à
+l’ensemble de la chaîne. Le pipeline est découpé comme décrit ci-dessous.
+Une exécution échouée conserve les diagnostics disponibles, sans annoncer
 le succès du traitement. Un succès publie des artefacts de résultats dérivés,
 avec marqueur `VERIFIED.json`, pour sept jours : qualité, analyses, classement,
 crédits sélectionnés et couverture. Les sept tables sources et les tables
-nettoyées complètes ne sont pas publiées. Les checkpoints complets restent
-éphémères sur ce runner ; un échec du job nécessite un nouveau calcul.
+nettoyées complètes ne sont pas publiées. Les checkpoints de préparation passent entre jobs via des caches GitHub
+propres à cette exécution ; une reprise peut conserver les phases amont.
 
 L'ajout du fichier de workflow peut exiger la portée OAuth GitHub `workflow` en
 plus de `repo`. Une exécution n'est considérée indépendante du PC qu'après
@@ -934,3 +935,43 @@ JSON du manifeste dans la préparation ne change pas la provenance des données.
 Un contrôle d'intégration synthétique traverse profil, préparation, neuf sorties
 d'analyse, exports et paquet final ; il vérifie également les empreintes des
 fichiers publiés et le refus d'un profil provenant d'un autre manifeste.
+
+### Traitement nocturne réparti sur plusieurs jobs GitHub
+
+Un runner GitHub hébergé standard limite un job à six heures. L'ancien job
+monolithique a été remplacé par cette chaîne, qui peut dépasser six heures au
+total sans dépendre du PC :
+
+1. `inputs` : tests, téléchargement d'un seul lot, profil des 39 colonnes et
+   sauvegarde du lot dans un cache identifié par `github.run_id`.
+2. `parents` : nettoyage des titres et des personnes, puis checkpoint validé.
+3. `relations` : restauration du même lot et du checkpoint ; ajout des titres
+   alternatifs, équipes et épisodes, puis checkpoint des cinq tables.
+4. `principals` : restauration du même lot et des cinq tables ; crédits et notes,
+   puis publication du marqueur global `SUCCESS.json` et du checkpoint complet.
+5. `analysis` : restauration des sept tables et des petites références ; huit
+   questions, classement, exports et publication des résultats vérifiés.
+
+Un sixième job `languages` collecte la référence P364 en parallèle des entrées.
+Il ne bloque pas les phases de nettoyage si son service est indisponible.
+L'analyse attend sa référence avec manifeste. Les profils et références, petits,
+sont conservés en artefacts séparés pour ne pas dépendre de l'éviction des anciens
+caches lourds. Les limites des jobs d'entrée/référence sont 90 et 20 minutes ;
+chaque job de calcul a sa propre limite de 350 minutes. Ces limites ne prédisent
+pas la durée totale et ne garantissent pas une fin avant le matin.
+
+`prepare --stop-after name.basics` et `--stop-after title.episode` publient un
+préfixe terminé, avec `CHECKPOINT.json`, contexte, compteurs et schémas, sans
+`SUCCESS.json`. Les consommateurs refusent ce préfixe incomplet. `--resume-from`
+contrôle l'année, l'empreinte originale du manifeste, les règles, marqueurs et
+audits, puis réutilise les tables immuables. Les sorties des trois phases sont
+comparées au calcul continu sur la fixture : mêmes tables, compteurs et profils.
+
+Les clés de cache ne comportent aucune substitution vers un autre lot. Une perte
+de cache nécessaire arrête explicitement la phase ; elle ne provoque pas un
+téléchargement silencieux d'un lot du lendemain. Les caches restent soumis au
+quota et à l'éviction GitHub. Le lot brut n'est téléchargé qu'au job d'entrée ;
+les phases suivantes ne dépendent donc pas d'une mise à jour quotidienne IMDb.
+Les caches intermédiaires sont destinés à la reprise et ne remplacent pas les
+artefacts de résultats dérivés conservés sept jours. Une relance des seuls jobs
+en échec peut réutiliser les étapes amont tant que leurs caches sont disponibles.

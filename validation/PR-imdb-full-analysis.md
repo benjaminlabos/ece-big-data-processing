@@ -87,3 +87,13 @@ les catalogues IMDb et movie_catalog ainsi que clean/title.ratings pour le binô
 Le contrôle du manifeste utilise son empreinte originale du checkpoint plutôt
 que l'empreinte d'une copie JSON reformatée. Le brouillon de coordination intègre
 la PR #3 actualisée de Benjamin et distingue collecte partielle et collecte finie.
+
+Le traitement nocturne passe maintenant par six jobs hébergés. Trois phases
+de préparation publient et restaurent des checkpoints vérifiés, puis l'analyse
+utilise le lot complet. La limite de 350 minutes porte sur chaque job de calcul,
+pas sur le workflow entier. Les données brutes sont figées une fois par run ;
+les références légères sont en artefacts pour rester disponibles malgré
+l'éviction des anciens caches lourds. Un checkpoint partiel n'a pas de marqueur
+global de réussite. Les 42 tests passent (121,52 s), dont la comparaison des
+trois phases avec le traitement continu des sept tables. Les chemins de cache,
+les dépendances du workflow et les scripts embarqués ont été contrôlés.
