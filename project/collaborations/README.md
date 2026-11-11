@@ -29,6 +29,22 @@ PYTHONPATH="/clone/imdb-preparation:${PYTHONPATH:-}" spark-submit \
   --output /data/collaboration-inputs --as-of-year 2026
 ```
 
+Pour reproduire l’essai sur la sélection provisoire, `slice_source.py` recopie les lignes TSV des titres choisis et des personnes référencées, sans modifier leurs valeurs. Il vérifie les SHA-256 des cinq fichiers gzip pendant la lecture. Spark vérifie le manifeste de cet extrait puis normalise, déduplique et valide les références. Cette projection évite de lire tout le gzip dans un seul cœur du conteneur Spark.
+
+```bash
+selected=/clone/imdb-preparation/validation/selected-titles-full-provisional-2026-11-11.csv
+python project/collaborations/slice_source.py --raw-dir /data/imdb-source \
+  --selected "$selected" --output /data/collaboration-source-slice
+PYTHONPATH="/clone/imdb-preparation:${PYTHONPATH:-}" spark-submit \
+  --master 'local[2]' --conf spark.sql.shuffle.partitions=16 \
+  project/collaborations/prepare_inputs.py --raw-slice /data/collaboration-source-slice \
+  --selected "$selected" --output /data/collaboration-top10-inputs --as-of-year 2026
+spark-submit --master 'local[2]' --conf spark.sql.shuffle.partitions=16 \
+  project/collaborations/analyse.py --clean-dir /data/collaboration-top10-inputs/clean \
+  --input-manifest /data/collaboration-top10-inputs/input_manifest.json \
+  --scope sample --output /data/collaboration-top10 --min-votes 1000 5000 10000
+```
+
 ## Test contrôlé
 
 ```bash

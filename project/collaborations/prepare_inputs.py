@@ -2,7 +2,6 @@
 
 import argparse
 from datetime import date
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -11,9 +10,11 @@ import uuid
 from pyspark import StorageLevel
 from pyspark.sql import SparkSession, functions as F
 
+from imdb_preparation.download import sha256
 from imdb_preparation.prepare import inspect_snapshot
 from imdb_preparation.quality import check_reference, clean_values, normalize, partition_keys
 from imdb_preparation.schema import raw_schema
+from slice_source import TABLES
 
 
 def read_clean(spark, paths, table, as_of_year, scope=None):
@@ -32,16 +33,38 @@ def read_clean(spark, paths, table, as_of_year, scope=None):
     return cleaned
 
 
-def prepare(spark, raw_dir, output, selected, as_of_year):
+def inspect_slice(directory, selected):
+    manifest_path = directory / "manifest.json"
+    manifest = json.loads(manifest_path.read_bytes())
+    if (
+        manifest["scope"] != "title_slice"
+        or set(manifest["files"]) != set(TABLES)
+        or manifest["selected_titles_sha256"] != sha256(selected)
+    ):
+        raise ValueError("The slice manifest must match the selected titles and source tables")
+    paths = {}
+    for table in TABLES:
+        path = (directory / f"{table}.tsv").resolve()
+        if path.parent != directory or sha256(path) != manifest["files"][table]["sha256"]:
+            raise ValueError(f"Invalid slice file or SHA256 mismatch for {table}")
+        paths[table] = path
+    return manifest, paths
+
+
+def prepare(spark, raw_dir, output, selected, as_of_year, is_slice):
     output = output.resolve()
     raw_dir = raw_dir.resolve()
     if output.exists():
         raise FileExistsError(f"Choose a new output directory: {output}")
     if output == raw_dir or output.is_relative_to(raw_dir):
         raise ValueError("Output must be outside the input directory")
-    manifest, paths = inspect_snapshot(raw_dir)
-    if manifest["scope"] != "full":
-        raise ValueError("Complete IMDb source tables are required for the reference checks")
+    print("Checking source file hashes", flush=True)
+    if is_slice:
+        manifest, paths = inspect_slice(raw_dir, selected)
+    else:
+        manifest, paths = inspect_snapshot(raw_dir)
+        if manifest["scope"] != "full":
+            raise ValueError("Complete IMDb source tables are required for the reference checks")
     selected_scope = None
     if selected:
         requested = (
@@ -64,6 +87,7 @@ def prepare(spark, raw_dir, output, selected, as_of_year):
         print(f"Prepared {table}: {counts[table]} rows", flush=True)
         return stored
 
+    print("Preparing film titles", flush=True)
     titles = read_clean(spark, paths, "title.basics", as_of_year, selected_scope)
     titles = publish(
         "title.basics",
@@ -101,15 +125,14 @@ def prepare(spark, raw_dir, output, selected, as_of_year):
         publish("title.ratings", ratings.select("tconst", "averageRating", "numVotes"))
         receipt = {
             "scope": "sample" if selected else "full",
-            "selected_titles_sha256": (
-                hashlib.sha256(selected.read_bytes()).hexdigest() if selected else None
+            "selected_titles_sha256": sha256(selected) if selected else None,
+            "source_manifest_sha256": (
+                manifest["source_manifest_sha256"] if is_slice else sha256(raw_dir / "manifest.json")
             ),
-            "source_manifest_sha256": hashlib.sha256(
-                (raw_dir / "manifest.json").read_bytes()
-            ).hexdigest(),
+            "slice_manifest_sha256": sha256(raw_dir / "manifest.json") if is_slice else None,
             "sources": {
-                table: manifest["files"][table]["sha256"]
-                for table in ("title.basics", "title.crew", "title.principals", "title.ratings", "name.basics")
+                table: manifest["files"][table]["source_sha256" if is_slice else "sha256"]
+                for table in TABLES
             },
             "as_of_year": as_of_year,
             "spark_version": spark.version,
@@ -126,16 +149,23 @@ def prepare(spark, raw_dir, output, selected, as_of_year):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--raw-dir", type=Path, required=True)
+    source = parser.add_mutually_exclusive_group(required=True)
+    source.add_argument("--raw-dir", type=Path)
+    source.add_argument("--raw-slice", type=Path, help="Byte-exact slice from slice_source.py")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--selected", type=Path, help="Optional CSV with one tconst column")
     parser.add_argument("--as-of-year", type=int, default=date.today().year)
     args = parser.parse_args()
     if not 1 <= args.as_of_year <= 9999:
         parser.error("--as-of-year must be in 1..9999")
+    if args.raw_slice and not args.selected:
+        parser.error("--raw-slice requires --selected to verify the cohort")
     spark = SparkSession.builder.appName("IMDb collaboration inputs").getOrCreate()
     spark.sparkContext.setLogLevel("WARN")
     try:
-        prepare(spark, args.raw_dir, args.output, args.selected, args.as_of_year)
+        prepare(
+            spark, args.raw_slice or args.raw_dir, args.output,
+            args.selected, args.as_of_year, args.raw_slice is not None,
+        )
     finally:
         spark.stop()
