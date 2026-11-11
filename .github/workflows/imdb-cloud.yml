@@ -101,5 +101,7 @@ jobs:
             results/*/checkpoint_context.json
             results/*/summary.json
             results/cloud-profile/*.json
+            data/raw/cloud-full/manifest.json
+            data/reference/*.manifest.json
           if-no-files-found: warn
           retention-days: 7

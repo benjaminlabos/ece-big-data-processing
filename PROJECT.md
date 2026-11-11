@@ -924,3 +924,13 @@ L'ajout du fichier de workflow peut exiger la portée OAuth GitHub `workflow` en
 plus de `repo`. Une exécution n'est considérée indépendante du PC qu'après
 vérification de son démarrage effectif sur GitHub. La fermeture de ce chat ne
 constitue pas une garantie de conservation de son environnement de calcul.
+
+Le paquet cloud conserve aussi `integration/imdb_ids`,
+`integration/movie_catalog` et `integration/clean/title.ratings` pour les jointures
+du binôme et l'étude des seuils. Les tables IMDb nettoyées complètes autres que
+les notes ne sont pas publiées. L'empreinte du profil est comparée à l'empreinte
+originale du manifeste tracée dans `checkpoint_context.json` : une réécriture
+JSON du manifeste dans la préparation ne change pas la provenance des données.
+Un contrôle d'intégration synthétique traverse profil, préparation, neuf sorties
+d'analyse, exports et paquet final ; il vérifie également les empreintes des
+fichiers publiés et le refus d'un profil provenant d'un autre manifeste.

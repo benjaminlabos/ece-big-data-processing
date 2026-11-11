@@ -78,3 +78,12 @@ les compteurs anciens. La provenance du profil est conservée et vérifiée cont
 le manifeste de préparation. Une régression contrôle le recalcul et le rejet
 des compteurs périmés. La première exécution est un échec, pas une validation du
 lot complet ; la relance doit encore terminer.
+
+Le contrôle d'intégration supplémentaire traverse la chaîne complète sur une
+fixture synthétique, y compris les neuf sorties, les exports et leurs empreintes.
+Les trois tests cloud ciblés passent (50,67 s), en complément de la suite de
+40 tests déjà exécutée ; ces nombres se recouvrent. Le paquet conserve désormais
+les catalogues IMDb et movie_catalog ainsi que clean/title.ratings pour le binôme.
+Le contrôle du manifeste utilise son empreinte originale du checkpoint plutôt
+que l'empreinte d'une copie JSON reformatée. Le brouillon de coordination intègre
+la PR #3 actualisée de Benjamin et distingue collecte partielle et collecte finie.

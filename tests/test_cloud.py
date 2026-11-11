@@ -58,3 +58,60 @@ def test_cloud_does_not_publish_an_incomplete_pipeline(tmp_path):
             destination,
         )
     assert not destination.exists()
+
+
+def test_cloud_full_pipeline_publishes_only_verified_derived_outputs(tmp_path, spark):
+    """Exercise production stage boundaries without downloading real IMDb data."""
+    from imdb_preparation.download import sha256
+    from imdb_preparation.explore import run as explore
+    from imdb_preparation.exports import export
+    from imdb_preparation.prepare import prepare
+
+    raw, measured, prepared, analysis, credits, published = (
+        tmp_path / name
+        for name in ("raw", "profile", "prepared", "analysis", "credits", "published")
+    )
+    write_fixture(raw)
+    manifest_path = raw / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["scope"] = "full"  # Synthetic scope test; never evidence of full IMDb.
+    manifest_path.write_text(json.dumps(manifest) + "\n")
+    run(spark, raw, measured, workers=2)
+    prepare(spark, raw, prepared, 2026, raw_profile=measured, input_partitions=4)
+    languages = tmp_path / "languages.csv"
+    languages.write_text(
+        "tconst,language,source_url\ntt0000001,en,https://example.invalid/fixture\n"
+    )
+    config = {
+        "minimum_runtime": 40,
+        "minimum_votes": 1,
+        "episode_minimum_votes": 1,
+        "runtime_zscore": 2,
+        "success_rating": 7,
+        "early_career_fraction": 0.25,
+        "student_validated": False,
+        "as_of_year": 2026,
+    }
+    explore(spark, prepared, analysis, config, languages)
+    export(spark, prepared, credits, selected_titles=analysis / "selected_titles.csv")
+    package(prepared, analysis, credits, published)
+    verified = json.loads((published / "VERIFIED.json").read_text())
+    assert set(verified["questions"]) == {f"q{i}" for i in range(1, 9)} | {
+        "top10_per_genre_year"
+    }
+    assert not verified["student_validated"]
+    assert (published / "enrichment/candidates.csv").read_text().splitlines() == [
+        "tconst,nconst",
+        "tt0000001,nm0000001",
+    ]
+    assert not (published / "clean").exists() and not (published / "raw").exists()
+    for relative in ("imdb_ids", "movie_catalog", "clean/title.ratings"):
+        assert (published / "integration" / relative / "_SUCCESS").exists()
+    for relative, expected in verified["sha256"].items():
+        assert sha256(published / relative) == expected
+    measured_summary = json.loads((measured / "summary.json").read_text())
+    measured_summary["manifest_sha256"] = "0" * 64
+    (measured / "summary.json").write_text(json.dumps(measured_summary))
+    with pytest.raises(ValueError, match="Profile preparation source mismatch"):
+        package(prepared, analysis, credits, tmp_path / "wrong-profile")
+    assert not (tmp_path / "wrong-profile").exists()

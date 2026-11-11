@@ -109,7 +109,8 @@ def package(prepared, analysis, credits, destination):
         raise ValueError("39 column profiles required")
     profile_dir = Path(preparation["precomputed_raw_profile"])
     profile_summary = json.loads((profile_dir / "summary.json").read_text())
-    if profile_summary["manifest_sha256"] != sha256(prepared / "input_manifest.json"):
+    context = json.loads((prepared / "checkpoint_context.json").read_text())
+    if profile_summary["manifest_sha256"] != context["input_manifest_sha256"]:
         raise ValueError("Profile preparation source mismatch")
     destination.mkdir(parents=True, exist_ok=False)
     quality = destination / "quality"
@@ -131,6 +132,14 @@ def package(prepared, analysis, credits, destination):
         shutil.copyfile(credits / name, enrichment / name)
     for name in ("enrichment_coverage", "rejected_credits"):
         shutil.copytree(credits / name, enrichment / name)
+    integration = destination / "integration"
+    integration.mkdir()
+    for name in ("imdb_ids", "movie_catalog"):
+        shutil.copytree(credits / name, integration / name)
+    shutil.copytree(
+        prepared / "clean" / "title.ratings",
+        integration / "clean" / "title.ratings",
+    )
     checksums = {
         str(path.relative_to(destination)): sha256(path)
         for path in sorted(destination.rglob("*"))
