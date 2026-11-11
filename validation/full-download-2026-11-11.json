@@ -1,0 +1,86 @@
+{
+  "scope": "full",
+  "rows_per_table_limit": null,
+  "sampling": null,
+  "started_at": "2026-11-11T12:23:52.381712+00:00",
+  "files": {
+    "title.basics": {
+      "path": "title.basics.tsv.gz",
+      "url": "https://datasets.imdbws.com/title.basics.tsv.gz",
+      "sha256": "0c79f4e44df509b6cc05d614acc4d243bd8864c81d01920beaf219af21703e9c",
+      "bytes": 230164222,
+      "source_compressed_content_length": 230164222,
+      "gzip_integrity_verified": true,
+      "retrieved_at": "2026-11-11T12:24:19.679688+00:00",
+      "ETag": "\"4a3b63232d5507644ea814209d01a1f6-28\"",
+      "Last-Modified": "Wed, 11 Nov 2026 00:39:11 GMT"
+    },
+    "name.basics": {
+      "path": "name.basics.tsv.gz",
+      "url": "https://datasets.imdbws.com/name.basics.tsv.gz",
+      "sha256": "3898bacdbd6b04dd3285f4e709983c4b4db4ea7b3fefd092612f41baf23659b7",
+      "bytes": 312743071,
+      "source_compressed_content_length": 312743071,
+      "gzip_integrity_verified": true,
+      "retrieved_at": "2026-11-11T12:24:54.752049+00:00",
+      "ETag": "\"e30dd3d0b16404f45a4adad27d585423-38\"",
+      "Last-Modified": "Tue, 10 Nov 2026 12:48:13 GMT"
+    },
+    "title.akas": {
+      "path": "title.akas.tsv.gz",
+      "url": "https://datasets.imdbws.com/title.akas.tsv.gz",
+      "sha256": "ac8e630d91a55e9b25277a8d2616bef32f034c81e738a0e044423c4b17343f34",
+      "bytes": 522323485,
+      "source_compressed_content_length": 522323485,
+      "gzip_integrity_verified": true,
+      "retrieved_at": "2026-11-11T12:25:54.526964+00:00",
+      "ETag": "\"9b9b8f7fbaf8683a8755e0ba240127b0-63\"",
+      "Last-Modified": "Wed, 11 Nov 2026 00:40:02 GMT"
+    },
+    "title.crew": {
+      "path": "title.crew.tsv.gz",
+      "url": "https://datasets.imdbws.com/title.crew.tsv.gz",
+      "sha256": "4a5ac1d5f13d1715dd57b1d04e749337be53a588dca86aec187567b50ca50809",
+      "bytes": 84032257,
+      "source_compressed_content_length": 84032257,
+      "gzip_integrity_verified": true,
+      "retrieved_at": "2026-11-11T12:26:03.668688+00:00",
+      "ETag": "\"9b1073fcd2776784e2c6ce4010c47925-11\"",
+      "Last-Modified": "Tue, 10 Nov 2026 12:47:55 GMT"
+    },
+    "title.episode": {
+      "path": "title.episode.tsv.gz",
+      "url": "https://datasets.imdbws.com/title.episode.tsv.gz",
+      "sha256": "4f4407887d5f110fd19da549885ce0cd8528c1e5e2ed5c3fca065f67af3666bc",
+      "bytes": 55423238,
+      "source_compressed_content_length": 55423238,
+      "gzip_integrity_verified": true,
+      "retrieved_at": "2026-11-11T12:26:10.098660+00:00",
+      "ETag": "\"3758f87ace871de244bd17c07612f58c-7\"",
+      "Last-Modified": "Wed, 11 Nov 2026 00:39:32 GMT"
+    },
+    "title.principals": {
+      "path": "title.principals.tsv.gz",
+      "url": "https://datasets.imdbws.com/title.principals.tsv.gz",
+      "sha256": "34c4bb856cfec5773df1bc2ebbbf55f349a3f774a46928aa8ea13cebaefb9f8f",
+      "bytes": 790186476,
+      "source_compressed_content_length": 790186476,
+      "gzip_integrity_verified": true,
+      "retrieved_at": "2026-11-11T12:27:58.913886+00:00",
+      "ETag": "\"8b60b9c72c661ee54b2b5e68bf4e976f-95\"",
+      "Last-Modified": "Wed, 11 Nov 2026 00:40:05 GMT"
+    },
+    "title.ratings": {
+      "path": "title.ratings.tsv.gz",
+      "url": "https://datasets.imdbws.com/title.ratings.tsv.gz",
+      "sha256": "26fb6829b012e0f93e7a5e5ee1330effcf4e06a00b104a208bee5c382933914d",
+      "bytes": 8747316,
+      "source_compressed_content_length": 8747316,
+      "gzip_integrity_verified": true,
+      "retrieved_at": "2026-11-11T12:28:00.016935+00:00",
+      "ETag": "\"85a298ccce4c717a60c73d659668ab74-2\"",
+      "Last-Modified": "Wed, 11 Nov 2026 00:39:50 GMT"
+    }
+  },
+  "completed_at": "2026-11-11T12:28:00.017045+00:00"
+}

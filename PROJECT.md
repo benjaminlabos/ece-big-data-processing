@@ -569,3 +569,74 @@ Codex a assisté Nicolas pour vérifier les contrats des PR de Benjamin, dévelo
 ces exports Spark, écrire/exécuter leurs tests et documenter cette interface.
 Aucun texte n'a été ajouté à `REPORT.md`. Le classement et ses justifications
 restent à définir et rédiger par les étudiants.
+
+## Exécution IMDb complète et exploration — branche `feat/imdb-full-analysis`
+
+Le 11 novembre, les sept fichiers complets ont été téléchargés sur le PC Windows :
+2 003 620 065 octets compressés, tous vérifiés par taille HTTP quand disponible
+et intégrité gzip. Ce constat valide le téléchargement, pas encore le nettoyage
+du lot complet. Le manifeste versionné dans `validation/full-download-2026-11-11.json`
+permet d'identifier ces entrées ; les fichiers restent hors Git.
+
+Le nettoyage évite désormais de conserver simultanément les caches bruts,
+dédoublonnés, valides et typés. Chaque cache précédent est libéré après
+matérialisation du suivant. `progress.json` est publié atomiquement après chaque
+table dans le dossier `.incomplete-*`. Il reste distinct de `SUCCESS.json`.
+
+`compose.full.yaml` donne 3 GiB au pilote Spark, limite le conteneur à 6 GiB et
+place les fichiers temporaires dans son disque Linux. Le lanceur surveille le
+disque hôte et arrête uniquement les conteneurs nommés de cette tâche sous 5 GiB
+libres. Les données brutes et sorties partielles restent conservées.
+
+Depuis la racine du dépôt dans PowerShell, une fois le téléchargement complet
+terminé et Docker Desktop actif :
+
+```powershell
+.\run_full_imdb.ps1
+```
+
+Ce lanceur enchaîne préparation complète (4 threads, 64 partitions de mélange),
+exploration provisoire, puis export des crédits des films sélectionnés. Logs :
+`results/imdb-full-prepare.log`, `results/imdb-full-exploration.log` et
+`results/imdb-full-credit-export.log`. Choisir de nouveaux noms de sorties pour
+relancer après un échec ; aucune reprise de cache Spark n'est promise.
+
+L'exploration est aussi exécutable séparément :
+
+```powershell
+docker compose -f compose.preparation.yaml -f compose.full.yaml run --rm preparation python -m imdb_preparation.explore --prepared-dir results/imdb-full-2026-11-11 --output results/exploration-full-provisional-2026-11-11 --config examples/exploration/provisional.json
+```
+
+Le module fournit `q1` à `q8` en Parquet, un classement `top10_per_genre_year`,
+un fichier `selected_titles.csv` dédupliqué et un résumé avec périmètre, définitions,
+paramètres et statuts. Le tri top 10 est note décroissante, votes décroissants,
+puis identifiant croissant. Les genres multiples comptent pour chaque genre ;
+les comparaisons de groupes portent sur ces appartenances et ne représentent
+pas des nombres de films disjoints. Les carrières sont celles observables dans
+les films candidats, sans inférer une carrière complète hors IMDb.
+
+Les seuils du fichier `provisional.json` sont des **valeurs de travail non validées
+par les étudiants**. Tous les résultats restent marqués provisoires tant que
+`student_validated` vaut `false`. Ils ne constituent aucune justification de
+rapport. Le choix final des seuils et des catégories reste à Nicolas et Benjamin.
+
+Q5 retient au moins trois saisons ayant chacune dix épisodes connus, exclut la
+saison 0 et accepte les égalités de meilleures/pires notes de façon existentielle.
+Q8 regroupe acteur/actrice en interprétation et écarte les apparitions `self` et
+les archives. Ces définitions de travail sont conservées dans le code/résumé.
+Les critères pourront être ajustés après lecture de la formulation officielle.
+
+Q6 exige une source supplémentaire des langues **originales** : CSV
+`tconst,language,source_url` à fournir via `--original-languages`. Sans cette
+entrée, la question reste explicitement `blocked`, et aucun résultat de langue
+n'est inventé depuis `title.akas`. Une entrée partielle ne permet pas de conclure
+à l'exhaustivité des carrières multilingues.
+
+Le jeu contrôlé des tests couvre les huit requêtes et le rang maximal de dix
+films par année/genre. Le lancement sur les petites données préparées reste un
+contrôle du code ; les chiffres globaux ne seront annoncés qu'après la présence
+des marqueurs finaux des exécutions complètes.
+
+Codex assiste Nicolas pour l'optimisation des ressources, le lanceur, les calculs
+paramétrables et leurs tests. Il ne modifie pas les branches streaming ou
+enrichissement de Benjamin et ne rédige pas le rapport.

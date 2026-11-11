@@ -78,7 +78,6 @@ def prepare(spark, raw_dir, output, as_of_year):
                 .option("enforceSchema", False)
                 .option("encoding", "UTF-8")
                 .csv(str(paths[table]))
-                .persist(StorageLevel.DISK_ONLY)
             )
             raw_count, entries = profile(table, raw)
             profiles.extend(entries)
@@ -90,11 +89,13 @@ def prepare(spark, raw_dir, output, as_of_year):
             )
             valid = valid.persist(StorageLevel.DISK_ONLY)
             valid_count = valid.count()
+            distinct.unpersist(blocking=True)
             typed, events = clean_values(table, valid, as_of_year)
             audit_dir = staging / "anomalies" / table
             events.write.mode("errorifexists").parquet(str(audit_dir / "values"))
             current = typed.persist(StorageLevel.DISK_ONLY)
             current.count()
+            valid.unpersist(blocking=True)
             for column, parent_table, parent_key, is_array in REFERENCES.get(table, []):
                 following, events, rejected = check_reference(
                     table,
@@ -112,7 +113,7 @@ def prepare(spark, raw_dir, output, as_of_year):
                 if repair:
                     following = following.persist(StorageLevel.DISK_ONLY)
                     following.count()
-                    current.unpersist()
+                    current.unpersist(blocking=True)
                     current = following
             clean_dir = staging / "clean" / table
             current.write.mode("errorifexists").parquet(str(clean_dir))
@@ -144,8 +145,16 @@ def prepare(spark, raw_dir, output, as_of_year):
             removed_duplicates = raw_count - distinct_count
             if raw_count != clean_count + quarantine_count + removed_duplicates:
                 raise AssertionError(f"Row reconciliation failed for {table}")
-            for cached in (raw, distinct, valid, current):
-                cached.unpersist()
+            current.unpersist(blocking=True)
+            json_write(
+                staging / "progress.tmp",
+                {
+                    "scope": manifest["scope"],
+                    "completed_tables": list(metrics),
+                    "tables": metrics,
+                },
+            )
+            os.replace(staging / "progress.tmp", staging / "progress.json")
             print(
                 f"{table}: {raw_count} raw -> {clean_count} clean, {quarantine_count} quarantined",
                 flush=True,

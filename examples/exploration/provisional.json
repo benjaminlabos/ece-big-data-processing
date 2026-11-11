@@ -1,0 +1,10 @@
+{
+  "student_validated": false,
+  "as_of_year": 2026,
+  "minimum_runtime": 40,
+  "minimum_votes": 1000,
+  "episode_minimum_votes": 10,
+  "runtime_zscore": 2.0,
+  "success_rating": 7.0,
+  "early_career_fraction": 0.25
+}
