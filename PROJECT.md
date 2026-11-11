@@ -956,7 +956,7 @@ Un sixième job `languages` collecte la référence P364 en parallèle des entr�
 Il ne bloque pas les phases de nettoyage si son service est indisponible.
 L'analyse attend sa référence avec manifeste. Les profils et références, petits,
 sont conservés en artefacts séparés pour ne pas dépendre de l'éviction des anciens
-caches lourds. Les limites des jobs d'entrée/référence sont 90 et 20 minutes ;
+caches lourds. Les limites des jobs d'entrée/référence sont 350 et 20 minutes ;
 chaque job de calcul a sa propre limite de 350 minutes. Ces limites ne prédisent
 pas la durée totale et ne garantissent pas une fin avant le matin.
 
