@@ -9,7 +9,7 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 function Read-Json([string]$Path) {
-    $parsed = Get-Content -Raw $Path | ConvertFrom-Json
+    $parsed = Get-Content -Raw -Encoding UTF8 $Path | ConvertFrom-Json
     # Explicit enumeration avoids PowerShell 5.1's array value/Count JSON wrapper.
     foreach ($item in $parsed) { Write-Output $item }
 }
