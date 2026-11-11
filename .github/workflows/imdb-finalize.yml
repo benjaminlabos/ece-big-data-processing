@@ -25,7 +25,139 @@ env:
   PYTHONUNBUFFERED: '1'
 
 jobs:
+  # Resume only absent immutable checkpoints from the exact upstream snapshot.
+  recover_relations:
+    name: Recover five-table checkpoint if the batch stopped early
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate pinned recovery request
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PYTHON'
+          import json, os, subprocess
+          from pathlib import Path
+          r = json.loads(Path('.github/imdb-finalize-request.json').read_text())
+          run = json.loads(subprocess.check_output(['gh','api',f"repos/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{int(r['source_run_id'])}"]))
+          assert run['head_sha'] == r['source_commit']
+          assert run['head_branch'] == 'feat/imdb-full-analysis'
+          assert run['status'] == 'completed' and run['conclusion'] in ('success','failure')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write(f"run_id={r['source_run_id']}\ncommit={r['source_commit']}\n")
+          PYTHON
+      - uses: actions/cache/restore@v4
+        id: complete
+        with:
+          path: results/cloud-prepared
+          key: imdb-${{ steps.source.outputs.run_id }}-prepared-v1
+          lookup-only: true
+      - uses: actions/cache/restore@v4
+        id: relations
+        if: steps.complete.outputs.cache-hit != 'true'
+        with:
+          path: results/cloud-checkpoint-relations
+          key: imdb-${{ steps.source.outputs.run_id }}-relations-v1
+          lookup-only: true
+      - uses: actions/checkout@v4
+        if: steps.complete.outputs.cache-hit != 'true' && steps.relations.outputs.cache-hit != 'true'
+        with:
+          ref: ${{ steps.source.outputs.commit }}
+      - uses: ./.github/actions/imdb-runtime
+        if: steps.complete.outputs.cache-hit != 'true' && steps.relations.outputs.cache-hit != 'true'
+      - uses: actions/cache/restore@v4
+        if: steps.complete.outputs.cache-hit != 'true' && steps.relations.outputs.cache-hit != 'true'
+        with:
+          path: |
+            data/raw/cloud-full
+            results/cloud-profile
+          key: imdb-${{ steps.source.outputs.run_id }}-sources-v1
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        if: steps.complete.outputs.cache-hit != 'true' && steps.relations.outputs.cache-hit != 'true'
+        with:
+          path: results/cloud-checkpoint-parents
+          key: imdb-${{ steps.source.outputs.run_id }}-parents-v1
+          fail-on-cache-miss: true
+      - name: Resume the five-table preparation from verified parents
+        if: steps.complete.outputs.cache-hit != 'true' && steps.relations.outputs.cache-hit != 'true'
+        timeout-minutes: 330
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.prepare --raw-dir data/raw/cloud-full --output results/cloud-checkpoint-relations --resume-from results/cloud-checkpoint-parents --raw-profile results/cloud-profile --master 'local[4]' --shuffle-partitions 64 --input-partitions 64 --as-of-year 2026 --stop-after title.episode 2>&1 | tee results/recovery-relations.log
+      - uses: actions/cache/save@v4
+        if: steps.complete.outputs.cache-hit != 'true' && steps.relations.outputs.cache-hit != 'true'
+        with:
+          path: results/cloud-checkpoint-relations
+          key: imdb-${{ steps.source.outputs.run_id }}-relations-v1
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 3
+
+  recover_principals:
+    name: Recover seven-table preparation if necessary
+    needs: recover_relations
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read exact upstream request
+        id: source
+        run: |
+          python - <<'PYTHON'
+          import json, os
+          from pathlib import Path
+          r = json.loads(Path('.github/imdb-finalize-request.json').read_text())
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write(f"run_id={int(r['source_run_id'])}\ncommit={r['source_commit']}\n")
+          PYTHON
+      - uses: actions/cache/restore@v4
+        id: complete
+        with:
+          path: results/cloud-prepared
+          key: imdb-${{ steps.source.outputs.run_id }}-prepared-v1
+          lookup-only: true
+      - uses: actions/checkout@v4
+        if: steps.complete.outputs.cache-hit != 'true'
+        with:
+          ref: ${{ steps.source.outputs.commit }}
+      - uses: ./.github/actions/imdb-runtime
+        if: steps.complete.outputs.cache-hit != 'true'
+      - uses: actions/cache/restore@v4
+        if: steps.complete.outputs.cache-hit != 'true'
+        with:
+          path: |
+            data/raw/cloud-full
+            results/cloud-profile
+          key: imdb-${{ steps.source.outputs.run_id }}-sources-v1
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        if: steps.complete.outputs.cache-hit != 'true'
+        with:
+          path: results/cloud-checkpoint-relations
+          key: imdb-${{ steps.source.outputs.run_id }}-relations-v1
+          fail-on-cache-miss: true
+      - name: Resume credits and ratings from the five verified tables
+        if: steps.complete.outputs.cache-hit != 'true'
+        timeout-minutes: 330
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.prepare --raw-dir data/raw/cloud-full --output results/cloud-prepared --resume-from results/cloud-checkpoint-relations --raw-profile results/cloud-profile --master 'local[4]' --shuffle-partitions 64 --input-partitions 64 --as-of-year 2026 2>&1 | tee results/recovery-prepare.log
+      - uses: actions/cache/save@v4
+        if: steps.complete.outputs.cache-hit != 'true'
+        with:
+          path: results/cloud-prepared
+          key: imdb-${{ steps.source.outputs.run_id }}-prepared-v1
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 3
+
   finalize:
+    needs: recover_principals
     name: Verify results and prepare the Benjamin handoff
     runs-on: ubuntu-24.04
     timeout-minutes: 350
@@ -55,8 +187,8 @@ jobs:
           source = api(f'actions/runs/{run_id}')
           assert source['head_sha'] == commit and source['head_branch'] == 'feat/imdb-full-analysis'
           assert source['status'] == 'completed' and source['conclusion'] in ('success', 'failure')
-          jobs = api(f'actions/runs/{run_id}/jobs?per_page=100')['jobs']
-          assert any(j['name'] == 'Prepare credits and ratings' and j['conclusion'] == 'success' for j in jobs), 'Prepared source phase did not finish; refusing partial data'
+          # The recovery jobs may have completed the pinned checkpoint after a diagnostics failure.
+          # finalize.py still requires SUCCESS.json, seven tables and matching analysis hashes.
           artifacts = api(f'actions/runs/{run_id}/artifacts?per_page=100')['artifacts']
           names = [a['name'] for a in artifacts if not a['expired'] and re.fullmatch(f'imdb-verified-{run_id}-[0-9]+', a['name'])]
           verified = max(names, key=lambda name: int(name.rsplit('-', 1)[1])) if names else ''
@@ -124,7 +256,16 @@ jobs:
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
               out.write(f"Verified provisional handoff: {s['films']} films, {s['input_pairs']} bounded film-person pairs, {s['thresholds_compared']} threshold combinations.\n\nSelection criteria and result interpretations still require student review.\n")
           PY
+      - name: Back up verified outputs in the run-scoped cache
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: artifacts
+          key: imdb-${{ steps.request.outputs.source_id }}-handoff-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Preserve all derived outputs and the handoff
+        id: delivery
+        continue-on-error: true
+        timeout-minutes: 10
         uses: actions/upload-artifact@v4
         with:
           name: imdb-completed-for-review-${{ github.run_id }}-${{ github.run_attempt }}
@@ -150,3 +291,10 @@ jobs:
           git push origin HEAD:refs/heads/feat/imdb-full-analysis
       - uses: ./.github/actions/imdb-diagnostics
         if: always()
+        continue-on-error: true
+        timeout-minutes: 3
+      - name: Report an unavailable artifact service after preserving branch outputs
+        if: steps.delivery.outcome == 'failure'
+        run: |
+          echo '::error::Artifact upload failed; check the run-scoped handoff cache and the branch CSV/JSON outputs.'
+          exit 1

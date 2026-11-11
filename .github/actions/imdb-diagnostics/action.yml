@@ -4,6 +4,8 @@ runs:
   using: composite
   steps:
     - uses: actions/upload-artifact@v4
+      continue-on-error: true
+      timeout-minutes: 3
       with:
         name: imdb-diagnostics-${{ github.job }}-${{ github.run_id }}-${{ github.run_attempt }}
         path: |

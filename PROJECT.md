@@ -1018,3 +1018,27 @@ Ce sont des actions programmées, pas un assistant qui reprend spontanément
 la conversation : une panne imprévue reste à diagnostiquer. La validation humaine
 des critères et des interprétations, les relectures croisées et l'essai intégré
 restent nécessaires avant de déclarer le projet terminé.
+
+### Reprise automatique après une panne de diagnostics GitHub
+
+Le 11 novembre, le calcul titres/personnes et son cache ont réussi, mais le
+service d'artefacts a renvoyé du HTML au lieu de JSON pendant l'envoi des logs.
+Cette erreur de diagnostics a bloqué les jobs dépendants. La tentative 2 du
+batch a été lancée ; elle conserve le même lot et le même commit source.
+
+La finition attend désormais le batch puis cherche ses checkpoints exacts.
+Si les sept tables sont présentes, elle passe directement à la vérification.
+Sinon, deux jobs séparés reprennent les relations depuis le checkpoint des
+parents, puis les crédits et notes depuis celui des cinq tables. Chaque calcul
+utilise le commit source original, le même manifeste et les contrôles de reprise
+existants. Aucun téléchargement d'un nouveau lot n'est effectué en récupération.
+Un cache requis absent bloque explicitement la reprise.
+
+Les diagnostics sont tentés avec une limite de trois minutes et ne bloquent plus
+les étapes utiles. Les résultats vérifiés de finition sont sauvegardés dans un
+cache propre au run, puis en artefact ; les petits CSV/JSON sont aussi publiés
+sur la branche prévue lorsque son commit n'a pas bougé. Une panne d'artefacts
+reste signalée après cette tentative de sauvegarde. Ces mécanismes ne garantissent
+pas l'absence de panne de calcul ou d'éviction de cache. La validation de syntaxe
+et du graphe figure dans validation/cloud-recovery-validation-2026-11-11.json ;
+le succès sur le lot réel reste à contrôler dans les runs GitHub.
