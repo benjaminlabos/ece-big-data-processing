@@ -56,8 +56,8 @@ jobs:
           set -euo pipefail
           python -m pip install -r requirements-preparation.txt
           python -m pytest -q tests | tee results/cloud-tests.log
-      - name: Fetch exact IMDb snapshot and reuse verified raw profile
-        timeout-minutes: 30
+      - name: Download IMDb snapshot and measure its raw profile
+        timeout-minutes: 60
         run: |
           set -euo pipefail
           python -m imdb_preparation.cloud inputs 2>&1 | tee results/cloud-inputs.log

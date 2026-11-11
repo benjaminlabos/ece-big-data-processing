@@ -70,3 +70,11 @@ Le workflow est désormais publié et l'exécution hébergée a démarré :
 https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43087424074
 La preuve de lancement précise le runner et le commit. Elle ne certifie pas
 encore la réussite du lot complet. Le PC n'est plus requis pour ce job.
+
+La première exécution cloud a réussi les 40 tests puis a refusé la réutilisation
+du profil brut : IMDb avait mis à jour name.basics. Le lancement calcule désormais
+un nouveau profil complet dès qu'une empreinte source diffère, sans reprendre
+les compteurs anciens. La provenance du profil est conservée et vérifiée contre
+le manifeste de préparation. Une régression contrôle le recalcul et le rejet
+des compteurs périmés. La première exécution est un échec, pas une validation du
+lot complet ; la relance doit encore terminer.

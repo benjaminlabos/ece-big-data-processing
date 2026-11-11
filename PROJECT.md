@@ -904,11 +904,12 @@ code seule ne lance pas de lot lourd. `workflow_dispatch` est aussi déclaré,
 mais ce déclenchement manuel exige que le workflow soit sur la branche par
 défaut ; aucune fusion de main n'est nécessaire pour le déclenchement par push.
 
-Les sept téléchargements sont vérifiés et doivent avoir les mêmes empreintes
-que le profil complet mesuré le 11 novembre. Une mise à jour quotidienne IMDb
-fait échouer cette exécution plutôt que de mélanger deux lots. Les 39 taux bruts
-sont réutilisés avec cette preuve de concordance ; le nettoyage repart du début
-sur le runner, sans prétendre réutiliser les cinq tables conservées sur Windows.
+Les sept téléchargements sont vérifiés. Si leurs empreintes sont identiques au
+lot mesuré le 11 novembre, les 39 taux bruts sont réutilisés avec cette preuve
+de concordance. Si IMDb a publié une mise à jour, les 39 colonnes du nouveau lot
+sont profilées de nouveau et les anciens compteurs ne sont pas repris. Cette
+provenance figure dans les résultats. Le nettoyage repart du début sur le runner,
+sans prétendre réutiliser les cinq tables conservées sur Windows.
 Les langues originales font l'objet d'une nouvelle collecte P364 avec manifeste.
 
 Le job est limité à 350 minutes (5 h 50), indépendamment des limites de chaque
