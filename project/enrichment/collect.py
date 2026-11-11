@@ -1,20 +1,22 @@
 """Collect revision-pinned Wikipedia HTML for IMDb IDs via Wikidata P345."""
 
 import argparse
-import csv
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from itertools import islice
 import json
 import os
 from pathlib import Path
+import tempfile
 import time
 
 import requests
 
+from inputs import CANDIDATE_COLUMNS, TITLE_COLUMNS, read_ids
+
 WIKIDATA_API = "https://query.wikidata.org/sparql"
 WIKIPEDIA = "https://en.wikipedia.org"
-RETRYABLE_STATUS = {429, 502, 503, 504}
+RETRYABLE_STATUS = {408, 429, 500, 502, 503, 504}
 RETRYABLE_API_ERROR = {"maxlag", "ratelimited", "readonly"}
 
 
@@ -128,37 +130,75 @@ def collect_page(session, imdb_id, options):
     return {**record, "section": plot["line"], "html": fragment["text"]}
 
 
+def candidate_ids(candidates, titles=None):
+    ids = {}
+    selected = {row[0] for row in read_ids(titles, TITLE_COLUMNS)} if titles else None
+    for film, person in read_ids(candidates, CANDIDATE_COLUMNS):
+        if selected is not None and film not in selected:
+            raise ValueError(f"{film}: credit for a film absent from {titles}")
+        ids.setdefault(film)
+        ids.setdefault(person)
+    if selected is not None:
+        for film in sorted(selected):
+            ids.setdefault(film)
+    if not ids:
+        raise ValueError("No IMDb IDs in the input CSV files.")
+    return list(ids)
+
+
+def write_record(cache, record):
+    path = cache / f"{record['imdb_id']}.json"
+    stream = tempfile.NamedTemporaryFile(
+        mode="w", encoding="utf-8", prefix=".collect-", suffix=".tmp", dir=cache, delete=False
+    )
+    temporary = Path(stream.name)
+    try:
+        with stream:
+            stream.write(json.dumps(record, ensure_ascii=False) + "\n")
+        temporary.replace(path)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--candidates", type=Path, default=Path("candidates.csv"))
+    parser.add_argument("--titles", type=Path, help="Selected films CSV with the tconst header")
     parser.add_argument("--cache", type=Path, default=Path("work/raw"))
+    parser.add_argument("--max-new", type=int, help="Stop after this many new cache records")
     parser.add_argument("--user-agent", default=os.getenv(
         "WIKIMEDIA_USER_AGENT",
         "ECE-BigData-IMDb-Pilot/0.1 (https://github.com/benjaminlabos/ece-big-data-processing)",
     ))
     args = parser.parse_args()
-    with args.candidates.open(encoding="utf-8-sig", newline="") as stream:
-        ids = {row[column] for row in csv.DictReader(stream) for column in ("tconst", "nconst")}
-    # The candidate contract uses IMDb IDs. Never turn arbitrary CSV values into filenames.
-    if any(
-        not imdb_id or imdb_id[:2] not in {"tt", "nm"}
-        or not imdb_id[2:].isascii() or not imdb_id[2:].isdigit()
-        for imdb_id in ids
-    ):
-        parser.error("Expected IMDb IDs in the tconst and nconst columns.")
+    if args.max_new is not None and args.max_new <= 0:
+        parser.error("--max-new must be positive.")
+    try:
+        ids = candidate_ids(args.candidates, args.titles)
+    except ValueError as error:
+        parser.error(str(error))
     args.cache.mkdir(parents=True, exist_ok=True)
-    pending = iter(sorted(imdb_id for imdb_id in ids if not (args.cache / f"{imdb_id}.json").exists()))
-    with requests.Session() as session:
-        session.headers.update({"User-Agent": args.user_agent})
-        while batch := list(islice(pending, 25)):
-            for imdb_id, options in lookup_pages(session, batch).items():
-                record = collect_page(session, imdb_id, options)
-                path = args.cache / f"{imdb_id}.json"
-                temporary = path.with_suffix(".tmp")
-                temporary.write_text(json.dumps(record, ensure_ascii=False) + "\n", encoding="utf-8")
-                temporary.replace(path)
-                print(f"{imdb_id}\t{record.get('missing_reason') or record['source_url']}", flush=True)
-    print(f"Cache ready for {len(ids)} IMDb IDs in {args.cache}", flush=True)
+    missing = [imdb_id for imdb_id in ids if not (args.cache / f"{imdb_id}.json").is_file()]
+    pending = iter(missing[:args.max_new])
+    written = 0
+    started = time.monotonic()
+    try:
+        with requests.Session() as session:
+            session.headers.update({"User-Agent": args.user_agent})
+            while batch := list(islice(pending, 25)):
+                for imdb_id, options in lookup_pages(session, batch).items():
+                    record = collect_page(session, imdb_id, options)
+                    write_record(args.cache, record)
+                    written += 1
+                    print(f"{imdb_id}\t{record.get('missing_reason') or record['source_url']}", flush=True)
+    finally:
+        print(json.dumps({
+            "requested": len(ids),
+            "cached_at_start": len(ids) - len(missing),
+            "written": written,
+            "remaining": len(missing) - written,
+            "elapsed_seconds": round(time.monotonic() - started, 3),
+        }), flush=True)
 
 
 if __name__ == "__main__":
