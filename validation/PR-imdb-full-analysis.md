@@ -16,7 +16,7 @@ préparation, exploration et export des crédits, avec ressources bornées et ga
 disque. Le collecteur de preuves refuse les sorties incomplètes et compare les
 39 profils aux résultats du profil brut séparé avant publication.
 
-Validation : 35 tests Python contrôlés réussis sous Spark 4.2.0 (66,48 s), contrôle
+Validation : 36 tests Python contrôlés réussis sous Spark 4.2.0 (69,75 s), contrôle
 CLI, réconciliation de 369 502 énoncés de langues et profil complet réel. Les
 premières sorties réelles sont publiées : Q1 (13 640 lignes), Q2 (138), Q3 (92),
 9 089 places de classement pour 6 257 films distincts. Les cinq autres analyses
@@ -43,3 +43,8 @@ par film, identifiants, unicité, union disjointe et empreintes est versionnée.
 Cinq films restent sous trois personnes disponibles. Les seuils et la politique
 de sélection restent provisoires. Un brouillon de coordination est fourni pour
 Benjamin, sans envoi automatique.
+
+Le retour de Benjamin sur les titres Wikipédia vides après conversion des `_`
+est intégré : normalisation identique au lecteur streaming, rejet des titres
+vides et test avec ses fonctions exactes. La correction figure aussi dans la
+PR #4 (6689549), dont les 28 tests passent.

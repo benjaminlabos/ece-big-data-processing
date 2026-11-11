@@ -843,3 +843,14 @@ Ces entrées ne contiennent aucun synopsis ni biographie. Leur politique de
 sélection reste provisoire ; le nettoyage de tout le corpus et les cinq autres
 questions d'exploration restent suivis par le lanceur complet. Le brouillon
 `validation/message-ben-2026-11-11.md` résume ce point de coordination.
+
+### Retour de relecture de Benjamin — titres Wikipédia
+
+Le cas `___` signalé sur la PR #4 est corrigé : la validation et la
+déduplication appliquent la même clé de titre que `title_key` du lecteur
+streaming (suites de `_` et d'espaces remplacées par un espace, puis trim).
+Les titres devenus vides sont rejetés avec `invalid_reference`.
+`validation/reference-title-review-2026-11-11.json` conserve le contrôle avec
+les fonctions exactes du lecteur de Benjamin. Les 28 tests de la branche
+intégration passent ; après propagation sur la branche d'analyse, les 36 tests
+passent en 69,75 s. Cette correction ne modifie aucun pipeline de Benjamin.

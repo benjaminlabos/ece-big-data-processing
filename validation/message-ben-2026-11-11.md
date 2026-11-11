@@ -33,9 +33,17 @@ révision, licences et raisons d’absence. Tu gardes aussi le streaming et sa
 démonstration complète. Pour la question libre, je te propose que tu la prennes ;
 on confirme ensemble le sujet et la répartition.
 
-De notre côté, les huit requêtes sont codées et 35 tests passent sous Spark 4.2.0.
+De notre côté, les huit requêtes sont codées et 36 tests passent sous Spark 4.2.0.
 Le nettoyage global tourne encore : cinq tables sont terminées ; les cinq autres
 questions s’exécuteront ensuite automatiquement. Aucun changement n’a été fait
-sur tes branches #2 et #3. Peux-tu relire nos PR #1, #4 et #5 avant intégration ?
+sur tes branches #2 et #3. Merci pour ta relecture de #1 et #4. Le cas `___` de #4 est corrigé
+(commit 6689549), avec 28 tests et une relecture du CSV par tes fonctions
+streaming exactes. Tu peux déposer ton approbation formelle de #1 et vérifier
+ce correctif de #4 ; la PR #5 reste à relire avant intégration.
 On réunira aussi les sections de PROJECT.md lors de la fusion. Les explications
 et choix méthodologiques de REPORT.md restent à rédiger par nous-mêmes.
+
+Pour les critères, ton idée de comparer les effectifs année–genre et la
+couverture en personnes est à appliquer au lot complet désormais disponible.
+Les chiffres du petit extrait précédent ne représentent plus notre avancement.
+La politique 40 minutes / 1 000 votes reste une valeur de travail à valider.
