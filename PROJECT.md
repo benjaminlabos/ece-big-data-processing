@@ -739,8 +739,23 @@ docker compose -f compose.analysis.yaml run --rm title-analysis python -m imdb_p
 
 Pendant le nettoyage, remplacer `--prepared` par le chemin `.incomplete-*`
 imprimé par ce lancement et contenant la table des titres terminée. Le service
-est limité à 3 GiB, avec un pilote de 1,5 GiB et deux threads. Les sorties portent
+est limité à 1 152 MiB, avec un pilote de 512 MiB. Les sorties portent
 le périmètre `full_title_tables_subset` et `PROVISIONAL_SUCCESS.json` : elles ne
 valident pas les autres tables ou les cinq autres questions. Les notes nulles
 sont exclues du classement. L'essai CLI contrôlé réconcilie les lignes des notes ;
 les 33 tests passent après extraction des calculs communs (61,62 s).
+
+
+Lors du lancement complet sur Windows, Q1, Q2 et Q3 ont abouti avant qu’une
+lecture du classement échoue avec `Cannot allocate memory` pendant l’exécution
+parallèle au nettoyage. Les sorties déjà achevées sont conservées. Le profil
+complet des notes a réconcilié 1 731 223 lignes : aucune mise en quarantaine,
+aucun doublon, aucune référence absente. La reprise ciblée `--resume-from` vérifie
+les comptes des trois Parquet, les notes persistées, le manifeste, les paramètres
+et l’empreinte des requêtes, puis calcule uniquement le classement dans un nouveau
+dossier. Le dossier échoué reste intact. La reprise utilise `--master 'local[1]'`
+et le pilote réduit ; elle fournit également les CSV complets de Q2 et Q3.
+
+La reprise a aussi été exécutée sur le jeu contrôlé avec un pilote de 512 MiB,
+un seul thread et les trois sorties déjà matérialisées ; elle a publié les
+quatre résultats et les deux CSV de comparaison, sans modifier le dossier source.

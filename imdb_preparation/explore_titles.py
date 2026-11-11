@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import os
+import shutil
 import uuid
 from pathlib import Path
 
@@ -182,31 +183,157 @@ def run(spark, prepared, snapshot, raw_profile, output, config):
             frame.unpersist()
 
 
+def resume_ranking(spark, prepared, snapshot, raw_profile, output, config, partial):
+    prepared, snapshot, raw_profile, output, partial = map(
+        lambda p: Path(p).resolve(), (prepared, snapshot, raw_profile, output, partial)
+    )
+    if output.exists():
+        raise FileExistsError(output)
+    for source in (prepared, snapshot, raw_profile, partial):
+        if output == source or source in output.parents or output in source.parents:
+            raise ValueError("Separate output required")
+    summary = json.loads((partial / "progress.json").read_text())
+    source = json.loads((prepared / "progress.json").read_text())
+    profile = json.loads((raw_profile / "summary.json").read_text())
+    if not (raw_profile / "PROFILE_SUCCESS.json").exists():
+        raise ValueError("Complete raw profile required")
+    manifest_hash = sha256(snapshot / "manifest.json")
+    if (
+        summary["source_manifest_sha256"] != manifest_hash
+        or profile["manifest_sha256"] != manifest_hash
+    ):
+        raise ValueError("Recovery source mismatch")
+    if (
+        summary["scope"] != source["scope"] + "_title_tables_subset"
+        or source["scope"] != profile["scope"]
+    ):
+        raise ValueError("Recovery scopes differ")
+    if summary["config"] != config or config.get("student_validated") is not False:
+        raise ValueError("Recovery parameters differ or are not provisional")
+    if summary["exploration_module_sha256"] != sha256(
+        Path(__file__).with_name("explore.py")
+    ):
+        raise ValueError("Query implementation changed; do not combine outputs")
+    if summary["title_metrics"] != source["tables"]["title.basics"]:
+        raise ValueError("Title metrics changed")
+    if (
+        summary["title_metrics"]["raw_rows"] != profile["rows"]["title.basics"]
+        or summary["ratings"]["raw_rows"] != profile["rows"]["title.ratings"]
+    ):
+        raise ValueError("Recovery source row counts differ")
+    for key in ("q1", "q2", "q3"):
+        if (
+            summary["questions"].get(key, {}).get("status") != "provisional"
+            or not (partial / key / "_SUCCESS").exists()
+        ):
+            raise ValueError("Missing completed query checkpoint")
+        if (
+            spark.read.parquet(str(partial / key)).count()
+            != summary["questions"][key]["rows"]
+        ):
+            raise ValueError("Query checkpoint row count differs")
+    if not (partial / "clean_ratings" / "_SUCCESS").exists():
+        raise ValueError("Missing rating checkpoint")
+    ratings = spark.read.parquet(str(partial / "clean_ratings"))
+    if ratings.count() != summary["ratings"]["clean_rows"]:
+        raise ValueError("Rating checkpoint row count differs")
+    titles = spark.read.parquet(str(prepared / "clean" / "title.basics"))
+    if titles.count() != summary["title_metrics"]["clean_rows"]:
+        raise ValueError("Title checkpoint row count differs")
+    stage = output.with_name(output.name + ".incomplete-" + uuid.uuid4().hex[:8])
+    stage.mkdir(parents=True)
+    for name in (
+        "q1",
+        "q2",
+        "q3",
+        "clean_ratings",
+        "ratings_key_quarantine",
+        "ratings_anomalies",
+        "ratings_reference_quarantine",
+    ):
+        shutil.copytree(partial / name, stage / name)
+    (stage / "previews").mkdir()
+    for key in ("q1", "q2", "q3"):
+        shutil.copy2(
+            partial / "previews" / (key + ".json"), stage / "previews" / (key + ".json")
+        )
+    _, _, queries = movie_analyses(titles, ratings, config)
+    queries["top10_per_genre_year"].write.parquet(str(stage / "top10_per_genre_year"))
+    ranking = spark.read.parquet(str(stage / "top10_per_genre_year"))
+    selected = ranking.select("tconst").distinct()
+    single_csv(selected, stage / "selected_titles.csv")
+    single_csv(
+        ranking.select(
+            "startYear",
+            "genre",
+            "genre_year_rank",
+            "tconst",
+            "primaryTitle",
+            "runtimeMinutes",
+            "averageRating",
+            "numVotes",
+        ),
+        stage / "top10_per_genre_year.csv",
+    )
+    for key in ("q2", "q3"):
+        single_csv(spark.read.parquet(str(stage / key)), stage / (key + ".csv"))
+    summary["questions"]["top10_per_genre_year"] = {
+        "status": "provisional",
+        "rows": ranking.count(),
+    }
+    summary["distinct_selected_films"] = selected.count()
+    summary["recovery"] = {
+        "from": partial.name,
+        "reused_queries": ["q1", "q2", "q3"],
+        "module_sha256": sha256(Path(__file__)),
+    }
+    json_write(
+        stage / "previews" / "top10_per_genre_year.json",
+        [
+            r.asDict(recursive=True)
+            for r in ranking.orderBy("startYear", "genre", "genre_year_rank")
+            .limit(20)
+            .collect()
+        ],
+    )
+    json_write(stage / "summary.json", summary)
+    json_write(stage / "progress.json", summary)
+    json_write(
+        stage / "PROVISIONAL_SUCCESS.json",
+        {"scope": summary["scope"], "student_validated": False},
+    )
+    os.rename(stage, output)
+    return summary
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     for name in ("prepared", "snapshot", "raw-profile", "output", "config"):
         p.add_argument("--" + name, required=True, type=Path)
+    p.add_argument("--resume-from", type=Path)
+    p.add_argument("--master", default="local[2]")
     args = p.parse_args()
     spark = (
-        SparkSession.builder.master("local[2]")
+        SparkSession.builder.master(args.master)
         .appName("IMDb title analysis subset")
         .config("spark.sql.shuffle.partitions", 16)
         .getOrCreate()
     )
     spark.sparkContext.setLogLevel("WARN")
     try:
-        print(
-            json.dumps(
-                run(
-                    spark,
-                    args.prepared,
-                    args.snapshot,
-                    args.raw_profile,
-                    args.output,
-                    json.loads(args.config.read_text()),
-                ),
-                indent=2,
-            )
+        parameters = (
+            spark,
+            args.prepared,
+            args.snapshot,
+            args.raw_profile,
+            args.output,
+            json.loads(args.config.read_text()),
         )
+        result = (
+            resume_ranking(*parameters, args.resume_from)
+            if args.resume_from
+            else run(*parameters)
+        )
+        print(json.dumps(result, indent=2))
     finally:
         spark.stop()

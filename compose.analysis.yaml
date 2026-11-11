@@ -3,6 +3,6 @@ services:
     extends:
       file: compose.preparation.yaml
       service: preparation
-    mem_limit: 3g
+    mem_limit: 1152m
     environment:
-      PYSPARK_SUBMIT_ARGS: --driver-memory 1536m pyspark-shell
+      PYSPARK_SUBMIT_ARGS: --driver-memory 512m pyspark-shell
