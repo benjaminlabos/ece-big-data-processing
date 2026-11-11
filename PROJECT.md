@@ -632,6 +632,29 @@ entrée, la question reste explicitement `blocked`, et aucun résultat de langue
 n'est inventé depuis `title.akas`. Une entrée partielle ne permet pas de conclure
 à l'exhaustivité des carrières multilingues.
 
+Le collecteur dédié `imdb_preparation.languages` interroge la propriété Wikidata
+[P364](https://www.wikidata.org/wiki/Property:P364), consacrée à la langue originale
+du film ou de la série, avec le lien IMDb P345. Il ne collecte aucun synopsis ni
+biographie et ne remplace pas la partie de Benjamin. Une seconde requête fournit
+le vocabulaire ISO des langues (P218/P219/P220). La collecte conserve les octets
+CSV et des manifestes SHA256 ; toutes les normalisations et jointures sont Spark.
+
+```powershell
+docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_preparation.languages --output data/reference/original-languages-2026-11-11.csv
+```
+
+Le premier instantané recueilli contient 369 502 déclarations, avec une URI source
+par ligne, sous CC0. Sa couverture n'est pas l'ensemble d'IMDb. Spark mesure la
+part des films admissibles ayant une langue disponible. Il rejette les marqueurs
+inconnus et choisit un code ISO stable par langue, afin que `en`/`eng` ne créent
+pas deux langues. Les codes `zxx`, `und`, `mul` et `mis` n'identifient pas une langue
+distincte et sont conservés dans les sorties non résolues plutôt que comptés.
+Les références non résolues et les valeurs invalides restent auditables.
+
+Si le CSV est présent au démarrage de la phase d'exploration du lanceur complet,
+il est utilisé automatiquement ; sinon Q6 reste bloquée explicitement. La source
+et le vocabulaire doivent correspondre à leurs empreintes dans le manifeste.
+
 Le jeu contrôlé des tests couvre les huit requêtes et le rang maximal de dix
 films par année/genre. Le lancement sur les petites données préparées reste un
 contrôle du code ; les chiffres globaux ne seront annoncés qu'après la présence
@@ -640,3 +663,20 @@ des marqueurs finaux des exécutions complètes.
 Codex assiste Nicolas pour l'optimisation des ressources, le lanceur, les calculs
 paramétrables et leurs tests. Il ne modifie pas les branches streaming ou
 enrichissement de Benjamin et ne rédige pas le rapport.
+
+Le profil brut peut être calculé séparément, sur les mêmes sept fichiers et
+empreintes, pendant le nettoyage. Il agrège les valeurs manquantes des 39 colonnes
+sans tri ni cache et publie `PROFILE_SUCCESS.json`, jamais `SUCCESS.json` :
+
+```powershell
+docker compose -f compose.profile.yaml run --rm --name gr04-imdb-full-profile raw-profile python -m imdb_preparation.profile_full --raw-dir data/raw/imdb-full-2026-11-11 --output results/imdb-full-raw-profile-2026-11-11 --workers 4
+```
+
+Ce service dispose de 1 GiB de pilote et de 2 GiB de mémoire totale. Son succès
+valide le profil des entrées ; il ne valide ni le nettoyage ni les jointures.
+Les 33 tests contrôlés passent sous Spark 4.2.0 (63,01 s), y compris la
+réconciliation exacte des 39 profils et la normalisation ISO. Un essai séparé
+avec le premier instantané Wikidata réconcilie les 369 502 lignes : 364 117
+énoncés valides mappés, 20 lignes invalides, 5 272 non résolues et 93 doublons
+créés par les alias ISO fusionnés. Ce contrôle ne mesure pas encore la couverture
+des films complets admissibles.

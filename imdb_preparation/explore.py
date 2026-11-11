@@ -13,13 +13,46 @@ from .exports import single_csv
 from .prepare import json_write
 
 
+def apply_language_vocabulary(statements, vocabulary):
+    codes = vocabulary.select(
+        F.col("language").alias("_entity"), F.lower(F.trim("iso_code")).alias("_iso")
+    )
+    codes = codes.filter(
+        F.col("_iso").rlike(r"^[a-z]{2,3}$")
+        & ~F.col("_iso").isin("zxx", "und", "mul", "mis")
+    )
+    codes = (
+        codes.withColumn(
+            "_rank",
+            F.row_number().over(
+                Window.partitionBy("_entity").orderBy(F.length("_iso"), F.asc("_iso"))
+            ),
+        )
+        .filter("_rank=1")
+        .drop("_rank")
+    )
+    mapped = statements.withColumnRenamed("language", "_entity")
+    unknown = mapped.join(
+        codes.select("_entity"), "_entity", "left_anti"
+    ).withColumnRenamed("_entity", "language")
+    mapped = (
+        mapped.join(codes, "_entity")
+        .select("tconst", F.col("_iso").alias("language"), "source_url")
+        .distinct()
+    )
+    return mapped, unknown
+
+
 def analyses(tables, config, languages=None):
     titles, ratings, people = (
         tables[t] for t in ("title.basics", "title.ratings", "name.basics")
     )
     films = titles.filter(
         (F.col("titleType") == "movie")
-        & (F.col("startYear") <= config.get("as_of_year", 2026))
+        & (
+            F.col("startYear").isNull()
+            | (F.col("startYear") <= config.get("as_of_year", 2026))
+        )
         & (F.col("runtimeMinutes") >= config["minimum_runtime"])
     )
     rated = films.join(ratings, "tconst").filter(
@@ -75,6 +108,7 @@ def analyses(tables, config, languages=None):
     )
     directors = (
         tables["title.crew"]
+        .join(rated.select("tconst"), "tconst", "left_semi")
         .select("tconst", F.explode("directors").alias("nconst"))
         .distinct()
         .join(rated.select("tconst", "averageRating"), "tconst")
@@ -154,6 +188,8 @@ def analyses(tables, config, languages=None):
     actors = (
         tables["title.principals"]
         .filter(F.col("category").isin("actor", "actress"))
+        .filter(F.col("nconst").isNotNull())
+        .join(rated.select("tconst"), "tconst", "left_semi")
         .select("tconst", "nconst")
         .distinct()
         .join(
@@ -186,6 +222,8 @@ def analyses(tables, config, languages=None):
     career_actors = (
         tables["title.principals"]
         .filter(F.col("category").isin("actor", "actress"))
+        .filter(F.col("nconst").isNotNull())
+        .join(films.select("tconst"), "tconst", "left_semi")
         .select("tconst", "nconst")
         .distinct()
         .join(films.select("tconst", "startYear"), "tconst")
@@ -212,12 +250,15 @@ def analyses(tables, config, languages=None):
         .filter(F.col("numVotes") >= config["minimum_votes"])
         .filter(F.col("averageRating") == F.col("peak_rating"))
         .groupBy("nconst")
-        .agg(F.min("startYear").alias("first_peak_year"))
+        .agg(
+            F.min("startYear").alias("first_peak_year"),
+            F.max("startYear").alias("last_peak_year"),
+        )
     )
     q7 = (
         career.join(peaks, "nconst")
         .filter(
-            (F.col("first_peak_year") - F.col("first_year"))
+            (F.col("last_peak_year") - F.col("first_year"))
             <= config["early_career_fraction"]
             * (F.col("last_year") - F.col("first_year"))
         )
@@ -247,6 +288,7 @@ def analyses(tables, config, languages=None):
     )
     roles = (
         principals.unionByName(crew_roles)
+        .join(rated.select("tconst"), "tconst", "left_semi")
         .distinct()
         .join(rated.select("tconst", "averageRating", "numVotes"), "tconst")
     )
@@ -260,7 +302,8 @@ def analyses(tables, config, languages=None):
         .withColumn("multiple_roles", F.size("roles") >= 2)
     )
     multi_people = (
-        roles.groupBy("nconst")
+        principals.unionByName(crew_roles)
+        .groupBy("nconst")
         .agg(F.countDistinct("category").alias("career_roles"))
         .filter("career_roles >= 2")
     )
@@ -350,11 +393,63 @@ def run(spark, prepared, output, config, languages=None):
         if languages
         else None
     )
+    language_rejections = None
+    unresolved_languages = None
+    language_input_rows = None
+    language_valid_unique = None
+    language_initial_duplicates = 0
+    language_metadata = None
+    if languages:
+        language_input_rows = language_table.count()
+        metadata_path = Path(languages).with_suffix(".manifest.json")
+        language_metadata = (
+            json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
+        )
+        if language_metadata.get("sha256") and language_metadata["sha256"] != sha256(
+            languages
+        ):
+            raise ValueError("Original-language snapshot checksum mismatch")
+        valid = (
+            F.col("tconst").rlike(r"^tt[0-9]{7,}$")
+            & F.col("language").isNotNull()
+            & (F.length(F.trim("language")) > 0)
+            & F.col("source_url").rlike(r"^https?://")
+        )
+        if (
+            language_metadata.get("property")
+            == "https://www.wikidata.org/wiki/Property:P364"
+        ):
+            valid = valid & F.col("language").rlike(
+                r"^https?://www\.wikidata\.org/entity/Q[0-9]+$"
+            )
+        language_rejections = language_table.filter(~F.coalesce(valid, F.lit(False)))
+        language_table = language_table.filter(F.coalesce(valid, F.lit(False)))
+        valid_rows = language_table.count()
+        language_table = language_table.distinct()
+        language_valid_unique = language_table.count()
+        language_initial_duplicates = valid_rows - language_valid_unique
+        if language_metadata.get("vocabulary_path"):
+            vocabulary_path = Path(languages).with_name(
+                language_metadata["vocabulary_path"]
+            )
+            if sha256(vocabulary_path) != language_metadata["vocabulary_sha256"]:
+                raise ValueError("Language vocabulary checksum mismatch")
+            vocabulary = (
+                spark.read.schema("language string,iso_code string")
+                .option("header", True)
+                .option("enforceSchema", False)
+                .option("mode", "FAILFAST")
+                .csv(str(vocabulary_path))
+            )
+            language_table, unresolved_languages = apply_language_vocabulary(
+                language_table, vocabulary
+            )
     stage = output.with_name(output.name + ".incomplete-" + uuid.uuid4().hex[:8])
     stage.mkdir(parents=True)
     summary = {
         "prepared_summary_sha256": sha256(prepared / "summary.json"),
         "original_languages_sha256": sha256(languages) if languages else None,
+        "exploration_module_sha256": sha256(Path(__file__)),
         "scope": source["scope"],
         "config": config,
         "spark_version": spark.version,
@@ -364,10 +459,63 @@ def run(spark, prepared, output, config, languages=None):
             "q1_population": "rated feature candidates meeting minimum votes",
             "q4_other_movies": "all eligible directed films with rating below 8",
             "q5": "at least 3 seasons with >=10 known episodes; season 0 excluded; ties accepted existentially; ratings only for scored episodes",
-            "q7": "observed feature-candidate film career including unrated titles; earliest sufficiently voted maximum rating within early fraction",
-            "q8": "all principal categories plus directors and writers; descriptive mean, not causal",
+            "q7": "observed feature-candidate film career including unrated titles; all sufficiently voted maximum-rating occurrences within early fraction; plateaus excluded",
+            "q8": "career roles across full clean credits, excluding self/archive and unifying actor/actress; performance in eligible rated movies; descriptive not causal",
         },
     }
+    if language_table is not None:
+        if unresolved_languages is not None:
+            unresolved_languages.write.mode("errorifexists").parquet(
+                str(stage / "unresolved_language_entities")
+            )
+        language_rejections.write.mode("errorifexists").parquet(
+            str(stage / "rejected_language_statements")
+        )
+        eligible = (
+            tables["title.basics"]
+            .filter(
+                (F.col("titleType") == "movie")
+                & (F.col("runtimeMinutes") >= config["minimum_runtime"])
+                & (
+                    F.col("startYear").isNull()
+                    | (F.col("startYear") <= config.get("as_of_year", 2026))
+                )
+            )
+            .join(tables["title.ratings"], "tconst")
+            .filter(F.col("numVotes") >= config["minimum_votes"])
+            .select("tconst")
+            .distinct()
+        )
+        summary["original_languages"] = {
+            "input_rows": language_input_rows,
+            "source_metadata": language_metadata,
+            "valid_statements": language_table.count(),
+            "rejected_statements": language_rejections.count(),
+            "statements_without_identified_iso_language": unresolved_languages.count()
+            if unresolved_languages is not None
+            else None,
+            "eligible_films": eligible.count(),
+            "eligible_films_with_language": eligible.join(
+                language_table.select("tconst").distinct(), "tconst", "left_semi"
+            ).count(),
+            "coverage": "observed source statements; not an exhaustive IMDb-language inventory",
+        }
+        counts = summary["original_languages"]
+        counts["duplicate_source_records_collapsed"] = language_initial_duplicates
+        counts["duplicate_iso_alias_records_collapsed"] = (
+            language_valid_unique
+            - (counts["statements_without_identified_iso_language"] or 0)
+            - counts["valid_statements"]
+        )
+        if (
+            counts["input_rows"]
+            != counts["valid_statements"]
+            + counts["rejected_statements"]
+            + (counts["statements_without_identified_iso_language"] or 0)
+            + counts["duplicate_source_records_collapsed"]
+            + counts["duplicate_iso_alias_records_collapsed"]
+        ):
+            raise AssertionError("Language source row reconciliation failed")
     for key, frame in analyses(tables, config, language_table).items():
         if frame is None:
             summary["questions"][key] = {

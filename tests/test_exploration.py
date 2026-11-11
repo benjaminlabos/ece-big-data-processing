@@ -42,6 +42,14 @@ def test_all_explorations_and_top10_on_controlled_data(spark):
                 )
             )
     titles.append(("tt0099999", "tvSeries", "Series", 2000, None, None))
+    titles.append(("tt0040000", "movie", "Unrated direction", 2000, 100, ["Drama"]))
+    principals.append(("tt0010000", 2, "nm0000004", "actor"))
+    crew.append(("tt0040000", ["nm0000004"], None))
+    for i in range(15):
+        key = f"tt{50000 + i:07d}"
+        titles.append((key, "movie", "Constant rating", 1980 + i * 3, 100, ["Drama"]))
+        ratings.append((key, 6.0, 2000))
+        principals.append((key, 1, "nm0000005", "actor"))
     for i in range(12):
         key = f"tt{30000 + i:07d}"
         titles.append((key, "movie", "Ranking tie", 2000, 100, ["Drama"]))
@@ -55,7 +63,12 @@ def test_all_explorations_and_top10_on_controlled_data(spark):
             ratings, "tconst string,averageRating double,numVotes long"
         ),
         "name.basics": spark.createDataFrame(
-            [("nm0000001", "Actor"), ("nm0000002", "Director")],
+            [
+                ("nm0000001", "Actor"),
+                ("nm0000002", "Director"),
+                ("nm0000004", "Actor director"),
+                ("nm0000005", "Constant career"),
+            ],
             "nconst string,primaryName string",
         ),
         "title.principals": spark.createDataFrame(
@@ -92,8 +105,11 @@ def test_all_explorations_and_top10_on_controlled_data(spark):
     assert {r.nconst for r in outputs["q4"].collect()} == {"nm0000002"}
     assert outputs["q5"].first().parentTconst == "tt0099999"
     assert outputs["q6"].first().at_least_three_languages
-    assert outputs["q7"].first().nconst == "nm0000001"
+    assert {r.nconst for r in outputs["q7"].collect()} == {"nm0000001"}
     assert outputs["q8"].filter("multiple_roles").count() == 1
+    assert (
+        outputs["q8"].filter("nconst='nm0000004' AND NOT multiple_roles").count() == 1
+    )
     assert (
         outputs["top10_per_genre_year"]
         .groupBy("startYear", "genre")
