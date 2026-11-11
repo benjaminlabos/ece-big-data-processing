@@ -1,0 +1,96 @@
+{
+  "scope": "synthetic_kafka_checkpoint_and_duplicate_check",
+  "spark_version": "4.2.0",
+  "topic": "project-wiki-checkpoint-781967d672bd",
+  "restart": {
+    "elapsed_seconds": 65.396,
+    "query_id": "ffeacb70-76c9-4fea-9f2e-523754da85a5",
+    "first_run_id": "d4d383d9-974e-4be6-a1ef-c3e634d01317",
+    "resumed_run_id": "3a88a274-8522-4b23-b499-25b86bfcf0c7",
+    "previous_batch_id": 0,
+    "previous_end_offset": "{\"project-wiki-checkpoint-781967d672bd\": {\"0\": 1}}",
+    "last_batch_id": 1,
+    "last_end_offset": "{\"project-wiki-checkpoint-781967d672bd\": {\"0\": 3}}"
+  },
+  "kafka_sequence": [
+    [
+      0,
+      0,
+      "synthetic-a"
+    ],
+    [
+      0,
+      1,
+      "synthetic-a"
+    ],
+    [
+      0,
+      2,
+      "synthetic-b"
+    ]
+  ],
+  "kafka_records": 3,
+  "distinct_kafka_offsets": 3,
+  "records_with_event_id": 3,
+  "distinct_event_ids": 2,
+  "eligible_wikipedia_edits": 3,
+  "eligible_distinct_events": 2,
+  "matched_events": 2,
+  "matched_pages": 1,
+  "duplicate_kafka_offsets": 0,
+  "duplicate_event_records": 1,
+  "examples": [
+    {
+      "wiki": "frwiki",
+      "title": "Film d'été, le retour",
+      "server_name": "fr.wikipedia.org",
+      "event_id": "synthetic-a",
+      "revision_id": 123,
+      "event_time": "2026-11-11T18:43:40.000Z",
+      "processing_time": "2026-11-11T18:44:06.593Z",
+      "partition": 0,
+      "offset": 0,
+      "kafka_time": "2026-11-11T18:43:42.461Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt0000001",
+          "wikidata_id": "Q1"
+        },
+        {
+          "imdb_id": "tt0000002",
+          "wikidata_id": "Q1"
+        }
+      ],
+      "event_to_kafka_ms": 2461,
+      "kafka_to_spark_ms": 24132,
+      "event_to_spark_ms": 26593
+    },
+    {
+      "wiki": "frwiki",
+      "title": "Film d'été, le retour",
+      "server_name": "fr.wikipedia.org",
+      "event_id": "synthetic-b",
+      "revision_id": 123,
+      "event_time": "2026-11-11T18:44:47.000Z",
+      "processing_time": "2026-11-11T18:44:53.184Z",
+      "partition": 0,
+      "offset": 2,
+      "kafka_time": "2026-11-11T18:44:49.355Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt0000001",
+          "wikidata_id": "Q1"
+        },
+        {
+          "imdb_id": "tt0000002",
+          "wikidata_id": "Q1"
+        }
+      ],
+      "event_to_kafka_ms": 2355,
+      "kafka_to_spark_ms": 3829,
+      "event_to_spark_ms": 6184
+    }
+  ]
+}

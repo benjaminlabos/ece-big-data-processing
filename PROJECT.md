@@ -27,6 +27,8 @@ Le script crée un topic et un checkpoint pour l’essai, démarre Spark puis la
 
 Le 10 novembre 2026, Kafka 4.1.1 et Spark 4.0.1 ont traité la même modification Wikipédia à la partition 0, offset 0, sous Ubuntu WSL. La révision a eu lieu à 16:45:57 UTC et le micro-lot Spark l’a traitée à 16:46:09.762 UTC. Cette page d’organisation de Wikipédia valide le transport. Le rapprochement IMDb vise les modifications d’articles dans l’espace principal. [Révision Wikipédia](https://en.wikipedia.org/w/index.php?oldid=1384885248), [sortie du test](project/streaming/evidence/smoke.json)
 
+Le 11 novembre, Docker Compose sous Windows a confirmé le trajet avec Kafka 4.1.1 et Spark 4.2.0 sur une modification de l'article `Austria national football team`. L'audit du producteur et la ligne Spark ont le même identifiant à la partition 0, offset 0. L'API Wikipédia confirme le numéro et l'heure UTC de la révision. [Révision Wikipédia](https://en.wikipedia.org/w/index.php?oldid=1385068548), [sortie Docker](project/streaming/evidence/docker-smoke-2026-11-11.json)
+
 ### Observer les correspondances pendant 15 minutes
 
 Le fichier `jobs/pilot_reference.csv` contient 32 liens anglais et français pour vérifier le format. Préparer une référence plus large avant la capture. La commande de génération fait une requête au service Wikidata par langue et affiche l’empreinte SHA-256 du CSV obtenu.
@@ -53,7 +55,32 @@ docker compose exec -T pyspark-notebook python /home/jovyan/jobs/project_stream.
 
 Le consommateur prend un CSV UTF-8 avec en-tête, une ligne par lien article–identifiant. `wiki` identifie l’édition Wikipédia (`enwiki`, `frwiki`), `title` est son titre canonique, `imdb_id` est un `tconst` ou `nconst`, et `wikidata_id` contient l’identifiant `Q…` lorsqu’il est disponible. Les espaces et tirets bas sont traités de la même manière. La casse, les accents et les qualificatifs comme `(film)` sont conservés.
 
-Pour passer aux données du projet, Nicolas peut fournir les colonnes `tconst` et `nconst` de ses tables nettoyées. Une jointure Spark entre ces identifiants distincts et le CSV Wikidata donne le catalogue final au même format, à passer avec `--reference`. La liaison Wikipédia repose sur les sitelinks et la [propriété Wikidata P345](https://www.wikidata.org/wiki/Property:P345).
+Le script `jobs/prepare_reference.py` croise le catalogue Wikimedia avec les clés des Parquet `clean/title.basics` et `clean/name.basics`. Il utilise le filtre Spark de la PR #4, dont le correctif traite `___` comme un titre vide et déduplique après normalisation. Il conserve les titres et les personnes de l'ensemble des deux tables. La liaison Wikipédia repose sur les sitelinks et la [propriété Wikidata P345](https://www.wikidata.org/wiki/Property:P345).
+
+Depuis la racine du dépôt, choisir le dossier contenant les Parquet de préparation et le code `imdb_preparation`. Le chemin `$imdbCode` peut pointer sur un worktree de la branche `feat/imdb-full-analysis` avant intégration des PR. Le catalogue large `reference_en.csv` doit avoir été généré dans le dossier `data` du TP.
+
+```powershell
+$lab = (Resolve-Path '05.structured-streaming/lab_docker_wikistreams').Path
+$imdbCode = (Get-Location).Path
+$imdbInput = (Resolve-Path 'results/imdb-full-2026-11-11').Path
+$pythonPath = '/imdb-code:/usr/local/spark/python:/usr/local/spark/python/lib/py4j-0.10.9.9-src.zip'
+docker run --rm --memory 2304m --cpus 2 --mount "type=bind,source=$imdbCode,target=/imdb-code,readonly" --mount "type=bind,source=$imdbInput,target=/imdb,readonly" --mount "type=bind,source=$lab,target=/lab" --env "PYTHONPATH=$pythonPath" --entrypoint python tp05-wikistreams-notebook:local /lab/jobs/prepare_reference.py --imdb-prepared-dir /imdb --reference /lab/data/reference_en.csv --output /lab/data/project-runs/integrated-reference
+```
+
+Si les deux Parquet nettoyés sont encore sur la machine de Nicolas, les deux fichiers complets `title.basics.tsv.gz` et `name.basics.tsv.gz` permettent de reproduire le contrôle des clés. Faire pointer `$imdbInput` sur ce dossier et passer `--imdb-raw-dir /imdb`. Ce mode applique les mêmes règles de normalisation, de déduplication et de rejet des clés conflictuelles aux identifiants candidats du catalogue. La sortie contient `streaming_reference.csv`, les motifs de rejet en Parquet et un résumé avec les empreintes des entrées et de la sortie.
+
+Depuis le dossier du TP, lancer la capture avec le catalogue filtré et demander un redémarrage de la requête Spark après cinq minutes. Le producteur continue d'écrire sur le même topic pendant la reprise.
+
+```powershell
+docker compose exec -T pyspark-notebook python /home/jovyan/jobs/project_stream.py --languages en --duration 900 --restart-after 300 --reference /home/jovyan/data/project-runs/integrated-reference/streaming_reference.csv
+docker compose exec -T pyspark-notebook python /home/jovyan/jobs/checkpoint_check.py
+```
+
+Le premier test vérifie la reprise de l'identifiant de requête Spark, le changement d'identifiant d'exécution et la progression des offsets. Il compare aussi les identifiants de l'audit du producteur aux identifiants lus en ordre Kafka. Le deuxième test publie trois messages synthétiques, dont un événement répété, et vérifie deux événements rapprochés, trois offsets distincts et deux identifiants IMDb par correspondance. Ses sorties sont écrites dans un dossier `project-wiki-checkpoint-*`.
+
+Dans le test synthétique du 11 novembre exécuté sous Docker, le même checkpoint a repris après l'offset exclusif 1 et a atteint l'offset exclusif 3. Les trois enregistrements occupent les offsets 0, 1 et 2. Deux identifiants Wikimedia distincts correspondent au même article. Le titre avec espaces et sa variante avec tirets bas donnent les mêmes deux identifiants IMDb. [Sortie du contrôle de reprise](project/streaming/evidence/docker-checkpoint-2026-11-11.json)
+
+Le résumé de la capture mesure les délais modification–Kafka, Kafka–Spark et modification–Spark en millisecondes. Les statistiques portent sur la première occurrence Kafka de chaque événement rapproché. `p50_p95` contient la médiane et le 95e percentile calculés dans Spark. `negative_count` dénombre les écarts négatifs entre les horloges. Les exemples associent ces mesures au numéro de révision, à la partition et à l'offset.
 
 ### Horaires et test des événements tardifs
 
@@ -69,4 +96,4 @@ Le test sous Spark 4.0.1 a confirmé les trois fenêtres attendues et un rejet p
 
 ### Déclaration d’usage de l’IA
 
-OpenAI Codex a aidé à inspecter et réutiliser le TP Wikimedia, préparer le catalogue pilote, écrire et vérifier le consommateur Spark, instrumenter la capture et les compteurs, préparer l’exercice sur le watermark et documenter les commandes de reproduction.
+OpenAI Codex a aidé à inspecter et réutiliser le TP Wikimedia, préparer le catalogue pilote et le raccorder aux identifiants IMDb, écrire et vérifier le consommateur Spark, instrumenter la capture, les compteurs et les latences, vérifier la reprise du checkpoint et les doublons, préparer l’exercice sur le watermark et documenter les commandes de reproduction.

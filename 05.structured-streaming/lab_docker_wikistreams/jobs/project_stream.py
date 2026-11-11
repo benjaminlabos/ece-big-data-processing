@@ -12,7 +12,7 @@ import sys
 import time
 import uuid
 
-from pyspark.sql import SparkSession, functions as F
+from pyspark.sql import SparkSession, Window, functions as F
 
 
 LAB = Path(__file__).resolve().parents[1]
@@ -30,7 +30,7 @@ def title_key(title):
 def reference_table(spark, path):
     rows = (
         spark.read.option("header", True).option("escape", '"')
-        .option("mode", "FAILFAST").csv(path)
+        .option("mode", "FAILFAST").option("multiLine", True).csv(path)
     )
     required = {"wiki", "title", "imdb_id", "wikidata_id"}
     if not required.issubset(rows.columns):
@@ -39,12 +39,12 @@ def reference_table(spark, path):
         F.trim("wiki").alias("wiki"),
         title_key(F.col("title")).alias("title_key"),
         F.trim("imdb_id").alias("imdb_id"),
-        F.trim("wikidata_id").alias("wikidata_id"),
+        F.nullif(F.trim("wikidata_id"), F.lit("")).alias("wikidata_id"),
     )
     valid = (
         F.col("wiki").rlike(r"^[a-z0-9_-]+wiki$")
         & (F.length("title_key") > 0)
-        & F.col("imdb_id").rlike(r"^(tt|nm)[0-9]+$")
+        & F.col("imdb_id").rlike(r"^(tt|nm)[0-9]{7,}$")
         & (F.col("wikidata_id").isNull() | F.col("wikidata_id").rlike(r"^Q[0-9]+$"))
     )
     if rows.filter(~F.coalesce(valid, F.lit(False))).take(1):
@@ -101,23 +101,70 @@ def streaming_events(spark, broker, topic, reference):
     )
 
 
-def collect_evidence(spark, run, producer, capture_seconds, capture_started, topic, duration, reference_path):
-    rows = spark.read.parquet(str(run / "events"))
+def measure_matches(rows):
+    """Count Kafka records separately from Wikimedia events and IMDb links."""
     matched = F.size("imdb_matches") > 0
     counts = rows.agg(
         F.count("*").alias("kafka_records"),
+        F.count_distinct(F.struct("partition", "offset")).alias("distinct_kafka_offsets"),
+        F.count("event_id").alias("records_with_event_id"),
         F.count_distinct("event_id").alias("distinct_event_ids"),
         F.count_if("eligible").alias("eligible_wikipedia_edits"),
+        F.count_distinct(F.when(F.col("eligible"), F.col("event_id"))).alias("eligible_distinct_events"),
         F.count_distinct(F.when(matched, F.col("event_id"))).alias("matched_events"),
-        F.count_distinct(F.when(matched, F.struct("wiki", "title"))).alias("matched_pages"),
+        F.count_distinct(
+            F.when(matched, F.struct("wiki", title_key(F.col("title"))))
+        ).alias("matched_pages"),
     ).first().asDict()
-    samples = (
-        rows.filter(matched if counts["matched_events"] else F.lit(True))
-        .orderBy("partition", "offset").limit(10).toJSON().collect()
+    counts["duplicate_kafka_offsets"] = counts["kafka_records"] - counts["distinct_kafka_offsets"]
+    counts["duplicate_event_records"] = counts["records_with_event_id"] - counts["distinct_event_ids"]
+    earliest = Window.partitionBy("event_id").orderBy("partition", "offset")
+    matches = (
+        rows.filter(matched)
+        .withColumn("_first", F.row_number().over(earliest))
+        .filter(F.col("_first") == 1)
+        .drop("_first")
     )
+    delays = {
+        "event_to_kafka_ms": ("event_time", "kafka_time"),
+        "kafka_to_spark_ms": ("kafka_time", "processing_time"),
+        "event_to_spark_ms": ("event_time", "processing_time"),
+    }
+    expressions = []
+    for name, (start, end) in delays.items():
+        matches = matches.withColumn(name, F.unix_millis(end) - F.unix_millis(start))
+        value = F.col(name)
+        expressions.append(F.struct(
+            F.count(value).alias("count"),
+            F.min(value).alias("min"),
+            F.percentile(value, [0.5, 0.95]).alias("p50_p95"),
+            F.max(value).alias("max"),
+            F.count_if(value < 0).alias("negative_count"),
+        ).alias(name))
+    latency = matches.agg(*expressions).first().asDict(recursive=True)
+    sample_rows = matches if counts["matched_events"] else rows
+    samples = [
+        json.loads(sample)
+        for sample in sample_rows.orderBy("partition", "offset").limit(10).toJSON().collect()
+    ]
+    return counts, latency, samples
+
+
+def collect_evidence(spark, run, producer, capture_seconds, capture_started, topic, duration,
+                     reference_path, restart):
+    rows = spark.read.parquet(str(run / "events")).persist()
+    try:
+        counts, latency, samples = measure_matches(rows)
+        observed = [
+            row.event_id for row in rows.orderBy("partition", "offset").select("event_id").toLocalIterator()
+        ]
+    finally:
+        rows.unpersist()
     audit = run / "capture.jsonl"
     with audit.open(encoding="utf-8") as handle:
         sent = [json.loads(line).get("meta", {}).get("id") for line in handle]
+    if len(sent) != producer["delivered"] or sent != observed or counts["duplicate_kafka_offsets"]:
+        raise RuntimeError("The producer audit and Spark offsets/event IDs do not reconcile")
     evidence = {
         "topic": topic,
         "capture_started_utc": capture_started,
@@ -129,18 +176,64 @@ def collect_evidence(spark, run, producer, capture_seconds, capture_started, top
         ),
         "producer": producer,
         **counts,
+        "audit_event_ids_in_kafka_order_verified": True,
+        "restart": restart,
+        "matched_event_latencies_ms": latency,
         "smoke_event_id_verified": (
-            counts["kafka_records"] == len(sent) == 1
-            and bool(sent[0]) and sent[0] == json.loads(samples[0]).get("event_id")
+            len(sent) == 1 and bool(sent[0])
         ),
-        "examples": [json.loads(sample) for sample in samples],
+        "examples": samples,
     }
     summary = json.dumps(evidence, ensure_ascii=False, indent=2)
     (run / "summary.json").write_text(summary + "\n", encoding="utf-8")
     print(summary, flush=True)
-    if len(sent) != producer["delivered"] or counts["kafka_records"] != producer["delivered"]:
-        raise RuntimeError("The local audit, Kafka delivery and Spark counts disagree")
     return evidence
+
+
+def start_query(events, run):
+    return (
+        events.writeStream.format("parquet").option("path", str(run / "events"))
+        .option("checkpointLocation", str(run / "checkpoint"))
+        .trigger(processingTime="10 seconds").start()
+    )
+
+
+def resume_query(query, events, run, progress, elapsed):
+    query_id, previous_run = query.id, query.runId
+    query.stop()
+    resumed = start_query(events, run)
+    if resumed.id != query_id or resumed.runId == previous_run:
+        resumed.stop()
+        raise RuntimeError("Restart did not reuse the existing Spark checkpoint")
+    evidence = {
+        "elapsed_seconds": round(elapsed, 3),
+        "query_id": str(query_id),
+        "first_run_id": str(previous_run),
+        "resumed_run_id": str(resumed.runId),
+        "previous_batch_id": progress["batchId"],
+        "previous_end_offset": progress["sources"][0]["endOffset"],
+    }
+    print(f"Resumed query {query_id} with checkpoint {run / 'checkpoint'}", flush=True)
+    return resumed, evidence
+
+
+def spark_session(app_name):
+    spark_home = Path(os.environ.get("SPARK_HOME", "/usr/local/spark"))
+    version = (spark_home / "RELEASE").read_text().split()[1]
+    scala_jar = next((spark_home / "jars").glob("scala-library-*.jar"))
+    scala = ".".join(scala_jar.stem.removeprefix("scala-library-").split(".")[:2])
+    connector = f"org.apache.spark:spark-sql-kafka-0-10_{scala}:{version}"
+    spark = (
+        SparkSession.builder.master("local[2]").appName(app_name)
+        .config("spark.jars.packages", connector)
+        .config("spark.jars.repositories", "https://repo.maven.apache.org/maven2")
+        .config("spark.sql.shuffle.partitions", "2")
+        .config("spark.sql.session.timeZone", "UTC")
+        .config("spark.ui.showConsoleProgress", "false")
+        .getOrCreate()
+    )
+    spark.sparkContext.setLogLevel("WARN")
+    return spark
 
 
 def main():
@@ -149,10 +242,13 @@ def main():
     parser.add_argument("--languages", default="en,fr", help="Comma-separated Wikipedia languages")
     parser.add_argument("--duration", type=int, default=900, help="Capture duration in seconds")
     parser.add_argument("--max-events", type=int, default=0, help="Optional bound for smoke testing")
+    parser.add_argument("--restart-after", type=int, help="Restart Spark with the same checkpoint after these seconds")
     parser.add_argument("--output", type=Path, default=LAB / "data" / "project-runs")
     args = parser.parse_args()
     if args.duration <= 0 or args.max_events < 0:
         parser.error("duration must be positive and max-events nonnegative")
+    if args.restart_after is not None and (not 0 < args.restart_after < args.duration or args.max_events):
+        parser.error("restart-after must be within an uncapped capture")
     if "all" in {lang.strip() for lang in args.languages.split(",")}:
         parser.error("specify Wikipedia languages explicitly, for example en,fr")
 
@@ -164,35 +260,21 @@ def main():
         reference_path = run / "reference.csv"
         shutil.copyfile(args.reference, reference_path)
     broker = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "kafka:29092")
-    spark_home = Path(os.environ.get("SPARK_HOME", "/usr/local/spark"))
-    version = (spark_home / "RELEASE").read_text().split()[1]
-    scala_jar = next((spark_home / "jars").glob("scala-library-*.jar"))
-    scala = ".".join(scala_jar.stem.removeprefix("scala-library-").split(".")[:2])
-    connector = f"org.apache.spark:spark-sql-kafka-0-10_{scala}:{version}"
-    spark = (
-        SparkSession.builder.master("local[2]").appName("ImdbWikipediaStreaming")
-        .config("spark.jars.packages", connector)
-        .config("spark.jars.repositories", "https://repo.maven.apache.org/maven2")
-        .config("spark.sql.shuffle.partitions", "2")
-        .config("spark.sql.session.timeZone", "UTC")
-        .config("spark.ui.showConsoleProgress", "false")
-        .getOrCreate()
-    )
-    spark.sparkContext.setLogLevel("WARN")
+    spark = spark_session("ImdbWikipediaStreaming")
     query = None
     producer = None
+    restart = None
     try:
         subprocess.run(
             [sys.executable, str(LAB / "admin.py"), "--bootstrap-servers", broker, "--topic", topic],
             check=True,
         )
-        reference = reference_table(spark, str(reference_path)) if reference_path else None
-        query = (
-            streaming_events(spark, broker, topic, reference).writeStream
-            .format("parquet").option("path", str(run / "events"))
-            .option("checkpointLocation", str(run / "checkpoint"))
-            .trigger(processingTime="10 seconds").start()
-        )
+        reference = None
+        if reference_path:
+            reference = reference_table(spark, str(reference_path)).cache()
+            reference.count()
+        events = streaming_events(spark, broker, topic, reference)
+        query = start_query(events, run)
         print(f"Topic {topic}; capture log: {run / 'producer.log'}", flush=True)
         with (run / "producer.log").open("w", encoding="utf-8") as log:
             start = time.monotonic()
@@ -217,15 +299,26 @@ def main():
             while producer.poll() is None:
                 if query.awaitTermination(1):
                     raise RuntimeError("Spark query stopped before the producer finished")
+                elapsed = time.monotonic() - start
+                if args.restart_after and restart is None and elapsed >= args.restart_after:
+                    progress = query.lastProgress
+                    if progress and progress["numInputRows"] > 0:
+                        query, restart = resume_query(query, events, run, progress, elapsed)
             elapsed = time.monotonic() - start
         if producer.returncode:
             raise RuntimeError(f"Producer failed; see {run / 'producer.log'}")
         lines = (run / "producer.log").read_text(encoding="utf-8").splitlines()
         query.processAllAvailable()
+        if args.restart_after:
+            progress = query.lastProgress
+            if not restart or not progress or progress["batchId"] <= restart["previous_batch_id"]:
+                raise RuntimeError("The restarted query did not process a subsequent batch")
+            restart["last_batch_id"] = progress["batchId"]
+            restart["last_end_offset"] = progress["sources"][0]["endOffset"]
         query.stop()
         summary = next(json.loads(line) for line in reversed(lines) if line.startswith("{"))
         evidence = collect_evidence(
-            spark, run, summary, elapsed, start_utc, topic, args.duration, reference_path
+            spark, run, summary, elapsed, start_utc, topic, args.duration, reference_path, restart
         )
         if args.max_events == 1 and not evidence["smoke_event_id_verified"]:
             raise RuntimeError("The smoke event could not be traced through Spark")
