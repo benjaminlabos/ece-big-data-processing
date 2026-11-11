@@ -1,0 +1,160 @@
+{
+  "scope": "replay_of_existing_wikimedia_capture",
+  "spark_version": "4.2.0",
+  "topic": "project-wiki-replay-51a55a345ed8",
+  "capture_sha256": "b3f03ea4666025df6d82f39c9c6a05272294214fea64e6da29fad9fc831ee456",
+  "reference_sha256": "680ab857e1a8d98eea0c3a5c67dc2004bf95d3359c797a39a25a66e4f2cd14dc",
+  "audit_event_ids_and_offsets_verified": true,
+  "kafka_records": 1845,
+  "distinct_kafka_offsets": 1845,
+  "records_with_event_id": 1845,
+  "distinct_event_ids": 1845,
+  "eligible_wikipedia_edits": 1311,
+  "eligible_distinct_events": 1311,
+  "matched_events": 7,
+  "matched_pages": 6,
+  "duplicate_kafka_offsets": 0,
+  "duplicate_event_records": 0,
+  "examples": [
+    {
+      "wiki": "enwiki",
+      "title": "Emily Hampshire",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "7166202e-6339-4fdf-be0b-be3ed16bf744",
+      "revision_id": 1385073598,
+      "event_time": "2026-11-11T19:08:23.000Z",
+      "processing_time": "2026-11-11T20:47:25.973Z",
+      "partition": 0,
+      "offset": 454,
+      "kafka_time": "2026-11-11T20:47:22.050Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0358922",
+          "wikidata_id": "Q3052376"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "TobyMac",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "ce5fcf53-7dac-48c8-9377-bf0cf1e02922",
+      "revision_id": 1385073660,
+      "event_time": "2026-11-11T19:08:51.000Z",
+      "processing_time": "2026-11-11T20:47:25.973Z",
+      "partition": 0,
+      "offset": 519,
+      "kafka_time": "2026-11-11T20:47:22.051Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0571230",
+          "wikidata_id": "Q364884"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "TobyMac",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "2af7556b-3c81-4e25-80dc-63442a9765e4",
+      "revision_id": 1385073927,
+      "event_time": "2026-11-11T19:10:50.000Z",
+      "processing_time": "2026-11-11T20:47:25.973Z",
+      "partition": 0,
+      "offset": 765,
+      "kafka_time": "2026-11-11T20:47:22.055Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0571230",
+          "wikidata_id": "Q364884"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Cristin Milioti",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "6d09d06d-3764-492b-b910-6397c21d68a8",
+      "revision_id": 1385073935,
+      "event_time": "2026-11-11T19:10:54.000Z",
+      "processing_time": "2026-11-11T20:47:25.973Z",
+      "partition": 0,
+      "offset": 773,
+      "kafka_time": "2026-11-11T20:47:22.055Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm2129662",
+          "wikidata_id": "Q5186320"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Hiroko Emori",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "87448da4-8bf9-4c87-abff-a16bbc9de9b2",
+      "revision_id": 1385074160,
+      "event_time": "2026-11-11T19:12:42.000Z",
+      "processing_time": "2026-11-11T20:47:25.973Z",
+      "partition": 0,
+      "offset": 988,
+      "kafka_time": "2026-11-11T20:47:22.059Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0256607",
+          "wikidata_id": "Q3089633"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Herbie: Fully Loaded",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "8ee0f570-4c51-4d2a-a3b5-c0ab1857eb4e",
+      "revision_id": 1385074575,
+      "event_time": "2026-11-11T19:16:06.000Z",
+      "processing_time": "2026-11-11T20:47:25.973Z",
+      "partition": 0,
+      "offset": 1391,
+      "kafka_time": "2026-11-11T20:47:22.084Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt0400497",
+          "wikidata_id": "Q641492"
+        }
+      ]
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Paper Towns (film)",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "acda2137-09b4-497f-84e3-e42132c49d3a",
+      "revision_id": 1385074574,
+      "event_time": "2026-11-11T19:16:07.000Z",
+      "processing_time": "2026-11-11T20:47:25.973Z",
+      "partition": 0,
+      "offset": 1395,
+      "kafka_time": "2026-11-11T20:47:22.085Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt3622592",
+          "wikidata_id": "Q18603039"
+        }
+      ]
+    }
+  ]
+}

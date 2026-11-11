@@ -1,0 +1,12 @@
+{
+  "scope": "public_metadata_projection_for_kafka_replay",
+  "source_capture_sha256": "d142155720e9d7ea3655cd926695baca6285b2e14a9ac8de6d6c7d6e94ee5385",
+  "source_reference_sha256": "279eb0ddf4fd58515e6b0039575e7490bdacdaabe8e6c13005563dcbdd2dd74b",
+  "events_gzip_sha256": "167770a4ca293600c0e75219601459baad4a826d7e1b3ca6090de2486edffdae",
+  "events_jsonl_sha256": "b3f03ea4666025df6d82f39c9c6a05272294214fea64e6da29fad9fc831ee456",
+  "reference_sha256": "680ab857e1a8d98eea0c3a5c67dc2004bf95d3359c797a39a25a66e4f2cd14dc",
+  "kafka_records": 1845,
+  "eligible_wikipedia_edits": 1311,
+  "matched_events": 7,
+  "matched_pages": 6
+}

@@ -1,6 +1,7 @@
 """Replay an existing Wikimedia audit through a fresh Kafka topic and Spark."""
 
 import argparse
+import gzip
 import hashlib
 import json
 import os
@@ -49,7 +50,11 @@ def main():
     run = args.output.resolve() / topic
     run.mkdir(parents=True)
     capture, reference_path = run / "capture.jsonl", run / "reference.csv"
-    shutil.copyfile(args.capture, capture)
+    if args.capture.suffix == ".gz":
+        with gzip.open(args.capture, "rb") as source, capture.open("wb") as target:
+            shutil.copyfileobj(source, target)
+    else:
+        shutil.copyfile(args.capture, capture)
     shutil.copyfile(args.reference, reference_path)
     broker = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "kafka:29092")
     spark = spark_session("ImdbWikipediaReplay")

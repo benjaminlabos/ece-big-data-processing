@@ -7,6 +7,21 @@
 
 ## Streaming Wikipédia et IMDb
 
+### Rejeu de démonstration depuis un clone
+
+Depuis la racine du dépôt, démarrer les services puis copier les deux fichiers de démonstration dans le conteneur Spark. Le rejeu crée un topic et un checkpoint propres.
+
+```powershell
+$compose = '05.structured-streaming/lab_docker_wikistreams/compose.yaml'
+$demo = 'project/streaming/demo'
+docker compose -f $compose up -d --build
+docker compose -f $compose cp "$demo/demo-events.jsonl.gz" pyspark-notebook:/tmp/gr04-demo-events.jsonl.gz
+docker compose -f $compose cp "$demo/demo-reference.csv" pyspark-notebook:/tmp/gr04-demo-reference.csv
+docker compose -f $compose exec -T pyspark-notebook python /home/jovyan/jobs/replay_capture.py --capture /tmp/gr04-demo-events.jsonl.gz --reference /tmp/gr04-demo-reference.csv --output /tmp/gr04-demo
+```
+
+Les résultats attendus sont 1 845 identifiants et offsets réconciliés, 1 311 modifications admissibles et sept correspondances sur six articles. Le jeu est une projection de la capture Docker du 11 novembre, dans l’ordre d’origine. Il conserve les champs nécessaires au filtrage et aux correspondances. Son catalogue couvre les pages rapprochées dans cette capture. Les délais de la capture vivante sont documentés dans sa preuve. [Empreintes du jeu](project/streaming/demo/manifest.json) · [Preuve de la capture Docker](project/streaming/evidence/docker-live-2026-11-11.json)
+
 Les commandes suivantes sont à lancer depuis PowerShell, à la racine du dépôt. Docker Desktop doit être démarré et configuré pour les conteneurs Linux. La première exécution nécessite un accès aux registres d’images, à Maven Central et à Wikimedia.
 
 ```powershell
