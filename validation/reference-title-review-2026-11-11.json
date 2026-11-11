@@ -1,0 +1,25 @@
+{
+  "scope": "controlled_reference_contract",
+  "execution": "linux_native",
+  "spark_version": "4.2.0",
+  "base_integration_commit": "7c8393d8536363cd3e9903bed7d983006d1da138",
+  "consumer_commit": "fafc0ed8d10c9e56957693f158020f999022d5e1",
+  "consumer_path": "05.structured-streaming/lab_docker_wikistreams/jobs/project_stream.py",
+  "consumer_functions": [
+    "title_key",
+    "reference_table"
+  ],
+  "input_rows": 4,
+  "matched_before_dedup": 2,
+  "matched_distinct": 1,
+  "rejected_invalid_titles": 2,
+  "consumer_rows": 1,
+  "consumer_title_key": "A title",
+  "export_module_sha256": "171a2995b64bb240658ce6f5e14ab110209d213e743348262ba82199ca4e4452",
+  "csv_sha256": "42581e831990ffdf05d18ac55b464830c8923f2d7e6d6ea65638cb21fdbff3ef",
+  "consumer_reader_accepted_export": true,
+  "test_suite": {
+    "passed": 28,
+    "duration_seconds": 65.82
+  }
+}
