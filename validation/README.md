@@ -34,3 +34,17 @@ Les exports d'intégration disposent de preuves distinctes :
   Benjamin exécutée avec Arrow sur trois lignes synthétiques dans le conteneur,
   avec conversion `toPandas` sans repli. Aucun pilote réel ou collecte n'est répété.
   `check_enrichment_arrow.py` permet de reproduire ce contrôle.
+
+Le lot complet possède un profil brut séparé :
+
+- `full-download-2026-11-11.json` : manifeste des sept gzip complets vérifiés.
+- `full-raw-profile-windows-2026-11-11.json` : 39 taux et top 5 sur
+  216 477 904 lignes, sous Spark 4.2.0 dans Docker Desktop. Le nettoyage complet
+  n'est pas validé par cette preuve (`cleaning_validated: false`).
+- `original-languages-source-2026-11-11.json` : première collecte cloud des
+  déclarations Wikidata P364 et de leur vocabulaire ISO. La collecte Windows,
+  effectuée plus tard, a son manifeste distinct dans la preuve du profil complet.
+
+`collect_full_results.ps1` crée `full-analysis-windows-2026-11-11.json` uniquement
+après les trois marqueurs de succès préparation/exploration/crédits. Tant que ce
+fichier n'existe pas, les résultats d'analyse complète restent à vérifier.

@@ -698,3 +698,30 @@ La population de Q1 comprend tous les films candidats dont la durée est connue,
 y compris les films sans note. Le seuil de votes ne modifie pas la moyenne de
 durée de leur genre ; il reste appliqué aux analyses portant sur les notes et
 la popularité ainsi qu'au classement provisoire.
+
+### Profil brut complet obtenu le 11 novembre
+
+`validation/full-raw-profile-windows-2026-11-11.json` contient les 39 profils
+calculés sur les sept fichiers complets, soit 216 477 904 lignes de tables,
+avec le manifeste source et le top 5 global. Les pourcentages, dénominateurs,
+ordre du top 5 et empreinte du module ont été contrôlés. L'empreinte du fichier
+Python Windows porte sur ses octets CRLF ; Git et Linux conservent les fins LF.
+Le marqueur `PROFILE_SUCCESS.json` est présent. Le nettoyage complet reste
+suivi séparément : ce profil ne vaut pas validation de ses références.
+
+Après réussite de la préparation, de l'exploration et de l'export des crédits :
+
+```powershell
+.\collect_full_results.ps1
+```
+
+Le collecteur refuse les sorties incomplètes ou hors périmètre complet. Il
+compare les 39 comptes de valeurs manquantes au profil brut séparé, puis conserve
+les résumés, neuf aperçus et empreintes des CSV dans
+`validation/full-analysis-windows-2026-11-11.json`. Aucune interprétation de
+rapport n'est générée. `-WaitForRunnerPid <PID>` permet d'attendre le lanceur
+en cours ; `-Publish` ajoute un commit de cette seule preuve sur
+`feat/imdb-full-analysis` et pousse cette branche sans fusionner les PR.
+
+Dernière validation de la partie Python : 33 tests réussis sous Spark 4.2.0,
+61,96 s, avec un film sans note inclus dans le contrôle des durées de Q1.
