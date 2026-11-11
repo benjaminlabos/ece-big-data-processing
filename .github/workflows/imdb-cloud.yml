@@ -1,0 +1,105 @@
+name: IMDb complete batch in cloud
+
+on:
+  push:
+    branches: [feat/imdb-full-analysis]
+    paths:
+      - .github/workflows/imdb-cloud.yml
+      - .github/imdb-cloud-request.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: imdb-complete-cloud
+  cancel-in-progress: false
+
+jobs:
+  batch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    env:
+      PYSPARK_PYTHON: python
+      PYSPARK_SUBMIT_ARGS: --driver-memory 5g pyspark-shell
+      SPARK_LOCAL_IP: 127.0.0.1
+      SPARK_LOCAL_DIRS: /tmp/imdb-spark
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check resources on disposable hosted runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          # These SDKs are unused by this Python/Java job on a disposable VM.
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
+          mkdir -p results /tmp/imdb-spark
+          df -h . /tmp | tee results/cloud-resources.log
+          free -h | tee -a results/cloud-resources.log
+          nproc | tee -a results/cloud-resources.log
+          python3 - <<'PY'
+          import os, shutil
+          from pathlib import Path
+          memory = int(next(line.split()[1] for line in Path('/proc/meminfo').read_text().splitlines() if line.startswith('MemTotal:'))) * 1024
+          if memory < 12 * 1024**3 or (os.cpu_count() or 0) < 4 or shutil.disk_usage('.').free < 25 * 1024**3:
+              raise SystemExit('Need >=4 CPUs, 12 GiB RAM and 25 GiB free disk; stopping before dataset download')
+          PY
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install pinned Spark and run controlled tests
+        run: |
+          set -euo pipefail
+          python -m pip install -r requirements-preparation.txt
+          python -m pytest -q tests | tee results/cloud-tests.log
+      - name: Fetch exact IMDb snapshot and reuse verified raw profile
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.cloud inputs 2>&1 | tee results/cloud-inputs.log
+      - name: Collect original languages with provenance
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.languages --output data/reference/cloud-original-languages.csv 2>&1 | tee results/cloud-languages.log
+      - name: Prepare seven full IMDb tables
+        timeout-minutes: 240
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.prepare --raw-dir data/raw/cloud-full --output results/cloud-prepared --raw-profile results/cloud-profile --master 'local[4]' --shuffle-partitions 64 --input-partitions 64 --as-of-year 2026 2>&1 | tee results/cloud-prepare.log
+      - name: Compute eight questions and provisional ranking
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.explore --prepared-dir results/cloud-prepared --output results/cloud-analysis --config examples/exploration/provisional.json --original-languages data/reference/cloud-original-languages.csv --shuffle-partitions 64 2>&1 | tee results/cloud-analysis.log
+      - name: Export selected credits and verify pipeline outputs
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.exports --prepared-dir results/cloud-prepared --output results/cloud-credits --selected-titles results/cloud-analysis/selected_titles.csv 2>&1 | tee results/cloud-exports.log
+          python -m imdb_preparation.cloud package
+          cp data/reference/cloud-original-languages.manifest.json artifacts/verified/
+      - name: Save verified derived outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: imdb-verified-${{ github.run_id }}
+          path: artifacts/verified/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Save diagnostics even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: imdb-diagnostics-${{ github.run_id }}
+          path: |
+            results/*.log
+            results/*/progress.json
+            results/*/checkpoint_context.json
+            results/*/summary.json
+            results/cloud-profile/*.json
+          if-no-files-found: warn
+          retention-days: 7
