@@ -1072,3 +1072,33 @@ popularité inversés, un réalisateur ayant deux films très bien notés et des
 compteurs modifiés. La preuve est dans
 `validation/query-review-validation-2026-11-11.json`. Ce test ne constitue pas
 une validation du lot réel en cours sur GitHub.
+
+### Référence Wikidata tronquée — reprise du 12 novembre
+
+Le nettoyage des sept tables du run 43093003953 a réussi. L'analyse a ensuite
+refusé le CSV Wikidata, dont le dernier enregistrement était un simple `t`.
+Le collecteur historique contrôlait l'en-tête mais pas chaque largeur de ligne.
+La lecture Spark stricte est conservée : aucune ligne tronquée n'est ignorée
+silencieusement pour faire passer le calcul.
+
+La collecte P364 utilise désormais SELECT DISTINCT et des pages ordonnées de
+20 000 lignes, avec une pause entre les pages. Chaque réponse est vérifiée avant
+publication (CSV strict, largeur des lignes, longueur HTTP lorsqu'elle est fournie),
+avec reprises bornées des erreurs temporaires et respect de Retry-After. Les
+pages répétées ou chevauchantes sont refusées. La provenance conserve paramètres,
+nombres de lignes et empreintes des réponses ; les pages ne constituent pas une
+transaction atomique de Wikidata et la couverture IMDb reste explicitement mesurée.
+
+La finition valide la référence restaurée. Si elle est absente, tronquée ou issue
+de l'ancien collecteur non paginé, elle collecte un nouveau fichier
+`recovered-original-languages.csv` et son propre manifeste. Le fichier original
+reste intact. Les sept tables préparées sont restaurées depuis leur cache exact ;
+seules l'analyse et les sorties dérivées reprennent. Le nouveau CSV, son manifeste
+et son vocabulaire sont conservés sous `artifacts/reference` dans la livraison.
+Les artefacts finaux sont conservés 90 jours.
+
+Les neuf tests de langues ont réussi dans Docker sous Spark 4.2.0. Les huit tests
+sans Spark ont aussi réussi en natif après suppression de la dépendance Spark
+inutile du collecteur de données. La preuve et les périmètres figurent dans
+`validation/language-pagination-recovery-2026-11-12.json`. Le succès de la nouvelle
+collecte et des analyses réelles reste à vérifier dans le workflow de reprise.

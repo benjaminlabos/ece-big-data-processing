@@ -167,7 +167,7 @@ jobs:
       - name: Check postprocessing contracts on controlled data
         run: |
           set -euo pipefail
-          python -m pytest -q tests/test_cloud.py | tee results/finalization-tests.log
+          python -m pytest -q tests/test_cloud.py tests/test_languages.py | tee results/finalization-tests.log
       - name: Validate the exact upstream run
         id: request
         env:
@@ -225,16 +225,36 @@ jobs:
           path: data/reference
           run-id: ${{ steps.request.outputs.source_id }}
           github-token: ${{ github.token }}
-      - name: Retry missing language reference with its own provenance
-        if: steps.request.outputs.verified_artifact == '' && steps.language.outcome == 'failure'
-        timeout-minutes: 10
-        run: python -m imdb_preparation.languages --output data/reference/cloud-original-languages.csv
+      - name: Validate restored language records or recollect bounded pages
+        id: language_input
+        if: steps.request.outputs.verified_artifact == ''
+        timeout-minutes: 20
+        run: |
+          python - <<'PYTHON'
+          import json, os, shutil
+          from pathlib import Path
+          from imdb_preparation.languages import collect, validate_snapshot
+          source = Path('data/reference/cloud-original-languages.csv')
+          try:
+              metadata = validate_snapshot(source)
+          except (ValueError, OSError, KeyError) as error:
+              print(f'Reference needs recollection: {error}', flush=True)
+              source = Path('data/reference/recovered-original-languages.csv')
+              metadata = collect(source)
+              validate_snapshot(source)
+          destination = Path('artifacts/reference')
+          destination.mkdir(parents=True, exist_ok=True)
+          for file in (source, source.with_suffix('.manifest.json'), source.with_name(metadata['vocabulary_path'])):
+              shutil.copyfile(file, destination / file.name)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
+              out.write(f'path={source}\n')
+          PYTHON
       - name: Retry analysis once if prepared data succeeded but output is absent
         if: steps.request.outputs.verified_artifact == ''
         timeout-minutes: 180
         run: |
           set -euo pipefail
-          python -m imdb_preparation.explore --prepared-dir results/cloud-prepared --output results/cloud-analysis --config examples/exploration/provisional.json --original-languages data/reference/cloud-original-languages.csv --shuffle-partitions 64 2>&1 | tee results/finalization-analysis.log
+          python -m imdb_preparation.explore --prepared-dir results/cloud-prepared --output results/cloud-analysis --config examples/exploration/provisional.json --original-languages "${{ steps.language_input.outputs.path }}" --shuffle-partitions 64 2>&1 | tee results/finalization-analysis.log
       - name: Retry missing integration exports
         if: steps.request.outputs.verified_artifact == ''
         timeout-minutes: 60
@@ -242,7 +262,6 @@ jobs:
           set -euo pipefail
           python -m imdb_preparation.exports --prepared-dir results/cloud-prepared --output results/cloud-credits --selected-titles results/cloud-analysis/selected_titles.csv 2>&1 | tee results/finalization-exports.log
           python -m imdb_preparation.cloud package
-          cp data/reference/cloud-original-languages.manifest.json artifacts/verified/
       - name: Cross-check rankings, compare thresholds and rebuild bounded inputs
         timeout-minutes: 80
         run: |
@@ -279,7 +298,7 @@ jobs:
           name: imdb-completed-for-review-${{ github.run_id }}-${{ github.run_attempt }}
           path: artifacts/
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 90
       - name: Publish machine outputs on Nicolas's existing PR branch
         if: success() && steps.query_review.outcome == 'success'
         env:
