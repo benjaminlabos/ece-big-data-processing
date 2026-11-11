@@ -33,3 +33,16 @@ une relecture de ses PR. Le script reproductible et la preuve sont dans
 `validation/`.
 La sélection top 10 et le traitement complet IMDb restent hors du périmètre de
 cette PR. Les textes du rapport reviennent aux étudiants.
+
+Après relecture de Benjamin, les titres Wikipédia utilisent la même clé que son
+lecteur streaming : suites d'espaces et de `_` remplacées par un espace, puis
+suppression des espaces aux extrémités. Un titre `___` devient vide et rejoint
+`rejected_reference` avec `invalid_reference`. Les variantes d'un même titre
+sont dédupliquées après normalisation.
+
+Validation du correctif : 28 tests passent sous Spark 4.2.0 (65,82 s). Un contrôle
+séparé charge les fonctions exactes `title_key` et `reference_table` de la branche
+streaming de Benjamin (`fafc0ed8`) et relit le CSV exporté sans erreur. Quatre
+entrées produisent deux rejets et un titre distinct accepté. La preuve est dans
+`validation/reference-title-review-2026-11-11.json`. Aucun streaming en direct
+ni collecte Wikipédia n'est lancé par ce contrôle.

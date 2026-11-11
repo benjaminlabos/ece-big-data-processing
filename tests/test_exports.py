@@ -229,6 +229,23 @@ def test_empty_reference_is_exported_as_header_only(spark, tmp_path):
     assert path.read_text().strip() == ",".join(REFERENCE_COLUMNS)
 
 
+def test_reference_titles_use_the_streaming_title_key(spark):
+    reference = spark.createDataFrame(
+        [
+            ("enwiki", title, "tt0000001", "Q100")
+            for title in ("___", " _ __ ", "__A__title__", "A title")
+        ],
+        ", ".join(c + " string" for c in REFERENCE_COLUMNS),
+    )
+    ids = spark.createDataFrame([("tt0000001",)], "imdb_id string")
+    matched, rejected, before_dedup = filter_reference(reference, ids)
+    assert [r.title for r in matched.collect()] == ["A title"]
+    assert before_dedup.count() == 2
+    assert rejected.count() == 2
+    assert {r.reason for r in rejected.collect()} == {"invalid_reference"}
+    assert {r.title for r in rejected.collect()} == {""}
+
+
 def test_reruns_and_incomplete_input_are_safe(spark, tmp_path, export_inputs, exported):
     _, prepared, _, _ = export_inputs
     output, _ = exported

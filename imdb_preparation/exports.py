@@ -158,6 +158,10 @@ def enrichment_candidates(titles, people, principals, selection):
 
 def filter_reference(reference, ids):
     normalized = reference.select(*[F.trim(c).alias(c) for c in REFERENCE_COLUMNS])
+    # Match the streaming reader's MediaWiki title key before validation/dedup.
+    normalized = normalized.withColumn(
+        "title", F.trim(F.regexp_replace("title", "[_ ]+", " "))
+    )
     valid = (
         F.col("wiki").rlike(r"^[a-z0-9_-]+wiki$")
         & (F.length("title") > 0)
