@@ -16,9 +16,17 @@ préparation, exploration et export des crédits, avec ressources bornées et ga
 disque. Le collecteur de preuves refuse les sorties incomplètes et compare les
 39 profils aux résultats du profil brut séparé avant publication.
 
-Validation : 33 tests Python contrôlés réussis sous Spark 4.2.0 (61,96 s), contrôle
+Validation : 34 tests Python contrôlés réussis sous Spark 4.2.0 (66,02 s), contrôle
 CLI, réconciliation de 369 502 énoncés de langues et profil complet réel. Les
-résultats des huit analyses complètes seront disponibles après leur succès effectif.
+premières sorties réelles sont publiées : Q1 (13 640 lignes), Q2 (138), Q3 (92),
+9 089 places de classement pour 6 257 films distincts. Les cinq autres analyses
+attendent la fin du nettoyage de leurs tables. Les critères restent provisoires.
 Les branches de Benjamin et REPORT.md restent inchangés.
 
 PR dépendante de #4 ; la cible sera ajustée après les approbations des PR parentes.
+
+Un export ciblé produit les couples tconst,nconst, les détails de rôles et la
+couverture des seuls films sélectionnés à partir des tables parentes terminées.
+Il conserve les contrôles de qualité en évitant de normaliser les crédits hors
+sélection ; un test compare ce filtrage au calcul non filtré, avec Unicode et
+clés conflictuelles. Son périmètre ne certifie pas le nettoyage global.

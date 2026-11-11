@@ -759,3 +759,35 @@ et le pilote réduit ; elle fournit également les CSV complets de Q2 et Q3.
 La reprise a aussi été exécutée sur le jeu contrôlé avec un pilote de 512 MiB,
 un seul thread et les trois sorties déjà matérialisées ; elle a publié les
 quatre résultats et les deux CSV de comparaison, sans modifier le dossier source.
+
+### Premières analyses complètes des titres obtenues
+
+Les sorties réelles de Q1 à Q3 et du classement sont publiées dans `validation/` :
+13 640 couples film–genre pour Q1, 138 lignes pour les trois premiers genres par
+année, 92 lignes de comparaison et 9 089 places au classement dans 979 groupes
+année–genre. La liste dédupliquée contient 6 257 films. Les CSV conservent leurs
+empreintes source. Le contrôle `title-query-verification-2026-11-11.json` vérifie
+les 46 années, les bornes et rangs, les égalités et la réconciliation des totaux
+des trois premiers genres. Les critères restent provisoires, et les cinq autres
+requêtes attendent encore le nettoyage de leurs tables.
+
+Pour préparer l'interface de Benjamin avant la fin des crédits non sélectionnés,
+`imdb_preparation.export_selected_credits` filtre le fichier complet sur les
+identifiants de films sélectionnés avant les transformations coûteuses. Il
+normalise d'abord la clé de titre en Spark, puis conserve les mêmes contrôles de
+clés, valeurs et personnes. Les parents viennent des tables titres/personnes
+terminées. Les couples `tconst,nconst` restent distincts et non nuls ; un CSV
+séparé conserve catégories et ordre pour le choix des trois personnes.
+
+```powershell
+docker compose -f compose.analysis.yaml run --rm title-analysis python -m imdb_preparation.export_selected_credits --prepared results/imdb-full-2026-11-11 --snapshot data/raw/imdb-full-2026-11-11 --raw-profile results/imdb-full-raw-profile-2026-11-11 --selected-titles results/title-queries-full-provisional-2026-11-11/selected_titles.csv --output results/selected-credits-full-provisional-2026-11-11
+```
+
+Pendant le nettoyage, adapter le chemin de préparation au dossier `.incomplete-*`
+correspondant. Le résultat porte le périmètre `full_selected_credits_subset`,
+jamais une certification de nettoyage global. `candidates.csv` respecte
+l'interface à deux colonnes ; `credit_details.csv` et `coverage.csv` exposent les
+rôles, l'ordre et les films ayant moins de trois personnes disponibles. Aucune
+collecte de biographies ou de synopsis n'est effectuée. Le filtrage anticipé est
+comparé au nettoyage non filtré sur un cas contrôlé avec doublons Unicode,
+numéros d'ordre équivalents et clés conflictuelles : 34 tests passent (66,02 s).
