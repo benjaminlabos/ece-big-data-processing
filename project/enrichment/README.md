@@ -108,4 +108,8 @@ Le 11 novembre 2026, un essai couvre 13 films issus des exports de la PR #5, don
 
 Spark 4.2.0 sous Docker Desktop a produit six synopsis et 33 biographies. Sept films ont au moins trois biographies, dont deux grâce aux réserves. Les quatre tables Parquet ont été relues et la couverture a été recalculée indépendamment à partir des crédits, des statuts et des appartenances année–genre. Les cas d’absence et les références de révision figurent dans la [preuve du pilote](evidence/provisional-pilot-2026-11-11.json).
 
+Pour reproduire le pilote, filtrer les quatre CSV d’entrée sur les `film_ids` de la preuve et exécuter les commandes de la sélection provisoire avec ces fichiers et un cache dédié. Le premier passage utilisait `--max-new 15`. Une relance sur le même cache après interruption a complété les identifiants restants.
+
+L’[instantané du lot provisoire](evidence/provisional-snapshot-2026-11-11.json) couvre les 6 257 films et les 31 230 crédits candidats. Il indique les réponses en cache au moment de la lecture, les informations disponibles et les demandes en attente. Le [contrôle Arrow ciblé](evidence/arrow-provisional-2026-11-11.json) a aussi passé trois cas dans Docker avec la fonction d’extraction de cette version.
+
 OpenAI Codex a aidé à préparer les échantillons, écrire la collecte et les transformations Spark, vérifier la reprise, contrôler les URL et les statuts d’absence, calculer la couverture et documenter l’exécution. À inclure dans la déclaration du `PROJECT.md` du groupe.

@@ -1,0 +1,14 @@
+{
+  "scope": "synthetic_arrow_compatibility_only",
+  "enrichment_source_commit": "faed0f25ec5e0d1a4399a6a8a0bc1ca079cc5255",
+  "enrichment_module_sha256": "c00b2ebc442cfadb8a38b270ffab8532782ef5bfb70a1ce44051487e36619d9c",
+  "spark_version": "4.2.0",
+  "pandas_version": "2.3.3",
+  "pyarrow_version": "25.0.0",
+  "beautifulsoup4_version": "4.15.0",
+  "udf_eval_type": 101,
+  "rows_verified": 3,
+  "arrow_udf_verified": true,
+  "arrow_to_pandas_verified_without_fallback": true,
+  "live_collection_repeated": false
+}
