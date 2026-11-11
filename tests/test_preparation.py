@@ -1,4 +1,5 @@
 import json
+import shutil
 
 import pytest
 
@@ -184,6 +185,100 @@ def test_snapshot_integrity_and_safe_rerun(tmp_path, spark, prepared):
     (new_raw / "title.crew.tsv").write_text("changed", encoding="utf-8")
     with pytest.raises(ValueError, match="SHA256 mismatch"):
         inspect_snapshot(new_raw)
+
+
+def test_recovery_reuses_only_completed_tables_and_preserves_results(
+    tmp_path, spark, prepared
+):
+    from imdb_preparation.prepare import json_write
+    from imdb_preparation.profile_full import run as raw_profile_run
+
+    raw, original, baseline = prepared
+    checkpoint, profile_dir, recovered = (
+        tmp_path / n for n in ("checkpoint", "raw-profile", "recovered")
+    )
+    checkpoint.mkdir()
+    prefix = list(TABLES)[:5]
+    for table in prefix:
+        for kind in ("clean", "anomalies", "quarantine"):
+            shutil.copytree(original / kind / table, checkpoint / kind / table)
+    json_write(
+        checkpoint / "progress.json",
+        {
+            "scope": "fixture",
+            "completed_tables": prefix,
+            "tables": {table: baseline["tables"][table] for table in prefix},
+        },
+    )
+    raw_profile_run(spark, raw, profile_dir, workers=2)
+    bad_profile = tmp_path / "wrong-snapshot-profile"
+    shutil.copytree(profile_dir, bad_profile)
+    altered = json.loads((bad_profile / "summary.json").read_text())
+    altered["manifest_sha256"] = "0" * 64
+    json_write(bad_profile / "summary.json", altered)
+    json_write(bad_profile / "PROFILE_SUCCESS.json", altered)
+    with pytest.raises(ValueError, match="Raw profile snapshot mismatch"):
+        prepare(
+            spark, raw, tmp_path / "wrong-snapshot", 2026, checkpoint, bad_profile, 2026
+        )
+    before = {
+        str(p.relative_to(checkpoint)): sha256(p)
+        for p in checkpoint.rglob("*")
+        if p.is_file()
+    }
+    with pytest.raises(ValueError, match="original as-of year"):
+        prepare(spark, raw, tmp_path / "wrong-year", 2026, checkpoint, profile_dir)
+    result = prepare(spark, raw, recovered, 2026, checkpoint, profile_dir, 2026, 4)
+    assert result["tables"] == baseline["tables"]
+    assert result["recovery"]["reused_tables"] == prefix
+    assert result["recovery"]["legacy_context_asserted"]
+    assert json.loads((recovered / "missing_profile.json").read_text()) == json.loads(
+        (original / "missing_profile.json").read_text()
+    )
+    for table in TABLES:
+        expected, actual = (
+            read_table(spark, original, table),
+            read_table(spark, recovered, table),
+        )
+        assert (
+            expected.exceptAll(actual).count()
+            == actual.exceptAll(expected).count()
+            == 0
+        )
+    assert before == {
+        str(p.relative_to(checkpoint)): sha256(p)
+        for p in checkpoint.rglob("*")
+        if p.is_file()
+    }
+    assert (recovered / "SUCCESS.json").exists() and not (
+        checkpoint / "SUCCESS.json"
+    ).exists()
+
+
+def test_recovery_rejects_incomplete_checkpoint(tmp_path, spark, prepared):
+    from imdb_preparation.prepare import adopt_checkpoint
+
+    _, _, baseline = prepared
+    checkpoint = tmp_path / "checkpoint"
+    checkpoint.mkdir()
+    (checkpoint / "progress.json").write_text(
+        json.dumps(
+            {
+                "scope": "fixture",
+                "completed_tables": ["title.basics"],
+                "tables": {"title.basics": baseline["tables"]["title.basics"]},
+            }
+        )
+    )
+    with pytest.raises(ValueError, match="Incomplete checkpoint"):
+        adopt_checkpoint(
+            spark,
+            checkpoint,
+            tmp_path / "stage",
+            {"scope": "fixture", "as_of_year": 2026},
+            {"title.basics": [{"total_rows": 9}]},
+            2026,
+        )
 
 
 def test_malformed_tsv_fails_without_publishing_output(tmp_path, spark):

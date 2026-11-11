@@ -16,7 +16,7 @@ préparation, exploration et export des crédits, avec ressources bornées et ga
 disque. Le collecteur de preuves refuse les sorties incomplètes et compare les
 39 profils aux résultats du profil brut séparé avant publication.
 
-Validation : 36 tests Python contrôlés réussis sous Spark 4.2.0 (69,75 s), contrôle
+Validation : 38 tests Python contrôlés réussis sous Spark 4.2.0 (77,42 s), contrôle
 CLI, réconciliation de 369 502 énoncés de langues et profil complet réel. Les
 premières sorties réelles sont publiées : Q1 (13 640 lignes), Q2 (138), Q3 (92),
 9 089 places de classement pour 6 257 films distincts. Les cinq autres analyses
@@ -48,3 +48,13 @@ Le retour de Benjamin sur les titres Wikipédia vides après conversion des `_`
 est intégré : normalisation identique au lecteur streaming, rejet des titres
 vides et test avec ses fonctions exactes. La correction figure aussi dans la
 PR #4 (6689549), dont les 28 tests passent.
+
+Après interruption de Docker, la préparation reprend les cinq tables terminées
+après vérification des marqueurs, schémas, compteurs et audits. Les fichiers sont
+réutilisés par liens physiques ; le profil brut complet est réutilisé après
+vérification du manifeste. La comparaison des profils est donc un contrôle de
+cohérence, sans prétendre à un second calcul indépendant. Le checkpoint ancien
+exige une assertion explicite de son année ; les nouveaux checkpoints tracent
+aussi les empreintes des entrées et des règles. Les tests comparent la reprise
+au traitement complet des sept tables de fixture et vérifient la conservation
+du checkpoint source. La validation du traitement global réel reste attendue.

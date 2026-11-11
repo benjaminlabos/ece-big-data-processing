@@ -3,7 +3,10 @@ param(
     [string]$PreparedOutput = 'results/imdb-full-2026-11-11',
     [string]$AnalysisOutput = 'results/exploration-full-provisional-2026-11-11',
     [string]$Configuration = 'examples/exploration/provisional.json',
-    [string]$OriginalLanguages = 'data/reference/original-languages-2026-11-11.csv'
+    [string]$OriginalLanguages = 'data/reference/original-languages-2026-11-11.csv',
+    [string]$ResumeFrom = '',
+    [string]$RawProfile = '',
+    [int]$LegacyAsOfYear = 0
 )
 $ErrorActionPreference = 'Stop'
 $repoRoot = (Get-Location).Path
@@ -18,11 +21,20 @@ docker compose -f compose.preparation.yaml -f compose.full.yaml config -q
 if ($LASTEXITCODE -ne 0) { throw 'Full run Compose configuration invalid' }
 $driveName = (Get-Item $repoRoot).PSDrive.Name
 if ((Get-PSDrive $driveName).Free -lt 12GB) { throw 'At least 12 GiB free required before launch; actual peak remains to measure' }
-$worker = Start-Job -ArgumentList $repoRoot,$Snapshot,$PreparedOutput,$AnalysisOutput,$Configuration,$OriginalLanguages -ScriptBlock {
-    param($rootPath,$snapshotPath,$preparedPath,$analysisPath,$configurationPath,$languagePath)
+if ($ResumeFrom -and (-not (Test-Path ($ResumeFrom + '/progress.json')) -or -not $RawProfile)) { throw 'Recovery requires checkpoint progress and a completed raw profile' }
+if ($RawProfile -and -not (Test-Path ($RawProfile + '/PROFILE_SUCCESS.json'))) { throw 'Completed raw profile marker missing' }
+if ($ResumeFrom -and (Test-Path results/imdb-full-prepare.log)) {
+    $archiveName = 'results/imdb-full-prepare-before-recovery-' + [DateTime]::UtcNow.ToString('yyyyMMdd-HHmmss') + '.log'
+    Copy-Item results/imdb-full-prepare.log $archiveName
+}
+$worker = Start-Job -ArgumentList $repoRoot,$Snapshot,$PreparedOutput,$AnalysisOutput,$Configuration,$OriginalLanguages,$ResumeFrom,$RawProfile,$LegacyAsOfYear -ScriptBlock {
+    param($rootPath,$snapshotPath,$preparedPath,$analysisPath,$configurationPath,$languagePath,$checkpointPath,$profilePath,$legacyYear)
     Set-Location $rootPath
     $ErrorActionPreference = 'Continue'
-    docker compose -f compose.preparation.yaml -f compose.full.yaml run --rm --name gr04-imdb-full-run preparation python -m imdb_preparation.prepare --raw-dir $snapshotPath --output $preparedPath --master 'local[4]' --shuffle-partitions 64 --as-of-year 2026 *> results/imdb-full-prepare.log
+    $preparationArguments = @('--input-partitions','64')
+    if ($profilePath) { $preparationArguments += @('--raw-profile',$profilePath) }
+    if ($checkpointPath) { $preparationArguments += @('--resume-from',$checkpointPath,'--legacy-as-of-year',[string]$legacyYear) }
+    docker compose -f compose.preparation.yaml -f compose.full.yaml run --rm --name gr04-imdb-full-run preparation python -m imdb_preparation.prepare --raw-dir $snapshotPath --output $preparedPath --master 'local[4]' --shuffle-partitions 64 --as-of-year 2026 @preparationArguments *> results/imdb-full-prepare.log
     if ($LASTEXITCODE -ne 0) { throw 'Full preparation failed; inspect results/imdb-full-prepare.log and partial outputs' }
     $languageArguments = @()
     if (Test-Path $languagePath) { $languageArguments = @('--original-languages',$languagePath) }

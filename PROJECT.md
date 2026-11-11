@@ -854,3 +854,38 @@ Les titres devenus vides sont rejetés avec `invalid_reference`.
 les fonctions exactes du lecteur de Benjamin. Les 28 tests de la branche
 intégration passent ; après propagation sur la branche d'analyse, les 36 tests
 passent en 69,75 s. Cette correction ne modifie aucun pipeline de Benjamin.
+
+### Reprise après interruption de Docker — 11 novembre
+
+Après la perte du conteneur de calcul, les cinq premières tables terminées sont
+restées dans `results/imdb-full-2026-11-11.incomplete-31348599`. Les caches Spark
+intermédiaires des crédits ne constituent pas un point de reprise. La nouvelle
+option reprend uniquement les tables disposant de leurs marqueurs Parquet et
+contrôle schémas, comptes propres/quarantaines et agrégats d'audit avant de les
+réutiliser dans un nouveau dossier temporaire. L'ancien dossier reste intact.
+
+Les fichiers sont réutilisés par liens physiques NTFS, vérifiés dans le conteneur
+sur le poste Windows : pas de deuxième copie volumineuse des tables terminées.
+Le profil brut complet déjà calculé est vérifié contre le manifeste et réutilisé ;
+les 39 taux ne sont pas recalculés par la reprise. Leur comparaison ultérieure
+constitue alors un contrôle de cohérence avec cette référence, pas un second
+calcul indépendant.
+
+```powershell
+.\run_full_imdb.ps1 -ResumeFrom results/imdb-full-2026-11-11.incomplete-31348599 -RawProfile results/imdb-full-raw-profile-2026-11-11 -LegacyAsOfYear 2026
+```
+
+`-LegacyAsOfYear` est l'assertion de l'opérateur pour ce checkpoint ancien de
+cette tâche, dont le lanceur utilisait explicitement 2026. Les seuls nombres de
+lignes ne prouvent pas cryptographiquement sa provenance initiale. L'adoption est
+tracée comme `legacy_context_asserted` dans le résumé. Les nouvelles exécutions
+écrivent avant traitement `checkpoint_context.json`, contenant année, empreinte
+du manifeste et empreintes canoniques des règles de qualité et du schéma, ainsi
+que le manifeste d'entrée. Une reprise moderne refuse une divergence de ces
+paramètres ou des règles ; un checkpoint ancien exige son année explicite.
+
+Le lanceur archive le journal interrompu, puis reprend préparation, exploration
+et exports avec la surveillance du disque existante. Il repartitionne aussi les
+champs bruts sur 64 partitions avant la normalisation Unicode : la lecture gzip
+reste séquentielle, tandis que les transformations suivantes peuvent utiliser les
+quatre threads. Les règles de nettoyage et les seuils ne changent pas.
