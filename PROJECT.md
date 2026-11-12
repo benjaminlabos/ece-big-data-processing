@@ -1145,3 +1145,22 @@ Les CSV/JSON vérifiés peuvent être publiés sous
 `validation/collaborations-full-43093003953/` sur la branche de Nicolas si elle
 n'a pas changé. Le code de Benjamin et ses commits restent attribués à leur
 auteur ; sa PR, sa relecture et l'interprétation étudiante restent distinctes.
+
+### CSV complets pour la relecture
+
+Après extraction de l'artefact vérifié, installer `duckdb==1.4.3` dans un
+environnement Python séparé puis lancer, depuis la racine :
+
+```bash
+python scripts/export_verified_query_csv.py --verified-root results/final/verified --output results/full-query-csv
+```
+
+Le dossier de sortie doit être neuf. Le script vérifie les empreintes du paquet
+(les sidecars Hadoop CRC facultatifs sont exclus des artefacts GitHub), exporte
+les huit requêtes et le classement intégral, puis relit chaque CSV et compare
+son nombre de lignes au résultat déclaré. Les tableaux sont des cellules JSON.
+Ces CSV sont complets ; les aperçus de `query-review/` restent bornés à 100 lignes.
+La conversion a passé sur les sorties réelles, dans le cloud et sur Windows.
+La provenance et les comptes sont conservés dans `COMPLETE_CSV_EXPORT.json`.
+Le prompt de transmission actualisé est
+`validation/message-ben-final-2026-11-12.md` ; aucun message n'est envoyé.
