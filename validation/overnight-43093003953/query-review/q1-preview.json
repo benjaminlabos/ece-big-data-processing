@@ -1,0 +1,1913 @@
+[
+  {
+    "genre": "Romance",
+    "tconst": "tt0000009",
+    "titleType": "movie",
+    "primaryTitle": "Miss Jerry",
+    "originalTitle": "Miss Jerry",
+    "isAdult": 0,
+    "startYear": 1894,
+    "endYear": null,
+    "runtimeMinutes": 45,
+    "genres": [
+      "Romance"
+    ],
+    "mean_runtime": 99.06583877276904,
+    "stddev_runtime": 25.089836958812832,
+    "genre_films": 42437,
+    "runtime_zscore": -2.154890000342484
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0002574",
+    "titleType": "movie",
+    "primaryTitle": "What Happened to Mary",
+    "originalTitle": "What Happened to Mary",
+    "isAdult": 0,
+    "startYear": 1912,
+    "endYear": null,
+    "runtimeMinutes": 150,
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": 2.47761818434236
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0002588",
+    "titleType": "movie",
+    "primaryTitle": "Zigomar contre Nick Carter",
+    "originalTitle": "Zigomar contre Nick Carter",
+    "isAdult": 0,
+    "startYear": 1912,
+    "endYear": null,
+    "runtimeMinutes": 48,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.2102942197580524
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0002605",
+    "titleType": "movie",
+    "primaryTitle": "The Adventures of Kathlyn",
+    "originalTitle": "The Adventures of Kathlyn",
+    "isAdult": 0,
+    "startYear": 1913,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 6.774802825205567
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0002628",
+    "titleType": "movie",
+    "primaryTitle": "Der Andere",
+    "originalTitle": "Der Andere",
+    "isAdult": 0,
+    "startYear": 1913,
+    "endYear": null,
+    "runtimeMinutes": 48,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.2102942197580524
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0003159",
+    "titleType": "movie",
+    "primaryTitle": "Les Misérables, Part 2: Fantine",
+    "originalTitle": "Les misérables - Époque 2: Fantine",
+    "isAdult": 0,
+    "startYear": 1913,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 5.503629366786173
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0003675",
+    "titleType": "movie",
+    "primaryTitle": "The Beloved Adventurer",
+    "originalTitle": "The Beloved Adventurer",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 450,
+    "genres": [
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 11.683648116288104
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0003897",
+    "titleType": "movie",
+    "primaryTitle": "The Exploits of Elaine",
+    "originalTitle": "The Exploits of Elaine",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 220,
+    "genres": [
+      "Action"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 3.5200735520555737
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0004052",
+    "titleType": "movie",
+    "primaryTitle": "The Hazards of Helen",
+    "originalTitle": "The Hazards of Helen",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 1428,
+    "genres": [
+      "Action"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 39.311248499811555
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0004272",
+    "titleType": "movie",
+    "primaryTitle": "Lucille Love: The Girl of Mystery",
+    "originalTitle": "Lucille Love: The Girl of Mystery",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Action"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 5.890350038661929
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0004313",
+    "titleType": "movie",
+    "primaryTitle": "The Master Key",
+    "originalTitle": "The Master Key",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 6.186634599487724
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0004313",
+    "titleType": "movie",
+    "primaryTitle": "The Master Key",
+    "originalTitle": "The Master Key",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 7.102059177944403
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0004313",
+    "titleType": "movie",
+    "primaryTitle": "The Master Key",
+    "originalTitle": "The Master Key",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 5.7734734563734875
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0004465",
+    "titleType": "movie",
+    "primaryTitle": "The Perils of Pauline",
+    "originalTitle": "The Perils of Pauline",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 199,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 2.8978759743214053
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0004465",
+    "titleType": "movie",
+    "primaryTitle": "The Perils of Pauline",
+    "originalTitle": "The Perils of Pauline",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 199,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 3.469513662543327
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0004465",
+    "titleType": "movie",
+    "primaryTitle": "The Perils of Pauline",
+    "originalTitle": "The Perils of Pauline",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 199,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 2.7782040619543067
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0004727",
+    "titleType": "movie",
+    "primaryTitle": "The Trey o' Hearts",
+    "originalTitle": "The Trey o' Hearts",
+    "isAdult": 0,
+    "startYear": 1914,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 7.102059177944403
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0004866",
+    "titleType": "movie",
+    "primaryTitle": "After Five",
+    "originalTitle": "After Five",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Crime",
+    "tconst": "tt0004906",
+    "titleType": "movie",
+    "primaryTitle": "Are They Born or Made?",
+    "originalTitle": "Are They Born or Made?",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 40,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "mean_runtime": 95.53439413191637,
+    "stddev_runtime": 25.604571598986233,
+    "genre_films": 34628,
+    "runtime_zscore": -2.1689249483133377
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0004972",
+    "titleType": "movie",
+    "primaryTitle": "The Birth of a Nation",
+    "originalTitle": "The Birth of a Nation",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 195,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 2.6702664261193814
+  },
+  {
+    "genre": "War",
+    "tconst": "tt0004972",
+    "titleType": "movie",
+    "primaryTitle": "The Birth of a Nation",
+    "originalTitle": "The Birth of a Nation",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 195,
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "mean_runtime": 94.743879706723,
+    "stddev_runtime": 31.25239125649199,
+    "genre_films": 8047,
+    "runtime_zscore": 3.2079503763556336
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0004974",
+    "titleType": "movie",
+    "primaryTitle": "The Black Box",
+    "originalTitle": "The Black Box",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 195,
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 2.6702664261193814
+  },
+  {
+    "genre": "Sci-Fi",
+    "tconst": "tt0004974",
+    "titleType": "movie",
+    "primaryTitle": "The Black Box",
+    "originalTitle": "The Black Box",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 195,
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "mean_runtime": 91.15973072215422,
+    "stddev_runtime": 30.444456621407728,
+    "genre_films": 9804,
+    "runtime_zscore": 3.4108104003678648
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0005005",
+    "titleType": "movie",
+    "primaryTitle": "The Broken Coin",
+    "originalTitle": "The Broken Coin",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 440,
+    "genres": [
+      "Adventure",
+      "Mystery"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 11.356391763549269
+  },
+  {
+    "genre": "Mystery",
+    "tconst": "tt0005005",
+    "titleType": "movie",
+    "primaryTitle": "The Broken Coin",
+    "originalTitle": "The Broken Coin",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 440,
+    "genres": [
+      "Adventure",
+      "Mystery"
+    ],
+    "mean_runtime": 94.3350740830702,
+    "stddev_runtime": 50.37906893408845,
+    "genre_films": 16468,
+    "runtime_zscore": 6.861280552230281
+  },
+  {
+    "genre": "Romance",
+    "tconst": "tt0005393",
+    "titleType": "movie",
+    "primaryTitle": "The Girl of the Golden West",
+    "originalTitle": "The Girl of the Golden West",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 45,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Western"
+    ],
+    "mean_runtime": 99.06583877276904,
+    "stddev_runtime": 25.089836958812832,
+    "genre_films": 42437,
+    "runtime_zscore": -2.154890000342484
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0005400",
+    "titleType": "movie",
+    "primaryTitle": "The Goddess",
+    "originalTitle": "The Goddess",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 5.7734734563734875
+  },
+  {
+    "genre": "Romance",
+    "tconst": "tt0005400",
+    "titleType": "movie",
+    "primaryTitle": "The Goddess",
+    "originalTitle": "The Goddess",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "mean_runtime": 99.06583877276904,
+    "stddev_runtime": 25.089836958812832,
+    "genre_films": 42437,
+    "runtime_zscore": 8.407155517730063
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0005997",
+    "titleType": "movie",
+    "primaryTitle": "The Sable Lorcha",
+    "originalTitle": "The Sable Lorcha",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Adventure",
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Romance",
+    "tconst": "tt0006021",
+    "titleType": "movie",
+    "primaryTitle": "The Secretary of Frivolous Affairs",
+    "originalTitle": "The Secretary of Frivolous Affairs",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 45,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Romance"
+    ],
+    "mean_runtime": 99.06583877276904,
+    "stddev_runtime": 25.089836958812832,
+    "genre_films": 42437,
+    "runtime_zscore": -2.154890000342484
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0006097",
+    "titleType": "movie",
+    "primaryTitle": "Stingaree",
+    "originalTitle": "Stingaree",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 250,
+    "genres": [
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 4.154408918849605
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0006206",
+    "titleType": "movie",
+    "primaryTitle": "Les Vampires",
+    "originalTitle": "Les vampires",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 421,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Crime"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 9.475393224654043
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0006206",
+    "titleType": "movie",
+    "primaryTitle": "Les Vampires",
+    "originalTitle": "Les vampires",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 421,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Crime"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 10.73460469334548
+  },
+  {
+    "genre": "Crime",
+    "tconst": "tt0006206",
+    "titleType": "movie",
+    "primaryTitle": "Les Vampires",
+    "originalTitle": "Les vampires",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 421,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Crime"
+    ],
+    "mean_runtime": 95.53439413191637,
+    "stddev_runtime": 25.604571598986233,
+    "genre_films": 34628,
+    "runtime_zscore": 12.711230282055173
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0006283",
+    "titleType": "movie",
+    "primaryTitle": "Who Pays?",
+    "originalTitle": "Who Pays?",
+    "isAdult": 0,
+    "startYear": 1915,
+    "endYear": null,
+    "runtimeMinutes": 360,
+    "genres": [
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 7.122693904310055
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0006339",
+    "titleType": "movie",
+    "primaryTitle": "The Adventures of Peg o' the Ring",
+    "originalTitle": "The Adventures of Peg o' the Ring",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 5.890350038661929
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0006339",
+    "titleType": "movie",
+    "primaryTitle": "The Adventures of Peg o' the Ring",
+    "originalTitle": "The Adventures of Peg o' the Ring",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 5.503629366786173
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0006409",
+    "titleType": "movie",
+    "primaryTitle": "Beatrice Fairfax",
+    "originalTitle": "Beatrice Fairfax",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 5.890350038661929
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0006409",
+    "titleType": "movie",
+    "primaryTitle": "Beatrice Fairfax",
+    "originalTitle": "Beatrice Fairfax",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 6.774802825205567
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0006411",
+    "titleType": "movie",
+    "primaryTitle": "The Beckoning Trail",
+    "originalTitle": "The Beckoning Trail",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0006504",
+    "titleType": "movie",
+    "primaryTitle": "A Child of Mystery",
+    "originalTitle": "A Child of Mystery",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Horror",
+    "tconst": "tt0006554",
+    "titleType": "movie",
+    "primaryTitle": "The Crimson Stain Mystery",
+    "originalTitle": "The Crimson Stain Mystery",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 355,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "mean_runtime": 88.56902893974413,
+    "stddev_runtime": 22.267453662937115,
+    "genre_films": 30719,
+    "runtime_zscore": 11.965039878076169
+  },
+  {
+    "genre": "Mystery",
+    "tconst": "tt0006554",
+    "titleType": "movie",
+    "primaryTitle": "The Crimson Stain Mystery",
+    "originalTitle": "The Crimson Stain Mystery",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 355,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "mean_runtime": 94.3350740830702,
+    "stddev_runtime": 50.37906893408845,
+    "genre_films": 16468,
+    "runtime_zscore": 5.174071919787976
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0006568",
+    "titleType": "movie",
+    "primaryTitle": "A Daughter of the Gods",
+    "originalTitle": "A Daughter of the Gods",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 180,
+    "genres": [
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 2.265500291738411
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0006712",
+    "titleType": "movie",
+    "primaryTitle": "The Gay Lord Waring",
+    "originalTitle": "The Gay Lord Waring",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0006864",
+    "titleType": "movie",
+    "primaryTitle": "Intolerance",
+    "originalTitle": "Intolerance: Love's Struggle Throughout the Ages",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 210,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 3.0750325605003517
+  },
+  {
+    "genre": "History",
+    "tconst": "tt0006864",
+    "titleType": "movie",
+    "primaryTitle": "Intolerance",
+    "originalTitle": "Intolerance: Love's Struggle Throughout the Ages",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 210,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "mean_runtime": 94.25304296817716,
+    "stddev_runtime": 52.821833024302435,
+    "genre_films": 13638,
+    "runtime_zscore": 2.1912711165962304
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0006886",
+    "titleType": "movie",
+    "primaryTitle": "Judex",
+    "originalTitle": "Judex",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Adventure",
+      "Crime"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 6.774802825205567
+  },
+  {
+    "genre": "Crime",
+    "tconst": "tt0006886",
+    "titleType": "movie",
+    "primaryTitle": "Judex",
+    "originalTitle": "Judex",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Adventure",
+      "Crime"
+    ],
+    "mean_runtime": 95.53439413191637,
+    "stddev_runtime": 25.604571598986233,
+    "genre_films": 34628,
+    "runtime_zscore": 7.985511691833152
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0006917",
+    "titleType": "movie",
+    "primaryTitle": "Liberty",
+    "originalTitle": "Liberty",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 400,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 8.853195646919875
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0006917",
+    "titleType": "movie",
+    "primaryTitle": "Liberty",
+    "originalTitle": "Liberty",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 400,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 10.047366352593926
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0006917",
+    "titleType": "movie",
+    "primaryTitle": "Liberty",
+    "originalTitle": "Liberty",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 400,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 8.202070262659308
+  },
+  {
+    "genre": "Romance",
+    "tconst": "tt0007047",
+    "titleType": "movie",
+    "primaryTitle": "The Matrimaniac",
+    "originalTitle": "The Matrimaniac",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 46,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "mean_runtime": 99.06583877276904,
+    "stddev_runtime": 25.089836958812832,
+    "genre_films": 42437,
+    "runtime_zscore": -2.115033224802587
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0007107",
+    "titleType": "movie",
+    "primaryTitle": "The Mysteries of Myra",
+    "originalTitle": "The Mysteries of Myra",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 5.7734734563734875
+  },
+  {
+    "genre": "Fantasy",
+    "tconst": "tt0007107",
+    "titleType": "movie",
+    "primaryTitle": "The Mysteries of Myra",
+    "originalTitle": "The Mysteries of Myra",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "mean_runtime": 93.93359559402046,
+    "stddev_runtime": 31.85274680042231,
+    "genre_films": 12710,
+    "runtime_zscore": 6.783289546731175
+  },
+  {
+    "genre": "Horror",
+    "tconst": "tt0007107",
+    "titleType": "movie",
+    "primaryTitle": "The Mysteries of Myra",
+    "originalTitle": "The Mysteries of Myra",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "mean_runtime": 88.56902893974413,
+    "stddev_runtime": 22.267453662937115,
+    "genre_films": 30719,
+    "runtime_zscore": 9.944153220752622
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0007598",
+    "titleType": "movie",
+    "primaryTitle": "The Yellow Menace",
+    "originalTitle": "The Yellow Menace",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 320,
+    "genres": [
+      "Action"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 6.482919160313519
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0007871",
+    "titleType": "movie",
+    "primaryTitle": "The Double Room Mystery",
+    "originalTitle": "The Double Room Mystery",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0007932",
+    "titleType": "movie",
+    "primaryTitle": "The Fatal Ring",
+    "originalTitle": "The Fatal Ring",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 400,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 8.853195646919875
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0007932",
+    "titleType": "movie",
+    "primaryTitle": "The Fatal Ring",
+    "originalTitle": "The Fatal Ring",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 400,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 8.202070262659308
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0007998",
+    "titleType": "movie",
+    "primaryTitle": "The Ghost House",
+    "originalTitle": "The Ghost House",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Comedy",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0008284",
+    "titleType": "movie",
+    "primaryTitle": "Mefisto",
+    "originalTitle": "Mefisto",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 460,
+    "genres": [
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": 16.72519509876518
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0008353",
+    "titleType": "movie",
+    "primaryTitle": "The Mystery Ship",
+    "originalTitle": "The Mystery Ship",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 360,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 7.668057403616697
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0008353",
+    "titleType": "movie",
+    "primaryTitle": "The Mystery Ship",
+    "originalTitle": "The Mystery Ship",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 360,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 8.738340941638581
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0008355",
+    "titleType": "movie",
+    "primaryTitle": "The Mystery of the Double Cross",
+    "originalTitle": "Mystery of the Double Cross",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 350,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 7.371772842790903
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0008355",
+    "titleType": "movie",
+    "primaryTitle": "The Mystery of the Double Cross",
+    "originalTitle": "Mystery of the Double Cross",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 350,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 8.411084588899746
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0008366",
+    "titleType": "movie",
+    "primaryTitle": "The Neglected Wife",
+    "originalTitle": "The Neglected Wife",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 5.503629366786173
+  },
+  {
+    "genre": "Romance",
+    "tconst": "tt0008366",
+    "titleType": "movie",
+    "primaryTitle": "The Neglected Wife",
+    "originalTitle": "The Neglected Wife",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "mean_runtime": 99.06583877276904,
+    "stddev_runtime": 25.089836958812832,
+    "genre_films": 42437,
+    "runtime_zscore": 8.008587762331098
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0008371",
+    "titleType": "movie",
+    "primaryTitle": "The New Mission of Judex",
+    "originalTitle": "La nouvelle mission de Judex",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 374,
+    "genres": [
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 9.196499835472952
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0008411",
+    "titleType": "movie",
+    "primaryTitle": "Patria",
+    "originalTitle": "Patria",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 6.186634599487724
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0008411",
+    "titleType": "movie",
+    "primaryTitle": "Patria",
+    "originalTitle": "Patria",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 5.7734734563734875
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0008476",
+    "titleType": "movie",
+    "primaryTitle": "The Purple Mask",
+    "originalTitle": "The Purple Mask",
+    "isAdult": 0,
+    "startYear": 1916,
+    "endYear": null,
+    "runtimeMinutes": 330,
+    "genres": [
+      "Action"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 6.7792037211393135
+  },
+  {
+    "genre": "Mystery",
+    "tconst": "tt0008767",
+    "titleType": "movie",
+    "primaryTitle": "Who Is Number One?",
+    "originalTitle": "Who Is Number One?",
+    "isAdult": 0,
+    "startYear": 1917,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Mystery"
+    ],
+    "mean_runtime": 94.3350740830702,
+    "stddev_runtime": 50.37906893408845,
+    "genre_films": 16468,
+    "runtime_zscore": 4.08234868703119
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0008851",
+    "titleType": "movie",
+    "primaryTitle": "At the Mercy of Men",
+    "originalTitle": "At the Mercy of Men",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0008865",
+    "titleType": "movie",
+    "primaryTitle": "Beans",
+    "originalTitle": "Beans",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Comedy",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0009030",
+    "titleType": "movie",
+    "primaryTitle": "The Eagle",
+    "originalTitle": "The Eagle",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0009039",
+    "titleType": "movie",
+    "primaryTitle": "La España trágica o Tierra de sangre",
+    "originalTitle": "La España trágica o Tierra de sangre",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 240,
+    "genres": [
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 3.8845648292622923
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0009114",
+    "titleType": "movie",
+    "primaryTitle": "The Girl of Today",
+    "originalTitle": "The Girl of Today",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "War"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0009204",
+    "titleType": "movie",
+    "primaryTitle": "The House of Hate",
+    "originalTitle": "The House of Hate",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 410,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 9.14948020774567
+  },
+  {
+    "genre": "Drama",
+    "tconst": "tt0009204",
+    "titleType": "movie",
+    "primaryTitle": "The House of Hate",
+    "originalTitle": "The House of Hate",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 410,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "mean_runtime": 96.04410179214386,
+    "stddev_runtime": 37.058436281830424,
+    "genre_films": 196636,
+    "runtime_zscore": 8.471914352246623
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0009212",
+    "titleType": "movie",
+    "primaryTitle": "The Hun Within",
+    "originalTitle": "The Hun Within",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Drama",
+      "Thriller",
+      "War"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0009233",
+    "titleType": "movie",
+    "primaryTitle": "The Iron Test",
+    "originalTitle": "The Iron Test",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 5.890350038661929
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0009233",
+    "titleType": "movie",
+    "primaryTitle": "The Iron Test",
+    "originalTitle": "The Iron Test",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 6.774802825205567
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0009267",
+    "titleType": "movie",
+    "primaryTitle": "The Knife",
+    "originalTitle": "The Knife",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0009304",
+    "titleType": "movie",
+    "primaryTitle": "The Lion's Claws",
+    "originalTitle": "The Lion's Claws",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 360,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 7.668057403616697
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0009304",
+    "titleType": "movie",
+    "primaryTitle": "The Lion's Claws",
+    "originalTitle": "The Lion's Claws",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 360,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 8.738340941638581
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0009701",
+    "titleType": "movie",
+    "primaryTitle": "Tih Minh",
+    "originalTitle": "Tih Minh",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 418,
+    "genres": [
+      "Adventure",
+      "Mystery"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 10.636427787523829
+  },
+  {
+    "genre": "Mystery",
+    "tconst": "tt0009701",
+    "titleType": "movie",
+    "primaryTitle": "Tih Minh",
+    "originalTitle": "Tih Minh",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 418,
+    "genres": [
+      "Adventure",
+      "Mystery"
+    ],
+    "mean_runtime": 94.3350740830702,
+    "stddev_runtime": 50.37906893408845,
+    "genre_films": 16468,
+    "runtime_zscore": 6.424591259127567
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0009825",
+    "titleType": "movie",
+    "primaryTitle": "Wolves of Kultur",
+    "originalTitle": "Wolves of Kultur",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 330,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 6.7792037211393135
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0009825",
+    "titleType": "movie",
+    "primaryTitle": "Wolves of Kultur",
+    "originalTitle": "Wolves of Kultur",
+    "isAdult": 0,
+    "startYear": 1918,
+    "endYear": null,
+    "runtimeMinutes": 330,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 7.756571883422075
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0009854",
+    "titleType": "movie",
+    "primaryTitle": "12.10",
+    "originalTitle": "12.10",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 50,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": -2.11837436869726
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0009862",
+    "titleType": "movie",
+    "primaryTitle": "The Adventures of Ruth",
+    "originalTitle": "The Adventures of Ruth",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 300,
+    "genres": [
+      "Action"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 5.890350038661929
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0009894",
+    "titleType": "movie",
+    "primaryTitle": "The Grey Automobile",
+    "originalTitle": "El automóvil gris",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 223,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 3.608958920303312
+  },
+  {
+    "genre": "Crime",
+    "tconst": "tt0009894",
+    "titleType": "movie",
+    "primaryTitle": "The Grey Automobile",
+    "originalTitle": "El automóvil gris",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 223,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 95.53439413191637,
+    "stddev_runtime": 25.604571598986233,
+    "genre_films": 34628,
+    "runtime_zscore": 4.97823622532823
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0009894",
+    "titleType": "movie",
+    "primaryTitle": "The Grey Automobile",
+    "originalTitle": "El automóvil gris",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 223,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": 5.832692748061283
+  },
+  {
+    "genre": "Crime",
+    "tconst": "tt0009905",
+    "titleType": "movie",
+    "primaryTitle": "Barrabas",
+    "originalTitle": "Barrabas",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 489,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 95.53439413191637,
+    "stddev_runtime": 25.604571598986233,
+    "genre_films": 34628,
+    "runtime_zscore": 15.367006018708869
+  },
+  {
+    "genre": "Thriller",
+    "tconst": "tt0009905",
+    "titleType": "movie",
+    "primaryTitle": "Barrabas",
+    "originalTitle": "Barrabas",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 489,
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "mean_runtime": 96.09177112996507,
+    "stddev_runtime": 21.758085733594953,
+    "genre_films": 34063,
+    "runtime_zscore": 18.05803293914667
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0009936",
+    "titleType": "movie",
+    "primaryTitle": "The Black Secret",
+    "originalTitle": "The Black Secret",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 6.186634599487724
+  },
+  {
+    "genre": "Adventure",
+    "tconst": "tt0009936",
+    "titleType": "movie",
+    "primaryTitle": "The Black Secret",
+    "originalTitle": "The Black Secret",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 310,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "mean_runtime": 92.981778092108,
+    "stddev_runtime": 30.557084427266773,
+    "genre_films": 24037,
+    "runtime_zscore": 7.102059177944403
+  },
+  {
+    "genre": "Action",
+    "tconst": "tt0009956",
+    "titleType": "movie",
+    "primaryTitle": "Bound and Gagged",
+    "originalTitle": "Bound and Gagged",
+    "isAdult": 0,
+    "startYear": 1919,
+    "endYear": null,
+    "runtimeMinutes": 200,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "mean_runtime": 101.19281199652993,
+    "stddev_runtime": 33.75133679638362,
+    "genre_films": 40345,
+    "runtime_zscore": 2.927504430403985
+  }
+]

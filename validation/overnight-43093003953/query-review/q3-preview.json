@@ -1,0 +1,738 @@
+[
+  {
+    "startYear": 1980,
+    "group": "other_genres",
+    "votes": 9436537,
+    "genre_memberships": 441,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.295238095238094
+  },
+  {
+    "startYear": 1980,
+    "group": "top_three",
+    "votes": 7551475,
+    "genre_memberships": 244,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.224590163934426
+  },
+  {
+    "startYear": 1981,
+    "group": "other_genres",
+    "votes": 5761195,
+    "genre_memberships": 457,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.446827133479212
+  },
+  {
+    "startYear": 1981,
+    "group": "top_three",
+    "votes": 5085061,
+    "genre_memberships": 263,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.3087452471482885
+  },
+  {
+    "startYear": 1982,
+    "group": "other_genres",
+    "votes": 9235730,
+    "genre_memberships": 445,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.243595505617976
+  },
+  {
+    "startYear": 1982,
+    "group": "top_three",
+    "votes": 7237780,
+    "genre_memberships": 238,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.468487394957982
+  },
+  {
+    "startYear": 1983,
+    "group": "other_genres",
+    "votes": 7898862,
+    "genre_memberships": 442,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.239819004524887
+  },
+  {
+    "startYear": 1983,
+    "group": "top_three",
+    "votes": 6739624,
+    "genre_memberships": 258,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.303488372093023
+  },
+  {
+    "startYear": 1984,
+    "group": "other_genres",
+    "votes": 11889746,
+    "genre_memberships": 472,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.23813559322034
+  },
+  {
+    "startYear": 1984,
+    "group": "top_three",
+    "votes": 9436962,
+    "genre_memberships": 264,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.380303030303031
+  },
+  {
+    "startYear": 1985,
+    "group": "other_genres",
+    "votes": 10149734,
+    "genre_memberships": 401,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.19700748129676
+  },
+  {
+    "startYear": 1985,
+    "group": "top_three",
+    "votes": 10826030,
+    "genre_memberships": 350,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.420285714285714
+  },
+  {
+    "startYear": 1986,
+    "group": "other_genres",
+    "votes": 11084989,
+    "genre_memberships": 451,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.187361419068737
+  },
+  {
+    "startYear": 1986,
+    "group": "top_three",
+    "votes": 9506151,
+    "genre_memberships": 363,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.414876033057851
+  },
+  {
+    "startYear": 1987,
+    "group": "other_genres",
+    "votes": 13448190,
+    "genre_memberships": 476,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.073949579831933
+  },
+  {
+    "startYear": 1987,
+    "group": "top_three",
+    "votes": 9899117,
+    "genre_memberships": 421,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.252256532066508
+  },
+  {
+    "startYear": 1988,
+    "group": "other_genres",
+    "votes": 12897093,
+    "genre_memberships": 536,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.1080223880597
+  },
+  {
+    "startYear": 1988,
+    "group": "top_three",
+    "votes": 11329860,
+    "genre_memberships": 440,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.307727272727274
+  },
+  {
+    "startYear": 1989,
+    "group": "other_genres",
+    "votes": 11873184,
+    "genre_memberships": 549,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.06375227686703
+  },
+  {
+    "startYear": 1989,
+    "group": "top_three",
+    "votes": 11665468,
+    "genre_memberships": 403,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.400744416873449
+  },
+  {
+    "startYear": 1990,
+    "group": "other_genres",
+    "votes": 16387525,
+    "genre_memberships": 471,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 5.95796178343949
+  },
+  {
+    "startYear": 1990,
+    "group": "top_three",
+    "votes": 13679843,
+    "genre_memberships": 440,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.368863636363635
+  },
+  {
+    "startYear": 1991,
+    "group": "other_genres",
+    "votes": 15489834,
+    "genre_memberships": 463,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.160475161987041
+  },
+  {
+    "startYear": 1991,
+    "group": "top_three",
+    "votes": 12190959,
+    "genre_memberships": 455,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.466593406593407
+  },
+  {
+    "startYear": 1992,
+    "group": "other_genres",
+    "votes": 15745927,
+    "genre_memberships": 449,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.355011135857463
+  },
+  {
+    "startYear": 1992,
+    "group": "top_three",
+    "votes": 13533459,
+    "genre_memberships": 435,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.552413793103447
+  },
+  {
+    "startYear": 1993,
+    "group": "other_genres",
+    "votes": 20203819,
+    "genre_memberships": 522,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.251340996168582
+  },
+  {
+    "startYear": 1993,
+    "group": "top_three",
+    "votes": 16309924,
+    "genre_memberships": 484,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.442561983471075
+  },
+  {
+    "startYear": 1994,
+    "group": "other_genres",
+    "votes": 19737286,
+    "genre_memberships": 473,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.176955602536998
+  },
+  {
+    "startYear": 1994,
+    "group": "top_three",
+    "votes": 27661023,
+    "genre_memberships": 498,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.387148594377511
+  },
+  {
+    "startYear": 1995,
+    "group": "other_genres",
+    "votes": 27211123,
+    "genre_memberships": 535,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.165233644859813
+  },
+  {
+    "startYear": 1995,
+    "group": "top_three",
+    "votes": 26112384,
+    "genre_memberships": 517,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.446228239845261
+  },
+  {
+    "startYear": 1996,
+    "group": "other_genres",
+    "votes": 20692669,
+    "genre_memberships": 518,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.198841698841697
+  },
+  {
+    "startYear": 1996,
+    "group": "top_three",
+    "votes": 16836046,
+    "genre_memberships": 561,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.421568627450982
+  },
+  {
+    "startYear": 1997,
+    "group": "other_genres",
+    "votes": 31437660,
+    "genre_memberships": 562,
+    "genres": 17,
+    "mean_rating_per_genre_membership": 6.358718861209964
+  },
+  {
+    "startYear": 1997,
+    "group": "top_three",
+    "votes": 24674138,
+    "genre_memberships": 610,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.354590163934427
+  },
+  {
+    "startYear": 1998,
+    "group": "other_genres",
+    "votes": 25936863,
+    "genre_memberships": 599,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.21068447412354
+  },
+  {
+    "startYear": 1998,
+    "group": "top_three",
+    "votes": 27511416,
+    "genre_memberships": 651,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.488940092165899
+  },
+  {
+    "startYear": 1999,
+    "group": "other_genres",
+    "votes": 39547469,
+    "genre_memberships": 612,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.273366013071895
+  },
+  {
+    "startYear": 1999,
+    "group": "top_three",
+    "votes": 30508656,
+    "genre_memberships": 677,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.463072378138848
+  },
+  {
+    "startYear": 2000,
+    "group": "other_genres",
+    "votes": 34293411,
+    "genre_memberships": 770,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.152987012987011
+  },
+  {
+    "startYear": 2000,
+    "group": "top_three",
+    "votes": 27996176,
+    "genre_memberships": 651,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.363287250384024
+  },
+  {
+    "startYear": 2001,
+    "group": "other_genres",
+    "votes": 45143759,
+    "genre_memberships": 826,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.1676755447941884
+  },
+  {
+    "startYear": 2001,
+    "group": "top_three",
+    "votes": 33109704,
+    "genre_memberships": 702,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.345441595441594
+  },
+  {
+    "startYear": 2002,
+    "group": "other_genres",
+    "votes": 45899223,
+    "genre_memberships": 1028,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.201264591439689
+  },
+  {
+    "startYear": 2002,
+    "group": "top_three",
+    "votes": 33853386,
+    "genre_memberships": 644,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.3276397515527965
+  },
+  {
+    "startYear": 2003,
+    "group": "other_genres",
+    "votes": 42408237,
+    "genre_memberships": 829,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.250904704463209
+  },
+  {
+    "startYear": 2003,
+    "group": "top_three",
+    "votes": 35268584,
+    "genre_memberships": 822,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.3256690997566904
+  },
+  {
+    "startYear": 2004,
+    "group": "other_genres",
+    "votes": 54858124,
+    "genre_memberships": 976,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.249897540983608
+  },
+  {
+    "startYear": 2004,
+    "group": "top_three",
+    "votes": 38482887,
+    "genre_memberships": 966,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.313043478260871
+  },
+  {
+    "startYear": 2005,
+    "group": "other_genres",
+    "votes": 48175459,
+    "genre_memberships": 1051,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.140913415794482
+  },
+  {
+    "startYear": 2005,
+    "group": "top_three",
+    "votes": 32414879,
+    "genre_memberships": 994,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.218209255533197
+  },
+  {
+    "startYear": 2006,
+    "group": "other_genres",
+    "votes": 54870198,
+    "genre_memberships": 1286,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.051010886469672
+  },
+  {
+    "startYear": 2006,
+    "group": "top_three",
+    "votes": 40769053,
+    "genre_memberships": 1039,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.246775745909529
+  },
+  {
+    "startYear": 2007,
+    "group": "other_genres",
+    "votes": 62541404,
+    "genre_memberships": 1347,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.129769858945807
+  },
+  {
+    "startYear": 2007,
+    "group": "top_three",
+    "votes": 38666302,
+    "genre_memberships": 1025,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.263024390243904
+  },
+  {
+    "startYear": 2008,
+    "group": "other_genres",
+    "votes": 61803089,
+    "genre_memberships": 1232,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.096347402597401
+  },
+  {
+    "startYear": 2008,
+    "group": "top_three",
+    "votes": 41667000,
+    "genre_memberships": 1113,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.165229110512131
+  },
+  {
+    "startYear": 2009,
+    "group": "other_genres",
+    "votes": 60548069,
+    "genre_memberships": 1386,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.018109668109667
+  },
+  {
+    "startYear": 2009,
+    "group": "top_three",
+    "votes": 42500135,
+    "genre_memberships": 1197,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.127736006683374
+  },
+  {
+    "startYear": 2010,
+    "group": "other_genres",
+    "votes": 65238480,
+    "genre_memberships": 1621,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.086057988895743
+  },
+  {
+    "startYear": 2010,
+    "group": "top_three",
+    "votes": 43551363,
+    "genre_memberships": 946,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.285095137420719
+  },
+  {
+    "startYear": 2011,
+    "group": "other_genres",
+    "votes": 59823260,
+    "genre_memberships": 1391,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.071028037383177
+  },
+  {
+    "startYear": 2011,
+    "group": "top_three",
+    "votes": 51130649,
+    "genre_memberships": 1294,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.15710973724884
+  },
+  {
+    "startYear": 2012,
+    "group": "other_genres",
+    "votes": 62752716,
+    "genre_memberships": 1585,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.02018927444795
+  },
+  {
+    "startYear": 2012,
+    "group": "top_three",
+    "votes": 46735894,
+    "genre_memberships": 1334,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.09032983508246
+  },
+  {
+    "startYear": 2013,
+    "group": "other_genres",
+    "votes": 75170718,
+    "genre_memberships": 1725,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.105855072463768
+  },
+  {
+    "startYear": 2013,
+    "group": "top_three",
+    "votes": 53258417,
+    "genre_memberships": 1430,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.125174825174825
+  },
+  {
+    "startYear": 2014,
+    "group": "other_genres",
+    "votes": 69777333,
+    "genre_memberships": 2218,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.038638412984672
+  },
+  {
+    "startYear": 2014,
+    "group": "top_three",
+    "votes": 62551634,
+    "genre_memberships": 1240,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.15483870967742
+  },
+  {
+    "startYear": 2015,
+    "group": "other_genres",
+    "votes": 56033331,
+    "genre_memberships": 2179,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.0016521340064255
+  },
+  {
+    "startYear": 2015,
+    "group": "top_three",
+    "votes": 49511595,
+    "genre_memberships": 1244,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.114871382636656
+  },
+  {
+    "startYear": 2016,
+    "group": "other_genres",
+    "votes": 62466184,
+    "genre_memberships": 2284,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 5.987390542907181
+  },
+  {
+    "startYear": 2016,
+    "group": "top_three",
+    "votes": 49731018,
+    "genre_memberships": 1359,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.161000735835174
+  },
+  {
+    "startYear": 2017,
+    "group": "other_genres",
+    "votes": 58110379,
+    "genre_memberships": 2429,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 5.99382461918485
+  },
+  {
+    "startYear": 2017,
+    "group": "top_three",
+    "votes": 47952436,
+    "genre_memberships": 1412,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.11543909348442
+  },
+  {
+    "startYear": 2018,
+    "group": "other_genres",
+    "votes": 56020410,
+    "genre_memberships": 2469,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.011462130417174
+  },
+  {
+    "startYear": 2018,
+    "group": "top_three",
+    "votes": 45050523,
+    "genre_memberships": 1436,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.159679665738162
+  },
+  {
+    "startYear": 2019,
+    "group": "other_genres",
+    "votes": 58966490,
+    "genre_memberships": 2189,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 5.985381452718137
+  },
+  {
+    "startYear": 2019,
+    "group": "top_three",
+    "votes": 45571674,
+    "genre_memberships": 1815,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.060330578512397
+  },
+  {
+    "startYear": 2020,
+    "group": "other_genres",
+    "votes": 27578872,
+    "genre_memberships": 1689,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 5.806631142687981
+  },
+  {
+    "startYear": 2020,
+    "group": "top_three",
+    "votes": 22388668,
+    "genre_memberships": 1294,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 5.951777434312211
+  },
+  {
+    "startYear": 2021,
+    "group": "other_genres",
+    "votes": 41863715,
+    "genre_memberships": 2138,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 5.946632366697848
+  },
+  {
+    "startYear": 2021,
+    "group": "top_three",
+    "votes": 36821934,
+    "genre_memberships": 1270,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.063385826771653
+  },
+  {
+    "startYear": 2022,
+    "group": "other_genres",
+    "votes": 44390742,
+    "genre_memberships": 2243,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 5.987026304057067
+  },
+  {
+    "startYear": 2022,
+    "group": "top_three",
+    "votes": 38499861,
+    "genre_memberships": 1872,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.101549145299145
+  },
+  {
+    "startYear": 2023,
+    "group": "other_genres",
+    "votes": 41684631,
+    "genre_memberships": 2110,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.05644549763033
+  },
+  {
+    "startYear": 2023,
+    "group": "top_three",
+    "votes": 33732647,
+    "genre_memberships": 1788,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.12678970917226
+  },
+  {
+    "startYear": 2024,
+    "group": "other_genres",
+    "votes": 35215495,
+    "genre_memberships": 1867,
+    "genres": 18,
+    "mean_rating_per_genre_membership": 6.058918050348151
+  },
+  {
+    "startYear": 2024,
+    "group": "top_three",
+    "votes": 26434040,
+    "genre_memberships": 1556,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.169473007712082
+  },
+  {
+    "startYear": 2025,
+    "group": "other_genres",
+    "votes": 33318611,
+    "genre_memberships": 1605,
+    "genres": 19,
+    "mean_rating_per_genre_membership": 6.089470404984422
+  },
+  {
+    "startYear": 2025,
+    "group": "top_three",
+    "votes": 21437137,
+    "genre_memberships": 1313,
+    "genres": 3,
+    "mean_rating_per_genre_membership": 6.171287128712871
+  }
+]

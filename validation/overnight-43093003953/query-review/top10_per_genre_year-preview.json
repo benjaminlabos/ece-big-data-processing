@@ -1,0 +1,1869 @@
+[
+  {
+    "tconst": "tt0080827",
+    "titleType": "movie",
+    "primaryTitle": "Encounter of the Spooky Kind",
+    "originalTitle": "Gui da gui",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 102,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "averageRating": 7.0,
+    "numVotes": 3335,
+    "genre": "Action",
+    "genre_year_rank": 10
+  },
+  {
+    "tconst": "tt0080905",
+    "titleType": "movie",
+    "primaryTitle": "Fists of the White Lotus",
+    "originalTitle": "Hong Wending san po bai lian jiao",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 95,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 2660,
+    "genre": "Action",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt0081491",
+    "titleType": "movie",
+    "primaryTitle": "Shaan",
+    "originalTitle": "Shaan",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 181,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "averageRating": 7.0,
+    "numVotes": 3454,
+    "genre": "Action",
+    "genre_year_rank": 9
+  },
+  {
+    "tconst": "tt0081499",
+    "titleType": "movie",
+    "primaryTitle": "The Young Master",
+    "originalTitle": "Shi di chu ma",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 105,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "averageRating": 7.0,
+    "numVotes": 9414,
+    "genre": "Action",
+    "genre_year_rank": 8
+  },
+  {
+    "tconst": "tt0081506",
+    "titleType": "movie",
+    "primaryTitle": "Shogun Assassin",
+    "originalTitle": "Shogun Assassin",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 85,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "averageRating": 7.3,
+    "numVotes": 12205,
+    "genre": "Action",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0083199",
+    "titleType": "movie",
+    "primaryTitle": "Dangerous Encounters of the First Kind",
+    "originalTitle": "Di yi lei xing wei xian",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 95,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "averageRating": 7.3,
+    "numVotes": 1431,
+    "genre": "Action",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0134633",
+    "titleType": "movie",
+    "primaryTitle": "Air Crew",
+    "originalTitle": "Ekipazh",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 144,
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "averageRating": 7.3,
+    "numVotes": 2864,
+    "genre": "Action",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0214841",
+    "titleType": "movie",
+    "primaryTitle": "Karz",
+    "originalTitle": "Karz",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 159,
+    "genres": [
+      "Action",
+      "Musical",
+      "Romance"
+    ],
+    "averageRating": 7.4,
+    "numVotes": 2660,
+    "genre": "Action",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0246879",
+    "titleType": "movie",
+    "primaryTitle": "Qurbani",
+    "originalTitle": "Qurbani",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 157,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 1113,
+    "genre": "Action",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0364236",
+    "titleType": "movie",
+    "primaryTitle": "Billa",
+    "originalTitle": "Billa",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 175,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "averageRating": 7.5,
+    "numVotes": 1032,
+    "genre": "Action",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0079642",
+    "titleType": "movie",
+    "primaryTitle": "Erotic Nights of the Living Dead",
+    "originalTitle": "Le notti erotiche dei morti viventi",
+    "isAdult": 1,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 88,
+    "genres": [
+      "Adult",
+      "Horror"
+    ],
+    "averageRating": 4.2,
+    "numVotes": 1674,
+    "genre": "Adult",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0081593",
+    "titleType": "movie",
+    "primaryTitle": "Taboo",
+    "originalTitle": "Taboo",
+    "isAdult": 1,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 86,
+    "genres": [
+      "Adult",
+      "Drama"
+    ],
+    "averageRating": 6.9,
+    "numVotes": 2193,
+    "genre": "Adult",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0076276",
+    "titleType": "movie",
+    "primaryTitle": "Who's Singin' Over There?",
+    "originalTitle": "Ko to tamo peva",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 86,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "averageRating": 8.7,
+    "numVotes": 18182,
+    "genre": "Adventure",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0080455",
+    "titleType": "movie",
+    "primaryTitle": "The Blues Brothers",
+    "originalTitle": "The Blues Brothers",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 133,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Crime"
+    ],
+    "averageRating": 7.9,
+    "numVotes": 232927,
+    "genre": "Adventure",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0080461",
+    "titleType": "movie",
+    "primaryTitle": "Bon Voyage, Charlie Brown (and Don't Come Back!!)",
+    "originalTitle": "Bon Voyage, Charlie Brown (and Don't Come Back!!)",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 75,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Comedy"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 3938,
+    "genre": "Adventure",
+    "genre_year_rank": 8
+  },
+  {
+    "tconst": "tt0080684",
+    "titleType": "movie",
+    "primaryTitle": "Star Wars: Episode V - The Empire Strikes Back",
+    "originalTitle": "Star Wars: Episode V - The Empire Strikes Back",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 124,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "averageRating": 8.7,
+    "numVotes": 1532805,
+    "genre": "Adventure",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0080801",
+    "titleType": "movie",
+    "primaryTitle": "The Gods Must Be Crazy",
+    "originalTitle": "The Gods Must Be Crazy",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 109,
+    "genres": [
+      "Adventure",
+      "Comedy"
+    ],
+    "averageRating": 7.3,
+    "numVotes": 63911,
+    "genre": "Adventure",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0080889",
+    "titleType": "movie",
+    "primaryTitle": "Hopscotch",
+    "originalTitle": "Hopscotch",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 106,
+    "genres": [
+      "Adventure",
+      "Comedy"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 10245,
+    "genre": "Adventure",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0081491",
+    "titleType": "movie",
+    "primaryTitle": "Shaan",
+    "originalTitle": "Shaan",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 181,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "averageRating": 7.0,
+    "numVotes": 3454,
+    "genre": "Adventure",
+    "genre_year_rank": 10
+  },
+  {
+    "tconst": "tt0081499",
+    "titleType": "movie",
+    "primaryTitle": "The Young Master",
+    "originalTitle": "Shi di chu ma",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 105,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "averageRating": 7.0,
+    "numVotes": 9414,
+    "genre": "Adventure",
+    "genre_year_rank": 9
+  },
+  {
+    "tconst": "tt0081506",
+    "titleType": "movie",
+    "primaryTitle": "Shogun Assassin",
+    "originalTitle": "Shogun Assassin",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 85,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "averageRating": 7.3,
+    "numVotes": 12205,
+    "genre": "Adventure",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt1147517",
+    "titleType": "movie",
+    "primaryTitle": "Doraemon: Nobita's Dinosaur",
+    "originalTitle": "Doraemon: Nobita no kyôryû",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 92,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Drama"
+    ],
+    "averageRating": 7.4,
+    "numVotes": 1482,
+    "genre": "Adventure",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0078780",
+    "titleType": "movie",
+    "primaryTitle": "Animalympics",
+    "originalTitle": "Animalympics",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 78,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Family"
+    ],
+    "averageRating": 6.8,
+    "numVotes": 2567,
+    "genre": "Animation",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0079258",
+    "titleType": "movie",
+    "primaryTitle": "Foam Bath",
+    "originalTitle": "Habfürdö",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 79,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Drama"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 1100,
+    "genre": "Animation",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0079820",
+    "titleType": "movie",
+    "primaryTitle": "The King and the Mockingbird",
+    "originalTitle": "Le roi et l'oiseau",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 83,
+    "genres": [
+      "Animation",
+      "Family",
+      "Fantasy"
+    ],
+    "averageRating": 7.7,
+    "numVotes": 6197,
+    "genre": "Animation",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0080461",
+    "titleType": "movie",
+    "primaryTitle": "Bon Voyage, Charlie Brown (and Don't Come Back!!)",
+    "originalTitle": "Bon Voyage, Charlie Brown (and Don't Come Back!!)",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 75,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Comedy"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 3938,
+    "genre": "Animation",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt1147517",
+    "titleType": "movie",
+    "primaryTitle": "Doraemon: Nobita's Dinosaur",
+    "originalTitle": "Doraemon: Nobita no kyôryû",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 92,
+    "genres": [
+      "Adventure",
+      "Animation",
+      "Drama"
+    ],
+    "averageRating": 7.4,
+    "numVotes": 1482,
+    "genre": "Animation",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0079985",
+    "titleType": "movie",
+    "primaryTitle": "The Secret Life of Nikola Tesla",
+    "originalTitle": "Tajna Nikole Tesle",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 115,
+    "genres": [
+      "Biography",
+      "Drama"
+    ],
+    "averageRating": 7.2,
+    "numVotes": 1593,
+    "genre": "Biography",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt0080031",
+    "titleType": "movie",
+    "primaryTitle": "Tom Horn",
+    "originalTitle": "Tom Horn",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 98,
+    "genres": [
+      "Biography",
+      "Crime",
+      "Drama"
+    ],
+    "averageRating": 6.8,
+    "numVotes": 6879,
+    "genre": "Biography",
+    "genre_year_rank": 9
+  },
+  {
+    "tconst": "tt0080549",
+    "titleType": "movie",
+    "primaryTitle": "Coal Miner's Daughter",
+    "originalTitle": "Coal Miner's Daughter",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 124,
+    "genres": [
+      "Biography",
+      "Drama",
+      "Music"
+    ],
+    "averageRating": 7.5,
+    "numVotes": 22651,
+    "genre": "Biography",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0080594",
+    "titleType": "movie",
+    "primaryTitle": "The Day After Trinity",
+    "originalTitle": "The Day After Trinity",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 88,
+    "genres": [
+      "Biography",
+      "Documentary",
+      "History"
+    ],
+    "averageRating": 7.7,
+    "numVotes": 1358,
+    "genre": "Biography",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0080678",
+    "titleType": "movie",
+    "primaryTitle": "The Elephant Man",
+    "originalTitle": "The Elephant Man",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 124,
+    "genres": [
+      "Biography",
+      "Drama"
+    ],
+    "averageRating": 8.2,
+    "numVotes": 286206,
+    "genre": "Biography",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0080913",
+    "titleType": "movie",
+    "primaryTitle": "The Idolmaker",
+    "originalTitle": "The Idolmaker",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 117,
+    "genres": [
+      "Biography",
+      "Drama",
+      "Music"
+    ],
+    "averageRating": 6.9,
+    "numVotes": 1702,
+    "genre": "Biography",
+    "genre_year_rank": 8
+  },
+  {
+    "tconst": "tt0081059",
+    "titleType": "movie",
+    "primaryTitle": "Lion of the Desert",
+    "originalTitle": "Lion of the Desert",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 173,
+    "genres": [
+      "Biography",
+      "Drama",
+      "History"
+    ],
+    "averageRating": 8.2,
+    "numVotes": 19221,
+    "genre": "Biography",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0081071",
+    "titleType": "movie",
+    "primaryTitle": "The Long Riders",
+    "originalTitle": "The Long Riders",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 100,
+    "genres": [
+      "Biography",
+      "Crime",
+      "Drama"
+    ],
+    "averageRating": 6.9,
+    "numVotes": 15044,
+    "genre": "Biography",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0081398",
+    "titleType": "movie",
+    "primaryTitle": "Raging Bull",
+    "originalTitle": "Raging Bull",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 129,
+    "genres": [
+      "Biography",
+      "Drama",
+      "Sport"
+    ],
+    "averageRating": 8.1,
+    "numVotes": 416344,
+    "genre": "Biography",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0081748",
+    "titleType": "movie",
+    "primaryTitle": "Where the Buffalo Roam",
+    "originalTitle": "Where the Buffalo Roam",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 99,
+    "genres": [
+      "Biography",
+      "Comedy"
+    ],
+    "averageRating": 6.5,
+    "numVotes": 13408,
+    "genre": "Biography",
+    "genre_year_rank": 10
+  },
+  {
+    "tconst": "tt0076276",
+    "titleType": "movie",
+    "primaryTitle": "Who's Singin' Over There?",
+    "originalTitle": "Ko to tamo peva",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 86,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "averageRating": 8.7,
+    "numVotes": 18182,
+    "genre": "Comedy",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0079193",
+    "titleType": "movie",
+    "primaryTitle": "The Garage",
+    "originalTitle": "Garazh",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 96,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "averageRating": 8.0,
+    "numVotes": 4973,
+    "genre": "Comedy",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt0079579",
+    "titleType": "movie",
+    "primaryTitle": "Moscow Does Not Believe in Tears",
+    "originalTitle": "Moskva slezam ne verit",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 150,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "averageRating": 8.0,
+    "numVotes": 16219,
+    "genre": "Comedy",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0080339",
+    "titleType": "movie",
+    "primaryTitle": "Airplane!",
+    "originalTitle": "Airplane!",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 88,
+    "genres": [
+      "Comedy"
+    ],
+    "averageRating": 7.7,
+    "numVotes": 294273,
+    "genre": "Comedy",
+    "genre_year_rank": 9
+  },
+  {
+    "tconst": "tt0080439",
+    "titleType": "movie",
+    "primaryTitle": "The Taming of the Scoundrel",
+    "originalTitle": "Il bisbetico domato",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 107,
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "averageRating": 7.6,
+    "numVotes": 11966,
+    "genre": "Comedy",
+    "genre_year_rank": 10
+  },
+  {
+    "tconst": "tt0080455",
+    "titleType": "movie",
+    "primaryTitle": "The Blues Brothers",
+    "originalTitle": "The Blues Brothers",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 133,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Crime"
+    ],
+    "averageRating": 7.9,
+    "numVotes": 232927,
+    "genre": "Comedy",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0080856",
+    "titleType": "movie",
+    "primaryTitle": "The Kingdom of Diamonds",
+    "originalTitle": "Heerak Rajar Deshe",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 118,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "averageRating": 8.8,
+    "numVotes": 3492,
+    "genre": "Comedy",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0081104",
+    "titleType": "movie",
+    "primaryTitle": "All That Jack's",
+    "originalTitle": "Majstori, majstori!",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 83,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "averageRating": 8.1,
+    "numVotes": 1917,
+    "genre": "Comedy",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0169731",
+    "titleType": "movie",
+    "primaryTitle": "Dami kanyat",
+    "originalTitle": "Dami kanyat",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 95,
+    "genres": [
+      "Comedy"
+    ],
+    "averageRating": 7.9,
+    "numVotes": 1036,
+    "genre": "Comedy",
+    "genre_year_rank": 8
+  },
+  {
+    "tconst": "tt0253991",
+    "titleType": "movie",
+    "primaryTitle": "Zübük",
+    "originalTitle": "Zübük",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 88,
+    "genres": [
+      "Comedy"
+    ],
+    "averageRating": 8.5,
+    "numVotes": 12327,
+    "genre": "Comedy",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0080322",
+    "titleType": "movie",
+    "primaryTitle": "Aakrosh",
+    "originalTitle": "Aakrosh",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 144,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Music"
+    ],
+    "averageRating": 7.9,
+    "numVotes": 1353,
+    "genre": "Crime",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0080388",
+    "titleType": "movie",
+    "primaryTitle": "Atlantic City",
+    "originalTitle": "Atlantic City",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 104,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Romance"
+    ],
+    "averageRating": 7.3,
+    "numVotes": 20129,
+    "genre": "Crime",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt0080455",
+    "titleType": "movie",
+    "primaryTitle": "The Blues Brothers",
+    "originalTitle": "The Blues Brothers",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 133,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Crime"
+    ],
+    "averageRating": 7.9,
+    "numVotes": 232927,
+    "genre": "Crime",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0080474",
+    "titleType": "movie",
+    "primaryTitle": "Brubaker",
+    "originalTitle": "Brubaker",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 131,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "averageRating": 7.2,
+    "numVotes": 21849,
+    "genre": "Crime",
+    "genre_year_rank": 8
+  },
+  {
+    "tconst": "tt0080798",
+    "titleType": "movie",
+    "primaryTitle": "Gloria",
+    "originalTitle": "Gloria",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 121,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 13467,
+    "genre": "Crime",
+    "genre_year_rank": 9
+  },
+  {
+    "tconst": "tt0081070",
+    "titleType": "movie",
+    "primaryTitle": "The Long Good Friday",
+    "originalTitle": "The Long Good Friday",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 114,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "averageRating": 7.5,
+    "numVotes": 30507,
+    "genre": "Crime",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0082912",
+    "titleType": "movie",
+    "primaryTitle": "Pixote",
+    "originalTitle": "Pixote: A Lei do Mais Fraco",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 128,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "averageRating": 7.9,
+    "numVotes": 11267,
+    "genre": "Crime",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0083199",
+    "titleType": "movie",
+    "primaryTitle": "Dangerous Encounters of the First Kind",
+    "originalTitle": "Di yi lei xing wei xian",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 95,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "averageRating": 7.3,
+    "numVotes": 1431,
+    "genre": "Crime",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0246879",
+    "titleType": "movie",
+    "primaryTitle": "Qurbani",
+    "originalTitle": "Qurbani",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 157,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 1113,
+    "genre": "Crime",
+    "genre_year_rank": 10
+  },
+  {
+    "tconst": "tt0364236",
+    "titleType": "movie",
+    "primaryTitle": "Billa",
+    "originalTitle": "Billa",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 175,
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "averageRating": 7.5,
+    "numVotes": 1032,
+    "genre": "Crime",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0080321",
+    "titleType": "movie",
+    "primaryTitle": "AC/DC: Let There Be Rock",
+    "originalTitle": "AC/DC: Let There Be Rock",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 98,
+    "genres": [
+      "Documentary",
+      "Music"
+    ],
+    "averageRating": 8.3,
+    "numVotes": 1379,
+    "genre": "Documentary",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0080594",
+    "titleType": "movie",
+    "primaryTitle": "The Day After Trinity",
+    "originalTitle": "The Day After Trinity",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 88,
+    "genres": [
+      "Biography",
+      "Documentary",
+      "History"
+    ],
+    "averageRating": 7.7,
+    "numVotes": 1358,
+    "genre": "Documentary",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0080634",
+    "titleType": "movie",
+    "primaryTitle": "Divine Madness",
+    "originalTitle": "Divine Madness",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 95,
+    "genres": [
+      "Comedy",
+      "Documentary",
+      "Music"
+    ],
+    "averageRating": 7.0,
+    "numVotes": 1084,
+    "genre": "Documentary",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0080741",
+    "titleType": "movie",
+    "primaryTitle": "Fist of Fear, Touch of Death",
+    "originalTitle": "Fist of Fear, Touch of Death",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 82,
+    "genres": [
+      "Documentary",
+      "Sport"
+    ],
+    "averageRating": 2.4,
+    "numVotes": 1337,
+    "genre": "Documentary",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0080813",
+    "titleType": "movie",
+    "primaryTitle": "The Great Rock 'n' Roll Swindle",
+    "originalTitle": "The Great Rock 'n' Roll Swindle",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 103,
+    "genres": [
+      "Comedy",
+      "Documentary",
+      "Fantasy"
+    ],
+    "averageRating": 6.4,
+    "numVotes": 2597,
+    "genre": "Documentary",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt0081055",
+    "titleType": "movie",
+    "primaryTitle": "Lightning Over Water",
+    "originalTitle": "Nick's Film - Lightning Over Water",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 91,
+    "genres": [
+      "Documentary"
+    ],
+    "averageRating": 6.6,
+    "numVotes": 1759,
+    "genre": "Documentary",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0173771",
+    "titleType": "movie",
+    "primaryTitle": "Document of the Dead",
+    "originalTitle": "Document of the Dead",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 102,
+    "genres": [
+      "Documentary",
+      "Horror"
+    ],
+    "averageRating": 6.7,
+    "numVotes": 1024,
+    "genre": "Documentary",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0076276",
+    "titleType": "movie",
+    "primaryTitle": "Who's Singin' Over There?",
+    "originalTitle": "Ko to tamo peva",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 86,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "averageRating": 8.7,
+    "numVotes": 18182,
+    "genre": "Drama",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0079889",
+    "titleType": "movie",
+    "primaryTitle": "Sankarabharanam",
+    "originalTitle": "Sankarabharanam",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 143,
+    "genres": [
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "averageRating": 8.8,
+    "numVotes": 2780,
+    "genre": "Drama",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0080678",
+    "titleType": "movie",
+    "primaryTitle": "The Elephant Man",
+    "originalTitle": "The Elephant Man",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 124,
+    "genres": [
+      "Biography",
+      "Drama"
+    ],
+    "averageRating": 8.2,
+    "numVotes": 286206,
+    "genre": "Drama",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0080856",
+    "titleType": "movie",
+    "primaryTitle": "The Kingdom of Diamonds",
+    "originalTitle": "Heerak Rajar Deshe",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 118,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "averageRating": 8.8,
+    "numVotes": 3492,
+    "genre": "Drama",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0081059",
+    "titleType": "movie",
+    "primaryTitle": "Lion of the Desert",
+    "originalTitle": "Lion of the Desert",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 173,
+    "genres": [
+      "Biography",
+      "Drama",
+      "History"
+    ],
+    "averageRating": 8.2,
+    "numVotes": 19221,
+    "genre": "Drama",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt0081104",
+    "titleType": "movie",
+    "primaryTitle": "All That Jack's",
+    "originalTitle": "Majstori, majstori!",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 83,
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "averageRating": 8.1,
+    "numVotes": 1917,
+    "genre": "Drama",
+    "genre_year_rank": 9
+  },
+  {
+    "tconst": "tt0081331",
+    "titleType": "movie",
+    "primaryTitle": "Petria's Wreath",
+    "originalTitle": "Petrijin venac",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 99,
+    "genres": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "averageRating": 8.1,
+    "numVotes": 1093,
+    "genre": "Drama",
+    "genre_year_rank": 10
+  },
+  {
+    "tconst": "tt0081398",
+    "titleType": "movie",
+    "primaryTitle": "Raging Bull",
+    "originalTitle": "Raging Bull",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 129,
+    "genres": [
+      "Biography",
+      "Drama",
+      "Sport"
+    ],
+    "averageRating": 8.1,
+    "numVotes": 416344,
+    "genre": "Drama",
+    "genre_year_rank": 8
+  },
+  {
+    "tconst": "tt0081505",
+    "titleType": "movie",
+    "primaryTitle": "The Shining",
+    "originalTitle": "The Shining",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 146,
+    "genres": [
+      "Drama",
+      "Horror"
+    ],
+    "averageRating": 8.4,
+    "numVotes": 1253628,
+    "genre": "Drama",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0155329",
+    "titleType": "movie",
+    "primaryTitle": "Varumayin Niram Sigappu",
+    "originalTitle": "Varumayin Niram Sigappu",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 138,
+    "genres": [
+      "Drama",
+      "Musical"
+    ],
+    "averageRating": 8.2,
+    "numVotes": 1296,
+    "genre": "Drama",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0078780",
+    "titleType": "movie",
+    "primaryTitle": "Animalympics",
+    "originalTitle": "Animalympics",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 78,
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Family"
+    ],
+    "averageRating": 6.8,
+    "numVotes": 2567,
+    "genre": "Family",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0079820",
+    "titleType": "movie",
+    "primaryTitle": "The King and the Mockingbird",
+    "originalTitle": "Le roi et l'oiseau",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 83,
+    "genres": [
+      "Animation",
+      "Family",
+      "Fantasy"
+    ],
+    "averageRating": 7.7,
+    "numVotes": 6197,
+    "genre": "Family",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0080530",
+    "titleType": "movie",
+    "primaryTitle": "Everything Happens to Me",
+    "originalTitle": "Chissà perché... capitano tutte a me",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 102,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Family"
+    ],
+    "averageRating": 5.8,
+    "numVotes": 3431,
+    "genre": "Family",
+    "genre_year_rank": 9
+  },
+  {
+    "tconst": "tt0080856",
+    "titleType": "movie",
+    "primaryTitle": "The Kingdom of Diamonds",
+    "originalTitle": "Heerak Rajar Deshe",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 118,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "averageRating": 8.8,
+    "numVotes": 3492,
+    "genre": "Family",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0081031",
+    "titleType": "movie",
+    "primaryTitle": "The Last Flight of Noah's Ark",
+    "originalTitle": "The Last Flight of Noah's Ark",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 97,
+    "genres": [
+      "Adventure",
+      "Family"
+    ],
+    "averageRating": 5.7,
+    "numVotes": 1683,
+    "genre": "Family",
+    "genre_year_rank": 10
+  },
+  {
+    "tconst": "tt0081063",
+    "titleType": "movie",
+    "primaryTitle": "Little Miss Marker",
+    "originalTitle": "Little Miss Marker",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 103,
+    "genres": [
+      "Comedy",
+      "Family",
+      "Romance"
+    ],
+    "averageRating": 6.4,
+    "numVotes": 2014,
+    "genre": "Family",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt0081099",
+    "titleType": "movie",
+    "primaryTitle": "Meg of June Hill",
+    "originalTitle": "Madicken på Junibacken",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 82,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "averageRating": 6.4,
+    "numVotes": 1834,
+    "genre": "Family",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0081207",
+    "titleType": "movie",
+    "primaryTitle": "My Bodyguard",
+    "originalTitle": "My Bodyguard",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 102,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 11920,
+    "genre": "Family",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0081738",
+    "titleType": "movie",
+    "primaryTitle": "The Watcher in the Woods",
+    "originalTitle": "The Watcher in the Woods",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 84,
+    "genres": [
+      "Family",
+      "Horror",
+      "Mystery"
+    ],
+    "averageRating": 6.2,
+    "numVotes": 7988,
+    "genre": "Family",
+    "genre_year_rank": 8
+  },
+  {
+    "tconst": "tt0244585",
+    "titleType": "movie",
+    "primaryTitle": "Khubsoorat",
+    "originalTitle": "Khubsoorat",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 126,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "averageRating": 7.6,
+    "numVotes": 2110,
+    "genre": "Family",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0078797",
+    "titleType": "movie",
+    "primaryTitle": "Rapture",
+    "originalTitle": "Arrebato",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 115,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "averageRating": 6.8,
+    "numVotes": 4177,
+    "genre": "Fantasy",
+    "genre_year_rank": 7
+  },
+  {
+    "tconst": "tt0079820",
+    "titleType": "movie",
+    "primaryTitle": "The King and the Mockingbird",
+    "originalTitle": "Le roi et l'oiseau",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 83,
+    "genres": [
+      "Animation",
+      "Family",
+      "Fantasy"
+    ],
+    "averageRating": 7.7,
+    "numVotes": 6197,
+    "genre": "Fantasy",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0080539",
+    "titleType": "movie",
+    "primaryTitle": "City of Women",
+    "originalTitle": "La città delle donne",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 139,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "averageRating": 6.9,
+    "numVotes": 8991,
+    "genre": "Fantasy",
+    "genre_year_rank": 6
+  },
+  {
+    "tconst": "tt0080684",
+    "titleType": "movie",
+    "primaryTitle": "Star Wars: Episode V - The Empire Strikes Back",
+    "originalTitle": "Star Wars: Episode V - The Empire Strikes Back",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 124,
+    "genres": [
+      "Adventure",
+      "Fantasy",
+      "Sci-Fi"
+    ],
+    "averageRating": 8.7,
+    "numVotes": 1532805,
+    "genre": "Fantasy",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0080752",
+    "titleType": "movie",
+    "primaryTitle": "Forbidden Zone",
+    "originalTitle": "Forbidden Zone",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 74,
+    "genres": [
+      "Comedy",
+      "Fantasy",
+      "Musical"
+    ],
+    "averageRating": 6.5,
+    "numVotes": 6050,
+    "genre": "Fantasy",
+    "genre_year_rank": 8
+  },
+  {
+    "tconst": "tt0080813",
+    "titleType": "movie",
+    "primaryTitle": "The Great Rock 'n' Roll Swindle",
+    "originalTitle": "The Great Rock 'n' Roll Swindle",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 103,
+    "genres": [
+      "Comedy",
+      "Documentary",
+      "Fantasy"
+    ],
+    "averageRating": 6.4,
+    "numVotes": 2597,
+    "genre": "Fantasy",
+    "genre_year_rank": 9
+  },
+  {
+    "tconst": "tt0080827",
+    "titleType": "movie",
+    "primaryTitle": "Encounter of the Spooky Kind",
+    "originalTitle": "Gui da gui",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 102,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "averageRating": 7.0,
+    "numVotes": 3335,
+    "genre": "Fantasy",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0081414",
+    "titleType": "movie",
+    "primaryTitle": "Resurrection",
+    "originalTitle": "Resurrection",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 103,
+    "genres": [
+      "Drama",
+      "Fantasy"
+    ],
+    "averageRating": 7.1,
+    "numVotes": 3800,
+    "genre": "Fantasy",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0081534",
+    "titleType": "movie",
+    "primaryTitle": "Somewhere in Time",
+    "originalTitle": "Somewhere in Time",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 103,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "averageRating": 7.2,
+    "numVotes": 37270,
+    "genre": "Fantasy",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0082924",
+    "titleType": "movie",
+    "primaryTitle": "Super Fuzz",
+    "originalTitle": "Poliziotto superpiù",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 97,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy"
+    ],
+    "averageRating": 6.3,
+    "numVotes": 9276,
+    "genre": "Fantasy",
+    "genre_year_rank": 10
+  },
+  {
+    "tconst": "tt0079619",
+    "titleType": "movie",
+    "primaryTitle": "A Few Days from the Life of I.I. Oblomov",
+    "originalTitle": "Neskolko dney iz zhizni I.I. Oblomova",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 140,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "History"
+    ],
+    "averageRating": 7.5,
+    "numVotes": 2837,
+    "genre": "History",
+    "genre_year_rank": 5
+  },
+  {
+    "tconst": "tt0080310",
+    "titleType": "movie",
+    "primaryTitle": "Breaker Morant",
+    "originalTitle": "'Breaker' Morant",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 107,
+    "genres": [
+      "Drama",
+      "History",
+      "War"
+    ],
+    "averageRating": 7.8,
+    "numVotes": 15644,
+    "genre": "History",
+    "genre_year_rank": 3
+  },
+  {
+    "tconst": "tt0080594",
+    "titleType": "movie",
+    "primaryTitle": "The Day After Trinity",
+    "originalTitle": "The Day After Trinity",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 88,
+    "genres": [
+      "Biography",
+      "Documentary",
+      "History"
+    ],
+    "averageRating": 7.7,
+    "numVotes": 1358,
+    "genre": "History",
+    "genre_year_rank": 4
+  },
+  {
+    "tconst": "tt0080979",
+    "titleType": "movie",
+    "primaryTitle": "Kagemusha: The Shadow Warrior",
+    "originalTitle": "Kagemusha",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 162,
+    "genres": [
+      "Drama",
+      "History",
+      "War"
+    ],
+    "averageRating": 7.9,
+    "numVotes": 41568,
+    "genre": "History",
+    "genre_year_rank": 2
+  },
+  {
+    "tconst": "tt0081059",
+    "titleType": "movie",
+    "primaryTitle": "Lion of the Desert",
+    "originalTitle": "Lion of the Desert",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 173,
+    "genres": [
+      "Biography",
+      "Drama",
+      "History"
+    ],
+    "averageRating": 8.2,
+    "numVotes": 19221,
+    "genre": "History",
+    "genre_year_rank": 1
+  },
+  {
+    "tconst": "tt0081148",
+    "titleType": "movie",
+    "primaryTitle": "Alexander the Great",
+    "originalTitle": "O Megalexandros",
+    "isAdult": 0,
+    "startYear": 1980,
+    "endYear": null,
+    "runtimeMinutes": 210,
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "averageRating": 7.4,
+    "numVotes": 1336,
+    "genre": "History",
+    "genre_year_rank": 6
+  }
+]

@@ -1,0 +1,902 @@
+[
+  {
+    "nconst": "nm0000001",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 35,
+    "mean_rating": 6.817142857142858,
+    "votes": 300664,
+    "primaryName": "Fred Astaire"
+  },
+  {
+    "nconst": "nm0000004",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 6,
+    "mean_rating": 6.483333333333334,
+    "votes": 435473,
+    "primaryName": "John Belushi"
+  },
+  {
+    "nconst": "nm0000005",
+    "multiple_roles": false,
+    "career_roles": 6,
+    "films": 6,
+    "mean_rating": 7.199999999999999,
+    "votes": 51293,
+    "primaryName": "Ingmar Bergman"
+  },
+  {
+    "nconst": "nm0000005",
+    "multiple_roles": true,
+    "career_roles": 6,
+    "films": 36,
+    "mean_rating": 7.330555555555555,
+    "votes": 924827,
+    "primaryName": "Ingmar Bergman"
+  },
+  {
+    "nconst": "nm0000008",
+    "multiple_roles": false,
+    "career_roles": 5,
+    "films": 37,
+    "mean_rating": 6.670270270270269,
+    "votes": 4109961,
+    "primaryName": "Marlon Brando"
+  },
+  {
+    "nconst": "nm0000008",
+    "multiple_roles": true,
+    "career_roles": 5,
+    "films": 2,
+    "mean_rating": 7.15,
+    "votes": 35312,
+    "primaryName": "Marlon Brando"
+  },
+  {
+    "nconst": "nm0000009",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 36,
+    "mean_rating": 6.466666666666667,
+    "votes": 559114,
+    "primaryName": "Richard Burton"
+  },
+  {
+    "nconst": "nm0000009",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 1,
+    "mean_rating": 5.4,
+    "votes": 1531,
+    "primaryName": "Richard Burton"
+  },
+  {
+    "nconst": "nm0000010",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 47,
+    "mean_rating": 6.876595744680851,
+    "votes": 280997,
+    "primaryName": "James Cagney"
+  },
+  {
+    "nconst": "nm0000011",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 58,
+    "mean_rating": 6.805172413793106,
+    "votes": 434630,
+    "primaryName": "Gary Cooper"
+  },
+  {
+    "nconst": "nm0000011",
+    "multiple_roles": true,
+    "career_roles": 2,
+    "films": 1,
+    "mean_rating": 6.5,
+    "votes": 2715,
+    "primaryName": "Gary Cooper"
+  },
+  {
+    "nconst": "nm0000016",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 94,
+    "mean_rating": 6.6914893617021285,
+    "votes": 1504517,
+    "primaryName": "Georges Delerue"
+  },
+  {
+    "nconst": "nm0000016",
+    "multiple_roles": true,
+    "career_roles": 2,
+    "films": 1,
+    "mean_rating": 7.2,
+    "votes": 6487,
+    "primaryName": "Georges Delerue"
+  },
+  {
+    "nconst": "nm0000018",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 55,
+    "mean_rating": 6.734545454545456,
+    "votes": 912623,
+    "primaryName": "Kirk Douglas"
+  },
+  {
+    "nconst": "nm0000018",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 3,
+    "mean_rating": 6.166666666666667,
+    "votes": 6373,
+    "primaryName": "Kirk Douglas"
+  },
+  {
+    "nconst": "nm0000019",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 7,
+    "mean_rating": 7.457142857142857,
+    "votes": 70183,
+    "primaryName": "Federico Fellini"
+  },
+  {
+    "nconst": "nm0000019",
+    "multiple_roles": true,
+    "career_roles": 3,
+    "films": 23,
+    "mean_rating": 7.247826086956523,
+    "votes": 558115,
+    "primaryName": "Federico Fellini"
+  },
+  {
+    "nconst": "nm0000020",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 57,
+    "mean_rating": 6.864912280701757,
+    "votes": 1108022,
+    "primaryName": "Henry Fonda"
+  },
+  {
+    "nconst": "nm0000020",
+    "multiple_roles": true,
+    "career_roles": 2,
+    "films": 1,
+    "mean_rating": 9.0,
+    "votes": 1011593,
+    "primaryName": "Henry Fonda"
+  },
+  {
+    "nconst": "nm0000022",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 55,
+    "mean_rating": 6.669090909090909,
+    "votes": 680083,
+    "primaryName": "Clark Gable"
+  },
+  {
+    "nconst": "nm0000024",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 37,
+    "mean_rating": 6.537837837837836,
+    "votes": 1052994,
+    "primaryName": "John Gielgud"
+  },
+  {
+    "nconst": "nm0000027",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 40,
+    "mean_rating": 7.080000000000001,
+    "votes": 4156856,
+    "primaryName": "Alec Guinness"
+  },
+  {
+    "nconst": "nm0000027",
+    "multiple_roles": true,
+    "career_roles": 2,
+    "films": 1,
+    "mean_rating": 6.9,
+    "votes": 4211,
+    "primaryName": "Alec Guinness"
+  },
+  {
+    "nconst": "nm0000031",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 39,
+    "mean_rating": 6.833333333333333,
+    "votes": 574556,
+    "primaryName": "Katharine Hepburn"
+  },
+  {
+    "nconst": "nm0000032",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 50,
+    "mean_rating": 6.472,
+    "votes": 1403823,
+    "primaryName": "Charlton Heston"
+  },
+  {
+    "nconst": "nm0000032",
+    "multiple_roles": true,
+    "career_roles": 3,
+    "films": 2,
+    "mean_rating": 5.75,
+    "votes": 3385,
+    "primaryName": "Charlton Heston"
+  },
+  {
+    "nconst": "nm0000033",
+    "multiple_roles": false,
+    "career_roles": 6,
+    "films": 39,
+    "mean_rating": 7.035897435897435,
+    "votes": 3908089,
+    "primaryName": "Alfred Hitchcock"
+  },
+  {
+    "nconst": "nm0000033",
+    "multiple_roles": true,
+    "career_roles": 6,
+    "films": 14,
+    "mean_rating": 6.421428571428572,
+    "votes": 412707,
+    "primaryName": "Alfred Hitchcock"
+  },
+  {
+    "nconst": "nm0000036",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 11,
+    "mean_rating": 6.7,
+    "votes": 96170,
+    "primaryName": "Buster Keaton"
+  },
+  {
+    "nconst": "nm0000036",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 15,
+    "mean_rating": 7.28,
+    "votes": 278628,
+    "primaryName": "Buster Keaton"
+  },
+  {
+    "nconst": "nm0000037",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 27,
+    "mean_rating": 6.566666666666666,
+    "votes": 199133,
+    "primaryName": "Gene Kelly"
+  },
+  {
+    "nconst": "nm0000037",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 6,
+    "mean_rating": 7.083333333333333,
+    "votes": 323074,
+    "primaryName": "Gene Kelly"
+  },
+  {
+    "nconst": "nm0000038",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 11,
+    "mean_rating": 7.145454545454546,
+    "votes": 1043323,
+    "primaryName": "Grace Kelly"
+  },
+  {
+    "nconst": "nm0000040",
+    "multiple_roles": false,
+    "career_roles": 5,
+    "films": 1,
+    "mean_rating": 7.9,
+    "votes": 153014,
+    "primaryName": "Stanley Kubrick"
+  },
+  {
+    "nconst": "nm0000040",
+    "multiple_roles": true,
+    "career_roles": 5,
+    "films": 12,
+    "mean_rating": 7.716666666666668,
+    "votes": 5591078,
+    "primaryName": "Stanley Kubrick"
+  },
+  {
+    "nconst": "nm0000041",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 10,
+    "mean_rating": 6.960000000000001,
+    "votes": 808193,
+    "primaryName": "Akira Kurosawa"
+  },
+  {
+    "nconst": "nm0000041",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 31,
+    "mean_rating": 7.541935483870968,
+    "votes": 1548228,
+    "primaryName": "Akira Kurosawa"
+  },
+  {
+    "nconst": "nm0000044",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 60,
+    "mean_rating": 6.975,
+    "votes": 874421,
+    "primaryName": "Burt Lancaster"
+  },
+  {
+    "nconst": "nm0000044",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 3,
+    "mean_rating": 6.233333333333333,
+    "votes": 6705,
+    "primaryName": "Burt Lancaster"
+  },
+  {
+    "nconst": "nm0000045",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 4,
+    "mean_rating": 6.55,
+    "votes": 77810,
+    "primaryName": "Bruce Lee"
+  },
+  {
+    "nconst": "nm0000045",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 3,
+    "mean_rating": 6.866666666666667,
+    "votes": 189920,
+    "primaryName": "Bruce Lee"
+  },
+  {
+    "nconst": "nm0000046",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 14,
+    "mean_rating": 6.850000000000001,
+    "votes": 526031,
+    "primaryName": "Vivien Leigh"
+  },
+  {
+    "nconst": "nm0000048",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 45,
+    "mean_rating": 6.724444444444445,
+    "votes": 1324145,
+    "primaryName": "Peter Lorre"
+  },
+  {
+    "nconst": "nm0000048",
+    "multiple_roles": true,
+    "career_roles": 3,
+    "films": 1,
+    "mean_rating": 7.0,
+    "votes": 1339,
+    "primaryName": "Peter Lorre"
+  },
+  {
+    "nconst": "nm0000049",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 68,
+    "mean_rating": 6.458823529411765,
+    "votes": 1196056,
+    "primaryName": "Henry Mancini"
+  },
+  {
+    "nconst": "nm0000050",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 16,
+    "mean_rating": 6.76875,
+    "votes": 212196,
+    "primaryName": "Groucho Marx"
+  },
+  {
+    "nconst": "nm0000051",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 59,
+    "mean_rating": 6.688135593220338,
+    "votes": 941605,
+    "primaryName": "James Mason"
+  },
+  {
+    "nconst": "nm0000051",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 3,
+    "mean_rating": 6.866666666666667,
+    "votes": 15103,
+    "primaryName": "James Mason"
+  },
+  {
+    "nconst": "nm0000053",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 69,
+    "mean_rating": 6.640579710144925,
+    "votes": 1032369,
+    "primaryName": "Robert Mitchum"
+  },
+  {
+    "nconst": "nm0000053",
+    "multiple_roles": true,
+    "career_roles": 2,
+    "films": 1,
+    "mean_rating": 6.5,
+    "votes": 5276,
+    "primaryName": "Robert Mitchum"
+  },
+  {
+    "nconst": "nm0000054",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 23,
+    "mean_rating": 6.739130434782608,
+    "votes": 735415,
+    "primaryName": "Marilyn Monroe"
+  },
+  {
+    "nconst": "nm0000055",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 86,
+    "mean_rating": 6.965116279069765,
+    "votes": 790944,
+    "primaryName": "Alfred Newman"
+  },
+  {
+    "nconst": "nm0000056",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 54,
+    "mean_rating": 6.72037037037037,
+    "votes": 2459112,
+    "primaryName": "Paul Newman"
+  },
+  {
+    "nconst": "nm0000056",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 5,
+    "mean_rating": 6.540000000000001,
+    "votes": 16888,
+    "primaryName": "Paul Newman"
+  },
+  {
+    "nconst": "nm0000057",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 41,
+    "mean_rating": 6.5317073170731685,
+    "votes": 454784,
+    "primaryName": "David Niven"
+  },
+  {
+    "nconst": "nm0000057",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 1,
+    "mean_rating": 6.9,
+    "votes": 2564,
+    "primaryName": "David Niven"
+  },
+  {
+    "nconst": "nm0000059",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 31,
+    "mean_rating": 6.8419354838709685,
+    "votes": 785797,
+    "primaryName": "Laurence Olivier"
+  },
+  {
+    "nconst": "nm0000059",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 4,
+    "mean_rating": 7.050000000000001,
+    "votes": 44050,
+    "primaryName": "Laurence Olivier"
+  },
+  {
+    "nconst": "nm0000060",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 52,
+    "mean_rating": 6.815384615384616,
+    "votes": 1405883,
+    "primaryName": "Gregory Peck"
+  },
+  {
+    "nconst": "nm0000060",
+    "multiple_roles": true,
+    "career_roles": 2,
+    "films": 1,
+    "mean_rating": 7.9,
+    "votes": 24911,
+    "primaryName": "Gregory Peck"
+  },
+  {
+    "nconst": "nm0000062",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 31,
+    "mean_rating": 5.8677419354838705,
+    "votes": 120373,
+    "primaryName": "Elvis Presley"
+  },
+  {
+    "nconst": "nm0000063",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 71,
+    "mean_rating": 6.626760563380282,
+    "votes": 1100909,
+    "primaryName": "Anthony Quinn"
+  },
+  {
+    "nconst": "nm0000063",
+    "multiple_roles": true,
+    "career_roles": 3,
+    "films": 1,
+    "mean_rating": 7.4,
+    "votes": 2210,
+    "primaryName": "Anthony Quinn"
+  },
+  {
+    "nconst": "nm0000064",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 50,
+    "mean_rating": 6.972,
+    "votes": 622600,
+    "primaryName": "Edward G. Robinson"
+  },
+  {
+    "nconst": "nm0000065",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 31,
+    "mean_rating": 7.574193548387097,
+    "votes": 4547275,
+    "primaryName": "Nino Rota"
+  },
+  {
+    "nconst": "nm0000067",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 68,
+    "mean_rating": 6.852941176470587,
+    "votes": 1036045,
+    "primaryName": "Miklós Rózsa"
+  },
+  {
+    "nconst": "nm0000067",
+    "multiple_roles": true,
+    "career_roles": 2,
+    "films": 1,
+    "mean_rating": 7.4,
+    "votes": 16188,
+    "primaryName": "Miklós Rózsa"
+  },
+  {
+    "nconst": "nm0000069",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 36,
+    "mean_rating": 6.488888888888889,
+    "votes": 357422,
+    "primaryName": "Frank Sinatra"
+  },
+  {
+    "nconst": "nm0000069",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 3,
+    "mean_rating": 6.233333333333334,
+    "votes": 10029,
+    "primaryName": "Frank Sinatra"
+  },
+  {
+    "nconst": "nm0000071",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 72,
+    "mean_rating": 6.979166666666667,
+    "votes": 2804510,
+    "primaryName": "James Stewart"
+  },
+  {
+    "nconst": "nm0000073",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 23,
+    "mean_rating": 6.886956521739131,
+    "votes": 82786,
+    "primaryName": "Shirley Temple"
+  },
+  {
+    "nconst": "nm0000076",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 5,
+    "mean_rating": 6.659999999999999,
+    "votes": 354591,
+    "primaryName": "François Truffaut"
+  },
+  {
+    "nconst": "nm0000076",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 22,
+    "mean_rating": 7.295454545454547,
+    "votes": 432785,
+    "primaryName": "François Truffaut"
+  },
+  {
+    "nconst": "nm0000078",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 91,
+    "mean_rating": 6.462637362637363,
+    "votes": 1115828,
+    "primaryName": "John Wayne"
+  },
+  {
+    "nconst": "nm0000078",
+    "multiple_roles": true,
+    "career_roles": 3,
+    "films": 7,
+    "mean_rating": 6.528571428571428,
+    "votes": 74423,
+    "primaryName": "John Wayne"
+  },
+  {
+    "nconst": "nm0000079",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 21,
+    "mean_rating": 5.919047619047619,
+    "votes": 156774,
+    "primaryName": "Raquel Welch"
+  },
+  {
+    "nconst": "nm0000080",
+    "multiple_roles": false,
+    "career_roles": 7,
+    "films": 30,
+    "mean_rating": 6.41,
+    "votes": 239780,
+    "primaryName": "Orson Welles"
+  },
+  {
+    "nconst": "nm0000080",
+    "multiple_roles": true,
+    "career_roles": 7,
+    "films": 17,
+    "mean_rating": 7.252941176470589,
+    "votes": 1017662,
+    "primaryName": "Orson Welles"
+  },
+  {
+    "nconst": "nm0000082",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 65,
+    "mean_rating": 6.76769230769231,
+    "votes": 441395,
+    "primaryName": "Victor Young"
+  },
+  {
+    "nconst": "nm0000085",
+    "multiple_roles": false,
+    "career_roles": 5,
+    "films": 3,
+    "mean_rating": 5.433333333333334,
+    "votes": 13133,
+    "primaryName": "Henner Hofmann"
+  },
+  {
+    "nconst": "nm0000086",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 24,
+    "mean_rating": 6.754166666666666,
+    "votes": 196191,
+    "primaryName": "Louis de Funès"
+  },
+  {
+    "nconst": "nm0000086",
+    "multiple_roles": true,
+    "career_roles": 3,
+    "films": 6,
+    "mean_rating": 6.7,
+    "votes": 51214,
+    "primaryName": "Louis de Funès"
+  },
+  {
+    "nconst": "nm0000087",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 2,
+    "mean_rating": 7.65,
+    "votes": 4011,
+    "primaryName": "Elena Koreneva"
+  },
+  {
+    "nconst": "nm0000088",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 2,
+    "mean_rating": 7.1,
+    "votes": 5029,
+    "primaryName": "Aleksey Korenev"
+  },
+  {
+    "nconst": "nm0000090",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 25,
+    "mean_rating": 6.611999999999999,
+    "votes": 1607471,
+    "primaryName": "Armin Mueller-Stahl"
+  },
+  {
+    "nconst": "nm0000091",
+    "multiple_roles": false,
+    "career_roles": 5,
+    "films": 2,
+    "mean_rating": 5.55,
+    "votes": 99449,
+    "primaryName": "Gérard Pirès"
+  },
+  {
+    "nconst": "nm0000091",
+    "multiple_roles": true,
+    "career_roles": 5,
+    "films": 2,
+    "mean_rating": 5.550000000000001,
+    "votes": 11454,
+    "primaryName": "Gérard Pirès"
+  },
+  {
+    "nconst": "nm0000092",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 46,
+    "mean_rating": 5.9913043478260875,
+    "votes": 3072732,
+    "primaryName": "John Cleese"
+  },
+  {
+    "nconst": "nm0000092",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 8,
+    "mean_rating": 7.55,
+    "votes": 1424296,
+    "primaryName": "John Cleese"
+  },
+  {
+    "nconst": "nm0000093",
+    "multiple_roles": false,
+    "career_roles": 2,
+    "films": 51,
+    "mean_rating": 6.978431372549021,
+    "votes": 22397244,
+    "primaryName": "Brad Pitt"
+  },
+  {
+    "nconst": "nm0000093",
+    "multiple_roles": true,
+    "career_roles": 2,
+    "films": 10,
+    "mean_rating": 6.94,
+    "votes": 2563581,
+    "primaryName": "Brad Pitt"
+  },
+  {
+    "nconst": "nm0000095",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 7,
+    "mean_rating": 5.871428571428571,
+    "votes": 222214,
+    "primaryName": "Woody Allen"
+  },
+  {
+    "nconst": "nm0000095",
+    "multiple_roles": true,
+    "career_roles": 4,
+    "films": 54,
+    "mean_rating": 6.887037037037038,
+    "votes": 3673422,
+    "primaryName": "Woody Allen"
+  },
+  {
+    "nconst": "nm0000096",
+    "multiple_roles": false,
+    "career_roles": 4,
+    "films": 26,
+    "mean_rating": 6.442307692307693,
+    "votes": 965418,
+    "primaryName": "Gillian Anderson"
+  },
+  {
+    "nconst": "nm0000097",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 11,
+    "mean_rating": 4.781818181818182,
+    "votes": 393752,
+    "primaryName": "Pamela Anderson"
+  },
+  {
+    "nconst": "nm0000098",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 34,
+    "mean_rating": 6.21764705882353,
+    "votes": 4577309,
+    "primaryName": "Jennifer Aniston"
+  },
+  {
+    "nconst": "nm0000098",
+    "multiple_roles": true,
+    "career_roles": 3,
+    "films": 1,
+    "mean_rating": 5.7,
+    "votes": 86951,
+    "primaryName": "Jennifer Aniston"
+  },
+  {
+    "nconst": "nm0000099",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 30,
+    "mean_rating": 6.12,
+    "votes": 1605030,
+    "primaryName": "Patricia Arquette"
+  },
+  {
+    "nconst": "nm0000100",
+    "multiple_roles": false,
+    "career_roles": 3,
+    "films": 10,
+    "mean_rating": 6.5200000000000005,
+    "votes": 2152321,
+    "primaryName": "Rowan Atkinson"
+  },
+  {
+    "nconst": "nm0000100",
+    "multiple_roles": true,
+    "career_roles": 3,
+    "films": 2,
+    "mean_rating": 6.45,
+    "votes": 261762,
+    "primaryName": "Rowan Atkinson"
+  }
+]

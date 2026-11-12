@@ -1,0 +1,802 @@
+[
+  {
+    "startYear": 1980,
+    "genre": "Adventure",
+    "genre_votes": 2468238,
+    "film_count": 43,
+    "mean_rating": 6.21860465116279,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1980,
+    "genre": "Drama",
+    "genre_votes": 3029277,
+    "film_count": 132,
+    "mean_rating": 6.692424242424242,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1980,
+    "genre": "Horror",
+    "genre_votes": 2053960,
+    "film_count": 69,
+    "mean_rating": 5.333333333333333,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1981,
+    "genre": "Adventure",
+    "genre_votes": 2237001,
+    "film_count": 43,
+    "mean_rating": 6.4651162790697665,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1981,
+    "genre": "Drama",
+    "genre_votes": 1590085,
+    "film_count": 139,
+    "mean_rating": 6.79568345323741,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1981,
+    "genre": "Horror",
+    "genre_votes": 1257975,
+    "film_count": 81,
+    "mean_rating": 5.390123456790124,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1982,
+    "genre": "Action",
+    "genre_votes": 1835250,
+    "film_count": 55,
+    "mean_rating": 6.125454545454544,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1982,
+    "genre": "Drama",
+    "genre_votes": 2948447,
+    "film_count": 153,
+    "mean_rating": 6.791503267973855,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1982,
+    "genre": "Sci-Fi",
+    "genre_votes": 2454083,
+    "film_count": 30,
+    "mean_rating": 5.45,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1983,
+    "genre": "Action",
+    "genre_votes": 1989247,
+    "film_count": 58,
+    "mean_rating": 5.684482758620688,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1983,
+    "genre": "Adventure",
+    "genre_votes": 1962693,
+    "film_count": 44,
+    "mean_rating": 5.8113636363636365,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1983,
+    "genre": "Drama",
+    "genre_votes": 2787684,
+    "film_count": 156,
+    "mean_rating": 6.672435897435898,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1984,
+    "genre": "Action",
+    "genre_votes": 3631802,
+    "film_count": 65,
+    "mean_rating": 5.964615384615384,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1984,
+    "genre": "Adventure",
+    "genre_votes": 2915107,
+    "film_count": 41,
+    "mean_rating": 6.158536585365853,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1984,
+    "genre": "Drama",
+    "genre_votes": 2890053,
+    "film_count": 158,
+    "mean_rating": 6.6088607594936715,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1985,
+    "genre": "Adventure",
+    "genre_votes": 3397299,
+    "film_count": 61,
+    "mean_rating": 6.07704918032787,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1985,
+    "genre": "Comedy",
+    "genre_votes": 4484285,
+    "film_count": 145,
+    "mean_rating": 6.399310344827587,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1985,
+    "genre": "Drama",
+    "genre_votes": 2944446,
+    "film_count": 144,
+    "mean_rating": 6.5868055555555545,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1986,
+    "genre": "Adventure",
+    "genre_votes": 2945214,
+    "film_count": 53,
+    "mean_rating": 6.313207547169812,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1986,
+    "genre": "Comedy",
+    "genre_votes": 2695944,
+    "film_count": 144,
+    "mean_rating": 6.224305555555556,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1986,
+    "genre": "Drama",
+    "genre_votes": 3864993,
+    "film_count": 166,
+    "mean_rating": 6.612650602409637,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1987,
+    "genre": "Action",
+    "genre_votes": 2303811,
+    "film_count": 76,
+    "mean_rating": 5.739473684210526,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1987,
+    "genre": "Comedy",
+    "genre_votes": 3600202,
+    "film_count": 160,
+    "mean_rating": 6.056875,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1987,
+    "genre": "Drama",
+    "genre_votes": 3995104,
+    "film_count": 185,
+    "mean_rating": 6.631891891891891,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1988,
+    "genre": "Action",
+    "genre_votes": 2654157,
+    "film_count": 82,
+    "mean_rating": 5.942682926829268,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1988,
+    "genre": "Comedy",
+    "genre_votes": 4348575,
+    "film_count": 166,
+    "mean_rating": 6.112650602409639,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1988,
+    "genre": "Drama",
+    "genre_votes": 4327128,
+    "film_count": 192,
+    "mean_rating": 6.632291666666667,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1989,
+    "genre": "Adventure",
+    "genre_votes": 2925433,
+    "film_count": 50,
+    "mean_rating": 6.07,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1989,
+    "genre": "Comedy",
+    "genre_votes": 4919895,
+    "film_count": 158,
+    "mean_rating": 6.260759493670887,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1989,
+    "genre": "Drama",
+    "genre_votes": 3820140,
+    "film_count": 195,
+    "mean_rating": 6.59897435897436,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1990,
+    "genre": "Comedy",
+    "genre_votes": 3939670,
+    "film_count": 160,
+    "mean_rating": 6.1975,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1990,
+    "genre": "Crime",
+    "genre_votes": 3548385,
+    "film_count": 88,
+    "mean_rating": 6.320454545454546,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1990,
+    "genre": "Drama",
+    "genre_votes": 6191788,
+    "film_count": 192,
+    "mean_rating": 6.533854166666665,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1991,
+    "genre": "Comedy",
+    "genre_votes": 3110163,
+    "film_count": 170,
+    "mean_rating": 6.2835294117647065,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1991,
+    "genre": "Crime",
+    "genre_votes": 3645200,
+    "film_count": 73,
+    "mean_rating": 6.4369863013698625,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1991,
+    "genre": "Drama",
+    "genre_votes": 5435596,
+    "film_count": 212,
+    "mean_rating": 6.623584905660378,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1992,
+    "genre": "Comedy",
+    "genre_votes": 3990368,
+    "film_count": 153,
+    "mean_rating": 6.355555555555556,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1992,
+    "genre": "Crime",
+    "genre_votes": 3575240,
+    "film_count": 82,
+    "mean_rating": 6.55121951219512,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1992,
+    "genre": "Drama",
+    "genre_votes": 5967851,
+    "film_count": 200,
+    "mean_rating": 6.703499999999999,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1993,
+    "genre": "Comedy",
+    "genre_votes": 4430717,
+    "film_count": 158,
+    "mean_rating": 6.2898734177215205,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1993,
+    "genre": "Crime",
+    "genre_votes": 3011625,
+    "film_count": 87,
+    "mean_rating": 6.16206896551724,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1993,
+    "genre": "Drama",
+    "genre_votes": 8867582,
+    "film_count": 239,
+    "mean_rating": 6.645606694560669,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1994,
+    "genre": "Comedy",
+    "genre_votes": 5597158,
+    "film_count": 192,
+    "mean_rating": 6.105208333333334,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1994,
+    "genre": "Crime",
+    "genre_votes": 6468761,
+    "film_count": 78,
+    "mean_rating": 6.316666666666666,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1994,
+    "genre": "Drama",
+    "genre_votes": 15595104,
+    "film_count": 228,
+    "mean_rating": 6.648684210526315,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1995,
+    "genre": "Comedy",
+    "genre_votes": 6008284,
+    "film_count": 171,
+    "mean_rating": 6.275438596491229,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1995,
+    "genre": "Crime",
+    "genre_votes": 7736948,
+    "film_count": 84,
+    "mean_rating": 6.436904761904761,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1995,
+    "genre": "Drama",
+    "genre_votes": 12367152,
+    "film_count": 262,
+    "mean_rating": 6.560687022900764,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1996,
+    "genre": "Comedy",
+    "genre_votes": 4700000,
+    "film_count": 201,
+    "mean_rating": 6.22636815920398,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1996,
+    "genre": "Crime",
+    "genre_votes": 4419162,
+    "film_count": 86,
+    "mean_rating": 6.388372093023257,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1996,
+    "genre": "Drama",
+    "genre_votes": 7716884,
+    "film_count": 274,
+    "mean_rating": 6.575182481751825,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1997,
+    "genre": "Action",
+    "genre_votes": 6715938,
+    "film_count": 108,
+    "mean_rating": 6.044444444444445,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1997,
+    "genre": "Comedy",
+    "genre_votes": 5503152,
+    "film_count": 208,
+    "mean_rating": 6.150480769230768,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1997,
+    "genre": "Drama",
+    "genre_votes": 12455048,
+    "film_count": 294,
+    "mean_rating": 6.612925170068029,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1998,
+    "genre": "Comedy",
+    "genre_votes": 9743495,
+    "film_count": 229,
+    "mean_rating": 6.324454148471616,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1998,
+    "genre": "Crime",
+    "genre_votes": 6171832,
+    "film_count": 117,
+    "mean_rating": 6.37008547008547,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1998,
+    "genre": "Drama",
+    "genre_votes": 11596089,
+    "film_count": 305,
+    "mean_rating": 6.658032786885246,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 1999,
+    "genre": "Comedy",
+    "genre_votes": 8079859,
+    "film_count": 240,
+    "mean_rating": 6.247916666666668,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 1999,
+    "genre": "Crime",
+    "genre_votes": 7132078,
+    "film_count": 94,
+    "mean_rating": 6.478723404255318,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 1999,
+    "genre": "Drama",
+    "genre_votes": 15296719,
+    "film_count": 343,
+    "mean_rating": 6.60932944606414,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2000,
+    "genre": "Adventure",
+    "genre_votes": 6967589,
+    "film_count": 47,
+    "mean_rating": 6.136170212765957,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2000,
+    "genre": "Comedy",
+    "genre_votes": 8222123,
+    "film_count": 249,
+    "mean_rating": 6.214457831325301,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2000,
+    "genre": "Drama",
+    "genre_votes": 12806464,
+    "film_count": 355,
+    "mean_rating": 6.497746478873239,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2001,
+    "genre": "Adventure",
+    "genre_votes": 9231473,
+    "film_count": 59,
+    "mean_rating": 5.927118644067796,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2001,
+    "genre": "Comedy",
+    "genre_votes": 9377282,
+    "film_count": 262,
+    "mean_rating": 6.175190839694655,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2001,
+    "genre": "Drama",
+    "genre_votes": 14500949,
+    "film_count": 381,
+    "mean_rating": 6.527296587926508,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2002,
+    "genre": "Action",
+    "genre_votes": 8346251,
+    "film_count": 143,
+    "mean_rating": 5.80979020979021,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2002,
+    "genre": "Adventure",
+    "genre_votes": 8675160,
+    "film_count": 68,
+    "mean_rating": 6.127941176470589,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2002,
+    "genre": "Drama",
+    "genre_votes": 16831975,
+    "film_count": 433,
+    "mean_rating": 6.5300230946882225,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2003,
+    "genre": "Action",
+    "genre_votes": 11658244,
+    "film_count": 129,
+    "mean_rating": 6.142635658914729,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2003,
+    "genre": "Comedy",
+    "genre_votes": 10594144,
+    "film_count": 292,
+    "mean_rating": 6.115753424657535,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2003,
+    "genre": "Drama",
+    "genre_votes": 13016196,
+    "film_count": 401,
+    "mean_rating": 6.537406483790522,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2004,
+    "genre": "Action",
+    "genre_votes": 11462938,
+    "film_count": 162,
+    "mean_rating": 6.086419753086421,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2004,
+    "genre": "Comedy",
+    "genre_votes": 10792804,
+    "film_count": 320,
+    "mean_rating": 6.14625,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2004,
+    "genre": "Drama",
+    "genre_votes": 16227145,
+    "film_count": 484,
+    "mean_rating": 6.499173553719011,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2005,
+    "genre": "Action",
+    "genre_votes": 9003277,
+    "film_count": 142,
+    "mean_rating": 5.92887323943662,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2005,
+    "genre": "Comedy",
+    "genre_votes": 10014798,
+    "film_count": 340,
+    "mean_rating": 5.994999999999999,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2005,
+    "genre": "Drama",
+    "genre_votes": 13396804,
+    "film_count": 512,
+    "mean_rating": 6.446679687499998,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2006,
+    "genre": "Adventure",
+    "genre_votes": 8629831,
+    "film_count": 108,
+    "mean_rating": 5.951851851851853,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2006,
+    "genre": "Comedy",
+    "genre_votes": 11582648,
+    "film_count": 374,
+    "mean_rating": 5.994919786096258,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2006,
+    "genre": "Drama",
+    "genre_votes": 20556574,
+    "film_count": 557,
+    "mean_rating": 6.4730700179533205,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2007,
+    "genre": "Adventure",
+    "genre_votes": 8951074,
+    "film_count": 85,
+    "mean_rating": 5.9799999999999995,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2007,
+    "genre": "Comedy",
+    "genre_votes": 11510739,
+    "film_count": 371,
+    "mean_rating": 6.002156334231806,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2007,
+    "genre": "Drama",
+    "genre_votes": 18204489,
+    "film_count": 569,
+    "mean_rating": 6.475395430579967,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2008,
+    "genre": "Action",
+    "genre_votes": 13333932,
+    "film_count": 178,
+    "mean_rating": 5.984269662921348,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2008,
+    "genre": "Comedy",
+    "genre_votes": 11112407,
+    "film_count": 354,
+    "mean_rating": 5.837570621468928,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2008,
+    "genre": "Drama",
+    "genre_votes": 17220661,
+    "film_count": 581,
+    "mean_rating": 6.420309810671257,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2009,
+    "genre": "Action",
+    "genre_votes": 12035362,
+    "film_count": 200,
+    "mean_rating": 5.8454999999999995,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2009,
+    "genre": "Comedy",
+    "genre_votes": 13251132,
+    "film_count": 390,
+    "mean_rating": 5.873846153846152,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2009,
+    "genre": "Drama",
+    "genre_votes": 17213641,
+    "film_count": 607,
+    "mean_rating": 6.383855024711697,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2010,
+    "genre": "Action",
+    "genre_votes": 13239447,
+    "film_count": 224,
+    "mean_rating": 5.986160714285712,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2010,
+    "genre": "Adventure",
+    "genre_votes": 13146643,
+    "film_count": 101,
+    "mean_rating": 6.128712871287129,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2010,
+    "genre": "Drama",
+    "genre_votes": 17165273,
+    "film_count": 621,
+    "mean_rating": 6.418357487922707,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2011,
+    "genre": "Action",
+    "genre_votes": 17054605,
+    "film_count": 225,
+    "mean_rating": 5.918222222222223,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2011,
+    "genre": "Comedy",
+    "genre_votes": 13746362,
+    "film_count": 418,
+    "mean_rating": 5.970813397129187,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2011,
+    "genre": "Drama",
+    "genre_votes": 20329682,
+    "film_count": 651,
+    "mean_rating": 6.3592933947772625,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2012,
+    "genre": "Action",
+    "genre_votes": 14810861,
+    "film_count": 234,
+    "mean_rating": 5.808119658119659,
+    "genre_rank": 2
+  },
+  {
+    "startYear": 2012,
+    "genre": "Comedy",
+    "genre_votes": 12232926,
+    "film_count": 414,
+    "mean_rating": 5.884541062801932,
+    "genre_rank": 3
+  },
+  {
+    "startYear": 2012,
+    "genre": "Drama",
+    "genre_votes": 19692107,
+    "film_count": 686,
+    "mean_rating": 6.310787172011663,
+    "genre_rank": 1
+  },
+  {
+    "startYear": 2013,
+    "genre": "Action",
+    "genre_votes": 17086672,
+    "film_count": 264,
+    "mean_rating": 5.73371212121212,
+    "genre_rank": 2
+  }
+]
