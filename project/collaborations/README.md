@@ -91,6 +91,14 @@ spark-submit --master 'local[2]' --conf spark.sql.shuffle.partitions=16 \
 
 L’essai du 11 novembre 2026 sous Spark 4.2.0 dans Docker couvre les 6 257 films de la sélection provisoire. Avec au moins 1 000 votes et deux années distinctes, le tableau contient 2 389 binômes, une moyenne de 7,5765 en première année observée et de 7,4823 sur les années suivantes. Les six comparaisons et les diagnostics ont été recalculés indépendamment à partir des Parquet. [Résultat et empreintes des entrées](../../validation/collaborations-top10-2026-11-11.json)
 
+## Résultats sur l’historique complet
+
+Le run GitHub du 12 novembre a exécuté le code de Benjamin au commit `8a0d75b` sur les quatre tables complètes préparées par Nicolas, sous Spark 4.2.0. Le manifeste des entrées a pour SHA-256 `aeb5effe20cab570e20fbd3a250309a0f081f7f3a203d02dfafca5da0c999cfd`. Le calcul conserve les films antérieurs à 1980 et sans note pour établir la première année observée. Les notes comparées concernent 1980–2025 et chaque binôme compte pour le même poids.
+
+Avec au moins 1 000 votes et deux années distinctes observées, **16 884 binômes** entrent dans la comparaison. Les moyennes par binôme sont de **6,529691** en première année et **6,181983** les suivantes, soit une différence appariée de **−0,347708 point**. Les diagnostics comptent 4 379 203 triplets avant exclusion des 69 179 auto-collaborations, puis 177 134 triplets d’année inconnue et 729 348 triplets dans la période sans note.
+
+DuckDB 1.4.3 a recalculé les dix comparaisons et les diagnostics dans le workflow de Nicolas. La relecture de l’artefact GitHub vérifie ses six empreintes ainsi que la concordance des dix lignes CSV, JSON et Parquet. Les seuils sont provisoires. [Exécution GitHub](https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43128551838) · [Comparaisons, diagnostics et empreintes](../../validation/collaborations-full-peer-check-2026-11-12.json)
+
 ## Test contrôlé
 
 ```bash
