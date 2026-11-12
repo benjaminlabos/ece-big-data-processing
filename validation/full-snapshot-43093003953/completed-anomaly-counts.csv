@@ -1,0 +1,11 @@
+table,column,rule,action,count
+title.basics,runtimeMinutes,out_of_range,set_null,4
+name.basics,deathYear,death_before_birth,set_null,28
+name.basics,knownForTitles,reference_not_in_clean_parent,remove_reference,28
+title.akas,titleId,reference_not_in_clean_parent,quarantine_row,65
+title.crew,directors,reference_not_in_clean_parent,remove_reference,423
+title.crew,tconst,reference_not_in_clean_parent,quarantine_row,38
+title.crew,writers,reference_not_in_clean_parent,remove_reference,1148
+title.episode,parentTconst,reference_not_in_clean_parent,set_null,5
+title.principals,nconst,reference_not_in_clean_parent,set_null,14196
+title.ratings,tconst,reference_not_in_clean_parent,quarantine_row,2

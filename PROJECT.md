@@ -1121,3 +1121,27 @@ compare plus l'ordre lexical des chaînes CSV à l'ordre des termes RDF de SPARQ
 (par exemple, nœuds anonymes et URI) : ce sont deux ordres distincts. Elle détecte
 les pages identiques répétées par empreinte, tandis que les doublons de données
 et les langues non identifiées sont réconciliés dans Spark.
+
+### Calcul de la question libre sur les tables complètes déjà préparées
+
+Le workflow `.github/workflows/imdb-collaborations-full.yml` exécute le code de
+Benjamin au commit immuable `8a0d75bb26d6437ead2c927d69da7b8bcff6592d`, sans
+modifier ses fichiers ni ses branches. Il réutilise le cache exact des sept
+tables du run `43093003953`. Le manifeste source et le résumé préparé sont
+vérifiés par leurs SHA-256 avant exécution. Aucun nouveau nettoyage n'est lancé.
+
+L'analyse conserve l'historique complet jusqu'à 2025 pour établir la première
+année observée et compare les notes dans la période 1980–2025. Elle produit dix
+comparaisons : votes 0/100/1000/5000/10000 et historique de 2/3 années. Les films
+sans note et ceux d'avant 1980 restent utiles à la chronologie. Ce calcul ne
+limite pas l'historique au top 10 d'enrichissement.
+
+L'audit DuckDB 1.4.3 de Benjamin recalcule indépendamment les diagnostics,
+effectifs et moyennes depuis les quatre mêmes Parquet. Le marqueur
+`VERIFIED_FOR_PEER_REVIEW.json` est écrit uniquement si ses dix comparaisons
+passent. Les artefacts sont conservés 90 jours, même si un contrôle échoue ;
+l'existence d'un artefact ne signifie donc pas à elle seule une réussite.
+Les CSV/JSON vérifiés peuvent être publiés sous
+`validation/collaborations-full-43093003953/` sur la branche de Nicolas si elle
+n'a pas changé. Le code de Benjamin et ses commits restent attribués à leur
+auteur ; sa PR, sa relecture et l'interprétation étudiante restent distinctes.
