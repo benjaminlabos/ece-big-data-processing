@@ -1085,7 +1085,8 @@ La collecte P364 utilise désormais SELECT DISTINCT et des pages ordonnées de
 20 000 lignes, avec une pause entre les pages. Chaque réponse est vérifiée avant
 publication (CSV strict, largeur des lignes, longueur HTTP lorsqu'elle est fournie),
 avec reprises bornées des erreurs temporaires et respect de Retry-After. Les
-pages répétées ou chevauchantes sont refusées. La provenance conserve paramètres,
+pages identiques répétées sont refusées ; les doublons éventuels des déclarations
+restent comptés et traités par Spark. La provenance conserve paramètres,
 nombres de lignes et empreintes des réponses ; les pages ne constituent pas une
 transaction atomique de Wikidata et la couverture IMDb reste explicitement mesurée.
 
@@ -1102,3 +1103,21 @@ sans Spark ont aussi réussi en natif après suppression de la dépendance Spark
 inutile du collecteur de données. La preuve et les périmètres figurent dans
 `validation/language-pagination-recovery-2026-11-12.json`. Le succès de la nouvelle
 collecte et des analyses réelles reste à vérifier dans le workflow de reprise.
+
+
+### Snapshot de langues vérifié, restauration sans réseau
+
+Le snapshot original du 11 novembre sur le PC comporte 369 502 enregistrements,
+aucune ligne CSV mal formée et une empreinte conforme au manifeste d'origine.
+Son vocabulaire et son manifeste sont archivés avec lui dans
+`references/wikidata-p364-2026-11-11.tar.gz` (environ 3,2 Mo, faits Wikidata CC0).
+La reprise utilise cette archive vérifiée lorsque la référence du run est
+invalide. Les octets, la date et le manifeste d'origine sont conservés : elle
+n'est pas présentée comme une nouvelle collecte paginée. Un reçu de réutilisation
+est ajouté à `artifacts/reference/REFERENCE_REUSE.json`.
+
+La collecte paginée reste disponible pour créer un nouveau snapshot. Elle ne
+compare plus l'ordre lexical des chaînes CSV à l'ordre des termes RDF de SPARQL
+(par exemple, nœuds anonymes et URI) : ce sont deux ordres distincts. Elle détecte
+les pages identiques répétées par empreinte, tandis que les doublons de données
+et les langues non identifiées sont réconciliés dans Spark.

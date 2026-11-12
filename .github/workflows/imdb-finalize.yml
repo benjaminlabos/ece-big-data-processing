@@ -233,19 +233,24 @@ jobs:
           python - <<'PYTHON'
           import json, os, shutil
           from pathlib import Path
-          from imdb_preparation.languages import collect, validate_snapshot
+          from imdb_preparation.languages import collect, validate_snapshot, restore_reference_archive
           source = Path('data/reference/cloud-original-languages.csv')
           try:
               metadata = validate_snapshot(source)
           except (ValueError, OSError, KeyError) as error:
               print(f'Reference needs recollection: {error}', flush=True)
-              source = Path('data/reference/recovered-original-languages.csv')
-              metadata = collect(source)
-              validate_snapshot(source)
+              archive = Path('references/wikidata-p364-2026-11-11.tar.gz')
+              if archive.exists():
+                  source, metadata = restore_reference_archive(archive, Path('data/reference/validated-historical'))
+              else:
+                  source = Path('data/reference/recovered-original-languages.csv')
+                  metadata = collect(source)
+                  validate_snapshot(source)
           destination = Path('artifacts/reference')
           destination.mkdir(parents=True, exist_ok=True)
           for file in (source, source.with_suffix('.manifest.json'), source.with_name(metadata['vocabulary_path'])):
               shutil.copyfile(file, destination / file.name)
+          (destination / 'REFERENCE_REUSE.json').write_text(json.dumps({'source': str(source), 'sha256': metadata['sha256'], 'rows': metadata['rows'], 'collection_method': metadata.get('collection_method', 'original_single_response_snapshot'), 'validation': 'all CSV records, row count, original manifest and vocabulary hashes'}, indent=2))
           with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
               out.write(f'path={source}\n')
           PYTHON

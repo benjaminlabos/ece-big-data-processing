@@ -1,0 +1,24 @@
+{
+  "scope": "validated_historical_reference_restore_not_new_network_collection",
+  "rows": 369502,
+  "malformed_csv_records": 0,
+  "original_manifest_sha256_verified": true,
+  "vocabulary_sha256_verified": true,
+  "source_retrieved_at": "2026-11-11T13:32:34.108620+00:00",
+  "archive_bytes": 3170216,
+  "archive_sha256": "d5bbf5c61842eb78a4c7dd12a61fa58237c4823f61183118e0846dae41ce25ca",
+  "native_transport_tests": {
+    "passed": 12,
+    "spark_test_deselected": 1,
+    "seconds": 10.07
+  },
+  "checks": [
+    "Safe archive member names only",
+    "Every original CSV record, count and checksum verified after extraction",
+    "Original metadata preserved without false pagination label",
+    "CSV serialization order is not confused with RDF term order",
+    "Repeated complete response pages rejected",
+    "Temporary connection close retried"
+  ],
+  "student_validated": false
+}
