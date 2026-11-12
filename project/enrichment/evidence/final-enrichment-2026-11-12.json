@@ -1,0 +1,246 @@
+{
+  "input_selection_commit": "7790935f6db72fdd223b47b35bcff02f62ffdfb3",
+  "input_selection_path": "validation/overnight-43093003953",
+  "input_selection_run": "https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43125611999",
+  "executed_code_commit": "d870d97c227147258690821750549f9e0915e3ee",
+  "environment": "Docker Desktop, Spark 4.2.0",
+  "selection_policy": {
+    "minimum_runtime_minutes": 40,
+    "minimum_votes": 1000,
+    "priority_credits_per_film_maximum": 3,
+    "reserve_credits_per_film_maximum": 2,
+    "student_validated": false
+  },
+  "completed_at_utc": {
+    "snapshot": "2026-11-12T21:04:36Z",
+    "spark": "2026-11-12T21:06:23Z",
+    "backup_and_audit": "2026-11-12T21:14:02Z"
+  },
+  "collection_reconciliation": {
+    "expected": 25630,
+    "processed": 25630,
+    "not_processed": 0,
+    "invalid_files_detected": 0,
+    "temporary_errors_unresolved": 0,
+    "documented_absences_before_extraction": 7269,
+    "unavailable_texts_after_extraction": 7297
+  },
+  "added_person": {
+    "nconst": "nm19101446",
+    "missing_reason": "no_wikidata_item",
+    "retrieved_at_utc": "2026-11-12T14:20:42.285543+00:00"
+  },
+  "verified_backup": {
+    "filename": "cache-final.zip",
+    "bytes": 76746598,
+    "matched_snapshot_bytes_for_each_record": true,
+    "files": 25630,
+    "sha256": "d674f3c9cdf0ff8051cebc5d670bfebcc1ffe8f1f03940e09d43135ea8d32928"
+  },
+  "parquet_files_sha256": {
+    "films": {
+      "part-00000-2bbb96ac-5b61-48f2-9480-861b08b14043-c000.snappy.parquet": "392f42f5e413e36727d8750c14b238c37cc316930040680c31260406a2994768",
+      "part-00001-2bbb96ac-5b61-48f2-9480-861b08b14043-c000.snappy.parquet": "d12eb3b1de61ea01b8f6dd973ccfe93698e3e3d264f37addf7dbbbbc29d24148",
+      "part-00002-2bbb96ac-5b61-48f2-9480-861b08b14043-c000.snappy.parquet": "1a5d82188f85b09db99e2106f60b2ebd25d19a2ac5fc62dfd24886cd2bee6b43",
+      "part-00003-2bbb96ac-5b61-48f2-9480-861b08b14043-c000.snappy.parquet": "dcab2537bb201778d41469752cc111c7ac47ffecba3aee676c3c6310f304760b",
+      "part-00004-2bbb96ac-5b61-48f2-9480-861b08b14043-c000.snappy.parquet": "e8465641362ef5591a8a5fd1ec9f0996002a374b87e8e3110d0f6c525cedf824",
+      "part-00005-2bbb96ac-5b61-48f2-9480-861b08b14043-c000.snappy.parquet": "56fe754a3294c4c777edb12e22e09e392dc22111e993086ff6ec961f02d76645"
+    },
+    "principals": {
+      "part-00000-7a2df827-1896-472b-8fef-1d69da318b4e-c000.snappy.parquet": "29fc6bb71021af288bccbe97482cfe6bb0a9dabed59feeabb4bc56639f43c6f5",
+      "part-00001-7a2df827-1896-472b-8fef-1d69da318b4e-c000.snappy.parquet": "5b66c5d1b1fa67e7866f459efc9d5e1b07dec9e49904610eec678731d254c424",
+      "part-00002-7a2df827-1896-472b-8fef-1d69da318b4e-c000.snappy.parquet": "dbceeb05cc84c54c94e7441d669606023737262197e6d392bf362db9cd8791b8",
+      "part-00003-7a2df827-1896-472b-8fef-1d69da318b4e-c000.snappy.parquet": "41f3641729d462faf3f8564f14e9fedaa8514b37878cf15c235aa1020ba3b93e",
+      "part-00004-7a2df827-1896-472b-8fef-1d69da318b4e-c000.snappy.parquet": "1f1e3a90d0f93cbd478b056e983959699eb3b3dafbde98bf03d1a3d1baf5c49e",
+      "part-00005-7a2df827-1896-472b-8fef-1d69da318b4e-c000.snappy.parquet": "90d7e907fd88012b5d6fa8879329c6031cb03ec203e69fdec5f9d35601338fa1"
+    },
+    "coverage": {
+      "part-00000-8dbac965-ca91-4a0b-ac0b-9133b54b6dac-c000.snappy.parquet": "fa4c170cada16c2a7327953d0c832ced65cbbc191276736848014cb81ac07d99",
+      "part-00001-8dbac965-ca91-4a0b-ac0b-9133b54b6dac-c000.snappy.parquet": "b4a5d238512d179b049a916cb381c82f9c6f5573555b0ab74aef46412dfd4544",
+      "part-00002-8dbac965-ca91-4a0b-ac0b-9133b54b6dac-c000.snappy.parquet": "16d52ba04b32b7957b515df951870855521cd022ca84a32deec8669cf9045a76",
+      "part-00003-8dbac965-ca91-4a0b-ac0b-9133b54b6dac-c000.snappy.parquet": "9bea982439394edbb76b9c45a5507ce6038734550fd6ae4d5a567a31bdde97f2"
+    },
+    "coverage_by_year_genre": {
+      "part-00000-251d192d-9919-430a-84f4-e2458757d1ca-c000.snappy.parquet": "9c8f4f9a043995d6e688a1aaaa469185578e1684f01b2d82e8c1afd0a7a5f187"
+    }
+  },
+  "published_tables": [
+    {
+      "path": "final-coverage-by-year-genre-2026-11-12.csv",
+      "rows": 979,
+      "sha256_lf": "deaa100a23c8ef8f13fcb1514f6571a8f7add5049d3e02e42ff4a672dcdd1288"
+    },
+    {
+      "path": "final-incomplete-films-2026-11-12.csv",
+      "rows": 1648,
+      "sha256_lf": "4f4973cd116b1bcad861bd37cd468c0bdde4f1d4a18e862c87dd2da3a446f6eb"
+    }
+  ],
+  "audit": {
+    "manifest_sha256": "af756ad1e393f3009d74f00f0f8b81d14a0cd809501288c2290762828b480feb",
+    "verified_parquet_rows": {
+      "films": 6256,
+      "principals": 31225,
+      "coverage": 6256,
+      "coverage_by_year_genre": 979
+    },
+    "films_with_synopsis_and_three_biographies": 4608,
+    "films_missing_requirements": {
+      "synopsis": 621,
+      "synopsis_and_biographies": 461,
+      "biographies": 566
+    },
+    "structural_shortages": [
+      "tt18687124",
+      "tt2415372",
+      "tt3665486",
+      "tt38164776",
+      "tt5375100"
+    ],
+    "groups_with_at_least_one_synopsis": 969,
+    "groups_with_at_least_one_film_with_three_biographies": 973,
+    "coverage": {
+      "spark_version": "4.2.0",
+      "input_sha256": {
+        "candidates": "91e2b6087de5352f629dd2cab108e8b9b2a480762336bb65cac7c36329513fb2",
+        "titles": "9231a8f30774b198126dfbe75a01d0004b2bf532237cd6090f360fd2e9eef752",
+        "priority": "446c629b15fad43b01df980780781fc2f81986203d7fb7f82f9d418992354db3",
+        "top": "0e60044e91064e9afd8dc1f406eb8935b8cd3a45a2043906ac6be70c7ba84620"
+      },
+      "films_requested": 6256,
+      "people_requested": 19374,
+      "candidate_pairs": 31225,
+      "films_by_status": {
+        "plot_not_found": 633,
+        "available": 5174,
+        "no_english_wikipedia_article": 262,
+        "no_wikidata_item": 181,
+        "ambiguous_wikidata_match": 6
+      },
+      "people_by_status": {
+        "ambiguous_wikidata_match": 33,
+        "available": 13159,
+        "no_english_wikipedia_article": 2381,
+        "no_wikidata_item": 3800,
+        "biography_not_found": 1
+      },
+      "credits_by_status": {
+        "ambiguous_wikidata_match": 60,
+        "available": 24737,
+        "no_english_wikipedia_article": 2562,
+        "no_wikidata_item": 3865,
+        "biography_not_found": 1
+      },
+      "films_with_three_biographies": 5229,
+      "films_with_fewer_than_three_candidates": 5,
+      "films_reaching_three_with_reserves": 970,
+      "collection_complete": true
+    },
+    "examples": {
+      "films": [
+        {
+          "page_title": "Commissar (film)",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1366476175",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q1213999",
+          "retrieved_at_utc": "2026-11-11T18:38:13.343849+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0061876",
+          "text_characters": 1128
+        },
+        {
+          "page_title": "Trial on the Road",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1359576091",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q3213961",
+          "retrieved_at_utc": "2026-11-11T18:38:22.223276+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0067625",
+          "text_characters": 1286
+        },
+        {
+          "page_title": "Who's Singin' Over There?",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1370958460",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q280962",
+          "retrieved_at_utc": "2026-11-11T18:38:36.431565+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0076276",
+          "text_characters": 1897
+        }
+      ],
+      "people": [
+        {
+          "page_title": "Lauren Bacall",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383532971",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q104000",
+          "retrieved_at_utc": "2026-11-11T23:55:08.996213+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000002",
+          "text_characters": 1128
+        },
+        {
+          "page_title": "John Belushi",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383285377",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q23858",
+          "retrieved_at_utc": "2026-11-11T18:44:38.527270+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000004",
+          "text_characters": 985
+        },
+        {
+          "page_title": "Ingmar Bergman",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381465221",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q7546",
+          "retrieved_at_utc": "2026-11-11T19:20:23.342408+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000005",
+          "text_characters": 1335
+        }
+      ]
+    },
+    "raw_snapshot": {
+      "cache_records": 25630,
+      "sha256": "ff1d648c0cb9048779eb72e41afb03e32ea94a31e2e1b6d411856f57be35e576",
+      "requested_ids": 25630,
+      "responses_in_selection": 25630,
+      "documented_absences_before_extraction": 7269,
+      "preserved_responses_outside_selection": 0,
+      "requested_ids_still_missing": 0,
+      "statuses_before_extraction": {
+        "source_html": 18361,
+        "no_english_wikipedia_article": 2643,
+        "no_wikidata_item": 3981,
+        "ambiguous_wikidata_match": 39,
+        "plot_not_found": 606
+      }
+    }
+  },
+  "supplementary_credits_preview": {
+    "executed_new_lookups": 0,
+    "original_collection_complete": true,
+    "source_export_sha256": "d7b641a0396ffea32f9568f9671a8346ad2b8c4836c3c86d8db2c81df04633d8",
+    "film_biography_gaps_before_reuse": 1027,
+    "films_with_no_further_credits_in_common_snapshot": 38,
+    "structural_shortages_total_credits": {
+      "tt18687124": 2,
+      "tt2415372": 2,
+      "tt3665486": 2,
+      "tt38164776": 1,
+      "tt5375100": 1
+    },
+    "additional_pairs_with_cached_biography": 342,
+    "films_that_reach_three_with_cached_biographies": 220,
+    "distinct_uncached_ids_outside_original_selection": 7516,
+    "distinct_proposed_ids": 100,
+    "proposed_pairs": 242,
+    "films_that_could_reach_three_if_all_proposed_texts_are_available": 112,
+    "films_with_three_biographies_if_applied": 5449,
+    "films_with_synopsis_and_three_if_applied": 4760,
+    "films_gaining_synopsis_and_three": 152,
+    "applied": false
+  }
+}

@@ -132,6 +132,32 @@ Pour un instantané en cours de collecte, omettre `--require-complete`. Choisir 
 
 L’instantané intermédiaire de 13 782 réponses a été sauvegardé avec son empreinte, puis transformé sous Spark 4.2.0. Les quatre Parquet ont été relus et les 979 groupes année–genre ont été recoupés avec les CSV de sélection. On obtient 3 081 synopsis, 7 918 biographies distinctes et 3 488 films qui atteignent trois biographies, dont 662 grâce aux réserves. Cinq films ont moins de trois candidats dans la sélection. [Instantané révisé et contrôle des Parquet](evidence/revised-snapshot-2026-11-12.json)
 
+### Résultat sur le cache complet
+
+Le 12 novembre, la reprise a traité les 25 630 identifiants attendus et Spark 4.2.0 a publié les quatre Parquet et le marqueur `_COMPLETE`. L’identifiant `nm19101446` a le statut `no_wikidata_item`. Les 7 269 absences documentées par la collecte et les 28 textes écartés lors de l’extraction laissent 7 297 textes indisponibles. L’audit indépendant a contrôlé chaque réponse, les 31 225 crédits et les 979 groupes année–genre. [Manifeste final et empreintes](evidence/final-enrichment-2026-11-12.json)
+
+| Mesure | Résultat |
+| --- | ---: |
+| Synopsis disponibles | 5 174 |
+| Personnes distinctes avec biographie | 13 159 |
+| Films ayant au moins trois biographies | 5 229 |
+| Films ayant au moins trois biographies et un synopsis | 4 608 |
+| Films ayant atteint trois biographies grâce aux réserves | 970 |
+| Films auxquels manque un synopsis, trois biographies, ou les deux | 1 648 |
+
+Parmi ces 1 648 films, 621 manquent seulement d’un synopsis, 566 manquent seulement de biographies et 461 manquent des deux. Les cinq films ayant moins de trois candidats restent identifiés. [Couverture des 979 groupes](evidence/final-coverage-by-year-genre-2026-11-12.csv) · [Détail des films incomplets](evidence/final-incomplete-films-2026-11-12.csv)
+
+Les résultats utilisent les entrées du commit `7790935` avec 40 minutes et 1 000 votes minimum, jusqu’à trois crédits prioritaires et deux réserves. Le code de collecte, de transformation et d’audit correspond au commit `d870d97`. Les critères restent à valider par le binôme.
+
+La sauvegarde locale `work/revised-2026-11-12/cache-final.zip` contient les 25 630 réponses. Chaque entrée ZIP a été comparée octet par octet à l’instantané, et le SHA-256 de l’archive figure dans le manifeste. Pour restaurer le cache dans un dossier neuf depuis `project/enrichment` sous PowerShell, utiliser les commandes ci-dessous. L’empreinte du nouvel instantané doit correspondre au manifeste avant de reprendre les commandes Spark et d’audit ci-dessus.
+
+```powershell
+$archive = 'work/revised-2026-11-12/cache-final.zip'
+Get-FileHash -LiteralPath $archive -Algorithm SHA256
+Expand-Archive -LiteralPath $archive -DestinationPath work/cache-final-restored
+python freeze_cache.py --cache work/cache-final-restored --output work/cache-revised.json > work/cache-revised.receipt.json
+```
+
 ### Proposition de crédits supplémentaires
 
 L’audit porte sur le même instantané de 13 782 réponses. Il vérifie 1 060 couples distincts, hors de la sélection bornée, et 809 biographies extraites. La catégorie et l’ordre proviennent du Parquet `title.principals` du lot `43093003953`. Si une personne a plusieurs crédits sur le film, le premier crédit sert à la répartition par catégorie et le CSV conserve la liste des autres crédits vérifiés. Chaque ligne identifie aussi sa révision Wikipédia, son enregistrement dans le cache figé et sa contribution au seuil. [Liste des couples](evidence/credit-proposal-13782.csv) · [Manifeste et répartition](evidence/credit-proposal-13782.json) · [Projection IMDb vérifiée](https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43257765582)
@@ -147,6 +173,8 @@ python audit_credit_proposal.py $snapshot "$snapshot/requested-pairs.csv" "$snap
 ```
 
 Après décision du binôme, refaire le rapprochement sur le cache final, conserver les CSV originaux, puis relancer Spark avec une nouvelle version des couples et un nouveau dossier de sortie. Les trois crédits prioritaires restent identifiables via `--primary`.
+
+Le rapprochement sur le cache final a identifié 342 couples complémentaires avec une biographie disponible. Leur ajout ferait passer 220 films au seuil de trois biographies, dont 152 avec un synopsis. Ce calcul utilise les crédits de la même préparation IMDb et les textes déjà en cache. Les résultats publiés ci-dessus utilisent la sélection initiale. [Rapprochement final dans le manifeste](evidence/final-enrichment-2026-11-12.json)
 
 ## Sorties
 
