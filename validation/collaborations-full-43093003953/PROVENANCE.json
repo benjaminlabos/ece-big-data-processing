@@ -1,0 +1,10 @@
+{
+  "scope": "full",
+  "student_validated": false,
+  "source_run_id": 43093003953,
+  "source_commit": "321c07d578fc77daafdf3d2a4553899af40c4ea5",
+  "analysis_code_commit": "8a0d75bb26d6437ead2c927d69da7b8bcff6592d",
+  "prepared_summary_sha256": "c6ba4f0b9b77110079f65b91cea6b8da4066ba4c1f11eee8836ea823fc03ae74",
+  "input_manifest_sha256": "aeb5effe20cab570e20fbd3a250309a0f081f7f3a203d02dfafca5da0c999cfd",
+  "use": "Unmodified Benjamin analysis and independent verifier on Nicolas complete prepared tables"
+}
