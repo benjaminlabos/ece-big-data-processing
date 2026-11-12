@@ -92,6 +92,32 @@ docker run --rm --pull=never --cpus 2 --memory 2500m `
 
 Les tests rapides du contrat CSV, du cache et des temporisations se lancent avec `python -m unittest -v`.
 
+## Sélection révisée du 12 novembre
+
+Le lot commun contient 6 256 films, 19 374 personnes et 31 225 crédits. La comparaison avec le lot du 11 novembre retrouve un film retiré, six crédits retirés et un crédit ajouté. Le nouvel identifiant est `nm19101446`. Conserver les réponses déjà collectées, y compris celles hors de cette sélection. Attendre l’arrêt du collecteur qui utilise les anciens CSV avant de lancer les commandes sur le même cache. [Exports révisés](https://github.com/benjaminlabos/ece-big-data-processing/tree/7790935f6db72fdd223b47b35bcff02f62ffdfb3/validation/overnight-43093003953)
+
+Depuis la racine du clone sous PowerShell.
+
+```powershell
+git fetch origin feat/imdb-full-analysis
+git worktree add --detach ../imdb-handoff-2026-11-12 7790935f6db72fdd223b47b35bcff02f62ffdfb3
+$inputs = (Resolve-Path ../imdb-handoff-2026-11-12/validation/overnight-43093003953).Path
+Set-Location project/enrichment
+python collect.py --titles "$inputs/selected-titles.csv" --candidates "$inputs/enrichment-input.csv" --cache work/provisional/raw
+python freeze_cache.py --cache work/provisional/raw --output work/cache-revised.json
+$job = (Get-Location).Path
+docker run --rm --pull=never --cpus 4 --memory 4000m `
+  --mount "type=bind,source=$job,target=/job" `
+  --mount "type=bind,source=$inputs,target=/inputs,readonly" `
+  -w /job tp05-wikistreams-notebook:local spark-submit --master 'local[4]' `
+  --driver-memory 2g --conf spark.sql.shuffle.partitions=8 --conf spark.ui.enabled=false enrich.py `
+  --titles /inputs/selected-titles.csv --candidates /inputs/enrichment-input.csv `
+  --primary /inputs/primary.csv --top /inputs/top10.csv `
+  --raw work/cache-revised.json --output work/coverage-revised
+```
+
+L’instantané intermédiaire de 13 782 réponses a été sauvegardé avec son empreinte, puis transformé sous Spark 4.2.0. Les quatre Parquet ont été relus et les 979 groupes année–genre ont été recoupés avec les CSV de sélection. On obtient 3 081 synopsis, 7 918 biographies distinctes et 3 488 films qui atteignent trois biographies, dont 662 grâce aux réserves. Cinq films ont moins de trois candidats dans la sélection. [Instantané révisé et contrôle des Parquet](evidence/revised-snapshot-2026-11-12.json)
+
 ## Sorties
 
 - `work/results/films` contient une ligne par film.

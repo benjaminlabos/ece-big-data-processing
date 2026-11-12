@@ -1,0 +1,159 @@
+{
+  "source_commit": "7790935f6db72fdd223b47b35bcff02f62ffdfb3",
+  "source_path": "validation/overnight-43093003953",
+  "student_validated": false,
+  "source_execution": "https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43125611999",
+  "new_person_ids": [
+    "nm19101446"
+  ],
+  "input_sha256": {
+    "selected-titles.csv": "9231a8f30774b198126dfbe75a01d0004b2bf532237cd6090f360fd2e9eef752",
+    "enrichment-input.csv": "91e2b6087de5352f629dd2cab108e8b9b2a480762336bb65cac7c36329513fb2",
+    "primary.csv": "446c629b15fad43b01df980780781fc2f81986203d7fb7f82f9d418992354db3",
+    "top10.csv": "0e60044e91064e9afd8dc1f406eb8935b8cd3a45a2043906ac6be70c7ba84620"
+  },
+  "raw_snapshot": {
+    "cache_records": 13782,
+    "sha256": "e2ad59a3b19c53b031227e3749fe3ab2282a8c03f0e84a39d4569dcad5e9d35e"
+  },
+  "coverage": {
+    "spark_version": "4.2.0",
+    "input_sha256": {
+      "candidates": "91e2b6087de5352f629dd2cab108e8b9b2a480762336bb65cac7c36329513fb2",
+      "titles": "9231a8f30774b198126dfbe75a01d0004b2bf532237cd6090f360fd2e9eef752",
+      "priority": "446c629b15fad43b01df980780781fc2f81986203d7fb7f82f9d418992354db3",
+      "top": "0e60044e91064e9afd8dc1f406eb8935b8cd3a45a2043906ac6be70c7ba84620"
+    },
+    "films_requested": 6256,
+    "people_requested": 19374,
+    "candidate_pairs": 31225,
+    "films_by_status": {
+      "ambiguous_wikidata_match": 4,
+      "plot_not_found": 269,
+      "available": 3081,
+      "not_collected": 2806,
+      "no_english_wikipedia_article": 82,
+      "no_wikidata_item": 14
+    },
+    "people_by_status": {
+      "ambiguous_wikidata_match": 15,
+      "available": 7918,
+      "not_collected": 9042,
+      "no_wikidata_item": 1203,
+      "no_english_wikipedia_article": 1195,
+      "biography_not_found": 1
+    },
+    "credits_by_status": {
+      "ambiguous_wikidata_match": 37,
+      "available": 17518,
+      "not_collected": 11150,
+      "no_english_wikipedia_article": 1303,
+      "no_wikidata_item": 1216,
+      "biography_not_found": 1
+    },
+    "films_with_three_biographies": 3488,
+    "films_with_fewer_than_three_candidates": 5,
+    "films_reaching_three_with_reserves": 662,
+    "collection_complete": false
+  },
+  "live_cache_scan": {
+    "listed_at_utc": "2026-11-12T01:21:10.977259+00:00",
+    "valid_revised_responses": 14161,
+    "remaining_revised": 11469,
+    "documented_absences": 2906,
+    "raw_statuses": {
+      "source_html": 11255,
+      "no_english_wikipedia_article": 1327,
+      "no_wikidata_item": 1284,
+      "ambiguous_wikidata_match": 21,
+      "plot_not_found": 274
+    },
+    "outside_revised_selection": 0,
+    "invalid_files": []
+  },
+  "films_with_synopsis_and_three_biographies": 2853,
+  "year_genre_groups": 979,
+  "groups_with_at_least_one_synopsis": 626,
+  "groups_with_at_least_one_film_with_three_biographies": 825,
+  "parquet_audit": {
+    "verified_parquet_rows": {
+      "films": 6256,
+      "principals": 31225,
+      "coverage": 6256,
+      "coverage_by_year_genre": 979
+    },
+    "structural_shortages": [
+      "tt18687124",
+      "tt2415372",
+      "tt3665486",
+      "tt38164776",
+      "tt5375100"
+    ],
+    "examples": {
+      "films": [
+        {
+          "page_title": "Commissar (film)",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1366476175",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q1213999",
+          "retrieved_at_utc": "2026-11-11T18:38:13.343849+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0061876",
+          "text_characters": 1128
+        },
+        {
+          "page_title": "Trial on the Road",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1359576091",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q3213961",
+          "retrieved_at_utc": "2026-11-11T18:38:22.223276+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0067625",
+          "text_characters": 1286
+        },
+        {
+          "page_title": "Who's Singin' Over There?",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1370958460",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q280962",
+          "retrieved_at_utc": "2026-11-11T18:38:36.431565+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0076276",
+          "text_characters": 1897
+        }
+      ],
+      "people": [
+        {
+          "page_title": "Lauren Bacall",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383532971",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q104000",
+          "retrieved_at_utc": "2026-11-11T23:55:08.996213+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000002",
+          "text_characters": 1128
+        },
+        {
+          "page_title": "John Belushi",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1383285377",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q23858",
+          "retrieved_at_utc": "2026-11-11T18:44:38.527270+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000004",
+          "text_characters": 985
+        },
+        {
+          "page_title": "Ingmar Bergman",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1381465221",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q7546",
+          "retrieved_at_utc": "2026-11-11T19:20:23.342408+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0000005",
+          "text_characters": 1335
+        }
+      ]
+    }
+  }
+}
