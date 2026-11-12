@@ -132,6 +132,22 @@ Pour un instantané en cours de collecte, omettre `--require-complete`. Choisir 
 
 L’instantané intermédiaire de 13 782 réponses a été sauvegardé avec son empreinte, puis transformé sous Spark 4.2.0. Les quatre Parquet ont été relus et les 979 groupes année–genre ont été recoupés avec les CSV de sélection. On obtient 3 081 synopsis, 7 918 biographies distinctes et 3 488 films qui atteignent trois biographies, dont 662 grâce aux réserves. Cinq films ont moins de trois candidats dans la sélection. [Instantané révisé et contrôle des Parquet](evidence/revised-snapshot-2026-11-12.json)
 
+### Proposition de crédits supplémentaires
+
+L’audit porte sur le même instantané de 13 782 réponses. Il vérifie 1 060 couples distincts, hors de la sélection bornée, et 809 biographies extraites. La catégorie et l’ordre proviennent du Parquet `title.principals` du lot `43093003953`. Si une personne a plusieurs crédits sur le film, le premier crédit sert à la répartition par catégorie et le CSV conserve la liste des autres crédits vérifiés. Chaque ligne identifie aussi sa révision Wikipédia, son enregistrement dans le cache figé et sa contribution au seuil. [Liste des couples](evidence/credit-proposal-13782.csv) · [Manifeste et répartition](evidence/credit-proposal-13782.json) · [Projection IMDb vérifiée](https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43257765582)
+
+Le nombre de films avec au moins trois biographies passerait de 3 488 à 3 905 et celui des films ayant aussi un synopsis de 2 853 à 2 915. La règle proposée conserve les trois crédits prioritaires et les deux réserves existantes. Pour les films qui restent sous le seuil, elle autoriserait jusqu’à trois crédits supplémentaires ayant déjà une biographie en cache, en s’arrêtant au seuil de trois. La politique actuelle permet déjà toutes les catégories IMDb. Si le binôme exclut `self`, `archive_footage` et `archive_sound` des ajouts proposés, cette même liste donne 360 gains, dont 58 avec synopsis. Cette variante filtre les couples proposés en acceptant une autre catégorie vérifiée sur le même couple. Les entrées et les résultats actifs suivent encore la politique initiale.
+
+Pour reproduire l’audit, utiliser les quatre Parquet et le cache de 13 782 réponses, avec les CSV révisés, dans le dossier de l’instantané. Copier la liste initiale des couples depuis le [commit de la projection](https://github.com/benjaminlabos/ece-big-data-processing/blob/1a15b7004f65319b43eb263d23b3b4f3741700f6/validation/credit-projection/requested-pairs.csv), puis récupérer l’artefact qui contient `credits.csv` et son manifeste. Depuis `project/enrichment` sous PowerShell.
+
+```powershell
+$snapshot = 'work/revised-2026-11-12'
+gh run download 43257765582 --repo benjaminlabos/ece-big-data-processing --name verified-proposed-imdb-credits --dir "$snapshot/exact-credits-43257765582"
+python audit_credit_proposal.py $snapshot "$snapshot/requested-pairs.csv" "$snapshot/exact-credits-43257765582" "$snapshot/supplement-verification"
+```
+
+Après décision du binôme, refaire le rapprochement sur le cache final, conserver les CSV originaux, puis relancer Spark avec une nouvelle version des couples et un nouveau dossier de sortie. Les trois crédits prioritaires restent identifiables via `--primary`.
+
 ## Sorties
 
 - `work/results/films` contient une ligne par film.

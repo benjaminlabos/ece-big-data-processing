@@ -1,0 +1,75 @@
+{
+  "applied": false,
+  "new_wikimedia_requests": 0,
+  "snapshot": {
+    "cache_records": 13782,
+    "sha256": "e2ad59a3b19c53b031227e3749fe3ab2282a8c03f0e84a39d4569dcad5e9d35e"
+  },
+  "spark_manifest_sha256": "f8a07aa274a3e9ec294e9fa547f1fee318605312255358e9a2f3647acd7c4e0d",
+  "exact_imdb_credit_projection": {
+    "prepared_source_run": 43093003953,
+    "prepared_source_commit": "321c07d578fc77daafdf3d2a4553899af40c4ea5",
+    "prepared_source_sha256": {
+      "summary.json": "c6ba4f0b9b77110079f65b91cea6b8da4066ba4c1f11eee8836ea823fc03ae74",
+      "input_manifest.json": "aeb5effe20cab570e20fbd3a250309a0f081f7f3a203d02dfafca5da0c999cfd"
+    },
+    "requested_pairs": 1060,
+    "requested_pairs_sha256_lf": "067eb5bf0871b4a115b12cfe799e465815601bf95252c84e2bb111c9f69fc75f",
+    "matched_pairs": 1060,
+    "credit_rows": 1113,
+    "credits_sha256": "a38c28a9af988a6b16891d1de2691018f1c3c73c093850966986555f0420e8fa"
+  },
+  "proposal_sha256_lf": "fd0831874fcfb102639d877ddd3b337e78352d9450948bae5eb8ae86da380d97",
+  "distinct_film_person_pairs": 1060,
+  "distinct_people": 809,
+  "distinct_films_with_proposed_credits": 861,
+  "additional_credits_by_category": {
+    "actor": 518,
+    "actress": 199,
+    "archive_footage": 45,
+    "archive_sound": 1,
+    "cinematographer": 14,
+    "composer": 20,
+    "director": 1,
+    "editor": 4,
+    "producer": 96,
+    "production_designer": 1,
+    "self": 109,
+    "writer": 52
+  },
+  "threshold_contributions_by_category": {
+    "actor": 287,
+    "actress": 101,
+    "archive_footage": 29,
+    "cinematographer": 11,
+    "composer": 14,
+    "editor": 2,
+    "producer": 36,
+    "production_designer": 1,
+    "self": 61,
+    "writer": 23
+  },
+  "maximum_extra_cached_credits_for_a_film": 3,
+  "films_with_three_biographies": {
+    "before": 3488,
+    "after": 3905,
+    "gain": 417
+  },
+  "films_with_synopsis_and_three": {
+    "before": 2853,
+    "after": 2915,
+    "gain": 62
+  },
+  "fixed_proposal_without_self_or_archive": {
+    "excluded_categories": [
+      "archive_footage",
+      "archive_sound",
+      "self"
+    ],
+    "eligible_proposed_pairs": 909,
+    "gain_three_biographies": 360,
+    "gain_synopsis_and_three": 58
+  },
+  "credit_projection_run": "https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43257765582",
+  "credit_projection_workflow_commit": "1a15b7004f65319b43eb263d23b3b4f3741700f6"
+}
