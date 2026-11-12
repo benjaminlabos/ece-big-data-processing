@@ -128,9 +128,9 @@ def build(baseline, verified, proposal, evidence, output):
     stage = Path(tempfile.mkdtemp(prefix='.cached-credit-policy-', dir=output.parent))
     try:
         for name in ['selected-titles.csv', 'top10.csv', 'primary.csv']:
-            shutil.copyfile(baseline / name, stage / name)
-        shutil.copyfile(baseline / 'reserves.csv', stage / 'initial-reserves.csv')
-        shutil.copyfile(proposal, stage / 'supplementary-provenance.csv')
+            (stage / name).write_bytes((baseline / name).read_bytes().replace(b'\r\n', b'\n'))
+        (stage / 'initial-reserves.csv').write_bytes((baseline / 'reserves.csv').read_bytes().replace(b'\r\n', b'\n'))
+        (stage / 'supplementary-provenance.csv').write_bytes(proposal.read_bytes().replace(b'\r\n', b'\n'))
         for name, pairs in [('supplementary.csv', extra), ('reserves.csv', reserves), ('enrichment-input.csv', combined)]:
             (stage / name).write_bytes(pair_bytes(pairs))
         result = {

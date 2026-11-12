@@ -54,7 +54,8 @@ python scripts/expand_cached_credits.py \
 
 Le programme vérifie les empreintes, le rattachement au lot complet, l'appartenance
 au pool de crédits, l'absence de nouveaux identifiants, les doublons et la limite
-de trois ajouts. Il accepte les fins de ligne LF/CRLF sans réécrire les sources.
+de trois ajouts. Il accepte les fins de ligne LF/CRLF sans réécrire les sources. Les nouveaux CSV
+sont émis en LF, avec un attribut Git local pour préserver leurs empreintes sur Windows.
 Il refuse un dossier de sortie existant et publie le résultat après les contrôles.
 Aucun appel Wikimedia n'est effectué.
 

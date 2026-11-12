@@ -70,6 +70,8 @@ def test_accepts_windows_line_endings_without_rewriting_sources(tmp_path):
     result = build(*args)
     assert result['input_pairs'] == 7
     assert args[2].read_bytes() == original
+    assert b'\r\n' not in (args[-1] / 'primary.csv').read_bytes()
+    assert b'\r\n' in (args[0] / 'primary.csv').read_bytes()
     assert result['baseline_fingerprints']['primary.csv']['observed_sha256'] != result['baseline_fingerprints']['primary.csv']['lf_sha256']
 
 
