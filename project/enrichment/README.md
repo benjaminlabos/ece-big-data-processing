@@ -104,7 +104,7 @@ git worktree add --detach ../imdb-handoff-2026-11-12 7790935f6db72fdd223b47b35bc
 $inputs = (Resolve-Path ../imdb-handoff-2026-11-12/validation/overnight-43093003953).Path
 Set-Location project/enrichment
 python collect.py --titles "$inputs/selected-titles.csv" --candidates "$inputs/enrichment-input.csv" --cache work/provisional/raw
-python freeze_cache.py --cache work/provisional/raw --output work/cache-revised.json
+python freeze_cache.py --cache work/provisional/raw --output work/cache-revised.json > work/cache-revised.receipt.json
 $job = (Get-Location).Path
 docker run --rm --pull=never --cpus 4 --memory 4000m `
   --mount "type=bind,source=$job,target=/job" `
@@ -115,6 +115,20 @@ docker run --rm --pull=never --cpus 4 --memory 4000m `
   --primary /inputs/primary.csv --top /inputs/top10.csv `
   --raw work/cache-revised.json --output work/coverage-revised
 ```
+
+### Relire la couverture
+
+Depuis le même dossier, relire les quatre Parquet avec PyArrow. Le contrôle compare chaque réponse figée à son statut et à sa provenance en sortie. Il recalcule la couverture par film et par groupe à partir des crédits détaillés.
+
+```powershell
+python -m pip install pyarrow
+python audit_outputs.py work/coverage-revised "$inputs/selected-titles.csv" `
+  "$inputs/enrichment-input.csv" "$inputs/primary.csv" "$inputs/top10.csv" `
+  --snapshot work/cache-revised.json --receipt work/cache-revised.receipt.json `
+  --require-complete --biography-gaps work/coverage-revised-biography-gaps.csv > work/coverage-revised-audit.json
+```
+
+Pour un instantané en cours de collecte, omettre `--require-complete`. Choisir de nouveaux chemins à chaque exécution. Le CSV des manques donne pour chaque film le nombre de biographies à trouver et les statuts des crédits concernés. Le JSON d’audit compte aussi les films auxquels il manque un synopsis, les films auxquels il manque des biographies et les films auxquels il manque les deux. Conserver l’instantané et les textes hors Git.
 
 L’instantané intermédiaire de 13 782 réponses a été sauvegardé avec son empreinte, puis transformé sous Spark 4.2.0. Les quatre Parquet ont été relus et les 979 groupes année–genre ont été recoupés avec les CSV de sélection. On obtient 3 081 synopsis, 7 918 biographies distinctes et 3 488 films qui atteignent trois biographies, dont 662 grâce aux réserves. Cinq films ont moins de trois candidats dans la sélection. [Instantané révisé et contrôle des Parquet](evidence/revised-snapshot-2026-11-12.json)
 

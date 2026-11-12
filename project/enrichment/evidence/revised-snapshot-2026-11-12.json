@@ -155,5 +155,35 @@
         }
       ]
     }
+  },
+  "backup": {
+    "filename": "cache-13782.zip",
+    "bytes": 45727356,
+    "files": 13782,
+    "sha256": "eb44e32a64ea0decb15665d37c7b7582e2ac62784fa072619546712a03546871"
+  },
+  "independent_audit": {
+    "manifest_sha256": "f8a07aa274a3e9ec294e9fa547f1fee318605312255358e9a2f3647acd7c4e0d",
+    "raw_snapshot": {
+      "cache_records": 13782,
+      "sha256": "e2ad59a3b19c53b031227e3749fe3ab2282a8c03f0e84a39d4569dcad5e9d35e",
+      "requested_ids": 25630,
+      "responses_in_selection": 13782,
+      "documented_absences_before_extraction": 2768,
+      "preserved_responses_outside_selection": 0,
+      "requested_ids_still_missing": 11848,
+      "statuses_before_extraction": {
+        "source_html": 11014,
+        "no_english_wikipedia_article": 1277,
+        "no_wikidata_item": 1217,
+        "ambiguous_wikidata_match": 19,
+        "plot_not_found": 255
+      }
+    },
+    "films_missing_requirements": {
+      "synopsis": 635,
+      "synopsis_and_biographies": 2540,
+      "biographies": 228
+    }
   }
 }
