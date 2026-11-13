@@ -1,0 +1,26 @@
+{
+  "archive": "C:\\Users\\nriha\\Downloads\\GR04-enrichissement-v2-0746647.zip",
+  "archive_bytes": 93672306,
+  "archive_sha256": "6a54dbed30efd4be905318e1fe053f0b75718dace5b33980d8bd57e546e23e81",
+  "zip_crc_passed": true,
+  "verified_package_entries": 41,
+  "parquet_parts_verified": 17,
+  "input_csv_hashes_verified": 8,
+  "raw_cache_records": 25630,
+  "raw_snapshot_sha256": "ff1d648c0cb9048779eb72e41afb03e32ea94a31e2e1b6d411856f57be35e576",
+  "collection_absences": 7269,
+  "restored_pyarrow_audit_matches_published": true,
+  "duckdb_version": "1.4.3",
+  "independent_counts": {
+    "films": 6256,
+    "synopses": 5174,
+    "films_with_three_biographies": 5369,
+    "films_with_synopsis_and_three": 4710,
+    "supplement_gain": 140,
+    "supplement_gain_with_synopsis": 102,
+    "initial_reserve_gain": 970
+  },
+  "year_genre_groups_verified": 979,
+  "work_directory": "C:\\Users\\nriha\\ece-big-data-peer-reviewed\\results\\received-enrichment-v2-2026-11-13",
+  "status": "PASS"
+}

@@ -1,0 +1,37 @@
+{
+  "scope": "real_provisional_csv_contract_audit_not_completed_full_batch",
+  "verified_at_utc": "2026-11-11T22:41:39.180905+00:00",
+  "status": "passed",
+  "films": 6257,
+  "input_pairs": 31230,
+  "priority_pairs": 18764,
+  "reserve_pairs": 12466,
+  "unique_people": 19375,
+  "collector_expected_ids": 25632,
+  "ranking_places": 9089,
+  "year_genre_groups": 979,
+  "films_below_three_candidates": [
+    "tt18687124",
+    "tt2415372",
+    "tt3665486",
+    "tt38164776",
+    "tt5375100"
+  ],
+  "student_validated": false,
+  "checks": [
+    "Actual Benjamin CSV and collector readers accepted all inputs",
+    "No duplicate or inverted IDs",
+    "Disjoint priority/reserve union exact",
+    "Top membership and tie breaks checked",
+    "Provisional duration/votes/year bounds checked",
+    "Coverage and candidate counts reconciled"
+  ],
+  "sha256": {
+    "selected-titles": "72a6ae26406a33da81116e18f9d6321be4a7c5502943488495786470d674c581",
+    "enrichment-input": "71989e318aedf0cd31c382f27a9f1370d5f6c989a75487f19ad591f15ce952e0",
+    "enrichment-primary": "dcf2d80b85c65cc2199129508bcdc41fa666051b83ef85c9e760d8106c4f1731",
+    "enrichment-reserves": "08699f47d3b25fb51193e4a7d8e15da197f852c43ef09fcbe44a89c31f7bf06e",
+    "top10": "64335aee81da5819e334d1105b32f474d8fd4fd84cf13a6e5c0df4b78ceb08df",
+    "enrichment-coverage": "7e52ee51624808d59447574555eba0af565f59f66f005b451a5ece66f09fbe1d"
+  }
+}

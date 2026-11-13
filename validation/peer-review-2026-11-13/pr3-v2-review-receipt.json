@@ -1,0 +1,25 @@
+{
+  "reviewed_commit": "409f167f62cf571e72e0caffaa033a2800d1ac1a",
+  "published_csv_hashes_verified": 3,
+  "input_csv_hashes_verified": 8,
+  "year_genre_groups_reconstructed": 979,
+  "supplementary_pairs": 1060,
+  "gains_reconstructed_from_v1_v2_and_exact_supplementary_pairs": 140,
+  "gains_with_synopsis": 102,
+  "final_statistics_reconstructed": {
+    "synopsis": 5174,
+    "three": 5369,
+    "both": 4710
+  },
+  "incomplete_films": 1546,
+  "incomplete_breakdown": {
+    "synopsis": 659,
+    "synopsis_and_biographies": 423,
+    "biographies": 464
+  },
+  "structural_shortages": 5,
+  "same_cache_manifest_as_initial": true,
+  "production_code_changes_since_9fcef57": false,
+  "raw_cache_and_final_parquet_bytes_rescanned_here": false,
+  "limitation": "Audit reconciles committed CSVs, exact input hashes and published manifests; final ZIP/cache/Parquet bytes remain on Benjamin machine and were not independently fetched."
+}

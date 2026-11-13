@@ -1,0 +1,37 @@
+{
+  "reviewed_at_utc": "2026-11-12T11:24:31.145257+00:00",
+  "tested_clone_commit": "63ef1b75d9b8525c8e94b7779ddd95f1796f0ff7",
+  "peer_heads": {
+    "2": "e6e5933c177ec612fa93538002e0169240b4548a",
+    "3": "d870d97c227147258690821750549f9e0915e3ee",
+    "6": "4bfbf2a0b7c37e66a66b2c8709255cff07e1bdc7"
+  },
+  "spark_version": "4.2.0",
+  "java_version": "21.0.13",
+  "python_version": "3.12",
+  "driver_memory": "1g",
+  "local_threads": 2,
+  "enrichment_unit_tests": 6,
+  "controlled_collaboration_cells": 9,
+  "full_imdb_recomputed": false,
+  "formal_reviews_submitted": false,
+  "report_md_tracked": false,
+  "release_state": "technical_review_passed_final_enrichment_and_human_validations_pending",
+  "beautifulsoup4_cross_pipeline": "4.15.0",
+  "beautifulsoup4_declared_dependency_targeted_verification": {
+    "status": "passed",
+    "beautifulsoup4": "4.14.3",
+    "pure_html_cases": 3,
+    "spark_output_verified": true
+  },
+  "incremental_enrichment_audit": {
+    "scope": "synthetic_auditor_acceptance_and_rejection_not_real_ben_cache",
+    "peer_commit": "d870d97c227147258690821750549f9e0915e3ee",
+    "status": "passed",
+    "pyarrow": "26.0.1",
+    "valid_complete_snapshot_accepted": true,
+    "incomplete_snapshot_rejected_with_require_complete": true,
+    "altered_source_provenance_rejected": true,
+    "real_final_snapshot_audited": false
+  }
+}

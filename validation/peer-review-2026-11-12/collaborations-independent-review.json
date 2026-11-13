@@ -1,0 +1,13 @@
+{
+  "duckdb": "1.4.3",
+  "scope": "fixture",
+  "verified_diagnostics": {
+    "movie_pair_films_before_self_policy": 14,
+    "self_pair_films": 2,
+    "pair_films_unknown_year": 1,
+    "pair_films_in_period_without_rating": 1,
+    "first_year_pair_films_in_period_before_vote_filter": 4,
+    "later_year_pair_films_in_period_before_vote_filter": 6
+  },
+  "verified_cells": 9
+}

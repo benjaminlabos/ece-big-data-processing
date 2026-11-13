@@ -1,0 +1,22 @@
+{
+  "scope": "clean_clone_controlled_integration_not_completed_full_imdb",
+  "status": "passed",
+  "checked_at_utc": "2026-11-11T23:14:26.288365+00:00",
+  "source_commit": "03d1fa51a427351eb000b7612452b769dae84ff0",
+  "spark_version": "4.2.0",
+  "cross_component_assertions": [
+    "Exported candidate CSV accepted by Benjamin strict reader",
+    "Streaming consumer accepts normalized producer CSV; blank and absent IDs rejected",
+    "Producer selection and top CSV feed Spark enrichment with exact coverage; complete cache does not imply three biographies",
+    "Collaborations consumes the actual seven-table producer schemas and handles insufficient history"
+  ],
+  "query_review_checks": [
+    "All nine materialized fixture outputs and Q2/Q3 totals accepted",
+    "Reversed popularity ordering rejected even with valid row values",
+    "A director violating the exactly-one-high-rating condition rejected",
+    "Tampered manifest counts rejected without a published success report"
+  ],
+  "exit_code": 0,
+  "command": "validation/run_cross_component_checks.ps1",
+  "tracked_files_only": true
+}

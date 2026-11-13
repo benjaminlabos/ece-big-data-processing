@@ -1,0 +1,18 @@
+{
+  "reviewed_commit": "9fcef57cf688ab65ad4c8ff11dcb92cc5fa354c3",
+  "published_tables_sha256_verified": 2,
+  "groups_reconstructed_from_common_ranking_and_incomplete_statuses": 979,
+  "ranking_rows": 9089,
+  "distinct_films": 6256,
+  "incomplete": {
+    "synopsis": 621,
+    "synopsis_and_biographies": 461,
+    "biographies": 566
+  },
+  "synopses": 5174,
+  "films_with_three_biographies": 5229,
+  "films_with_synopsis_and_three_biographies": 4608,
+  "production_code_changes_since_reviewed_4ad5567": false,
+  "raw_cache_and_final_parquets_independently_available": false,
+  "boundary": "Checks reconcile committed evidence; the local-only raw cache and Parquet bytes were not rescanned here."
+}

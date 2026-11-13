@@ -1,0 +1,180 @@
+{
+  "archive": "C:\\Users\\nriha\\Downloads\\GR04-enrichissement-v2-0746647.zip",
+  "bytes": 93672306,
+  "sha256": "6a54dbed30efd4be905318e1fe053f0b75718dace5b33980d8bd57e546e23e81",
+  "crc_passed": true,
+  "entries": [
+    {
+      "name": "README.md",
+      "bytes": 2389
+    },
+    {
+      "name": "audit-v2-0746647.json",
+      "bytes": 5255
+    },
+    {
+      "name": "cache-final.receipt.json",
+      "bytes": 103
+    },
+    {
+      "name": "cache-final.zip",
+      "bytes": 76746598
+    },
+    {
+      "name": "cache-final.zip.receipt.json",
+      "bytes": 95
+    },
+    {
+      "name": "coverage-v2/_COMPLETE",
+      "bytes": 0
+    },
+    {
+      "name": "coverage-v2/_MANIFEST.json",
+      "bytes": 1197
+    },
+    {
+      "name": "coverage-v2/coverage/_SUCCESS",
+      "bytes": 0
+    },
+    {
+      "name": "coverage-v2/coverage/part-00000-7a39873a-41e5-47c5-acfb-787fd2507862-c000.snappy.parquet",
+      "bytes": 15460
+    },
+    {
+      "name": "coverage-v2/coverage/part-00001-7a39873a-41e5-47c5-acfb-787fd2507862-c000.snappy.parquet",
+      "bytes": 21421
+    },
+    {
+      "name": "coverage-v2/coverage/part-00002-7a39873a-41e5-47c5-acfb-787fd2507862-c000.snappy.parquet",
+      "bytes": 15852
+    },
+    {
+      "name": "coverage-v2/coverage/part-00003-7a39873a-41e5-47c5-acfb-787fd2507862-c000.snappy.parquet",
+      "bytes": 9205
+    },
+    {
+      "name": "coverage-v2/coverage_by_year_genre/_SUCCESS",
+      "bytes": 0
+    },
+    {
+      "name": "coverage-v2/coverage_by_year_genre/part-00000-f9ea4454-8bce-489e-a8d7-da835a5eb990-c000.snappy.parquet",
+      "bytes": 5435
+    },
+    {
+      "name": "coverage-v2/films/_SUCCESS",
+      "bytes": 0
+    },
+    {
+      "name": "coverage-v2/films/part-00000-918e42a7-1775-47ce-ad21-e663a5f805ce-c000.snappy.parquet",
+      "bytes": 2553726
+    },
+    {
+      "name": "coverage-v2/films/part-00001-918e42a7-1775-47ce-ad21-e663a5f805ce-c000.snappy.parquet",
+      "bytes": 1264022
+    },
+    {
+      "name": "coverage-v2/films/part-00002-918e42a7-1775-47ce-ad21-e663a5f805ce-c000.snappy.parquet",
+      "bytes": 1332496
+    },
+    {
+      "name": "coverage-v2/films/part-00003-918e42a7-1775-47ce-ad21-e663a5f805ce-c000.snappy.parquet",
+      "bytes": 2558440
+    },
+    {
+      "name": "coverage-v2/films/part-00004-918e42a7-1775-47ce-ad21-e663a5f805ce-c000.snappy.parquet",
+      "bytes": 1338544
+    },
+    {
+      "name": "coverage-v2/films/part-00005-918e42a7-1775-47ce-ad21-e663a5f805ce-c000.snappy.parquet",
+      "bytes": 1259113
+    },
+    {
+      "name": "coverage-v2/principals/_SUCCESS",
+      "bytes": 0
+    },
+    {
+      "name": "coverage-v2/principals/part-00000-5c00a7ef-e9f4-4df1-9139-37d0575e46a8-c000.snappy.parquet",
+      "bytes": 1469981
+    },
+    {
+      "name": "coverage-v2/principals/part-00001-5c00a7ef-e9f4-4df1-9139-37d0575e46a8-c000.snappy.parquet",
+      "bytes": 742610
+    },
+    {
+      "name": "coverage-v2/principals/part-00002-5c00a7ef-e9f4-4df1-9139-37d0575e46a8-c000.snappy.parquet",
+      "bytes": 726718
+    },
+    {
+      "name": "coverage-v2/principals/part-00003-5c00a7ef-e9f4-4df1-9139-37d0575e46a8-c000.snappy.parquet",
+      "bytes": 1460315
+    },
+    {
+      "name": "coverage-v2/principals/part-00004-5c00a7ef-e9f4-4df1-9139-37d0575e46a8-c000.snappy.parquet",
+      "bytes": 736526
+    },
+    {
+      "name": "coverage-v2/principals/part-00005-5c00a7ef-e9f4-4df1-9139-37d0575e46a8-c000.snappy.parquet",
+      "bytes": 702284
+    },
+    {
+      "name": "evidence/coverage-by-year-genre-v2-2026-11-13.csv",
+      "bytes": 21782
+    },
+    {
+      "name": "evidence/incomplete-films-v2-2026-11-13.csv",
+      "bytes": 96083
+    },
+    {
+      "name": "evidence/supplement-gains-v2-2026-11-13.csv",
+      "bytes": 2779
+    },
+    {
+      "name": "independent-v2-0746647.json",
+      "bytes": 2154
+    },
+    {
+      "name": "inputs/POLICY.json",
+      "bytes": 2980
+    },
+    {
+      "name": "inputs/enrichment-input.csv",
+      "bytes": 651192
+    },
+    {
+      "name": "inputs/initial-reserves.csv",
+      "bytes": 251489
+    },
+    {
+      "name": "inputs/primary.csv",
+      "bytes": 378317
+    },
+    {
+      "name": "inputs/reserves.csv",
+      "bytes": 272889
+    },
+    {
+      "name": "inputs/selected-titles.csv",
+      "bytes": 63342
+    },
+    {
+      "name": "inputs/supplementary-provenance.csv",
+      "bytes": 478263
+    },
+    {
+      "name": "inputs/supplementary.csv",
+      "bytes": 21414
+    },
+    {
+      "name": "inputs/top10.csv",
+      "bytes": 510060
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 4896
+    }
+  ],
+  "packages": {
+    "duckdb": true,
+    "pyarrow": false
+  }
+}

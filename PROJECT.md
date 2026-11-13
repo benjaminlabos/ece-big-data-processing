@@ -1,12 +1,40 @@
 # Big Data Processing — gr-04
 
-Navigation : [préparation et exploration](PROJECT.md), [streaming Wikipédia/Kafka/Spark](PROJECT_STREAMING.md).
-
 Guide technique de lancement. Les explications, choix méthodologiques et
 interprétations du rapport sont à écrire par les étudiants dans `REPORT.md`.
 Ce guide couvre la préparation IMDb, les interfaces d’intégration, l’exploration
-et la sélection des films. Les pipelines de Benjamin sont développés dans leurs
-PR respectives ; ce guide ne décrit pas encore une exécution fusionnée complète.
+et la sélection des films. Les composants des deux membres sont intégrés dans main au commit
+`4781544fbd2282088a2bb51ec156be40cd0fdc3e` après les approbations croisées.
+
+## État actuel et parcours de lancement — 13 novembre 2026
+
+Le lot complet a terminé les sept tables, les huit analyses et le classement
+(run 43125611999). La question libre a terminé les dix comparaisons sur le lot
+commun (run 43128551838). L’enrichissement initial et la v2 sont exécutés ; le
+ZIP v2 a été reçu et audité sur le PC Nicolas. Le streaming dispose d’une capture
+réelle et d’un jeu de rejeu vérifié. Ces résultats sont rattachés à leurs
+manifestes. Le rapport personnel et la soumission restent à clôturer.
+
+- [Démonstration, commandes et accès aux résultats](validation/DEMONSTRATION-2026-11-13.md).
+- [Tableaux factuels à utiliser dans le rapport personnel](validation/REPORT-FACTS-2026-11-12.md).
+- [Ordre d’intégration et conflit connu](validation/MERGE-PLAN-2026-11-13.md).
+- [Checklist de rendu](validation/FINAL-RELEASE-CHECKLIST.md).
+- [Sorties CSV complètes de Q1–Q8 et du classement](deliverables/query-outputs/).
+
+Les sections datées plus bas conservent l’historique des essais et des reprises.
+Leurs indications « reste à calculer » décrivent l’état à la date de l’essai ;
+le présent état et les manifestes finaux font référence pour les résultats.
+Les commandes d’installation et de reconstruction restent décrites ci-dessous.
+
+## Navigation des composants intégrés
+
+- Préparation IMDb, exploration et exports : instructions ci-dessous.
+- Streaming Wikipédia/Kafka/Spark : [PROJECT_STREAMING.md](PROJECT_STREAMING.md).
+- Enrichissement : [project/enrichment/README.md](project/enrichment/README.md).
+- Question libre : [project/collaborations/README.md](project/collaborations/README.md).
+
+Les preuves propres à chaque composant conservent leur commit et leur périmètre.
+L'essai d'intégration sur données synthétiques ne remplace pas les calculs réels.
 
 ## Contributeurs
 
@@ -38,10 +66,10 @@ HTTPS à GitHub, PyPI et `datasets.imdbws.com`. Le lancement natif Windows n'a p
 été testé ; utiliser le chemin Docker ci-dessous pour éviter la configuration
 Hadoop/Java native de Windows.
 
-Depuis un terminal Linux, dans le dossier parent du dépôt :
+Après fusion des PR approuvées dans `main`, depuis un terminal Linux, dans le dossier parent du dépôt :
 
 ```bash
-git clone --branch feat/imdb-data-preparation https://github.com/benjaminlabos/ece-big-data-processing.git
+git clone https://github.com/benjaminlabos/ece-big-data-processing.git
 cd ece-big-data-processing
 git status --short --branch
 python -m venv .venv
