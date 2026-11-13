@@ -1,0 +1,26 @@
+{
+  "scope": "full_selected_credits_subset",
+  "complete_preparation_validated": false,
+  "student_validated": false,
+  "spark_version": "4.2.0",
+  "source_manifest_sha256": "4ba3d662d85a365bd57dcfff0d35a64caed61643225a4eda049e8ef52a386d09",
+  "selected_titles_sha256": "9749f95422a2cbf855cd9e9a7dad37377b03571ad8b1a3f1b9d27b4c7ef25a95",
+  "source_progress_sha256": "e0505cd66ca505890e6a0c43fbc427cd71b247f361b6b0a20f58ddeac9df7b0a",
+  "module_sha256": "23c0e2a278620170099c2d70df67a49ea5dd82a6fba4f3a3e8028a392260d78d",
+  "source_principal_rows": 102683165,
+  "selected_raw_credit_rows": 124499,
+  "duplicates_removed": 0,
+  "key_quarantined_rows": 0,
+  "requested_rows": 6257,
+  "distinct_requested_titles": 6257,
+  "status_counts": {
+    "selected": 6257
+  },
+  "candidate_pairs": 113273,
+  "accepted_credit_rows": 124498,
+  "duplicate_credit_pairs_collapsed": 11225,
+  "rejected_credit_rows": 1,
+  "films_with_fewer_than_three_candidates": 5,
+  "consumer_ready": true,
+  "title_reference_policy": "selected subset inner-joined to completed clean movie parents before source filtering"
+}

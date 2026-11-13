@@ -1,0 +1,31 @@
+name: IMDb Spark runtime
+description: Prepare a disposable Linux hosted runner for the IMDb batch
+runs:
+  using: composite
+  steps:
+    - name: Check hosted runner resources
+      shell: bash
+      run: |
+        set -euo pipefail
+        sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
+        mkdir -p results /tmp/imdb-spark
+        df -h . /tmp | tee results/cloud-resources.log
+        free -h | tee -a results/cloud-resources.log
+        nproc | tee -a results/cloud-resources.log
+        python3 - <<'PYTHON'
+        import os, shutil
+        from pathlib import Path
+        memory = int(next(line.split()[1] for line in Path('/proc/meminfo').read_text().splitlines() if line.startswith('MemTotal:'))) * 1024
+        if memory < 12 * 1024**3 or (os.cpu_count() or 0) < 4 or shutil.disk_usage('.').free < 25 * 1024**3:
+            raise SystemExit('Need >=4 CPUs, 12 GiB RAM and 25 GiB free disk')
+        PYTHON
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '21'
+    - name: Install pinned Spark
+      shell: bash
+      run: python -m pip install -r requirements-preparation.txt

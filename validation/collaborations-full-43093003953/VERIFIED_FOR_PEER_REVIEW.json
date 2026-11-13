@@ -1,0 +1,13 @@
+{
+  "scope": "full",
+  "student_validated": false,
+  "independently_verified_cells": 10,
+  "files_sha256": {
+    "comparisons.csv": "32ac6255fe84ecaf9688fc1969c687b394b26a9e9e950182ad192db4e97a06c5",
+    "PROVENANCE.json": "0cd66caf20684bace2b7f7c0be8593dd2f8686ffeb49c3ed2d0e9f56726d4dc2",
+    "INDEPENDENT_AUDIT.json": "f72c0fc4b1f60f57da8df852c5703c02a8f9d4d381ed8ca531e811edbde09ea8",
+    "analysis/summary.json": "4fd2e8998610e6d275ea1d0734a7967ded5257131b7b6ee87975f0d72eb8364a",
+    "analysis/comparisons/part-00000-8920b9e6-29da-4475-b928-993f0fe5de48-c000.snappy.parquet": "b49f68d95e1ec6ae651b1b41c5520552c7c50bf1969146bef9dbb50ec7b3f199",
+    "analysis/comparisons/_SUCCESS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

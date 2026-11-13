@@ -1,0 +1,28 @@
+{
+  "scope": "full_selected_credits_subset",
+  "student_validated": false,
+  "candidate_pairs": 113273,
+  "primary_pairs": 18764,
+  "reserve_pairs": 12466,
+  "input_pairs": 31230,
+  "distinct_people": 19375,
+  "requested_films": 6257,
+  "headers_identifiers_and_uniqueness_verified": true,
+  "primary_reserve_disjoint_union_verified": true,
+  "per_film_counts_match_available_people": true,
+  "source_row_reconciliation_verified": true,
+  "module_windows_crlf_hashes_verified": true,
+  "films_with_fewer_than_three_people": [
+    "tt18687124",
+    "tt2415372",
+    "tt3665486",
+    "tt38164776",
+    "tt5375100"
+  ],
+  "csv_sha256": {
+    "enrichment-coverage-full-provisional-2026-11-11.csv": "19b15bad6a4742ecc18a7e30d4aff1b6c09839535b8e2a36d3a9db350a69f494",
+    "enrichment-input-full-provisional-2026-11-11.csv": "86e59529819cc57ec9478930287d28efcbd15aa33162eaa805fcd4e1bd79a754",
+    "enrichment-reserves-full-provisional-2026-11-11.csv": "fea61e9e3adcb91deb5364a0fb89ee0fb51e3273db60e8d6b02e1edce838fa95",
+    "enrichment-primary-full-provisional-2026-11-11.csv": "1ed6c758aa68c74da8f53a68e17749ad7e3189f248ed16ce0bb89f082e3b2643"
+  }
+}

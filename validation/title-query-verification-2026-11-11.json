@@ -1,0 +1,16 @@
+{
+  "scope": "full_title_tables_subset",
+  "student_validated": false,
+  "ranking_rows": 9089,
+  "distinct_selected_films": 6257,
+  "genre_year_groups": 979,
+  "ranking_rows_match_metadata": true,
+  "selected_identifiers_match_ranking": true,
+  "all_46_years_have_exactly_three_top_genres": true,
+  "top_three_comparison_votes_and_memberships_match": true,
+  "ranks_contiguous_and_at_most_ten": true,
+  "rating_vote_identifier_tie_breaks_verified": true,
+  "year_runtime_vote_constraints_verified": true,
+  "published_csv_sha256_match_execution": true,
+  "complete_preparation_validated": false
+}

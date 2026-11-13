@@ -1,0 +1,21 @@
+{
+  "scope": "controlled_recovery_tests_not_full_batch_completion",
+  "tests": {
+    "passed": 38,
+    "seconds": 77.42,
+    "spark": "4.2.0",
+    "command": ".venv/bin/python -m pytest -q tests"
+  },
+  "checks": [
+    "Five completed fixture tables adopted; remaining two recomputed",
+    "All seven clean tables and metrics equal uninterrupted fixture run",
+    "All 39 missingness profiles equal baseline",
+    "Original checkpoint file hashes unchanged",
+    "Incorrect raw snapshot, unspecified legacy year and missing Spark success marker rejected",
+    "Windows Docker os.link and copytree(copy_function=os.link) verified",
+    "Spark physical plan places repartition before Unicode normalization"
+  ],
+  "windows_recovery_source": "results/imdb-full-2026-11-11.incomplete-31348599",
+  "legacy_lineage": "Original run used year 2026 and unchanged quality/schema rules; legacy checkpoint lacks original context hash, recorded as operator assertion",
+  "full_batch_completed": false
+}

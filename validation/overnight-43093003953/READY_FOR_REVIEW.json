@@ -1,0 +1,54 @@
+{
+  "scope": "full_computation_provisional_handoff",
+  "student_validated": false,
+  "ready_for_student_review": true,
+  "source_prepared_sha256": "c6ba4f0b9b77110079f65b91cea6b8da4066ba4c1f11eee8836ea823fc03ae74",
+  "source_analysis_sha256": "89662e746109f1d858df4dab82be6de3bd46639bef78b7a64470aeaf7ec77c04",
+  "baseline_titles_sha256": "9749f95422a2cbf855cd9e9a7dad37377b03571ad8b1a3f1b9d27b4c7ef25a95",
+  "baseline_pairs_sha256": "86e59529819cc57ec9478930287d28efcbd15aa33162eaa805fcd4e1bd79a754",
+  "config": {
+    "student_validated": false,
+    "as_of_year": 2026,
+    "minimum_runtime": 40,
+    "minimum_votes": 1000,
+    "episode_minimum_votes": 10,
+    "runtime_zscore": 2.0,
+    "success_rating": 7.0,
+    "early_career_fraction": 0.25
+  },
+  "films": 6256,
+  "primary_pairs": 18761,
+  "reserve_pairs": 12464,
+  "input_pairs": 31225,
+  "distinct_people": 19374,
+  "films_with_fewer_than_three_candidates": 5,
+  "changes_from_previous_inputs": {
+    "films_added": 0,
+    "films_removed": 1,
+    "pairs_added": 1,
+    "pairs_removed": 6
+  },
+  "new_people_to_lookup": 1,
+  "thresholds_compared": 9,
+  "optional_unpublished_hadoop_crc_sidecars": [],
+  "human_review_remaining": [
+    "selection thresholds",
+    "interpretation of query results",
+    "peer review and integration"
+  ],
+  "files_sha256": {
+    "coverage.csv": "6cf459ce3d8e910d3d156d977d9bf8f3d629c5161e7c1b41d61b0603b85978fd",
+    "films-added.csv": "fc1f83315a110af77b4c1d24db9ac935341ef3a56977e3da964f59a7009c7b4c",
+    "people-added.csv": "0240a84d3503962c7b5e7e3f27248ad7a9ab169617e23cd5b8815f42732f3515",
+    "reserves.csv": "c8f4dff6999f7da31e198f89ea70cef0b745f187b6af8f7e1e8272eb6cdcb656",
+    "primary.csv": "11bd009a3f1d8c12f5c53327111d5979831908f426e7b10395ddc8504c2a2391",
+    "pairs-removed.csv": "a8343e2b16da2252621a1a94ae1527e0c9ea0cd620806ebf780b98b2cc449c61",
+    "selected-titles.csv": "757d0caa2c8993747d215993a7efa36bb506cf10786aac9fe86d88e0180c766f",
+    "pairs-added.csv": "558efc9dfb6854afe5a00600a9414cfee7178dc1b3c7d0864f3b1a918f7f58f4",
+    "enrichment-input.csv": "5d7ab3af623e1bc276a183a4dbf586592366fb1cb62f68a05b53dcb25d330091",
+    "threshold-summary.csv": "8010f6cf7b9ba951165c743b336ec3e8d2dfa459d79e672d0cb8fc862311758d",
+    "films-removed.csv": "a86848fa278d768ac1bbaf2855e0d21f928aa464aa8b552ed6232a679de1e3f6",
+    "thresholds-by-year-genre.csv": "0c83000f358dd3fd89656587c5e212fcf380434ffb5e5570237c15a8cf2bf82f",
+    "top10.csv": "191cb0c8d3ae8bcbc990e7d512c2b74e672b324f64000eca0db83ca44f7175dc"
+  }
+}

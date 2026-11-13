@@ -1,0 +1,39 @@
+{
+  "checked_at_utc": "2026-11-12T00:36:09.323744+00:00",
+  "status": "passed",
+  "scope": "published_full_handoff_files_hashes_and_set_reconciliation",
+  "source_run_id": 43093003953,
+  "finalization_run_id": 43125611999,
+  "published_commit": "04f66b1",
+  "spark_tests_passed": 18,
+  "spark_tests_seconds": 69.47,
+  "films": 6256,
+  "pairs": 31225,
+  "people": 19374,
+  "expected_lookup_ids": 25630,
+  "new_person_ids": [
+    "nm19101446"
+  ],
+  "changes": {
+    "films_added": 0,
+    "films_removed": 1,
+    "pairs_added": 1,
+    "pairs_removed": 6
+  },
+  "query_rows": {
+    "q1": 13640,
+    "q2": 138,
+    "q3": 92,
+    "q4": 47,
+    "q5": 535,
+    "q6": 5826,
+    "q7": 6158,
+    "q8": 127468,
+    "top10_per_genre_year": 9089
+  },
+  "human_validation_remaining": [
+    "selection thresholds",
+    "interpretation of query results",
+    "peer review and integration"
+  ]
+}

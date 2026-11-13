@@ -1,0 +1,331 @@
+[
+  {
+    "nconst": "nm0000671",
+    "high_rated_films": 1,
+    "other_films": 3,
+    "other_mean_rating": 5.933333333333334,
+    "primaryName": "Billy Bob Thornton"
+  },
+  {
+    "nconst": "nm0001675",
+    "high_rated_films": 1,
+    "other_films": 22,
+    "other_mean_rating": 5.9409090909090905,
+    "primaryName": "Robert Rodriguez"
+  },
+  {
+    "nconst": "nm0002239",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 4.9,
+    "primaryName": "Prince"
+  },
+  {
+    "nconst": "nm0031342",
+    "high_rated_films": 1,
+    "other_films": 5,
+    "other_mean_rating": 5.699999999999999,
+    "primaryName": "Predrag Antonijevic"
+  },
+  {
+    "nconst": "nm0062614",
+    "high_rated_films": 1,
+    "other_films": 6,
+    "other_mean_rating": 5.3,
+    "primaryName": "Harry Baweja"
+  },
+  {
+    "nconst": "nm0092632",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.85,
+    "primaryName": "Carlos Bolado"
+  },
+  {
+    "nconst": "nm0132709",
+    "high_rated_films": 1,
+    "other_films": 16,
+    "other_mean_rating": 5.91875,
+    "primaryName": "Martin Campbell"
+  },
+  {
+    "nconst": "nm0149134",
+    "high_rated_films": 1,
+    "other_films": 7,
+    "other_mean_rating": 4.8428571428571425,
+    "primaryName": "Sinan Çetin"
+  },
+  {
+    "nconst": "nm0204628",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.65,
+    "primaryName": "Garth Davis"
+  },
+  {
+    "nconst": "nm0244892",
+    "high_rated_films": 1,
+    "other_films": 4,
+    "other_mean_rating": 5.325,
+    "primaryName": "J.P. Dutta"
+  },
+  {
+    "nconst": "nm0348015",
+    "high_rated_films": 1,
+    "other_films": 6,
+    "other_mean_rating": 5.383333333333333,
+    "primaryName": "Gunasekhar"
+  },
+  {
+    "nconst": "nm0389514",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 4.6,
+    "primaryName": "David Hogan"
+  },
+  {
+    "nconst": "nm0446819",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.449999999999999,
+    "primaryName": "Richard Kelly"
+  },
+  {
+    "nconst": "nm0449984",
+    "high_rated_films": 1,
+    "other_films": 9,
+    "other_mean_rating": 5.944444444444445,
+    "primaryName": "Irvin Kershner"
+  },
+  {
+    "nconst": "nm0490487",
+    "high_rated_films": 1,
+    "other_films": 21,
+    "other_mean_rating": 5.995238095238095,
+    "primaryName": "Wai Keung Lau"
+  },
+  {
+    "nconst": "nm0500896",
+    "high_rated_films": 1,
+    "other_films": 4,
+    "other_mean_rating": 5.85,
+    "primaryName": "David Leland"
+  },
+  {
+    "nconst": "nm0536299",
+    "high_rated_films": 1,
+    "other_films": 4,
+    "other_mean_rating": 5.800000000000001,
+    "primaryName": "Albert Magnoli"
+  },
+  {
+    "nconst": "nm0536705",
+    "high_rated_films": 1,
+    "other_films": 4,
+    "other_mean_rating": 5.15,
+    "primaryName": "Ananth Mahadevan"
+  },
+  {
+    "nconst": "nm0574625",
+    "high_rated_films": 1,
+    "other_films": 4,
+    "other_mean_rating": 5.975,
+    "primaryName": "James McTeigue"
+  },
+  {
+    "nconst": "nm0588340",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.65,
+    "primaryName": "Frank Miller"
+  },
+  {
+    "nconst": "nm0700872",
+    "high_rated_films": 1,
+    "other_films": 18,
+    "other_mean_rating": 5.800000000000001,
+    "primaryName": "Puri Jagannadh"
+  },
+  {
+    "nconst": "nm0735879",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.949999999999999,
+    "primaryName": "Ismael Rodríguez"
+  },
+  {
+    "nconst": "nm0761522",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.6,
+    "primaryName": "Denis Sanders"
+  },
+  {
+    "nconst": "nm0796117",
+    "high_rated_films": 1,
+    "other_films": 15,
+    "other_mean_rating": 5.866666666666665,
+    "primaryName": "M. Night Shyamalan"
+  },
+  {
+    "nconst": "nm0803350",
+    "high_rated_films": 1,
+    "other_films": 4,
+    "other_mean_rating": 5.25,
+    "primaryName": "Sangeeth Sivan"
+  },
+  {
+    "nconst": "nm0846092",
+    "high_rated_films": 1,
+    "other_films": 4,
+    "other_mean_rating": 5.525,
+    "primaryName": "Kamal Tabrizi"
+  },
+  {
+    "nconst": "nm0853238",
+    "high_rated_films": 1,
+    "other_films": 6,
+    "other_mean_rating": 5.883333333333333,
+    "primaryName": "Tate Taylor"
+  },
+  {
+    "nconst": "nm0890864",
+    "high_rated_films": 1,
+    "other_films": 5,
+    "other_mean_rating": 5.24,
+    "primaryName": "P. Vasu"
+  },
+  {
+    "nconst": "nm1048560",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.449999999999999,
+    "primaryName": "Marcus Raboy"
+  },
+  {
+    "nconst": "nm1084488",
+    "high_rated_films": 1,
+    "other_films": 6,
+    "other_mean_rating": 5.6000000000000005,
+    "primaryName": "Umesh Shukla"
+  },
+  {
+    "nconst": "nm1318819",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 4.55,
+    "primaryName": "Ezhil"
+  },
+  {
+    "nconst": "nm1359360",
+    "high_rated_films": 1,
+    "other_films": 5,
+    "other_mean_rating": 5.44,
+    "primaryName": "Dharani"
+  },
+  {
+    "nconst": "nm1434372",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.8,
+    "primaryName": "Johny Antony"
+  },
+  {
+    "nconst": "nm16275551",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.8,
+    "primaryName": "Sateesh Paramveda"
+  },
+  {
+    "nconst": "nm1703622",
+    "high_rated_films": 1,
+    "other_films": 3,
+    "other_mean_rating": 5.8,
+    "primaryName": "R. Madhesh"
+  },
+  {
+    "nconst": "nm1729063",
+    "high_rated_films": 1,
+    "other_films": 3,
+    "other_mean_rating": 5.900000000000001,
+    "primaryName": "Mert Baykal"
+  },
+  {
+    "nconst": "nm1749112",
+    "high_rated_films": 1,
+    "other_films": 3,
+    "other_mean_rating": 5.7,
+    "primaryName": "Vincent Paronnaud"
+  },
+  {
+    "nconst": "nm2134474",
+    "high_rated_films": 1,
+    "other_films": 6,
+    "other_mean_rating": 5.833333333333333,
+    "primaryName": "Vikas Bahl"
+  },
+  {
+    "nconst": "nm2259353",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.6,
+    "primaryName": "Christopher Ashley"
+  },
+  {
+    "nconst": "nm2735803",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.9,
+    "primaryName": "Saurabh Varma"
+  },
+  {
+    "nconst": "nm3607398",
+    "high_rated_films": 1,
+    "other_films": 5,
+    "other_mean_rating": 5.96,
+    "primaryName": "Suseenthiran"
+  },
+  {
+    "nconst": "nm5120912",
+    "high_rated_films": 1,
+    "other_films": 3,
+    "other_mean_rating": 4.633333333333334,
+    "primaryName": "Ajay Bahl"
+  },
+  {
+    "nconst": "nm5650589",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.95,
+    "primaryName": "Nalan Kumarasamy"
+  },
+  {
+    "nconst": "nm6044360",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.95,
+    "primaryName": "Ravikanth Perepu"
+  },
+  {
+    "nconst": "nm6252943",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.75,
+    "primaryName": "Harish Vyas"
+  },
+  {
+    "nconst": "nm8678191",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.15,
+    "primaryName": "Karthick Naren"
+  },
+  {
+    "nconst": "nm9511013",
+    "high_rated_films": 1,
+    "other_films": 2,
+    "other_mean_rating": 5.8,
+    "primaryName": "Satish Paramvedha"
+  }
+]

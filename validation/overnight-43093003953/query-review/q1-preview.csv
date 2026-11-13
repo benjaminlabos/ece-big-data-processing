@@ -1,0 +1,101 @@
+genre,tconst,titleType,primaryTitle,originalTitle,isAdult,startYear,endYear,runtimeMinutes,genres,mean_runtime,stddev_runtime,genre_films,runtime_zscore
+Action,tt0003897,movie,The Exploits of Elaine,The Exploits of Elaine,0,1914,,220,"[""Action""]",101.19281199652993,33.75133679638362,40345,3.5200735520555737
+Action,tt0004052,movie,The Hazards of Helen,The Hazards of Helen,0,1914,,1428,"[""Action""]",101.19281199652993,33.75133679638362,40345,39.311248499811555
+Action,tt0004272,movie,Lucille Love: The Girl of Mystery,Lucille Love: The Girl of Mystery,0,1914,,300,"[""Action""]",101.19281199652993,33.75133679638362,40345,5.890350038661929
+Action,tt0004313,movie,The Master Key,The Master Key,0,1914,,310,"[""Action"",""Adventure"",""Drama""]",101.19281199652993,33.75133679638362,40345,6.186634599487724
+Action,tt0004465,movie,The Perils of Pauline,The Perils of Pauline,0,1914,,199,"[""Action"",""Adventure"",""Drama""]",101.19281199652993,33.75133679638362,40345,2.8978759743214053
+Action,tt0006206,movie,Les Vampires,Les vampires,0,1915,,421,"[""Action"",""Adventure"",""Crime""]",101.19281199652993,33.75133679638362,40345,9.475393224654043
+Action,tt0006339,movie,The Adventures of Peg o' the Ring,The Adventures of Peg o' the Ring,0,1916,,300,"[""Action"",""Drama""]",101.19281199652993,33.75133679638362,40345,5.890350038661929
+Action,tt0006409,movie,Beatrice Fairfax,Beatrice Fairfax,0,1916,,300,"[""Action"",""Adventure""]",101.19281199652993,33.75133679638362,40345,5.890350038661929
+Action,tt0006917,movie,Liberty,Liberty,0,1916,,400,"[""Action"",""Adventure"",""Drama""]",101.19281199652993,33.75133679638362,40345,8.853195646919875
+Action,tt0007598,movie,The Yellow Menace,The Yellow Menace,0,1916,,320,"[""Action""]",101.19281199652993,33.75133679638362,40345,6.482919160313519
+Action,tt0007932,movie,The Fatal Ring,The Fatal Ring,0,1917,,400,"[""Action"",""Drama""]",101.19281199652993,33.75133679638362,40345,8.853195646919875
+Action,tt0008353,movie,The Mystery Ship,The Mystery Ship,0,1917,,360,"[""Action"",""Adventure""]",101.19281199652993,33.75133679638362,40345,7.668057403616697
+Action,tt0008355,movie,The Mystery of the Double Cross,Mystery of the Double Cross,0,1917,,350,"[""Action"",""Adventure""]",101.19281199652993,33.75133679638362,40345,7.371772842790903
+Action,tt0008411,movie,Patria,Patria,0,1917,,310,"[""Action"",""Drama""]",101.19281199652993,33.75133679638362,40345,6.186634599487724
+Action,tt0008476,movie,The Purple Mask,The Purple Mask,0,1916,,330,"[""Action""]",101.19281199652993,33.75133679638362,40345,6.7792037211393135
+Action,tt0009204,movie,The House of Hate,The House of Hate,0,1918,,410,"[""Action"",""Drama""]",101.19281199652993,33.75133679638362,40345,9.14948020774567
+Action,tt0009233,movie,The Iron Test,The Iron Test,0,1918,,300,"[""Action"",""Adventure""]",101.19281199652993,33.75133679638362,40345,5.890350038661929
+Action,tt0009304,movie,The Lion's Claws,The Lion's Claws,0,1918,,360,"[""Action"",""Adventure""]",101.19281199652993,33.75133679638362,40345,7.668057403616697
+Action,tt0009825,movie,Wolves of Kultur,Wolves of Kultur,0,1918,,330,"[""Action"",""Adventure""]",101.19281199652993,33.75133679638362,40345,6.7792037211393135
+Action,tt0009862,movie,The Adventures of Ruth,The Adventures of Ruth,0,1919,,300,"[""Action""]",101.19281199652993,33.75133679638362,40345,5.890350038661929
+Action,tt0009894,movie,The Grey Automobile,El automóvil gris,0,1919,,223,"[""Action"",""Crime"",""Thriller""]",101.19281199652993,33.75133679638362,40345,3.608958920303312
+Action,tt0009936,movie,The Black Secret,The Black Secret,0,1919,,310,"[""Action"",""Adventure""]",101.19281199652993,33.75133679638362,40345,6.186634599487724
+Action,tt0009956,movie,Bound and Gagged,Bound and Gagged,0,1919,,200,"[""Action"",""Adventure"",""Comedy""]",101.19281199652993,33.75133679638362,40345,2.927504430403985
+Adventure,tt0002605,movie,The Adventures of Kathlyn,The Adventures of Kathlyn,0,1913,,300,"[""Adventure""]",92.981778092108,30.557084427266773,24037,6.774802825205567
+Adventure,tt0003675,movie,The Beloved Adventurer,The Beloved Adventurer,0,1914,,450,"[""Adventure""]",92.981778092108,30.557084427266773,24037,11.683648116288104
+Adventure,tt0004313,movie,The Master Key,The Master Key,0,1914,,310,"[""Action"",""Adventure"",""Drama""]",92.981778092108,30.557084427266773,24037,7.102059177944403
+Adventure,tt0004465,movie,The Perils of Pauline,The Perils of Pauline,0,1914,,199,"[""Action"",""Adventure"",""Drama""]",92.981778092108,30.557084427266773,24037,3.469513662543327
+Adventure,tt0004727,movie,The Trey o' Hearts,The Trey o' Hearts,0,1914,,310,"[""Adventure""]",92.981778092108,30.557084427266773,24037,7.102059177944403
+Adventure,tt0005005,movie,The Broken Coin,The Broken Coin,0,1915,,440,"[""Adventure"",""Mystery""]",92.981778092108,30.557084427266773,24037,11.356391763549269
+Adventure,tt0006206,movie,Les Vampires,Les vampires,0,1915,,421,"[""Action"",""Adventure"",""Crime""]",92.981778092108,30.557084427266773,24037,10.73460469334548
+Adventure,tt0006409,movie,Beatrice Fairfax,Beatrice Fairfax,0,1916,,300,"[""Action"",""Adventure""]",92.981778092108,30.557084427266773,24037,6.774802825205567
+Adventure,tt0006886,movie,Judex,Judex,0,1916,,300,"[""Adventure"",""Crime""]",92.981778092108,30.557084427266773,24037,6.774802825205567
+Adventure,tt0006917,movie,Liberty,Liberty,0,1916,,400,"[""Action"",""Adventure"",""Drama""]",92.981778092108,30.557084427266773,24037,10.047366352593926
+Adventure,tt0008353,movie,The Mystery Ship,The Mystery Ship,0,1917,,360,"[""Action"",""Adventure""]",92.981778092108,30.557084427266773,24037,8.738340941638581
+Adventure,tt0008355,movie,The Mystery of the Double Cross,Mystery of the Double Cross,0,1917,,350,"[""Action"",""Adventure""]",92.981778092108,30.557084427266773,24037,8.411084588899746
+Adventure,tt0008371,movie,The New Mission of Judex,La nouvelle mission de Judex,0,1917,,374,"[""Adventure""]",92.981778092108,30.557084427266773,24037,9.196499835472952
+Adventure,tt0009233,movie,The Iron Test,The Iron Test,0,1918,,300,"[""Action"",""Adventure""]",92.981778092108,30.557084427266773,24037,6.774802825205567
+Adventure,tt0009304,movie,The Lion's Claws,The Lion's Claws,0,1918,,360,"[""Action"",""Adventure""]",92.981778092108,30.557084427266773,24037,8.738340941638581
+Adventure,tt0009701,movie,Tih Minh,Tih Minh,0,1918,,418,"[""Adventure"",""Mystery""]",92.981778092108,30.557084427266773,24037,10.636427787523829
+Adventure,tt0009825,movie,Wolves of Kultur,Wolves of Kultur,0,1918,,330,"[""Action"",""Adventure""]",92.981778092108,30.557084427266773,24037,7.756571883422075
+Adventure,tt0009936,movie,The Black Secret,The Black Secret,0,1919,,310,"[""Action"",""Adventure""]",92.981778092108,30.557084427266773,24037,7.102059177944403
+Crime,tt0004906,movie,Are They Born or Made?,Are They Born or Made?,0,1915,,40,"[""Crime"",""Drama""]",95.53439413191637,25.604571598986233,34628,-2.1689249483133377
+Crime,tt0006206,movie,Les Vampires,Les vampires,0,1915,,421,"[""Action"",""Adventure"",""Crime""]",95.53439413191637,25.604571598986233,34628,12.711230282055173
+Crime,tt0006886,movie,Judex,Judex,0,1916,,300,"[""Adventure"",""Crime""]",95.53439413191637,25.604571598986233,34628,7.985511691833152
+Crime,tt0009894,movie,The Grey Automobile,El automóvil gris,0,1919,,223,"[""Action"",""Crime"",""Thriller""]",95.53439413191637,25.604571598986233,34628,4.97823622532823
+Crime,tt0009905,movie,Barrabas,Barrabas,0,1919,,489,"[""Crime"",""Thriller""]",95.53439413191637,25.604571598986233,34628,15.367006018708869
+Drama,tt0003159,movie,"Les Misérables, Part 2: Fantine",Les misérables - Époque 2: Fantine,0,1913,,300,"[""Drama""]",96.04410179214386,37.058436281830424,196636,5.503629366786173
+Drama,tt0004313,movie,The Master Key,The Master Key,0,1914,,310,"[""Action"",""Adventure"",""Drama""]",96.04410179214386,37.058436281830424,196636,5.7734734563734875
+Drama,tt0004465,movie,The Perils of Pauline,The Perils of Pauline,0,1914,,199,"[""Action"",""Adventure"",""Drama""]",96.04410179214386,37.058436281830424,196636,2.7782040619543067
+Drama,tt0004972,movie,The Birth of a Nation,The Birth of a Nation,0,1915,,195,"[""Drama"",""War""]",96.04410179214386,37.058436281830424,196636,2.6702664261193814
+Drama,tt0004974,movie,The Black Box,The Black Box,0,1915,,195,"[""Drama"",""Sci-Fi""]",96.04410179214386,37.058436281830424,196636,2.6702664261193814
+Drama,tt0005400,movie,The Goddess,The Goddess,0,1915,,310,"[""Drama"",""Romance""]",96.04410179214386,37.058436281830424,196636,5.7734734563734875
+Drama,tt0006097,movie,Stingaree,Stingaree,0,1915,,250,"[""Drama""]",96.04410179214386,37.058436281830424,196636,4.154408918849605
+Drama,tt0006283,movie,Who Pays?,Who Pays?,0,1915,,360,"[""Drama""]",96.04410179214386,37.058436281830424,196636,7.122693904310055
+Drama,tt0006339,movie,The Adventures of Peg o' the Ring,The Adventures of Peg o' the Ring,0,1916,,300,"[""Action"",""Drama""]",96.04410179214386,37.058436281830424,196636,5.503629366786173
+Drama,tt0006568,movie,A Daughter of the Gods,A Daughter of the Gods,0,1916,,180,"[""Drama""]",96.04410179214386,37.058436281830424,196636,2.265500291738411
+Drama,tt0006864,movie,Intolerance,Intolerance: Love's Struggle Throughout the Ages,0,1916,,210,"[""Drama"",""History""]",96.04410179214386,37.058436281830424,196636,3.0750325605003517
+Drama,tt0006917,movie,Liberty,Liberty,0,1916,,400,"[""Action"",""Adventure"",""Drama""]",96.04410179214386,37.058436281830424,196636,8.202070262659308
+Drama,tt0007107,movie,The Mysteries of Myra,The Mysteries of Myra,0,1916,,310,"[""Drama"",""Fantasy"",""Horror""]",96.04410179214386,37.058436281830424,196636,5.7734734563734875
+Drama,tt0007932,movie,The Fatal Ring,The Fatal Ring,0,1917,,400,"[""Action"",""Drama""]",96.04410179214386,37.058436281830424,196636,8.202070262659308
+Drama,tt0008366,movie,The Neglected Wife,The Neglected Wife,0,1917,,300,"[""Drama"",""Romance""]",96.04410179214386,37.058436281830424,196636,5.503629366786173
+Drama,tt0008411,movie,Patria,Patria,0,1917,,310,"[""Action"",""Drama""]",96.04410179214386,37.058436281830424,196636,5.7734734563734875
+Drama,tt0009039,movie,La España trágica o Tierra de sangre,La España trágica o Tierra de sangre,0,1918,,240,"[""Drama""]",96.04410179214386,37.058436281830424,196636,3.8845648292622923
+Drama,tt0009204,movie,The House of Hate,The House of Hate,0,1918,,410,"[""Action"",""Drama""]",96.04410179214386,37.058436281830424,196636,8.471914352246623
+Fantasy,tt0007107,movie,The Mysteries of Myra,The Mysteries of Myra,0,1916,,310,"[""Drama"",""Fantasy"",""Horror""]",93.93359559402046,31.85274680042231,12710,6.783289546731175
+History,tt0006864,movie,Intolerance,Intolerance: Love's Struggle Throughout the Ages,0,1916,,210,"[""Drama"",""History""]",94.25304296817716,52.821833024302435,13638,2.1912711165962304
+Horror,tt0006554,movie,The Crimson Stain Mystery,The Crimson Stain Mystery,0,1916,,355,"[""Horror"",""Mystery""]",88.56902893974413,22.267453662937115,30719,11.965039878076169
+Horror,tt0007107,movie,The Mysteries of Myra,The Mysteries of Myra,0,1916,,310,"[""Drama"",""Fantasy"",""Horror""]",88.56902893974413,22.267453662937115,30719,9.944153220752622
+Mystery,tt0005005,movie,The Broken Coin,The Broken Coin,0,1915,,440,"[""Adventure"",""Mystery""]",94.3350740830702,50.37906893408845,16468,6.861280552230281
+Mystery,tt0006554,movie,The Crimson Stain Mystery,The Crimson Stain Mystery,0,1916,,355,"[""Horror"",""Mystery""]",94.3350740830702,50.37906893408845,16468,5.174071919787976
+Mystery,tt0008767,movie,Who Is Number One?,Who Is Number One?,0,1917,,300,"[""Mystery""]",94.3350740830702,50.37906893408845,16468,4.08234868703119
+Mystery,tt0009701,movie,Tih Minh,Tih Minh,0,1918,,418,"[""Adventure"",""Mystery""]",94.3350740830702,50.37906893408845,16468,6.424591259127567
+Romance,tt0000009,movie,Miss Jerry,Miss Jerry,0,1894,,45,"[""Romance""]",99.06583877276904,25.089836958812832,42437,-2.154890000342484
+Romance,tt0005393,movie,The Girl of the Golden West,The Girl of the Golden West,0,1915,,45,"[""Drama"",""Romance"",""Western""]",99.06583877276904,25.089836958812832,42437,-2.154890000342484
+Romance,tt0005400,movie,The Goddess,The Goddess,0,1915,,310,"[""Drama"",""Romance""]",99.06583877276904,25.089836958812832,42437,8.407155517730063
+Romance,tt0006021,movie,The Secretary of Frivolous Affairs,The Secretary of Frivolous Affairs,0,1915,,45,"[""Crime"",""Drama"",""Romance""]",99.06583877276904,25.089836958812832,42437,-2.154890000342484
+Romance,tt0007047,movie,The Matrimaniac,The Matrimaniac,0,1916,,46,"[""Comedy"",""Romance""]",99.06583877276904,25.089836958812832,42437,-2.115033224802587
+Romance,tt0008366,movie,The Neglected Wife,The Neglected Wife,0,1917,,300,"[""Drama"",""Romance""]",99.06583877276904,25.089836958812832,42437,8.008587762331098
+Sci-Fi,tt0004974,movie,The Black Box,The Black Box,0,1915,,195,"[""Drama"",""Sci-Fi""]",91.15973072215422,30.444456621407728,9804,3.4108104003678648
+Thriller,tt0002574,movie,What Happened to Mary,What Happened to Mary,0,1912,,150,"[""Action"",""Drama"",""Thriller""]",96.09177112996507,21.758085733594953,34063,2.47761818434236
+Thriller,tt0002588,movie,Zigomar contre Nick Carter,Zigomar contre Nick Carter,0,1912,,48,"[""Crime"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.2102942197580524
+Thriller,tt0002628,movie,Der Andere,Der Andere,0,1913,,48,"[""Drama"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.2102942197580524
+Thriller,tt0004866,movie,After Five,After Five,0,1915,,50,"[""Comedy"",""Crime"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0005997,movie,The Sable Lorcha,The Sable Lorcha,0,1915,,50,"[""Adventure"",""Crime"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0006411,movie,The Beckoning Trail,The Beckoning Trail,0,1916,,50,"[""Drama"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0006504,movie,A Child of Mystery,A Child of Mystery,0,1916,,50,"[""Crime"",""Drama"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0006712,movie,The Gay Lord Waring,The Gay Lord Waring,0,1916,,50,"[""Drama"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0007871,movie,The Double Room Mystery,The Double Room Mystery,0,1917,,50,"[""Crime"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0007998,movie,The Ghost House,The Ghost House,0,1917,,50,"[""Comedy"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0008284,movie,Mefisto,Mefisto,0,1917,,460,"[""Thriller""]",96.09177112996507,21.758085733594953,34063,16.72519509876518
+Thriller,tt0008851,movie,At the Mercy of Men,At the Mercy of Men,0,1918,,50,"[""Drama"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0008865,movie,Beans,Beans,0,1918,,50,"[""Comedy"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0009030,movie,The Eagle,The Eagle,0,1918,,50,"[""Crime"",""Drama"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0009114,movie,The Girl of Today,The Girl of Today,0,1918,,50,"[""Drama"",""Thriller"",""War""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0009212,movie,The Hun Within,The Hun Within,0,1918,,50,"[""Drama"",""Thriller"",""War""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0009267,movie,The Knife,The Knife,0,1918,,50,"[""Drama"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0009854,movie,12.10,12.10,0,1919,,50,"[""Crime"",""Mystery"",""Thriller""]",96.09177112996507,21.758085733594953,34063,-2.11837436869726
+Thriller,tt0009894,movie,The Grey Automobile,El automóvil gris,0,1919,,223,"[""Action"",""Crime"",""Thriller""]",96.09177112996507,21.758085733594953,34063,5.832692748061283
+Thriller,tt0009905,movie,Barrabas,Barrabas,0,1919,,489,"[""Crime"",""Thriller""]",96.09177112996507,21.758085733594953,34063,18.05803293914667
+War,tt0004972,movie,The Birth of a Nation,The Birth of a Nation,0,1915,,195,"[""Drama"",""War""]",94.743879706723,31.25239125649199,8047,3.2079503763556336

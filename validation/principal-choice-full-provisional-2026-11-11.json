@@ -1,0 +1,17 @@
+{
+  "scope": "full_selected_credits_subset",
+  "student_validated": false,
+  "complete_preparation_validated": false,
+  "source_summary_sha256": "e662703640bdbafb88316b80bb5f9c3cefc974debb77ef36c768a42690de3107",
+  "source_credit_details_sha256": "0d089bbe3f6ae37502a870de173347e527176e653b01a51fd46cb6649839b1f4",
+  "source_selection_sha256": "9749f95422a2cbf855cd9e9a7dad37377b03571ad8b1a3f1b9d27b4c7ef25a95",
+  "module_sha256": "cdb9472a1bc2eb5f86c80e4f11c9e353e58d37a086149ef0d819eb54712b25f1",
+  "spark_version": "4.2.0",
+  "policy": "earliest director credit, then earliest two other performers; fill missing roles with other credits; up to two distinct reserves, directors then performers then other roles",
+  "requested_films": 6257,
+  "primary_pairs": 18764,
+  "reserve_pairs": 12466,
+  "input_pairs": 31230,
+  "distinct_people_to_lookup": 19375,
+  "films_with_fewer_than_three_primary_people": 5
+}

@@ -1,0 +1,6 @@
+services:
+  preparation:
+    mem_limit: 6g
+    environment:
+      PYSPARK_SUBMIT_ARGS: --driver-memory 3g pyspark-shell
+      SPARK_LOCAL_DIRS: /tmp/imdb-spark

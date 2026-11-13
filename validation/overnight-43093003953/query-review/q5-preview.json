@@ -1,0 +1,902 @@
+[
+  {
+    "parentTconst": "tt0043194",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 8,
+    "last_season": 8,
+    "worst_rating": 6.5,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0043232",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.1,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0046600",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 6,
+    "last_season": 6,
+    "worst_rating": 5.4,
+    "best_rating": 8.7
+  },
+  {
+    "parentTconst": "tt0046637",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.8,
+    "best_rating": 8.1
+  },
+  {
+    "parentTconst": "tt0047758",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 6,
+    "last_season": 6,
+    "worst_rating": 5.4,
+    "best_rating": 9.4
+  },
+  {
+    "parentTconst": "tt0048916",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 5.5,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0049996",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 5.2,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0050022",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 1.7,
+    "best_rating": 8.1
+  },
+  {
+    "parentTconst": "tt0050035",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.3,
+    "best_rating": 8.2
+  },
+  {
+    "parentTconst": "tt0050056",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.4,
+    "best_rating": 8.0
+  },
+  {
+    "parentTconst": "tt0050077",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 7.0,
+    "best_rating": 9.1
+  },
+  {
+    "parentTconst": "tt0051251",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.8,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0051283",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.5,
+    "best_rating": 7.8
+  },
+  {
+    "parentTconst": "tt0051290",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 7.2,
+    "best_rating": 8.7
+  },
+  {
+    "parentTconst": "tt0051301",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.6,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0052461",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.0,
+    "best_rating": 8.9
+  },
+  {
+    "parentTconst": "tt0052472",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.6,
+    "best_rating": 8.4
+  },
+  {
+    "parentTconst": "tt0052490",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.5,
+    "best_rating": 8.5
+  },
+  {
+    "parentTconst": "tt0052507",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 6.9,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0052520",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 5.6,
+    "best_rating": 9.1
+  },
+  {
+    "parentTconst": "tt0052522",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.8,
+    "best_rating": 8.6
+  },
+  {
+    "parentTconst": "tt0053488",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.2,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0053534",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.5,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0054552",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.0,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0054557",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 6,
+    "last_season": 6,
+    "worst_rating": 6.0,
+    "best_rating": 8.4
+  },
+  {
+    "parentTconst": "tt0055660",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 7.9,
+    "best_rating": 9.8
+  },
+  {
+    "parentTconst": "tt0055662",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 9,
+    "last_season": 9,
+    "worst_rating": 5.8,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0055667",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 7.0,
+    "best_rating": 8.9
+  },
+  {
+    "parentTconst": "tt0055710",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 9,
+    "last_season": 9,
+    "worst_rating": 5.2,
+    "best_rating": 8.7
+  },
+  {
+    "parentTconst": "tt0056745",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.5,
+    "best_rating": 8.5
+  },
+  {
+    "parentTconst": "tt0056748",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.8,
+    "best_rating": 7.4
+  },
+  {
+    "parentTconst": "tt0056775",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.4,
+    "best_rating": 8.2
+  },
+  {
+    "parentTconst": "tt0056778",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.8,
+    "best_rating": 8.2
+  },
+  {
+    "parentTconst": "tt0056780",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 7,
+    "last_season": 7,
+    "worst_rating": 5.8,
+    "best_rating": 8.0
+  },
+  {
+    "parentTconst": "tt0057733",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 8,
+    "last_season": 8,
+    "worst_rating": 4.3,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0057748",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.2,
+    "best_rating": 8.5
+  },
+  {
+    "parentTconst": "tt0057752",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 6.1,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0057793",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.7,
+    "best_rating": 8.7
+  },
+  {
+    "parentTconst": "tt0057798",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.4,
+    "best_rating": 8.4
+  },
+  {
+    "parentTconst": "tt0058791",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.6,
+    "best_rating": 8.4
+  },
+  {
+    "parentTconst": "tt0058805",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 6.4,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0058815",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 5.9,
+    "best_rating": 8.2
+  },
+  {
+    "parentTconst": "tt0058844",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.5,
+    "best_rating": 7.9
+  },
+  {
+    "parentTconst": "tt0058855",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.7,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0059968",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.7,
+    "best_rating": 8.4
+  },
+  {
+    "parentTconst": "tt0060028",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.2,
+    "best_rating": 9.2
+  },
+  {
+    "parentTconst": "tt0061263",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.8,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0061301",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.0,
+    "best_rating": 7.5
+  },
+  {
+    "parentTconst": "tt0062601",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 6,
+    "last_season": 6,
+    "worst_rating": 6.5,
+    "best_rating": 8.2
+  },
+  {
+    "parentTconst": "tt0063929",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 4,
+    "worst_rating": 7.2,
+    "best_rating": 8.9
+  },
+  {
+    "parentTconst": "tt0063941",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 4,
+    "worst_rating": 5.0,
+    "best_rating": 7.7
+  },
+  {
+    "parentTconst": "tt0065326",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.7,
+    "best_rating": 8.2
+  },
+  {
+    "parentTconst": "tt0066633",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 6,
+    "worst_rating": 5.3,
+    "best_rating": 7.1
+  },
+  {
+    "parentTconst": "tt0066651",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 6,
+    "last_season": 6,
+    "worst_rating": 6.8,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0068067",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 6,
+    "last_season": 7,
+    "worst_rating": 6.5,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0068126",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.1,
+    "best_rating": 8.6
+  },
+  {
+    "parentTconst": "tt0069599",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 6.3,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0070975",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 3.5,
+    "best_rating": 8.0
+  },
+  {
+    "parentTconst": "tt0071005",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.9,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0072582",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.7,
+    "best_rating": 7.8
+  },
+  {
+    "parentTconst": "tt0073958",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 9,
+    "last_season": 9,
+    "worst_rating": 7.8,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0073965",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.6,
+    "best_rating": 8.6
+  },
+  {
+    "parentTconst": "tt0074071",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.8,
+    "best_rating": 8.6
+  },
+  {
+    "parentTconst": "tt0074072",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.6,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0075579",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 4.2,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0077089",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 6.5,
+    "best_rating": 9.2
+  },
+  {
+    "parentTconst": "tt0078562",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.4,
+    "best_rating": 9.3
+  },
+  {
+    "parentTconst": "tt0078569",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 7,
+    "last_season": 7,
+    "worst_rating": 6.0,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0078644",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 6,
+    "last_season": 6,
+    "worst_rating": 5.5,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0080299",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 6,
+    "last_season": 6,
+    "worst_rating": 5.2,
+    "best_rating": 8.0
+  },
+  {
+    "parentTconst": "tt0081944",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 7.9,
+    "best_rating": 9.1
+  },
+  {
+    "parentTconst": "tt0083380",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.1,
+    "best_rating": 8.4
+  },
+  {
+    "parentTconst": "tt0083420",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 5,
+    "worst_rating": 5.9,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0084967",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 5.8,
+    "best_rating": 7.8
+  },
+  {
+    "parentTconst": "tt0085029",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.6,
+    "best_rating": 8.4
+  },
+  {
+    "parentTconst": "tt0086687",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 8,
+    "last_season": 8,
+    "worst_rating": 5.4,
+    "best_rating": 8.5
+  },
+  {
+    "parentTconst": "tt0086787",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.5,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0086789",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.9,
+    "best_rating": 8.1
+  },
+  {
+    "parentTconst": "tt0088476",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.1,
+    "best_rating": 8.0
+  },
+  {
+    "parentTconst": "tt0088571",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 5,
+    "worst_rating": 6.2,
+    "best_rating": 8.4
+  },
+  {
+    "parentTconst": "tt0088576",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 6,
+    "worst_rating": 7.7,
+    "best_rating": 8.9
+  },
+  {
+    "parentTconst": "tt0088634",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 5.4,
+    "best_rating": 7.8
+  },
+  {
+    "parentTconst": "tt0092319",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.5,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0092348",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 7.6,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0092410",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 7.6,
+    "best_rating": 8.9
+  },
+  {
+    "parentTconst": "tt0092469",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.8,
+    "best_rating": 9.0
+  },
+  {
+    "parentTconst": "tt0092484",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 4,
+    "worst_rating": 6.4,
+    "best_rating": 8.8
+  },
+  {
+    "parentTconst": "tt0094433",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 4,
+    "worst_rating": 7.5,
+    "best_rating": 8.9
+  },
+  {
+    "parentTconst": "tt0094473",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 7.3,
+    "best_rating": 9.7
+  },
+  {
+    "parentTconst": "tt0094514",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 11,
+    "last_season": 11,
+    "worst_rating": 5.9,
+    "best_rating": 8.1
+  },
+  {
+    "parentTconst": "tt0096560",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 9,
+    "last_season": 9,
+    "worst_rating": 6.7,
+    "best_rating": 9.1
+  },
+  {
+    "parentTconst": "tt0096569",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.3,
+    "best_rating": 8.2
+  },
+  {
+    "parentTconst": "tt0096626",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 5,
+    "last_season": 5,
+    "worst_rating": 6.8,
+    "best_rating": 8.3
+  },
+  {
+    "parentTconst": "tt0096641",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 7,
+    "last_season": 7,
+    "worst_rating": 7.4,
+    "best_rating": 9.7
+  },
+  {
+    "parentTconst": "tt0096694",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 6.4,
+    "best_rating": 8.2
+  },
+  {
+    "parentTconst": "tt0098790",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 4,
+    "worst_rating": 5.8,
+    "best_rating": 8.1
+  },
+  {
+    "parentTconst": "tt0098888",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 6.0,
+    "best_rating": 8.0
+  },
+  {
+    "parentTconst": "tt0098910",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 3,
+    "last_season": 3,
+    "worst_rating": 9.0,
+    "best_rating": 9.5
+  },
+  {
+    "parentTconst": "tt0098948",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 7,
+    "last_season": 8,
+    "worst_rating": 6.4,
+    "best_rating": 8.6
+  },
+  {
+    "parentTconst": "tt0101069",
+    "worst_in_last": 1,
+    "best_in_first_two": 1,
+    "qualifying_seasons": 4,
+    "last_season": 5,
+    "worst_rating": 7.1,
+    "best_rating": 8.4
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "scope": "controlled_integration_and_peer_input_audit_not_full_batch_success",
+  "prior_full_suite": {
+    "passed": 40,
+    "seconds": 76.06
+  },
+  "targeted_cloud_tests": {
+    "passed": 3,
+    "seconds": 50.67,
+    "includes_new_end_to_end_fixture": true,
+    "overlaps_prior_full_suite": true
+  },
+  "pipeline_check": "Synthetic seven-table full-scope fixture, 39 profiles, preparation, all eight queries and ranking, selected credits, verified derived outputs with checksum verification",
+  "packaging_fix": "Compare raw profile against original manifest SHA in checkpoint_context, independent of JSON formatting in the prepared copy",
+  "retained_interfaces": [
+    "integration/imdb_ids",
+    "integration/movie_catalog",
+    "integration/clean/title.ratings"
+  ],
+  "peer_pr3_commit": "368fe2cd3645d640a5f7da7e0daeaaafa977e4bb",
+  "peer_input_hash_checks_windows_crlf": {
+    "candidates": true,
+    "titles": true,
+    "priority": true,
+    "top": true
+  },
+  "peer_snapshot_collection_complete": false,
+  "full_batch_completed": false
+}

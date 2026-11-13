@@ -2,8 +2,9 @@
 
 Guide technique de lancement. Les explications, choix méthodologiques et
 interprétations du rapport sont à écrire par les étudiants dans `REPORT.md`.
-Ce guide couvre uniquement la première tâche de préparation ; les autres parties
-du projet restent à réaliser sur leurs branches respectives.
+Ce guide couvre la préparation IMDb, les interfaces d’intégration, l’exploration
+et la sélection des films. Les pipelines de Benjamin sont développés dans leurs
+PR respectives ; ce guide ne décrit pas encore une exécution fusionnée complète.
 
 ## Contributeurs
 
@@ -569,3 +570,597 @@ Codex a assisté Nicolas pour vérifier les contrats des PR de Benjamin, dévelo
 ces exports Spark, écrire/exécuter leurs tests et documenter cette interface.
 Aucun texte n'a été ajouté à `REPORT.md`. Le classement et ses justifications
 restent à définir et rédiger par les étudiants.
+
+## Exécution IMDb complète et exploration — branche `feat/imdb-full-analysis`
+
+Le 11 novembre, les sept fichiers complets ont été téléchargés sur le PC Windows :
+2 003 620 065 octets compressés, tous vérifiés par taille HTTP quand disponible
+et intégrité gzip. Ce constat valide le téléchargement, pas encore le nettoyage
+du lot complet. Le manifeste versionné dans `validation/full-download-2026-11-11.json`
+permet d'identifier ces entrées ; les fichiers restent hors Git.
+
+Le nettoyage évite désormais de conserver simultanément les caches bruts,
+dédoublonnés, valides et typés. Chaque cache précédent est libéré après
+matérialisation du suivant. `progress.json` est publié atomiquement après chaque
+table dans le dossier `.incomplete-*`. Il reste distinct de `SUCCESS.json`.
+
+`compose.full.yaml` donne 3 GiB au pilote Spark, limite le conteneur à 6 GiB et
+place les fichiers temporaires dans son disque Linux. Le lanceur surveille le
+disque hôte et arrête uniquement les conteneurs nommés de cette tâche sous 5 GiB
+libres. Les données brutes et sorties partielles restent conservées.
+
+Depuis la racine du dépôt dans PowerShell, Docker Desktop actif, sur une nouvelle
+installation où ces chemins ne sont pas encore présents :
+
+```powershell
+docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_preparation.download --destination data/raw/imdb-full-2026-11-11
+docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_preparation.languages --output data/reference/original-languages-2026-11-11.csv
+.\run_full_imdb.ps1
+```
+
+Si les entrées existent déjà avec leurs manifestes, les conserver et lancer
+uniquement le script. Pour une nouvelle exécution avec sorties existantes,
+fournir de nouveaux chemins via `-PreparedOutput` et `-AnalysisOutput`.
+
+Ce lanceur enchaîne préparation complète (4 threads, 64 partitions de mélange),
+exploration provisoire, puis export des crédits des films sélectionnés. Logs :
+`results/imdb-full-prepare.log`, `results/imdb-full-exploration.log` et
+`results/imdb-full-credit-export.log`. Choisir de nouveaux noms de sorties pour
+relancer après un échec ; aucune reprise de cache Spark n'est promise.
+
+L'exploration est aussi exécutable séparément :
+
+```powershell
+docker compose -f compose.preparation.yaml -f compose.full.yaml run --rm preparation python -m imdb_preparation.explore --prepared-dir results/imdb-full-2026-11-11 --output results/exploration-full-provisional-2026-11-11 --config examples/exploration/provisional.json
+```
+
+Le module fournit `q1` à `q8` en Parquet, un classement `top10_per_genre_year`,
+un fichier `selected_titles.csv` dédupliqué et un résumé avec périmètre, définitions,
+paramètres et statuts. Le tri top 10 est note décroissante, votes décroissants,
+puis identifiant croissant. Les genres multiples comptent pour chaque genre ;
+les comparaisons de groupes portent sur ces appartenances et ne représentent
+pas des nombres de films disjoints. Les carrières sont celles observables dans
+les films candidats, sans inférer une carrière complète hors IMDb.
+
+Les seuils du fichier `provisional.json` sont des **valeurs de travail non validées
+par les étudiants**. Tous les résultats restent marqués provisoires tant que
+`student_validated` vaut `false`. Ils ne constituent aucune justification de
+rapport. Le choix final des seuils et des catégories reste à Nicolas et Benjamin.
+
+Q5 retient au moins trois saisons ayant chacune dix épisodes connus, exclut la
+saison 0 et accepte les égalités de meilleures/pires notes de façon existentielle.
+Q8 regroupe acteur/actrice en interprétation et écarte les apparitions `self` et
+les archives. Ces définitions de travail sont conservées dans le code/résumé.
+Les critères pourront être ajustés après lecture de la formulation officielle.
+
+Q6 exige une source supplémentaire des langues **originales** : CSV
+`tconst,language,source_url` à fournir via `--original-languages`. Sans cette
+entrée, la question reste explicitement `blocked`, et aucun résultat de langue
+n'est inventé depuis `title.akas`. Une entrée partielle ne permet pas de conclure
+à l'exhaustivité des carrières multilingues.
+
+Le collecteur dédié `imdb_preparation.languages` interroge la propriété Wikidata
+[P364](https://www.wikidata.org/wiki/Property:P364), consacrée à la langue originale
+du film ou de la série, avec le lien IMDb P345. Il ne collecte aucun synopsis ni
+biographie et ne remplace pas la partie de Benjamin. Une seconde requête fournit
+le vocabulaire ISO des langues (P218/P219/P220). La collecte conserve les octets
+CSV et des manifestes SHA256 ; toutes les normalisations et jointures sont Spark.
+
+```powershell
+docker compose -f compose.preparation.yaml run --rm preparation python -m imdb_preparation.languages --output data/reference/original-languages-2026-11-11.csv
+```
+
+Le premier instantané recueilli contient 369 502 déclarations, avec une URI source
+par ligne, sous CC0. Sa couverture n'est pas l'ensemble d'IMDb. Spark mesure la
+part des films admissibles ayant une langue disponible. Il rejette les marqueurs
+inconnus et choisit un code ISO stable par langue, afin que `en`/`eng` ne créent
+pas deux langues. Les codes `zxx`, `und`, `mul` et `mis` n'identifient pas une langue
+distincte et sont conservés dans les sorties non résolues plutôt que comptés.
+Les références non résolues et les valeurs invalides restent auditables.
+
+Si le CSV est présent au démarrage de la phase d'exploration du lanceur complet,
+il est utilisé automatiquement ; sinon Q6 reste bloquée explicitement. La source
+et le vocabulaire doivent correspondre à leurs empreintes dans le manifeste.
+
+Le jeu contrôlé des tests couvre les huit requêtes et le rang maximal de dix
+films par année/genre. Le lancement sur les petites données préparées reste un
+contrôle du code ; les chiffres globaux ne seront annoncés qu'après la présence
+des marqueurs finaux des exécutions complètes.
+
+Codex assiste Nicolas pour l'optimisation des ressources, le lanceur, les calculs
+paramétrables et leurs tests. Il ne modifie pas les branches streaming ou
+enrichissement de Benjamin et ne rédige pas le rapport.
+
+Le profil brut peut être calculé séparément, sur les mêmes sept fichiers et
+empreintes, pendant le nettoyage. Il agrège les valeurs manquantes des 39 colonnes
+sans tri ni cache et publie `PROFILE_SUCCESS.json`, jamais `SUCCESS.json` :
+
+```powershell
+docker compose -f compose.profile.yaml run --rm --name gr04-imdb-full-profile raw-profile python -m imdb_preparation.profile_full --raw-dir data/raw/imdb-full-2026-11-11 --output results/imdb-full-raw-profile-2026-11-11 --workers 4
+```
+
+Ce service dispose de 1 GiB de pilote et de 2 GiB de mémoire totale. Son succès
+valide le profil des entrées ; il ne valide ni le nettoyage ni les jointures.
+Les 33 tests contrôlés passent sous Spark 4.2.0 (63,01 s), y compris la
+réconciliation exacte des 39 profils et la normalisation ISO. Un essai séparé
+avec le premier instantané Wikidata réconcilie les 369 502 lignes : 364 117
+énoncés valides mappés, 20 lignes invalides, 5 272 non résolues et 93 doublons
+créés par les alias ISO fusionnés. Ce contrôle ne mesure pas encore la couverture
+des films complets admissibles.
+
+Chaque requête produit aussi un aperçu JSON limité à 20 lignes, extrait des
+Parquet effectivement écrits, et un état `progress.json` actualisé après chaque
+calcul. Le classement complet, avec titre, année, genre, rang, durée, note et
+votes, est disponible en CSV dans `top10_per_genre_year.csv` ; le CSV dédupliqué
+`selected_titles.csv` conserve l'interface attendue par l'export des crédits.
+
+La population de Q1 comprend tous les films candidats dont la durée est connue,
+y compris les films sans note. Le seuil de votes ne modifie pas la moyenne de
+durée de leur genre ; il reste appliqué aux analyses portant sur les notes et
+la popularité ainsi qu'au classement provisoire.
+
+### Profil brut complet obtenu le 11 novembre
+
+`validation/full-raw-profile-windows-2026-11-11.json` contient les 39 profils
+calculés sur les sept fichiers complets, soit 216 477 904 lignes de tables,
+avec le manifeste source et le top 5 global. Les pourcentages, dénominateurs,
+ordre du top 5 et empreinte du module ont été contrôlés. L'empreinte du fichier
+Python Windows porte sur ses octets CRLF ; Git et Linux conservent les fins LF.
+Le marqueur `PROFILE_SUCCESS.json` est présent. Le nettoyage complet reste
+suivi séparément : ce profil ne vaut pas validation de ses références.
+
+Après réussite de la préparation, de l'exploration et de l'export des crédits :
+
+```powershell
+.\collect_full_results.ps1
+```
+
+Le collecteur refuse les sorties incomplètes ou hors périmètre complet. Il
+compare les 39 comptes de valeurs manquantes au profil brut séparé, puis conserve
+les résumés, neuf aperçus et empreintes des CSV dans
+`validation/full-analysis-windows-2026-11-11.json`. Aucune interprétation de
+rapport n'est générée. `-WaitForRunnerPid <PID>` permet d'attendre le lanceur
+en cours ; `-Publish` ajoute un commit de cette seule preuve sur
+`feat/imdb-full-analysis` et pousse cette branche sans fusionner les PR.
+
+Dernière validation de la partie Python : 33 tests réussis sous Spark 4.2.0,
+61,96 s, avec un film sans note inclus dans le contrôle des durées de Q1.
+
+Pour calculer Q1–Q3 et le top 10 avant la fin des autres tables, le module
+facultatif `imdb_preparation.explore_titles` réutilise la table des titres dont
+`progress.json` certifie la fin, et nettoie séparément les notes avec les mêmes
+fonctions de clés, valeurs et références. Il vérifie l'empreinte du fichier de
+notes et le manifeste du profil complet. Les calculs sont partagés avec le module
+d'exploration complet, sans seconde définition des requêtes.
+
+```powershell
+docker compose -f compose.analysis.yaml run --rm title-analysis python -m imdb_preparation.explore_titles --prepared results/imdb-full-2026-11-11 --snapshot data/raw/imdb-full-2026-11-11 --raw-profile results/imdb-full-raw-profile-2026-11-11 --output results/title-queries-full-provisional-2026-11-11 --config examples/exploration/provisional.json
+```
+
+Pendant le nettoyage, remplacer `--prepared` par le chemin `.incomplete-*`
+imprimé par ce lancement et contenant la table des titres terminée. Le service
+est limité à 1 152 MiB, avec un pilote de 512 MiB. Les sorties portent
+le périmètre `full_title_tables_subset` et `PROVISIONAL_SUCCESS.json` : elles ne
+valident pas les autres tables ou les cinq autres questions. Les notes nulles
+sont exclues du classement. L'essai CLI contrôlé réconcilie les lignes des notes ;
+les 33 tests passent après extraction des calculs communs (61,62 s).
+
+
+Lors du lancement complet sur Windows, Q1, Q2 et Q3 ont abouti avant qu’une
+lecture du classement échoue avec `Cannot allocate memory` pendant l’exécution
+parallèle au nettoyage. Les sorties déjà achevées sont conservées. Le profil
+complet des notes a réconcilié 1 731 223 lignes : aucune mise en quarantaine,
+aucun doublon, aucune référence absente. La reprise ciblée `--resume-from` vérifie
+les comptes des trois Parquet, les notes persistées, le manifeste, les paramètres
+et l’empreinte des requêtes, puis calcule uniquement le classement dans un nouveau
+dossier. Le dossier échoué reste intact. La reprise utilise `--master 'local[1]'`
+et le pilote réduit ; elle fournit également les CSV complets de Q2 et Q3.
+
+La reprise a aussi été exécutée sur le jeu contrôlé avec un pilote de 512 MiB,
+un seul thread et les trois sorties déjà matérialisées ; elle a publié les
+quatre résultats et les deux CSV de comparaison, sans modifier le dossier source.
+
+### Premières analyses complètes des titres obtenues
+
+Les sorties réelles de Q1 à Q3 et du classement sont publiées dans `validation/` :
+13 640 couples film–genre pour Q1, 138 lignes pour les trois premiers genres par
+année, 92 lignes de comparaison et 9 089 places au classement dans 979 groupes
+année–genre. La liste dédupliquée contient 6 257 films. Les CSV conservent leurs
+empreintes source. Le contrôle `title-query-verification-2026-11-11.json` vérifie
+les 46 années, les bornes et rangs, les égalités et la réconciliation des totaux
+des trois premiers genres. Les critères restent provisoires, et les cinq autres
+requêtes attendent encore le nettoyage de leurs tables.
+
+Pour préparer l'interface de Benjamin avant la fin des crédits non sélectionnés,
+`imdb_preparation.export_selected_credits` filtre le fichier complet sur les
+identifiants de films sélectionnés avant les transformations coûteuses. Il
+normalise d'abord la clé de titre en Spark, puis conserve les mêmes contrôles de
+clés, valeurs et personnes. Les parents viennent des tables titres/personnes
+terminées. Les couples `tconst,nconst` restent distincts et non nuls ; un CSV
+séparé conserve catégories et ordre pour le choix des trois personnes.
+
+```powershell
+docker compose -f compose.analysis.yaml run --rm title-analysis python -m imdb_preparation.export_selected_credits --prepared results/imdb-full-2026-11-11 --snapshot data/raw/imdb-full-2026-11-11 --raw-profile results/imdb-full-raw-profile-2026-11-11 --selected-titles results/title-queries-full-provisional-2026-11-11/selected_titles.csv --output results/selected-credits-full-provisional-2026-11-11
+```
+
+Pendant le nettoyage, adapter le chemin de préparation au dossier `.incomplete-*`
+correspondant. Le résultat porte le périmètre `full_selected_credits_subset`,
+jamais une certification de nettoyage global. `candidates.csv` respecte
+l'interface à deux colonnes ; `credit_details.csv` et `coverage.csv` exposent les
+rôles, l'ordre et les films ayant moins de trois personnes disponibles. Aucune
+collecte de biographies ou de synopsis n'est effectuée. Le filtrage anticipé est
+comparé au nettoyage non filtré sur un cas contrôlé avec doublons Unicode,
+numéros d'ordre équivalents et clés conflictuelles : 34 tests passent (66,02 s).
+
+Le pool réel des 6 257 films est obtenu : 124 499 crédits sélectionnés dans les
+102 683 165 lignes source, 113 273 couples distincts valides, 11 225 répétitions
+de couples liées aux crédits et une ligne de crédit rejetée. Aucun doublon de
+ligne normalisée ni clé conflictuelle n'a été trouvé dans ce sous-ensemble.
+Cinq films ont moins de trois personnes disponibles ; cette information reste
+explicite dans la couverture et ne doit pas être transformée en biographies.
+
+Le module `imdb_preparation.choose_principals` produit une entrée de travail
+bornée pour le collecteur de Benjamin : un réalisateur puis deux autres
+interprètes, en remplaçant les rôles manquants par d'autres crédits disponibles,
+et jusqu'à deux personnes de réserve distinctes. Ce choix est provisoire et
+reste `student_validated: false`. Un réalisateur également interprète n'est
+compté qu'une fois par film. Le pool complet reste conservé.
+
+```powershell
+docker compose -f compose.analysis.yaml run --rm title-analysis python -m imdb_preparation.choose_principals --source results/selected-credits-full-provisional-2026-11-11 --output results/enrichment-input-full-provisional-2026-11-11
+```
+
+`primary.csv`, `reserves.csv` et leur union `enrichment-input.csv` ont exactement
+les colonnes `tconst,nconst`. La couverture conserve les films ayant moins de
+trois personnes. Le CSV d'union peut alimenter sans changement le collecteur de
+la PR #3 ; aucun texte Wikipédia n'est recueilli par cette commande. Les 35 tests
+passent (66,48 s), et la commande a également été exécutée sur un cas contrôlé
+avec une seule personne disponible.
+
+### Entrées d'enrichissement publiées pour Benjamin
+
+La sélection de personnes réelle fournit 18 764 couples prioritaires et 12 466
+couples de réserve. Leur union contient 31 230 couples distincts, correspondant
+à 19 375 identifiants de personnes, pour les 6 257 films. Les cinq films ayant
+moins de trois personnes dans le pool restent dans la couverture.
+
+Les fichiers versionnés suivants peuvent être récupérés depuis la PR #5 :
+
+- `validation/enrichment-input-full-provisional-2026-11-11.csv` : union des
+  priorités et réserves, entrée directe `tconst,nconst` du collecteur de la PR #3 ;
+- `validation/enrichment-primary-full-provisional-2026-11-11.csv` et
+  `validation/enrichment-reserves-full-provisional-2026-11-11.csv` : lots séparés ;
+- `validation/enrichment-coverage-full-provisional-2026-11-11.csv` : effectifs et
+  rôles disponibles par film ;
+- `validation/selected-credits-full-provisional-2026-11-11.json` et
+  `validation/principal-choice-full-provisional-2026-11-11.json` : provenance et
+  résultats des deux phases ;
+- `validation/principal-choice-verification-2026-11-11.json` : vérification des
+  identifiants, colonnes, unicité, union disjointe, effectifs par film, empreintes
+  et réconciliation des crédits.
+
+Ces entrées ne contiennent aucun synopsis ni biographie. Leur politique de
+sélection reste provisoire ; le nettoyage de tout le corpus et les cinq autres
+questions d'exploration restent suivis par le lanceur complet. Le brouillon
+`validation/message-ben-2026-11-11.md` résume ce point de coordination.
+
+### Retour de relecture de Benjamin — titres Wikipédia
+
+Le cas `___` signalé sur la PR #4 est corrigé : la validation et la
+déduplication appliquent la même clé de titre que `title_key` du lecteur
+streaming (suites de `_` et d'espaces remplacées par un espace, puis trim).
+Les titres devenus vides sont rejetés avec `invalid_reference`.
+`validation/reference-title-review-2026-11-11.json` conserve le contrôle avec
+les fonctions exactes du lecteur de Benjamin. Les 28 tests de la branche
+intégration passent ; après propagation sur la branche d'analyse, les 36 tests
+passent en 69,75 s. Cette correction ne modifie aucun pipeline de Benjamin.
+
+### Reprise après interruption de Docker — 11 novembre
+
+Après la perte du conteneur de calcul, les cinq premières tables terminées sont
+restées dans `results/imdb-full-2026-11-11.incomplete-31348599`. Les caches Spark
+intermédiaires des crédits ne constituent pas un point de reprise. La nouvelle
+option reprend uniquement les tables disposant de leurs marqueurs Parquet et
+contrôle schémas, comptes propres/quarantaines et agrégats d'audit avant de les
+réutiliser dans un nouveau dossier temporaire. L'ancien dossier reste intact.
+
+Les fichiers sont réutilisés par liens physiques NTFS, vérifiés dans le conteneur
+sur le poste Windows : pas de deuxième copie volumineuse des tables terminées.
+Le profil brut complet déjà calculé est vérifié contre le manifeste et réutilisé ;
+les 39 taux ne sont pas recalculés par la reprise. Leur comparaison ultérieure
+constitue alors un contrôle de cohérence avec cette référence, pas un second
+calcul indépendant.
+
+```powershell
+.\run_full_imdb.ps1 -ResumeFrom results/imdb-full-2026-11-11.incomplete-31348599 -RawProfile results/imdb-full-raw-profile-2026-11-11 -LegacyAsOfYear 2026
+```
+
+`-LegacyAsOfYear` est l'assertion de l'opérateur pour ce checkpoint ancien de
+cette tâche, dont le lanceur utilisait explicitement 2026. Les seuls nombres de
+lignes ne prouvent pas cryptographiquement sa provenance initiale. L'adoption est
+tracée comme `legacy_context_asserted` dans le résumé. Les nouvelles exécutions
+écrivent avant traitement `checkpoint_context.json`, contenant année, empreinte
+du manifeste et empreintes canoniques des règles de qualité et du schéma, ainsi
+que le manifeste d'entrée. Une reprise moderne refuse une divergence de ces
+paramètres ou des règles ; un checkpoint ancien exige son année explicite.
+
+Le lanceur archive le journal interrompu, puis reprend préparation, exploration
+et exports avec la surveillance du disque existante. Il repartitionne aussi les
+champs bruts sur 64 partitions avant la normalisation Unicode : la lecture gzip
+reste séquentielle, tandis que les transformations suivantes peuvent utiliser les
+quatre threads. Les règles de nettoyage et les seuils ne changent pas.
+
+### Exécution indépendante du PC avec GitHub Actions
+
+Le workflow `.github/workflows/imdb-cloud.yml` propose une exécution sur un
+runner GitHub `ubuntu-24.04`. Il ne dépend pas de Desktop Commander ni du PC
+Windows. Il exige au moins quatre CPU, 12 Gio de mémoire et 25 Gio de disque
+libre après retrait des SDK inutilisés du runner jetable. Il installe Python
+3.13, Java 21 et Spark 4.2.0 et lance les tests contrôlés avant le lot complet.
+
+Sur la branche de Nicolas uniquement, une modification du workflow ou de
+`.github/imdb-cloud-request.json` déclenche le traitement. Une modification du
+code seule ne lance pas de lot lourd. `workflow_dispatch` est aussi déclaré,
+mais ce déclenchement manuel exige que le workflow soit sur la branche par
+défaut ; aucune fusion de main n'est nécessaire pour le déclenchement par push.
+
+Les sept téléchargements sont vérifiés. Si leurs empreintes sont identiques au
+lot mesuré le 11 novembre, les 39 taux bruts sont réutilisés avec cette preuve
+de concordance. Si IMDb a publié une mise à jour, les 39 colonnes du nouveau lot
+sont profilées de nouveau et les anciens compteurs ne sont pas repris. Cette
+provenance figure dans les résultats. Le nettoyage repart du début sur le runner,
+sans prétendre réutiliser les cinq tables conservées sur Windows.
+Les langues originales font l'objet d'une nouvelle collecte P364 avec manifeste.
+
+La limite de 350 minutes (5 h 50) s’applique à chaque job de calcul, pas à
+l’ensemble de la chaîne. Le pipeline est découpé comme décrit ci-dessous.
+Une exécution échouée conserve les diagnostics disponibles, sans annoncer
+le succès du traitement. Un succès publie des artefacts de résultats dérivés,
+avec marqueur `VERIFIED.json`, pour sept jours : qualité, analyses, classement,
+crédits sélectionnés et couverture. Les sept tables sources et les tables
+nettoyées complètes ne sont pas publiées. Les checkpoints de préparation passent entre jobs via des caches GitHub
+propres à cette exécution ; une reprise peut conserver les phases amont.
+
+L'ajout du fichier de workflow peut exiger la portée OAuth GitHub `workflow` en
+plus de `repo`. Une exécution n'est considérée indépendante du PC qu'après
+vérification de son démarrage effectif sur GitHub. La fermeture de ce chat ne
+constitue pas une garantie de conservation de son environnement de calcul.
+
+Le paquet cloud conserve aussi `integration/imdb_ids`,
+`integration/movie_catalog` et `integration/clean/title.ratings` pour les jointures
+du binôme et l'étude des seuils. Les tables IMDb nettoyées complètes autres que
+les notes ne sont pas publiées. L'empreinte du profil est comparée à l'empreinte
+originale du manifeste tracée dans `checkpoint_context.json` : une réécriture
+JSON du manifeste dans la préparation ne change pas la provenance des données.
+Un contrôle d'intégration synthétique traverse profil, préparation, neuf sorties
+d'analyse, exports et paquet final ; il vérifie également les empreintes des
+fichiers publiés et le refus d'un profil provenant d'un autre manifeste.
+
+### Traitement nocturne réparti sur plusieurs jobs GitHub
+
+Un runner GitHub hébergé standard limite un job à six heures. L'ancien job
+monolithique a été remplacé par cette chaîne, qui peut dépasser six heures au
+total sans dépendre du PC :
+
+1. `inputs` : tests, téléchargement d'un seul lot, profil des 39 colonnes et
+   sauvegarde du lot dans un cache identifié par `github.run_id`.
+2. `parents` : nettoyage des titres et des personnes, puis checkpoint validé.
+3. `relations` : restauration du même lot et du checkpoint ; ajout des titres
+   alternatifs, équipes et épisodes, puis checkpoint des cinq tables.
+4. `principals` : restauration du même lot et des cinq tables ; crédits et notes,
+   puis publication du marqueur global `SUCCESS.json` et du checkpoint complet.
+5. `analysis` : restauration des sept tables et des petites références ; huit
+   questions, classement, exports et publication des résultats vérifiés.
+
+Un sixième job `languages` collecte la référence P364 en parallèle des entrées.
+Il ne bloque pas les phases de nettoyage si son service est indisponible.
+L'analyse attend sa référence avec manifeste. Les profils et références, petits,
+sont conservés en artefacts séparés pour ne pas dépendre de l'éviction des anciens
+caches lourds. Les limites des jobs d'entrée/référence sont 350 et 20 minutes ;
+chaque job de calcul a sa propre limite de 350 minutes. Ces limites ne prédisent
+pas la durée totale et ne garantissent pas une fin avant le matin.
+
+`prepare --stop-after name.basics` et `--stop-after title.episode` publient un
+préfixe terminé, avec `CHECKPOINT.json`, contexte, compteurs et schémas, sans
+`SUCCESS.json`. Les consommateurs refusent ce préfixe incomplet. `--resume-from`
+contrôle l'année, l'empreinte originale du manifeste, les règles, marqueurs et
+audits, puis réutilise les tables immuables. Les sorties des trois phases sont
+comparées au calcul continu sur la fixture : mêmes tables, compteurs et profils.
+
+Les clés de cache ne comportent aucune substitution vers un autre lot. Une perte
+de cache nécessaire arrête explicitement la phase ; elle ne provoque pas un
+téléchargement silencieux d'un lot du lendemain. Les caches restent soumis au
+quota et à l'éviction GitHub. Le lot brut n'est téléchargé qu'au job d'entrée ;
+les phases suivantes ne dépendent donc pas d'une mise à jour quotidienne IMDb.
+Les caches intermédiaires sont destinés à la reprise et ne remplacent pas les
+artefacts de résultats dérivés conservés sept jours. Une relance des seuls jobs
+en échec peut réutiliser les étapes amont tant que leurs caches sont disponibles.
+
+### Finition automatique après le calcul, sans agent de chat actif
+
+Le workflow `imdb-finalize.yml` est déclenché explicitement sur la branche de
+Nicolas et partage le groupe de concurrence du workflow de calcul. Il reste
+en attente sans runner pendant ce calcul, puis démarre sa propre machine.
+La requête `.github/imdb-finalize-request.json` fixe exactement le run amont
+et son commit. Le calcul déjà lancé n'est ni modifié ni redémarré.
+
+La finition exige que les sept tables soient prêtes. Elle restaure leur cache,
+télécharge les références et résultats du run désigné et vérifie les empreintes.
+Si la préparation a réussi mais que l'analyse ou l'export a échoué, une seule
+reprise bornée de ces étapes est prévue ; une préparation incomplète est refusée.
+Elle vérifie le classement par un calcul indépendant sur le catalogue et compare
+les combinaisons durée 40/60/90 minutes et votes 100/1 000/10 000, plus les
+paramètres actuels s'ils sont différents. Les effectifs et la disponibilité de
+trois candidats sont mesurés par année–genre et par film distinct. Ce contrôle
+porte sur des candidats, pas sur la disponibilité réelle de biographies.
+
+`finalize.py` réutilise la politique de trois personnes prioritaires et deux
+réserves, produit les CSV bornés, la couverture, les changements de films/couples
+et les nouvelles personnes par rapport aux entrées déjà livrées à Benjamin.
+Le cache Wikimedia de Benjamin reste à conserver. Les anciennes entrées ne
+sont pas écrasées. La provenance, les empreintes et `student_validated: false`
+restent explicites dans `READY_FOR_REVIEW.json`.
+
+Les anciens paquets peuvent déclarer les empreintes de sidecars Hadoop `.crc`
+que l'envoi d'artefacts masque par défaut. Leur absence est documentée et tolérée
+uniquement pour ces fichiers auxiliaires cachés ; chaque fichier de données
+déclaré doit être présent et correspondre à son SHA256. Un contenu modifié ou
+un chemin sortant de l'artefact est refusé.
+
+La finition sauvegarde un artefact pour sept jours et peut committer les petits
+CSV/JSON dans `validation/overnight-<run-amont>/` sur la seule branche
+`feat/imdb-full-analysis`, avec l'identité de Nicolas déjà convenue. Si cette
+branche a changé depuis le lancement de la finition, elle conserve les fichiers
+en artefact au lieu de forcer un push. Aucun merge, aucune approbation, aucun
+changement aux branches de Benjamin et aucun texte de REPORT.md n'est effectué.
+
+Ce sont des actions programmées, pas un assistant qui reprend spontanément
+la conversation : une panne imprévue reste à diagnostiquer. La validation humaine
+des critères et des interprétations, les relectures croisées et l'essai intégré
+restent nécessaires avant de déclarer le projet terminé.
+
+### Reprise automatique après une panne de diagnostics GitHub
+
+Le 11 novembre, le calcul titres/personnes et son cache ont réussi, mais le
+service d'artefacts a renvoyé du HTML au lieu de JSON pendant l'envoi des logs.
+Cette erreur de diagnostics a bloqué les jobs dépendants. La tentative 2 du
+batch a été lancée ; elle conserve le même lot et le même commit source.
+
+La finition attend désormais le batch puis cherche ses checkpoints exacts.
+Si les sept tables sont présentes, elle passe directement à la vérification.
+Sinon, deux jobs séparés reprennent les relations depuis le checkpoint des
+parents, puis les crédits et notes depuis celui des cinq tables. Chaque calcul
+utilise le commit source original, le même manifeste et les contrôles de reprise
+existants. Aucun téléchargement d'un nouveau lot n'est effectué en récupération.
+Un cache requis absent bloque explicitement la reprise.
+
+Les diagnostics sont tentés avec une limite de trois minutes et ne bloquent plus
+les étapes utiles. Les résultats vérifiés de finition sont sauvegardés dans un
+cache propre au run, puis en artefact ; les petits CSV/JSON sont aussi publiés
+sur la branche prévue lorsque son commit n'a pas bougé. Une panne d'artefacts
+reste signalée après cette tentative de sauvegarde. Ces mécanismes ne garantissent
+pas l'absence de panne de calcul ou d'éviction de cache. La validation de syntaxe
+et du graphe figure dans validation/cloud-recovery-validation-2026-11-11.json ;
+le succès sur le lot réel reste à contrôler dans les runs GitHub.
+
+### Vérification des sorties d'exploration et tableaux de relecture
+
+La finition appelle maintenant `imdb_preparation.review_outputs` après le handoff.
+Ce contrôle relit les Parquet matérialisés, leur compteur déclaré et les marqueurs
+SUCCESS. Il lie les analyses au résumé exact de préparation, contrôle les clés et
+les domaines de valeurs des huit questions, les rangs et leurs départages, puis
+réconcilie Q2/Q3 et la sélection du classement. Il vérifie les invariants des
+sorties sans prétendre recalculer indépendamment toutes les requêtes sources.
+
+```bash
+python -m imdb_preparation.review_outputs --prepared results/cloud-prepared --analysis artifacts/verified/analysis --output artifacts/query-review --preview-rows 100
+```
+
+`QUERY_REVIEW.json` contient les comptes complets et les contrôles. Chaque table
+a aussi un aperçu CSV et JSON borné à 100 lignes, avec les tableaux imbriqués
+sérialisés en JSON pour le CSV. Ce sont des aperçus techniques, les résultats
+intégraux restent dans les Parquet de l'artefact. Le contrôle ne valide pas les
+choix méthodologiques à la place des étudiants et ne rédige pas REPORT.md.
+Les petits tableaux sont ajoutés à la branche de sortie si celle-ci est inchangée.
+Même si une validation échoue, les sorties déjà disponibles sont sauvegardées en
+cache/artefact pour le diagnostic ; la publication sur la branche reste bloquée.
+
+La commande `python validation/check_query_review.py` a été exécutée dans le
+worktree d'intégration Docker avec les sorties synthétiques existantes sous
+`results/cross-pipeline-v1`. Elle accepte les neuf tables et refuse des rangs de
+popularité inversés, un réalisateur ayant deux films très bien notés et des
+compteurs modifiés. La preuve est dans
+`validation/query-review-validation-2026-11-11.json`. Ce test ne constitue pas
+une validation du lot réel en cours sur GitHub.
+
+### Référence Wikidata tronquée — reprise du 12 novembre
+
+Le nettoyage des sept tables du run 43093003953 a réussi. L'analyse a ensuite
+refusé le CSV Wikidata, dont le dernier enregistrement était un simple `t`.
+Le collecteur historique contrôlait l'en-tête mais pas chaque largeur de ligne.
+La lecture Spark stricte est conservée : aucune ligne tronquée n'est ignorée
+silencieusement pour faire passer le calcul.
+
+La collecte P364 utilise désormais SELECT DISTINCT et des pages ordonnées de
+20 000 lignes, avec une pause entre les pages. Chaque réponse est vérifiée avant
+publication (CSV strict, largeur des lignes, longueur HTTP lorsqu'elle est fournie),
+avec reprises bornées des erreurs temporaires et respect de Retry-After. Les
+pages identiques répétées sont refusées ; les doublons éventuels des déclarations
+restent comptés et traités par Spark. La provenance conserve paramètres,
+nombres de lignes et empreintes des réponses ; les pages ne constituent pas une
+transaction atomique de Wikidata et la couverture IMDb reste explicitement mesurée.
+
+La finition valide la référence restaurée. Si elle est absente, tronquée ou issue
+de l'ancien collecteur non paginé, elle collecte un nouveau fichier
+`recovered-original-languages.csv` et son propre manifeste. Le fichier original
+reste intact. Les sept tables préparées sont restaurées depuis leur cache exact ;
+seules l'analyse et les sorties dérivées reprennent. Le nouveau CSV, son manifeste
+et son vocabulaire sont conservés sous `artifacts/reference` dans la livraison.
+Les artefacts finaux sont conservés 90 jours.
+
+Les neuf tests de langues ont réussi dans Docker sous Spark 4.2.0. Les huit tests
+sans Spark ont aussi réussi en natif après suppression de la dépendance Spark
+inutile du collecteur de données. La preuve et les périmètres figurent dans
+`validation/language-pagination-recovery-2026-11-12.json`. Le succès de la nouvelle
+collecte et des analyses réelles reste à vérifier dans le workflow de reprise.
+
+
+### Snapshot de langues vérifié, restauration sans réseau
+
+Le snapshot original du 11 novembre sur le PC comporte 369 502 enregistrements,
+aucune ligne CSV mal formée et une empreinte conforme au manifeste d'origine.
+Son vocabulaire et son manifeste sont archivés avec lui dans
+`references/wikidata-p364-2026-11-11.tar.gz` (environ 3,2 Mo, faits Wikidata CC0).
+La reprise utilise cette archive vérifiée lorsque la référence du run est
+invalide. Les octets, la date et le manifeste d'origine sont conservés : elle
+n'est pas présentée comme une nouvelle collecte paginée. Un reçu de réutilisation
+est ajouté à `artifacts/reference/REFERENCE_REUSE.json`.
+
+La collecte paginée reste disponible pour créer un nouveau snapshot. Elle ne
+compare plus l'ordre lexical des chaînes CSV à l'ordre des termes RDF de SPARQL
+(par exemple, nœuds anonymes et URI) : ce sont deux ordres distincts. Elle détecte
+les pages identiques répétées par empreinte, tandis que les doublons de données
+et les langues non identifiées sont réconciliés dans Spark.
+
+### Calcul de la question libre sur les tables complètes déjà préparées
+
+Le workflow `.github/workflows/imdb-collaborations-full.yml` exécute le code de
+Benjamin au commit immuable `8a0d75bb26d6437ead2c927d69da7b8bcff6592d`, sans
+modifier ses fichiers ni ses branches. Il réutilise le cache exact des sept
+tables du run `43093003953`. Le manifeste source et le résumé préparé sont
+vérifiés par leurs SHA-256 avant exécution. Aucun nouveau nettoyage n'est lancé.
+
+L'analyse conserve l'historique complet jusqu'à 2025 pour établir la première
+année observée et compare les notes dans la période 1980–2025. Elle produit dix
+comparaisons : votes 0/100/1000/5000/10000 et historique de 2/3 années. Les films
+sans note et ceux d'avant 1980 restent utiles à la chronologie. Ce calcul ne
+limite pas l'historique au top 10 d'enrichissement.
+
+L'audit DuckDB 1.4.3 de Benjamin recalcule indépendamment les diagnostics,
+effectifs et moyennes depuis les quatre mêmes Parquet. Le marqueur
+`VERIFIED_FOR_PEER_REVIEW.json` est écrit uniquement si ses dix comparaisons
+passent. Les artefacts sont conservés 90 jours, même si un contrôle échoue ;
+l'existence d'un artefact ne signifie donc pas à elle seule une réussite.
+Les CSV/JSON vérifiés peuvent être publiés sous
+`validation/collaborations-full-43093003953/` sur la branche de Nicolas si elle
+n'a pas changé. Le code de Benjamin et ses commits restent attribués à leur
+auteur ; sa PR, sa relecture et l'interprétation étudiante restent distinctes.
+
+### CSV complets pour la relecture
+
+Après extraction de l'artefact vérifié, installer `duckdb==1.4.3` dans un
+environnement Python séparé puis lancer, depuis la racine :
+
+```bash
+python scripts/export_verified_query_csv.py --verified-root results/final/verified --output results/full-query-csv
+```
+
+Le dossier de sortie doit être neuf. Le script vérifie les empreintes du paquet
+(les sidecars Hadoop CRC facultatifs sont exclus des artefacts GitHub), exporte
+les huit requêtes et le classement intégral, puis relit chaque CSV et compare
+son nombre de lignes au résultat déclaré. Les tableaux sont des cellules JSON.
+Ces CSV sont complets ; les aperçus de `query-review/` restent bornés à 100 lignes.
+La conversion a passé sur les sorties réelles, dans le cloud et sur Windows.
+La provenance et les comptes sont conservés dans `COMPLETE_CSV_EXPORT.json`.
+Le prompt de transmission actualisé est
+`validation/message-ben-final-2026-11-12.md` ; aucun message n'est envoyé.

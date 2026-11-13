@@ -1,0 +1,138 @@
+{
+  "scope": "full_preparation_producer_evidence_reconciliation_not_independent_parquet_rescan",
+  "status": "passed",
+  "verified_at_utc": "2026-11-11T23:41:52.963283+00:00",
+  "run_id": 43093003953,
+  "source_manifest_sha256": "aeb5effe20cab570e20fbd3a250309a0f081f7f3a203d02dfafca5da0c999cfd",
+  "source_summary_sha256": "c6ba4f0b9b77110079f65b91cea6b8da4066ba4c1f11eee8836ea823fc03ae74",
+  "completed_tables": 7,
+  "raw_rows_across_tables": 216502833,
+  "clean_rows_across_tables": 216502728,
+  "quarantined_rows_across_tables": 105,
+  "normalized_duplicates_removed_across_tables": 0,
+  "tables": [
+    {
+      "table": "title.basics",
+      "raw_rows": 12952978,
+      "clean_rows": 12952978,
+      "quarantined_rows": 0,
+      "normalized_duplicate_rows_removed": 0
+    },
+    {
+      "table": "name.basics",
+      "raw_rows": 15806985,
+      "clean_rows": 15806985,
+      "quarantined_rows": 0,
+      "normalized_duplicate_rows_removed": 0
+    },
+    {
+      "table": "title.akas",
+      "raw_rows": 60328927,
+      "clean_rows": 60328862,
+      "quarantined_rows": 65,
+      "normalized_duplicate_rows_removed": 0
+    },
+    {
+      "table": "title.crew",
+      "raw_rows": 12952048,
+      "clean_rows": 12952010,
+      "quarantined_rows": 38,
+      "normalized_duplicate_rows_removed": 0
+    },
+    {
+      "table": "title.episode",
+      "raw_rows": 10026073,
+      "clean_rows": 10026073,
+      "quarantined_rows": 0,
+      "normalized_duplicate_rows_removed": 0
+    },
+    {
+      "table": "title.principals",
+      "raw_rows": 102704599,
+      "clean_rows": 102704599,
+      "quarantined_rows": 0,
+      "normalized_duplicate_rows_removed": 0
+    },
+    {
+      "table": "title.ratings",
+      "raw_rows": 1731223,
+      "clean_rows": 1731221,
+      "quarantined_rows": 2,
+      "normalized_duplicate_rows_removed": 0
+    }
+  ],
+  "anomaly_event_counts": [
+    {
+      "table": "title.basics",
+      "column": "runtimeMinutes",
+      "rule": "out_of_range",
+      "action": "set_null",
+      "count": 4
+    },
+    {
+      "table": "name.basics",
+      "column": "deathYear",
+      "rule": "death_before_birth",
+      "action": "set_null",
+      "count": 28
+    },
+    {
+      "table": "name.basics",
+      "column": "knownForTitles",
+      "rule": "reference_not_in_clean_parent",
+      "action": "remove_reference",
+      "count": 28
+    },
+    {
+      "table": "title.akas",
+      "column": "titleId",
+      "rule": "reference_not_in_clean_parent",
+      "action": "quarantine_row",
+      "count": 65
+    },
+    {
+      "table": "title.crew",
+      "column": "directors",
+      "rule": "reference_not_in_clean_parent",
+      "action": "remove_reference",
+      "count": 423
+    },
+    {
+      "table": "title.crew",
+      "column": "tconst",
+      "rule": "reference_not_in_clean_parent",
+      "action": "quarantine_row",
+      "count": 38
+    },
+    {
+      "table": "title.crew",
+      "column": "writers",
+      "rule": "reference_not_in_clean_parent",
+      "action": "remove_reference",
+      "count": 1148
+    },
+    {
+      "table": "title.episode",
+      "column": "parentTconst",
+      "rule": "reference_not_in_clean_parent",
+      "action": "set_null",
+      "count": 5
+    },
+    {
+      "table": "title.principals",
+      "column": "nconst",
+      "rule": "reference_not_in_clean_parent",
+      "action": "set_null",
+      "count": 14196
+    },
+    {
+      "table": "title.ratings",
+      "column": "tconst",
+      "rule": "reference_not_in_clean_parent",
+      "action": "quarantine_row",
+      "count": 2
+    }
+  ],
+  "spark_version": "4.2.0",
+  "completed_at_utc": "2026-11-11T23:37:10.582174+00:00"
+}

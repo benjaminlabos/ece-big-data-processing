@@ -1,0 +1,101 @@
+tconst,titleType,primaryTitle,originalTitle,isAdult,startYear,endYear,runtimeMinutes,genres,averageRating,numVotes,genre,genre_year_rank
+tt0076276,movie,Who's Singin' Over There?,Ko to tamo peva,0,1980,,86,"[""Adventure"",""Comedy"",""Drama""]",8.7,18182,Adventure,2
+tt0076276,movie,Who's Singin' Over There?,Ko to tamo peva,0,1980,,86,"[""Adventure"",""Comedy"",""Drama""]",8.7,18182,Comedy,2
+tt0076276,movie,Who's Singin' Over There?,Ko to tamo peva,0,1980,,86,"[""Adventure"",""Comedy"",""Drama""]",8.7,18182,Drama,3
+tt0078780,movie,Animalympics,Animalympics,0,1980,,78,"[""Animation"",""Comedy"",""Family""]",6.8,2567,Animation,5
+tt0078780,movie,Animalympics,Animalympics,0,1980,,78,"[""Animation"",""Comedy"",""Family""]",6.8,2567,Family,5
+tt0078797,movie,Rapture,Arrebato,0,1980,,115,"[""Drama"",""Fantasy"",""Horror""]",6.8,4177,Fantasy,7
+tt0079193,movie,The Garage,Garazh,0,1980,,96,"[""Comedy"",""Drama""]",8.0,4973,Comedy,6
+tt0079258,movie,Foam Bath,Habfürdö,0,1980,,79,"[""Animation"",""Comedy"",""Drama""]",7.1,1100,Animation,4
+tt0079579,movie,Moscow Does Not Believe in Tears,Moskva slezam ne verit,0,1980,,150,"[""Comedy"",""Drama"",""Romance""]",8.0,16219,Comedy,5
+tt0079619,movie,A Few Days from the Life of I.I. Oblomov,Neskolko dney iz zhizni I.I. Oblomova,0,1980,,140,"[""Comedy"",""Drama"",""History""]",7.5,2837,History,5
+tt0079642,movie,Erotic Nights of the Living Dead,Le notti erotiche dei morti viventi,1,1980,,88,"[""Adult"",""Horror""]",4.2,1674,Adult,2
+tt0079820,movie,The King and the Mockingbird,Le roi et l'oiseau,0,1980,,83,"[""Animation"",""Family"",""Fantasy""]",7.7,6197,Animation,1
+tt0079820,movie,The King and the Mockingbird,Le roi et l'oiseau,0,1980,,83,"[""Animation"",""Family"",""Fantasy""]",7.7,6197,Family,2
+tt0079820,movie,The King and the Mockingbird,Le roi et l'oiseau,0,1980,,83,"[""Animation"",""Family"",""Fantasy""]",7.7,6197,Fantasy,2
+tt0079889,movie,Sankarabharanam,Sankarabharanam,0,1980,,143,"[""Drama"",""Music"",""Romance""]",8.8,2780,Drama,2
+tt0079985,movie,The Secret Life of Nikola Tesla,Tajna Nikole Tesle,0,1980,,115,"[""Biography"",""Drama""]",7.2,1593,Biography,6
+tt0080031,movie,Tom Horn,Tom Horn,0,1980,,98,"[""Biography"",""Crime"",""Drama""]",6.8,6879,Biography,9
+tt0080310,movie,Breaker Morant,'Breaker' Morant,0,1980,,107,"[""Drama"",""History"",""War""]",7.8,15644,History,3
+tt0080321,movie,AC/DC: Let There Be Rock,AC/DC: Let There Be Rock,0,1980,,98,"[""Documentary"",""Music""]",8.3,1379,Documentary,1
+tt0080322,movie,Aakrosh,Aakrosh,0,1980,,144,"[""Crime"",""Drama"",""Music""]",7.9,1353,Crime,3
+tt0080339,movie,Airplane!,Airplane!,0,1980,,88,"[""Comedy""]",7.7,294273,Comedy,9
+tt0080388,movie,Atlantic City,Atlantic City,0,1980,,104,"[""Crime"",""Drama"",""Romance""]",7.3,20129,Crime,6
+tt0080439,movie,The Taming of the Scoundrel,Il bisbetico domato,0,1980,,107,"[""Comedy"",""Romance""]",7.6,11966,Comedy,10
+tt0080455,movie,The Blues Brothers,The Blues Brothers,0,1980,,133,"[""Adventure"",""Comedy"",""Crime""]",7.9,232927,Adventure,3
+tt0080455,movie,The Blues Brothers,The Blues Brothers,0,1980,,133,"[""Adventure"",""Comedy"",""Crime""]",7.9,232927,Comedy,7
+tt0080455,movie,The Blues Brothers,The Blues Brothers,0,1980,,133,"[""Adventure"",""Comedy"",""Crime""]",7.9,232927,Crime,1
+tt0080461,movie,"Bon Voyage, Charlie Brown (and Don't Come Back!!)","Bon Voyage, Charlie Brown (and Don't Come Back!!)",0,1980,,75,"[""Adventure"",""Animation"",""Comedy""]",7.1,3938,Adventure,8
+tt0080461,movie,"Bon Voyage, Charlie Brown (and Don't Come Back!!)","Bon Voyage, Charlie Brown (and Don't Come Back!!)",0,1980,,75,"[""Adventure"",""Animation"",""Comedy""]",7.1,3938,Animation,3
+tt0080474,movie,Brubaker,Brubaker,0,1980,,131,"[""Crime"",""Drama""]",7.2,21849,Crime,8
+tt0080530,movie,Everything Happens to Me,Chissà perché... capitano tutte a me,0,1980,,102,"[""Action"",""Comedy"",""Family""]",5.8,3431,Family,9
+tt0080539,movie,City of Women,La città delle donne,0,1980,,139,"[""Comedy"",""Drama"",""Fantasy""]",6.9,8991,Fantasy,6
+tt0080549,movie,Coal Miner's Daughter,Coal Miner's Daughter,0,1980,,124,"[""Biography"",""Drama"",""Music""]",7.5,22651,Biography,5
+tt0080594,movie,The Day After Trinity,The Day After Trinity,0,1980,,88,"[""Biography"",""Documentary"",""History""]",7.7,1358,Biography,4
+tt0080594,movie,The Day After Trinity,The Day After Trinity,0,1980,,88,"[""Biography"",""Documentary"",""History""]",7.7,1358,Documentary,2
+tt0080594,movie,The Day After Trinity,The Day After Trinity,0,1980,,88,"[""Biography"",""Documentary"",""History""]",7.7,1358,History,4
+tt0080634,movie,Divine Madness,Divine Madness,0,1980,,95,"[""Comedy"",""Documentary"",""Music""]",7.0,1084,Documentary,3
+tt0080678,movie,The Elephant Man,The Elephant Man,0,1980,,124,"[""Biography"",""Drama""]",8.2,286206,Biography,1
+tt0080678,movie,The Elephant Man,The Elephant Man,0,1980,,124,"[""Biography"",""Drama""]",8.2,286206,Drama,5
+tt0080684,movie,Star Wars: Episode V - The Empire Strikes Back,Star Wars: Episode V - The Empire Strikes Back,0,1980,,124,"[""Adventure"",""Fantasy"",""Sci-Fi""]",8.7,1532805,Adventure,1
+tt0080684,movie,Star Wars: Episode V - The Empire Strikes Back,Star Wars: Episode V - The Empire Strikes Back,0,1980,,124,"[""Adventure"",""Fantasy"",""Sci-Fi""]",8.7,1532805,Fantasy,1
+tt0080741,movie,"Fist of Fear, Touch of Death","Fist of Fear, Touch of Death",0,1980,,82,"[""Documentary"",""Sport""]",2.4,1337,Documentary,7
+tt0080752,movie,Forbidden Zone,Forbidden Zone,0,1980,,74,"[""Comedy"",""Fantasy"",""Musical""]",6.5,6050,Fantasy,8
+tt0080798,movie,Gloria,Gloria,0,1980,,121,"[""Crime"",""Drama"",""Thriller""]",7.1,13467,Crime,9
+tt0080801,movie,The Gods Must Be Crazy,The Gods Must Be Crazy,0,1980,,109,"[""Adventure"",""Comedy""]",7.3,63911,Adventure,5
+tt0080813,movie,The Great Rock 'n' Roll Swindle,The Great Rock 'n' Roll Swindle,0,1980,,103,"[""Comedy"",""Documentary"",""Fantasy""]",6.4,2597,Documentary,6
+tt0080813,movie,The Great Rock 'n' Roll Swindle,The Great Rock 'n' Roll Swindle,0,1980,,103,"[""Comedy"",""Documentary"",""Fantasy""]",6.4,2597,Fantasy,9
+tt0080827,movie,Encounter of the Spooky Kind,Gui da gui,0,1980,,102,"[""Action"",""Comedy"",""Fantasy""]",7.0,3335,Action,10
+tt0080827,movie,Encounter of the Spooky Kind,Gui da gui,0,1980,,102,"[""Action"",""Comedy"",""Fantasy""]",7.0,3335,Fantasy,5
+tt0080856,movie,The Kingdom of Diamonds,Heerak Rajar Deshe,0,1980,,118,"[""Comedy"",""Drama"",""Family""]",8.8,3492,Comedy,1
+tt0080856,movie,The Kingdom of Diamonds,Heerak Rajar Deshe,0,1980,,118,"[""Comedy"",""Drama"",""Family""]",8.8,3492,Drama,1
+tt0080856,movie,The Kingdom of Diamonds,Heerak Rajar Deshe,0,1980,,118,"[""Comedy"",""Drama"",""Family""]",8.8,3492,Family,1
+tt0080889,movie,Hopscotch,Hopscotch,0,1980,,106,"[""Adventure"",""Comedy""]",7.1,10245,Adventure,7
+tt0080905,movie,Fists of the White Lotus,Hong Wending san po bai lian jiao,0,1980,,95,"[""Action"",""Drama""]",7.1,2660,Action,6
+tt0080913,movie,The Idolmaker,The Idolmaker,0,1980,,117,"[""Biography"",""Drama"",""Music""]",6.9,1702,Biography,8
+tt0080979,movie,Kagemusha: The Shadow Warrior,Kagemusha,0,1980,,162,"[""Drama"",""History"",""War""]",7.9,41568,History,2
+tt0081031,movie,The Last Flight of Noah's Ark,The Last Flight of Noah's Ark,0,1980,,97,"[""Adventure"",""Family""]",5.7,1683,Family,10
+tt0081055,movie,Lightning Over Water,Nick's Film - Lightning Over Water,0,1980,,91,"[""Documentary""]",6.6,1759,Documentary,5
+tt0081059,movie,Lion of the Desert,Lion of the Desert,0,1980,,173,"[""Biography"",""Drama"",""History""]",8.2,19221,Biography,2
+tt0081059,movie,Lion of the Desert,Lion of the Desert,0,1980,,173,"[""Biography"",""Drama"",""History""]",8.2,19221,Drama,6
+tt0081059,movie,Lion of the Desert,Lion of the Desert,0,1980,,173,"[""Biography"",""Drama"",""History""]",8.2,19221,History,1
+tt0081063,movie,Little Miss Marker,Little Miss Marker,0,1980,,103,"[""Comedy"",""Family"",""Romance""]",6.4,2014,Family,6
+tt0081070,movie,The Long Good Friday,The Long Good Friday,0,1980,,114,"[""Crime"",""Drama"",""Mystery""]",7.5,30507,Crime,4
+tt0081071,movie,The Long Riders,The Long Riders,0,1980,,100,"[""Biography"",""Crime"",""Drama""]",6.9,15044,Biography,7
+tt0081099,movie,Meg of June Hill,Madicken på Junibacken,0,1980,,82,"[""Comedy"",""Drama"",""Family""]",6.4,1834,Family,7
+tt0081104,movie,All That Jack's,"Majstori, majstori!",0,1980,,83,"[""Comedy"",""Drama""]",8.1,1917,Comedy,4
+tt0081104,movie,All That Jack's,"Majstori, majstori!",0,1980,,83,"[""Comedy"",""Drama""]",8.1,1917,Drama,9
+tt0081148,movie,Alexander the Great,O Megalexandros,0,1980,,210,"[""Drama"",""History""]",7.4,1336,History,6
+tt0081207,movie,My Bodyguard,My Bodyguard,0,1980,,102,"[""Comedy"",""Drama"",""Family""]",7.1,11920,Family,4
+tt0081331,movie,Petria's Wreath,Petrijin venac,0,1980,,99,"[""Drama"",""Romance"",""War""]",8.1,1093,Drama,10
+tt0081398,movie,Raging Bull,Raging Bull,0,1980,,129,"[""Biography"",""Drama"",""Sport""]",8.1,416344,Biography,3
+tt0081398,movie,Raging Bull,Raging Bull,0,1980,,129,"[""Biography"",""Drama"",""Sport""]",8.1,416344,Drama,8
+tt0081414,movie,Resurrection,Resurrection,0,1980,,103,"[""Drama"",""Fantasy""]",7.1,3800,Fantasy,4
+tt0081491,movie,Shaan,Shaan,0,1980,,181,"[""Action"",""Adventure"",""Comedy""]",7.0,3454,Action,9
+tt0081491,movie,Shaan,Shaan,0,1980,,181,"[""Action"",""Adventure"",""Comedy""]",7.0,3454,Adventure,10
+tt0081499,movie,The Young Master,Shi di chu ma,0,1980,,105,"[""Action"",""Adventure"",""Comedy""]",7.0,9414,Action,8
+tt0081499,movie,The Young Master,Shi di chu ma,0,1980,,105,"[""Action"",""Adventure"",""Comedy""]",7.0,9414,Adventure,9
+tt0081505,movie,The Shining,The Shining,0,1980,,146,"[""Drama"",""Horror""]",8.4,1253628,Drama,4
+tt0081506,movie,Shogun Assassin,Shogun Assassin,0,1980,,85,"[""Action"",""Adventure""]",7.3,12205,Action,3
+tt0081506,movie,Shogun Assassin,Shogun Assassin,0,1980,,85,"[""Action"",""Adventure""]",7.3,12205,Adventure,6
+tt0081534,movie,Somewhere in Time,Somewhere in Time,0,1980,,103,"[""Drama"",""Fantasy"",""Romance""]",7.2,37270,Fantasy,3
+tt0081593,movie,Taboo,Taboo,1,1980,,86,"[""Adult"",""Drama""]",6.9,2193,Adult,1
+tt0081738,movie,The Watcher in the Woods,The Watcher in the Woods,0,1980,,84,"[""Family"",""Horror"",""Mystery""]",6.2,7988,Family,8
+tt0081748,movie,Where the Buffalo Roam,Where the Buffalo Roam,0,1980,,99,"[""Biography"",""Comedy""]",6.5,13408,Biography,10
+tt0082912,movie,Pixote,Pixote: A Lei do Mais Fraco,0,1980,,128,"[""Crime"",""Drama""]",7.9,11267,Crime,2
+tt0082924,movie,Super Fuzz,Poliziotto superpiù,0,1980,,97,"[""Action"",""Comedy"",""Fantasy""]",6.3,9276,Fantasy,10
+tt0083199,movie,Dangerous Encounters of the First Kind,Di yi lei xing wei xian,0,1980,,95,"[""Action"",""Crime"",""Thriller""]",7.3,1431,Action,5
+tt0083199,movie,Dangerous Encounters of the First Kind,Di yi lei xing wei xian,0,1980,,95,"[""Action"",""Crime"",""Thriller""]",7.3,1431,Crime,7
+tt0134633,movie,Air Crew,Ekipazh,0,1980,,144,"[""Action"",""Drama"",""Thriller""]",7.3,2864,Action,4
+tt0155329,movie,Varumayin Niram Sigappu,Varumayin Niram Sigappu,0,1980,,138,"[""Drama"",""Musical""]",8.2,1296,Drama,7
+tt0169731,movie,Dami kanyat,Dami kanyat,0,1980,,95,"[""Comedy""]",7.9,1036,Comedy,8
+tt0173771,movie,Document of the Dead,Document of the Dead,0,1980,,102,"[""Documentary"",""Horror""]",6.7,1024,Documentary,4
+tt0214841,movie,Karz,Karz,0,1980,,159,"[""Action"",""Musical"",""Romance""]",7.4,2660,Action,2
+tt0244585,movie,Khubsoorat,Khubsoorat,0,1980,,126,"[""Comedy"",""Drama"",""Family""]",7.6,2110,Family,3
+tt0246879,movie,Qurbani,Qurbani,0,1980,,157,"[""Action"",""Crime"",""Drama""]",7.1,1113,Action,7
+tt0246879,movie,Qurbani,Qurbani,0,1980,,157,"[""Action"",""Crime"",""Drama""]",7.1,1113,Crime,10
+tt0253991,movie,Zübük,Zübük,0,1980,,88,"[""Comedy""]",8.5,12327,Comedy,3
+tt0364236,movie,Billa,Billa,0,1980,,175,"[""Action"",""Crime"",""Thriller""]",7.5,1032,Action,1
+tt0364236,movie,Billa,Billa,0,1980,,175,"[""Action"",""Crime"",""Thriller""]",7.5,1032,Crime,5
+tt1147517,movie,Doraemon: Nobita's Dinosaur,Doraemon: Nobita no kyôryû,0,1980,,92,"[""Adventure"",""Animation"",""Drama""]",7.4,1482,Adventure,4
+tt1147517,movie,Doraemon: Nobita's Dinosaur,Doraemon: Nobita no kyôryû,0,1980,,92,"[""Adventure"",""Animation"",""Drama""]",7.4,1482,Animation,2

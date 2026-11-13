@@ -1,0 +1,230 @@
+name: IMDb complete batch in cloud
+
+on:
+  push:
+    branches: [feat/imdb-full-analysis]
+    paths:
+      - .github/workflows/imdb-cloud.yml
+      - .github/imdb-cloud-request.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: imdb-complete-cloud
+  cancel-in-progress: false
+
+env:
+  PYSPARK_PYTHON: python
+  PYSPARK_SUBMIT_ARGS: --driver-memory 5g pyspark-shell
+  SPARK_LOCAL_IP: 127.0.0.1
+  SPARK_LOCAL_DIRS: /tmp/imdb-spark
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  inputs:
+    name: Freeze IMDb snapshot and measure quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/imdb-runtime
+      - name: Run controlled tests
+        run: |
+          set -euo pipefail
+          python -m pytest -q tests | tee results/cloud-tests.log
+      - uses: actions/cache/restore@v4
+        id: sources
+        with:
+          path: |
+            data/raw/cloud-full
+            results/cloud-profile
+          key: imdb-${{ github.run_id }}-sources-v1
+      - name: Download and profile this snapshot once
+        if: steps.sources.outputs.cache-hit != 'true'
+        timeout-minutes: 330
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.cloud inputs 2>&1 | tee results/cloud-inputs.log
+      - name: Verify restored source snapshot and profile
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from imdb_preparation.prepare import inspect_snapshot, load_raw_profile
+          raw = Path('data/raw/cloud-full').resolve()
+          manifest, _ = inspect_snapshot(raw)
+          assert manifest['scope'] == 'full'
+          load_raw_profile(Path('results/cloud-profile'), raw, 'full')
+          PY
+      - uses: actions/cache/save@v4
+        if: steps.sources.outputs.cache-hit != 'true'
+        with:
+          path: |
+            data/raw/cloud-full
+            results/cloud-profile
+          key: imdb-${{ github.run_id }}-sources-v1
+      - name: Preserve small measured profile for later analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: imdb-raw-profile-${{ github.run_id }}
+          path: results/cloud-profile/
+          overwrite: true
+          retention-days: 7
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()
+
+  languages:
+    name: Collect original-language reference
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/imdb-runtime
+      - name: Collect languages with provenance
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.languages --output data/reference/cloud-original-languages.csv 2>&1 | tee results/cloud-languages.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: imdb-original-languages-${{ github.run_id }}
+          path: data/reference/
+          overwrite: true
+          retention-days: 7
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()
+
+  parents:
+    name: Prepare titles and people
+    needs: inputs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/imdb-runtime
+      - uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/raw/cloud-full
+            results/cloud-profile
+          key: imdb-${{ github.run_id }}-sources-v1
+          fail-on-cache-miss: true
+      - name: Publish first two completed tables as checkpoint
+        timeout-minutes: 330
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.prepare --raw-dir data/raw/cloud-full --output results/cloud-checkpoint-parents --raw-profile results/cloud-profile --master 'local[4]' --shuffle-partitions 64 --input-partitions 64 --as-of-year 2026 --stop-after name.basics 2>&1 | tee results/cloud-parents.log
+      - uses: actions/cache/save@v4
+        with:
+          path: results/cloud-checkpoint-parents
+          key: imdb-${{ github.run_id }}-parents-v1
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()
+
+  relations:
+    name: Prepare alternative titles, crew and episodes
+    needs: parents
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/imdb-runtime
+      - uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/raw/cloud-full
+            results/cloud-profile
+          key: imdb-${{ github.run_id }}-sources-v1
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        with:
+          path: results/cloud-checkpoint-parents
+          key: imdb-${{ github.run_id }}-parents-v1
+          fail-on-cache-miss: true
+      - name: Reuse parents and publish five-table checkpoint
+        timeout-minutes: 330
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.prepare --raw-dir data/raw/cloud-full --output results/cloud-checkpoint-relations --resume-from results/cloud-checkpoint-parents --raw-profile results/cloud-profile --master 'local[4]' --shuffle-partitions 64 --input-partitions 64 --as-of-year 2026 --stop-after title.episode 2>&1 | tee results/cloud-relations.log
+      - uses: actions/cache/save@v4
+        with:
+          path: results/cloud-checkpoint-relations
+          key: imdb-${{ github.run_id }}-relations-v1
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()
+
+  principals:
+    name: Prepare credits and ratings
+    needs: relations
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/imdb-runtime
+      - uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/raw/cloud-full
+            results/cloud-profile
+          key: imdb-${{ github.run_id }}-sources-v1
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        with:
+          path: results/cloud-checkpoint-relations
+          key: imdb-${{ github.run_id }}-relations-v1
+          fail-on-cache-miss: true
+      - name: Reuse five tables and complete preparation
+        timeout-minutes: 330
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.prepare --raw-dir data/raw/cloud-full --output results/cloud-prepared --resume-from results/cloud-checkpoint-relations --raw-profile results/cloud-profile --master 'local[4]' --shuffle-partitions 64 --input-partitions 64 --as-of-year 2026 2>&1 | tee results/cloud-prepare.log
+      - uses: actions/cache/save@v4
+        with:
+          path: results/cloud-prepared
+          key: imdb-${{ github.run_id }}-prepared-v1
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()
+
+  analysis:
+    name: Explore, export and verify derived outputs
+    needs: [principals, languages]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/imdb-runtime
+      - uses: actions/download-artifact@v4
+        with:
+          name: imdb-raw-profile-${{ github.run_id }}
+          path: results/cloud-profile
+      - uses: actions/download-artifact@v4
+        with:
+          name: imdb-original-languages-${{ github.run_id }}
+          path: data/reference
+      - uses: actions/cache/restore@v4
+        with:
+          path: results/cloud-prepared
+          key: imdb-${{ github.run_id }}-prepared-v1
+          fail-on-cache-miss: true
+      - name: Compute eight questions and provisional ranking
+        timeout-minutes: 240
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.explore --prepared-dir results/cloud-prepared --output results/cloud-analysis --config examples/exploration/provisional.json --original-languages data/reference/cloud-original-languages.csv --shuffle-partitions 64 2>&1 | tee results/cloud-analysis.log
+      - name: Export selected credits and verify pipeline outputs
+        timeout-minutes: 80
+        run: |
+          set -euo pipefail
+          python -m imdb_preparation.exports --prepared-dir results/cloud-prepared --output results/cloud-credits --selected-titles results/cloud-analysis/selected_titles.csv 2>&1 | tee results/cloud-exports.log
+          python -m imdb_preparation.cloud package
+          cp data/reference/cloud-original-languages.manifest.json artifacts/verified/
+      - name: Save verified derived outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: imdb-verified-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/verified/
+          if-no-files-found: error
+          retention-days: 7
+      - uses: ./.github/actions/imdb-diagnostics
+        if: always()

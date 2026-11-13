@@ -1,0 +1,1175 @@
+{
+    "execution":  "windows_docker",
+    "captured_at":  "2026-11-11T14:50:32.3677067Z",
+    "summary":  {
+                    "scope":  "full_title_tables_subset",
+                    "complete_preparation_validated":  false,
+                    "source_title_status":  "completed table from preparation progress; other tables are not certified by this run",
+                    "source_progress_sha256":  "85f3afb8619f4c767f199f148212c05826dffd3ba73ade96174a77c967fa3a52",
+                    "source_manifest_sha256":  "4ba3d662d85a365bd57dcfff0d35a64caed61643225a4eda049e8ef52a386d09",
+                    "module_sha256":  "0bfa8b72d71755ea5f4a971572cab6f990e02c332806c8fa701e7f744f3dfdf6",
+                    "exploration_module_sha256":  "382e03d1199466e4f1ce4c29a45e76a9ce0779a8cf61dfdf41a4bbdb33c0488c",
+                    "spark_version":  "4.2.0",
+                    "title_metrics":  {
+                                          "raw_rows":  12952048,
+                                          "normalized_duplicate_rows_removed":  0,
+                                          "invalid_or_conflicting_key_rows":  0,
+                                          "quarantined_rows":  0,
+                                          "clean_rows":  12952048,
+                                          "anomalies":  [
+                                                            {
+                                                                "column":  "runtimeMinutes",
+                                                                "rule":  "out_of_range",
+                                                                "action":  "set_null",
+                                                                "count":  4
+                                                            }
+                                                        ]
+                                      },
+                    "ratings":  {
+                                    "raw_rows":  1731223,
+                                    "clean_rows":  1731223,
+                                    "duplicates_removed":  0,
+                                    "key_quarantined":  0,
+                                    "reference_quarantined":  0
+                                },
+                    "config":  {
+                                   "student_validated":  false,
+                                   "as_of_year":  2026,
+                                   "minimum_runtime":  40,
+                                   "minimum_votes":  1000,
+                                   "episode_minimum_votes":  10,
+                                   "runtime_zscore":  2.0,
+                                   "success_rating":  7.0,
+                                   "early_career_fraction":  0.25
+                               },
+                    "questions":  {
+                                      "q1":  {
+                                                 "status":  "provisional",
+                                                 "rows":  13640
+                                             },
+                                      "q2":  {
+                                                 "status":  "provisional",
+                                                 "rows":  138
+                                             },
+                                      "q3":  {
+                                                 "status":  "provisional",
+                                                 "rows":  92
+                                             },
+                                      "top10_per_genre_year":  {
+                                                                   "status":  "provisional",
+                                                                   "rows":  9089
+                                                               }
+                                  },
+                    "distinct_selected_films":  6257,
+                    "recovery":  {
+                                     "from":  "title-queries-full-provisional-2026-11-11.incomplete-60f215f2",
+                                     "reused_queries":  [
+                                                            "q1",
+                                                            "q2",
+                                                            "q3"
+                                                        ],
+                                     "module_sha256":  "273299ee40acaf3886d7aee786e217d92dd7b0e343395512790c740294c177f4"
+                                 }
+                },
+    "previews":  {
+                     "q1":  [
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt1084958",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "The Hunchback of Notre Dame: HERO VERSION",
+                                    "originalTitle":  "The Hunchback of Notre Dame: HERO VERSION",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  180,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Drama",
+                                                   "Fantasy"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.335010969446547
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt12669540",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Marathon Wars",
+                                    "originalTitle":  "Marathon Wars",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  600,
+                                    "genres":  [
+                                                   "Action"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  14.779701502933841
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt12860994",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "The Last Mission",
+                                    "originalTitle":  "The Last Mission",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  190,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Crime",
+                                                   "Thriller"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.6313131250057684
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt13514672",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Fanon",
+                                    "originalTitle":  "Fanon",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  300,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Drama"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  5.890636836157203
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt15030132",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Warrior Island the Movie",
+                                    "originalTitle":  "Warrior Island the Movie",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  180,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Thriller"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.335010969446547
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt16171966",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Untitled Sci-fi Project IV",
+                                    "originalTitle":  "Untitled Sci-fi Project IV",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  190,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Adventure",
+                                                   "Fantasy"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.6313131250057684
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt17889598",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "The Last Job",
+                                    "originalTitle":  "The Last Job",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  190,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Crime",
+                                                   "Thriller"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.6313131250057684
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt2077834",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Rude Buay ... The Unstoppable",
+                                    "originalTitle":  "Rude Buay ... The Unstoppable",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  180,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Crime",
+                                                   "Thriller"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.335010969446547
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt2652250",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "My Duty",
+                                    "originalTitle":  "My Duty",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  185,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Biography",
+                                                   "Drama"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.4831620472261577
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt27622282",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Stem",
+                                    "originalTitle":  "Stem",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  180,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Adventure",
+                                                   "Fantasy"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.335010969446547
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt2769354",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Ringsend",
+                                    "originalTitle":  "Ringsend",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  360,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Comedy",
+                                                   "Crime"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  7.668449769512531
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt28475598",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "The Ranch",
+                                    "originalTitle":  "The Ranch",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  175,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Adventure",
+                                                   "Sci-Fi"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.1868598916669364
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt28491382",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Nature Racer",
+                                    "originalTitle":  "Nature Racer",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  200,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Animation",
+                                                   "Crime"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.9276152805649898
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt31145931",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Battle for the Universes",
+                                    "originalTitle":  "Battle for the Universes",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  210,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Adventure",
+                                                   "Animation"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  3.223917436124211
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt33009251",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Batman: The Darkest Knights",
+                                    "originalTitle":  "Batman: The Darkest Knights",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  198,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Crime",
+                                                   "Horror"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.8683548494531452
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt43629986",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "DGP Kashmir",
+                                    "originalTitle":  "DGP Kashmir",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  180,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Crime",
+                                                   "Drama"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.335010969446547
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt4451082",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "The Macos Adventure",
+                                    "originalTitle":  "The Macos Adventure",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  180,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Adventure",
+                                                   "Sci-Fi"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.335010969446547
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt4590686",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "Cu Chulainn",
+                                    "originalTitle":  "Cu Chulainn",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  180,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Adventure",
+                                                   "Fantasy"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.335010969446547
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt5096220",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "King of the South",
+                                    "originalTitle":  "King of the South",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  200,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Biography",
+                                                   "Comedy"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  2.9276152805649898
+                                },
+                                {
+                                    "genre":  "Action",
+                                    "tconst":  "tt5765358",
+                                    "titleType":  "movie",
+                                    "primaryTitle":  "The Way of Thorns",
+                                    "originalTitle":  "The Way of Thorns",
+                                    "isAdult":  0,
+                                    "startYear":  null,
+                                    "endYear":  null,
+                                    "runtimeMinutes":  240,
+                                    "genres":  [
+                                                   "Action",
+                                                   "Drama",
+                                                   "Thriller"
+                                               ],
+                                    "mean_runtime":  101.19493815225205,
+                                    "stddev_runtime":  33.74933260653016,
+                                    "genre_films":  40341,
+                                    "runtime_zscore":  4.112823902801875
+                                }
+                            ],
+                     "q2":  [
+                                {
+                                    "startYear":  1980,
+                                    "genre":  "Adventure",
+                                    "genre_votes":  2468238,
+                                    "film_count":  43,
+                                    "mean_rating":  6.218604651162791,
+                                    "genre_rank":  2
+                                },
+                                {
+                                    "startYear":  1980,
+                                    "genre":  "Drama",
+                                    "genre_votes":  3029277,
+                                    "film_count":  132,
+                                    "mean_rating":  6.692424242424243,
+                                    "genre_rank":  1
+                                },
+                                {
+                                    "startYear":  1980,
+                                    "genre":  "Horror",
+                                    "genre_votes":  2053960,
+                                    "film_count":  69,
+                                    "mean_rating":  5.333333333333334,
+                                    "genre_rank":  3
+                                },
+                                {
+                                    "startYear":  1981,
+                                    "genre":  "Adventure",
+                                    "genre_votes":  2237001,
+                                    "film_count":  43,
+                                    "mean_rating":  6.4651162790697665,
+                                    "genre_rank":  1
+                                },
+                                {
+                                    "startYear":  1981,
+                                    "genre":  "Drama",
+                                    "genre_votes":  1590085,
+                                    "film_count":  139,
+                                    "mean_rating":  6.795683453237411,
+                                    "genre_rank":  2
+                                },
+                                {
+                                    "startYear":  1981,
+                                    "genre":  "Horror",
+                                    "genre_votes":  1257975,
+                                    "film_count":  81,
+                                    "mean_rating":  5.390123456790124,
+                                    "genre_rank":  3
+                                },
+                                {
+                                    "startYear":  1982,
+                                    "genre":  "Action",
+                                    "genre_votes":  1835250,
+                                    "film_count":  55,
+                                    "mean_rating":  6.125454545454545,
+                                    "genre_rank":  3
+                                },
+                                {
+                                    "startYear":  1982,
+                                    "genre":  "Drama",
+                                    "genre_votes":  2948447,
+                                    "film_count":  153,
+                                    "mean_rating":  6.791503267973855,
+                                    "genre_rank":  1
+                                },
+                                {
+                                    "startYear":  1982,
+                                    "genre":  "Sci-Fi",
+                                    "genre_votes":  2454083,
+                                    "film_count":  30,
+                                    "mean_rating":  5.450000000000001,
+                                    "genre_rank":  2
+                                },
+                                {
+                                    "startYear":  1983,
+                                    "genre":  "Action",
+                                    "genre_votes":  1989247,
+                                    "film_count":  58,
+                                    "mean_rating":  5.68448275862069,
+                                    "genre_rank":  2
+                                },
+                                {
+                                    "startYear":  1983,
+                                    "genre":  "Adventure",
+                                    "genre_votes":  1962693,
+                                    "film_count":  44,
+                                    "mean_rating":  5.8113636363636365,
+                                    "genre_rank":  3
+                                },
+                                {
+                                    "startYear":  1983,
+                                    "genre":  "Drama",
+                                    "genre_votes":  2787684,
+                                    "film_count":  156,
+                                    "mean_rating":  6.672435897435896,
+                                    "genre_rank":  1
+                                },
+                                {
+                                    "startYear":  1984,
+                                    "genre":  "Action",
+                                    "genre_votes":  3631802,
+                                    "film_count":  65,
+                                    "mean_rating":  5.964615384615383,
+                                    "genre_rank":  1
+                                },
+                                {
+                                    "startYear":  1984,
+                                    "genre":  "Adventure",
+                                    "genre_votes":  2915107,
+                                    "film_count":  41,
+                                    "mean_rating":  6.158536585365853,
+                                    "genre_rank":  2
+                                },
+                                {
+                                    "startYear":  1984,
+                                    "genre":  "Drama",
+                                    "genre_votes":  2890053,
+                                    "film_count":  158,
+                                    "mean_rating":  6.608860759493668,
+                                    "genre_rank":  3
+                                },
+                                {
+                                    "startYear":  1985,
+                                    "genre":  "Adventure",
+                                    "genre_votes":  3397299,
+                                    "film_count":  61,
+                                    "mean_rating":  6.07704918032787,
+                                    "genre_rank":  2
+                                },
+                                {
+                                    "startYear":  1985,
+                                    "genre":  "Comedy",
+                                    "genre_votes":  4484285,
+                                    "film_count":  145,
+                                    "mean_rating":  6.399310344827587,
+                                    "genre_rank":  1
+                                },
+                                {
+                                    "startYear":  1985,
+                                    "genre":  "Drama",
+                                    "genre_votes":  2944446,
+                                    "film_count":  144,
+                                    "mean_rating":  6.586805555555555,
+                                    "genre_rank":  3
+                                },
+                                {
+                                    "startYear":  1986,
+                                    "genre":  "Adventure",
+                                    "genre_votes":  2945214,
+                                    "film_count":  53,
+                                    "mean_rating":  6.313207547169812,
+                                    "genre_rank":  2
+                                },
+                                {
+                                    "startYear":  1986,
+                                    "genre":  "Comedy",
+                                    "genre_votes":  2695944,
+                                    "film_count":  144,
+                                    "mean_rating":  6.224305555555556,
+                                    "genre_rank":  3
+                                }
+                            ],
+                     "q3":  [
+                                {
+                                    "startYear":  1980,
+                                    "group":  "top_three",
+                                    "votes":  7551475,
+                                    "genre_memberships":  244,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.224590163934427
+                                },
+                                {
+                                    "startYear":  1980,
+                                    "group":  "other_genres",
+                                    "votes":  9436537,
+                                    "genre_memberships":  441,
+                                    "genres":  19,
+                                    "mean_rating_per_genre_membership":  6.295238095238096
+                                },
+                                {
+                                    "startYear":  1981,
+                                    "group":  "top_three",
+                                    "votes":  5085061,
+                                    "genre_memberships":  263,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.3087452471482885
+                                },
+                                {
+                                    "startYear":  1981,
+                                    "group":  "other_genres",
+                                    "votes":  5761195,
+                                    "genre_memberships":  457,
+                                    "genres":  19,
+                                    "mean_rating_per_genre_membership":  6.446827133479212
+                                },
+                                {
+                                    "startYear":  1982,
+                                    "group":  "top_three",
+                                    "votes":  7237780,
+                                    "genre_memberships":  238,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.468487394957983
+                                },
+                                {
+                                    "startYear":  1982,
+                                    "group":  "other_genres",
+                                    "votes":  9235730,
+                                    "genre_memberships":  445,
+                                    "genres":  18,
+                                    "mean_rating_per_genre_membership":  6.243595505617977
+                                },
+                                {
+                                    "startYear":  1983,
+                                    "group":  "top_three",
+                                    "votes":  6739624,
+                                    "genre_memberships":  258,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.303488372093023
+                                },
+                                {
+                                    "startYear":  1983,
+                                    "group":  "other_genres",
+                                    "votes":  7898862,
+                                    "genre_memberships":  442,
+                                    "genres":  18,
+                                    "mean_rating_per_genre_membership":  6.239819004524887
+                                },
+                                {
+                                    "startYear":  1984,
+                                    "group":  "top_three",
+                                    "votes":  9436962,
+                                    "genre_memberships":  264,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.380303030303029
+                                },
+                                {
+                                    "startYear":  1984,
+                                    "group":  "other_genres",
+                                    "votes":  11889746,
+                                    "genre_memberships":  472,
+                                    "genres":  18,
+                                    "mean_rating_per_genre_membership":  6.23813559322034
+                                },
+                                {
+                                    "startYear":  1985,
+                                    "group":  "top_three",
+                                    "votes":  10826030,
+                                    "genre_memberships":  350,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.420285714285716
+                                },
+                                {
+                                    "startYear":  1985,
+                                    "group":  "other_genres",
+                                    "votes":  10149734,
+                                    "genre_memberships":  401,
+                                    "genres":  18,
+                                    "mean_rating_per_genre_membership":  6.19700748129676
+                                },
+                                {
+                                    "startYear":  1986,
+                                    "group":  "top_three",
+                                    "votes":  9506151,
+                                    "genre_memberships":  363,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.414876033057852
+                                },
+                                {
+                                    "startYear":  1986,
+                                    "group":  "other_genres",
+                                    "votes":  11084989,
+                                    "genre_memberships":  451,
+                                    "genres":  18,
+                                    "mean_rating_per_genre_membership":  6.187361419068737
+                                },
+                                {
+                                    "startYear":  1987,
+                                    "group":  "top_three",
+                                    "votes":  9899117,
+                                    "genre_memberships":  421,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.252256532066508
+                                },
+                                {
+                                    "startYear":  1987,
+                                    "group":  "other_genres",
+                                    "votes":  13448190,
+                                    "genre_memberships":  476,
+                                    "genres":  18,
+                                    "mean_rating_per_genre_membership":  6.0739495798319325
+                                },
+                                {
+                                    "startYear":  1988,
+                                    "group":  "top_three",
+                                    "votes":  11329860,
+                                    "genre_memberships":  440,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.307727272727274
+                                },
+                                {
+                                    "startYear":  1988,
+                                    "group":  "other_genres",
+                                    "votes":  12897093,
+                                    "genre_memberships":  536,
+                                    "genres":  18,
+                                    "mean_rating_per_genre_membership":  6.108022388059702
+                                },
+                                {
+                                    "startYear":  1989,
+                                    "group":  "top_three",
+                                    "votes":  11665468,
+                                    "genre_memberships":  403,
+                                    "genres":  3,
+                                    "mean_rating_per_genre_membership":  6.400744416873449
+                                },
+                                {
+                                    "startYear":  1989,
+                                    "group":  "other_genres",
+                                    "votes":  11873184,
+                                    "genre_memberships":  549,
+                                    "genres":  18,
+                                    "mean_rating_per_genre_membership":  6.06375227686703
+                                }
+                            ],
+                     "top10_per_genre_year":  [
+                                                  {
+                                                      "tconst":  "tt0364236",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Billa",
+                                                      "originalTitle":  "Billa",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  175,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Crime",
+                                                                     "Thriller"
+                                                                 ],
+                                                      "averageRating":  7.5,
+                                                      "numVotes":  1032,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  1
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0214841",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Karz",
+                                                      "originalTitle":  "Karz",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  159,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Musical",
+                                                                     "Romance"
+                                                                 ],
+                                                      "averageRating":  7.4,
+                                                      "numVotes":  2660,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  2
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0081506",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Shogun Assassin",
+                                                      "originalTitle":  "Shogun Assassin",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  85,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Adventure"
+                                                                 ],
+                                                      "averageRating":  7.3,
+                                                      "numVotes":  12205,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  3
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0134633",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Air Crew",
+                                                      "originalTitle":  "Ekipazh",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  144,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Drama",
+                                                                     "Thriller"
+                                                                 ],
+                                                      "averageRating":  7.3,
+                                                      "numVotes":  2864,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  4
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0083199",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Dangerous Encounters of the First Kind",
+                                                      "originalTitle":  "Di yi lei xing wei xian",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  95,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Crime",
+                                                                     "Thriller"
+                                                                 ],
+                                                      "averageRating":  7.3,
+                                                      "numVotes":  1431,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  5
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0080905",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Fists of the White Lotus",
+                                                      "originalTitle":  "Hong Wending san po bai lian jiao",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  95,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Drama"
+                                                                 ],
+                                                      "averageRating":  7.1,
+                                                      "numVotes":  2660,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  6
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0246879",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Qurbani",
+                                                      "originalTitle":  "Qurbani",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  157,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Crime",
+                                                                     "Drama"
+                                                                 ],
+                                                      "averageRating":  7.1,
+                                                      "numVotes":  1113,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  7
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0081499",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "The Young Master",
+                                                      "originalTitle":  "Shi di chu ma",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  105,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Adventure",
+                                                                     "Comedy"
+                                                                 ],
+                                                      "averageRating":  7.0,
+                                                      "numVotes":  9414,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  8
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0081491",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Shaan",
+                                                      "originalTitle":  "Shaan",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  181,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Adventure",
+                                                                     "Comedy"
+                                                                 ],
+                                                      "averageRating":  7.0,
+                                                      "numVotes":  3454,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  9
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0080827",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Encounter of the Spooky Kind",
+                                                      "originalTitle":  "Gui da gui",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  102,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Comedy",
+                                                                     "Fantasy"
+                                                                 ],
+                                                      "averageRating":  7.0,
+                                                      "numVotes":  3335,
+                                                      "genre":  "Action",
+                                                      "genre_year_rank":  10
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0081593",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Taboo",
+                                                      "originalTitle":  "Taboo",
+                                                      "isAdult":  1,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  86,
+                                                      "genres":  [
+                                                                     "Adult",
+                                                                     "Drama"
+                                                                 ],
+                                                      "averageRating":  6.9,
+                                                      "numVotes":  2193,
+                                                      "genre":  "Adult",
+                                                      "genre_year_rank":  1
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0079642",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Erotic Nights of the Living Dead",
+                                                      "originalTitle":  "Le notti erotiche dei morti viventi",
+                                                      "isAdult":  1,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  88,
+                                                      "genres":  [
+                                                                     "Adult",
+                                                                     "Horror"
+                                                                 ],
+                                                      "averageRating":  4.2,
+                                                      "numVotes":  1674,
+                                                      "genre":  "Adult",
+                                                      "genre_year_rank":  2
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0080684",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Star Wars: Episode V - The Empire Strikes Back",
+                                                      "originalTitle":  "Star Wars: Episode V - The Empire Strikes Back",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  124,
+                                                      "genres":  [
+                                                                     "Adventure",
+                                                                     "Fantasy",
+                                                                     "Sci-Fi"
+                                                                 ],
+                                                      "averageRating":  8.7,
+                                                      "numVotes":  1532805,
+                                                      "genre":  "Adventure",
+                                                      "genre_year_rank":  1
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0076276",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Who\u0027s Singin\u0027 Over There?",
+                                                      "originalTitle":  "Ko to tamo peva",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  86,
+                                                      "genres":  [
+                                                                     "Adventure",
+                                                                     "Comedy",
+                                                                     "Drama"
+                                                                 ],
+                                                      "averageRating":  8.7,
+                                                      "numVotes":  18182,
+                                                      "genre":  "Adventure",
+                                                      "genre_year_rank":  2
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0080455",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "The Blues Brothers",
+                                                      "originalTitle":  "The Blues Brothers",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  133,
+                                                      "genres":  [
+                                                                     "Adventure",
+                                                                     "Comedy",
+                                                                     "Crime"
+                                                                 ],
+                                                      "averageRating":  7.9,
+                                                      "numVotes":  232927,
+                                                      "genre":  "Adventure",
+                                                      "genre_year_rank":  3
+                                                  },
+                                                  {
+                                                      "tconst":  "tt1147517",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Doraemon: Nobita\u0027s Dinosaur",
+                                                      "originalTitle":  "Doraemon: Nobita no kyôryû",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  92,
+                                                      "genres":  [
+                                                                     "Adventure",
+                                                                     "Animation",
+                                                                     "Drama"
+                                                                 ],
+                                                      "averageRating":  7.4,
+                                                      "numVotes":  1482,
+                                                      "genre":  "Adventure",
+                                                      "genre_year_rank":  4
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0080801",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "The Gods Must Be Crazy",
+                                                      "originalTitle":  "The Gods Must Be Crazy",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  109,
+                                                      "genres":  [
+                                                                     "Adventure",
+                                                                     "Comedy"
+                                                                 ],
+                                                      "averageRating":  7.3,
+                                                      "numVotes":  63911,
+                                                      "genre":  "Adventure",
+                                                      "genre_year_rank":  5
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0081506",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Shogun Assassin",
+                                                      "originalTitle":  "Shogun Assassin",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  85,
+                                                      "genres":  [
+                                                                     "Action",
+                                                                     "Adventure"
+                                                                 ],
+                                                      "averageRating":  7.3,
+                                                      "numVotes":  12205,
+                                                      "genre":  "Adventure",
+                                                      "genre_year_rank":  6
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0080889",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Hopscotch",
+                                                      "originalTitle":  "Hopscotch",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  106,
+                                                      "genres":  [
+                                                                     "Adventure",
+                                                                     "Comedy"
+                                                                 ],
+                                                      "averageRating":  7.1,
+                                                      "numVotes":  10245,
+                                                      "genre":  "Adventure",
+                                                      "genre_year_rank":  7
+                                                  },
+                                                  {
+                                                      "tconst":  "tt0080461",
+                                                      "titleType":  "movie",
+                                                      "primaryTitle":  "Bon Voyage, Charlie Brown (and Don\u0027t Come Back!!)",
+                                                      "originalTitle":  "Bon Voyage, Charlie Brown (and Don\u0027t Come Back!!)",
+                                                      "isAdult":  0,
+                                                      "startYear":  1980,
+                                                      "endYear":  null,
+                                                      "runtimeMinutes":  75,
+                                                      "genres":  [
+                                                                     "Adventure",
+                                                                     "Animation",
+                                                                     "Comedy"
+                                                                 ],
+                                                      "averageRating":  7.1,
+                                                      "numVotes":  3938,
+                                                      "genre":  "Adventure",
+                                                      "genre_year_rank":  8
+                                                  }
+                                              ]
+                 },
+    "selected_titles_sha256":  "9749f95422a2cbf855cd9e9a7dad37377b03571ad8b1a3f1b9d27b4c7ef25a95",
+    "ranking_sha256":  "c67f75870b360bd47a83e505014c0527cdf51f7d972aff61dcdc5f4fe6dda9f0"
+}

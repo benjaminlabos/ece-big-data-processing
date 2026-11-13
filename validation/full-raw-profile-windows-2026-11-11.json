@@ -1,0 +1,433 @@
+{
+    "execution":  "windows_docker",
+    "captured_at":  "2026-11-11T13:59:17.0724428Z",
+    "implementation_commit":  "45545f343715d2d5557b139ce4019b644b7710cc",
+    "profile_module_sha256":  "61402025f0e616b96a83cbc02e1354b3d74b3aa123ff6d208b5202f179ace986",
+    "input_manifest":  {
+                           "scope":  "full",
+                           "rows_per_table_limit":  null,
+                           "sampling":  null,
+                           "started_at":  "2026-11-11T12:23:52.381712+00:00",
+                           "files":  {
+                                         "title.basics":  {
+                                                              "path":  "title.basics.tsv.gz",
+                                                              "url":  "https://datasets.imdbws.com/title.basics.tsv.gz",
+                                                              "sha256":  "0c79f4e44df509b6cc05d614acc4d243bd8864c81d01920beaf219af21703e9c",
+                                                              "bytes":  230164222,
+                                                              "source_compressed_content_length":  230164222,
+                                                              "gzip_integrity_verified":  true,
+                                                              "retrieved_at":  "2026-11-11T12:24:19.679688+00:00",
+                                                              "ETag":  "\"4a3b63232d5507644ea814209d01a1f6-28\"",
+                                                              "Last-Modified":  "Wed, 11 Nov 2026 00:39:11 GMT"
+                                                          },
+                                         "name.basics":  {
+                                                             "path":  "name.basics.tsv.gz",
+                                                             "url":  "https://datasets.imdbws.com/name.basics.tsv.gz",
+                                                             "sha256":  "3898bacdbd6b04dd3285f4e709983c4b4db4ea7b3fefd092612f41baf23659b7",
+                                                             "bytes":  312743071,
+                                                             "source_compressed_content_length":  312743071,
+                                                             "gzip_integrity_verified":  true,
+                                                             "retrieved_at":  "2026-11-11T12:24:54.752049+00:00",
+                                                             "ETag":  "\"e30dd3d0b16404f45a4adad27d585423-38\"",
+                                                             "Last-Modified":  "Tue, 10 Nov 2026 12:48:13 GMT"
+                                                         },
+                                         "title.akas":  {
+                                                            "path":  "title.akas.tsv.gz",
+                                                            "url":  "https://datasets.imdbws.com/title.akas.tsv.gz",
+                                                            "sha256":  "ac8e630d91a55e9b25277a8d2616bef32f034c81e738a0e044423c4b17343f34",
+                                                            "bytes":  522323485,
+                                                            "source_compressed_content_length":  522323485,
+                                                            "gzip_integrity_verified":  true,
+                                                            "retrieved_at":  "2026-11-11T12:25:54.526964+00:00",
+                                                            "ETag":  "\"9b9b8f7fbaf8683a8755e0ba240127b0-63\"",
+                                                            "Last-Modified":  "Wed, 11 Nov 2026 00:40:02 GMT"
+                                                        },
+                                         "title.crew":  {
+                                                            "path":  "title.crew.tsv.gz",
+                                                            "url":  "https://datasets.imdbws.com/title.crew.tsv.gz",
+                                                            "sha256":  "4a5ac1d5f13d1715dd57b1d04e749337be53a588dca86aec187567b50ca50809",
+                                                            "bytes":  84032257,
+                                                            "source_compressed_content_length":  84032257,
+                                                            "gzip_integrity_verified":  true,
+                                                            "retrieved_at":  "2026-11-11T12:26:03.668688+00:00",
+                                                            "ETag":  "\"9b1073fcd2776784e2c6ce4010c47925-11\"",
+                                                            "Last-Modified":  "Tue, 10 Nov 2026 12:47:55 GMT"
+                                                        },
+                                         "title.episode":  {
+                                                               "path":  "title.episode.tsv.gz",
+                                                               "url":  "https://datasets.imdbws.com/title.episode.tsv.gz",
+                                                               "sha256":  "4f4407887d5f110fd19da549885ce0cd8528c1e5e2ed5c3fca065f67af3666bc",
+                                                               "bytes":  55423238,
+                                                               "source_compressed_content_length":  55423238,
+                                                               "gzip_integrity_verified":  true,
+                                                               "retrieved_at":  "2026-11-11T12:26:10.098660+00:00",
+                                                               "ETag":  "\"3758f87ace871de244bd17c07612f58c-7\"",
+                                                               "Last-Modified":  "Wed, 11 Nov 2026 00:39:32 GMT"
+                                                           },
+                                         "title.principals":  {
+                                                                  "path":  "title.principals.tsv.gz",
+                                                                  "url":  "https://datasets.imdbws.com/title.principals.tsv.gz",
+                                                                  "sha256":  "34c4bb856cfec5773df1bc2ebbbf55f349a3f774a46928aa8ea13cebaefb9f8f",
+                                                                  "bytes":  790186476,
+                                                                  "source_compressed_content_length":  790186476,
+                                                                  "gzip_integrity_verified":  true,
+                                                                  "retrieved_at":  "2026-11-11T12:27:58.913886+00:00",
+                                                                  "ETag":  "\"8b60b9c72c661ee54b2b5e68bf4e976f-95\"",
+                                                                  "Last-Modified":  "Wed, 11 Nov 2026 00:40:05 GMT"
+                                                              },
+                                         "title.ratings":  {
+                                                               "path":  "title.ratings.tsv.gz",
+                                                               "url":  "https://datasets.imdbws.com/title.ratings.tsv.gz",
+                                                               "sha256":  "26fb6829b012e0f93e7a5e5ee1330effcf4e06a00b104a208bee5c382933914d",
+                                                               "bytes":  8747316,
+                                                               "source_compressed_content_length":  8747316,
+                                                               "gzip_integrity_verified":  true,
+                                                               "retrieved_at":  "2026-11-11T12:28:00.016935+00:00",
+                                                               "ETag":  "\"85a298ccce4c717a60c73d659668ab74-2\"",
+                                                               "Last-Modified":  "Wed, 11 Nov 2026 00:39:50 GMT"
+                                                           }
+                                     },
+                           "completed_at":  "2026-11-11T12:28:00.017045+00:00"
+                       },
+    "summary":  {
+                    "scope":  "full",
+                    "kind":  "raw_missingness_only",
+                    "manifest_sha256":  "4ba3d662d85a365bd57dcfff0d35a64caed61643225a4eda049e8ef52a386d09",
+                    "rows":  {
+                                 "title.basics":  12952048,
+                                 "name.basics":  15805276,
+                                 "title.akas":  60328927,
+                                 "title.crew":  12951914,
+                                 "title.episode":  10025351,
+                                 "title.principals":  102683165,
+                                 "title.ratings":  1731223
+                             },
+                    "cleaning_validated":  false,
+                    "spark_version":  "4.2.0"
+                },
+    "missing_profile":  [
+                            {
+                                "table":  "title.basics",
+                                "column":  "tconst",
+                                "total_rows":  12952048,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.basics",
+                                "column":  "titleType",
+                                "total_rows":  12952048,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.basics",
+                                "column":  "primaryTitle",
+                                "total_rows":  12952048,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.basics",
+                                "column":  "originalTitle",
+                                "total_rows":  12952048,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.basics",
+                                "column":  "isAdult",
+                                "total_rows":  12952048,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.basics",
+                                "column":  "startYear",
+                                "total_rows":  12952048,
+                                "missing_rows":  1487793,
+                                "missing_percent":  11.486932414086175
+                            },
+                            {
+                                "table":  "title.basics",
+                                "column":  "endYear",
+                                "total_rows":  12952048,
+                                "missing_rows":  12787696,
+                                "missing_percent":  98.73107326347154
+                            },
+                            {
+                                "table":  "title.basics",
+                                "column":  "runtimeMinutes",
+                                "total_rows":  12952048,
+                                "missing_rows":  8052280,
+                                "missing_percent":  62.16993636836429
+                            },
+                            {
+                                "table":  "title.basics",
+                                "column":  "genres",
+                                "total_rows":  12952048,
+                                "missing_rows":  547638,
+                                "missing_percent":  4.228196189513813
+                            },
+                            {
+                                "table":  "name.basics",
+                                "column":  "nconst",
+                                "total_rows":  15805276,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "name.basics",
+                                "column":  "primaryName",
+                                "total_rows":  15805276,
+                                "missing_rows":  89,
+                                "missing_percent":  0.0005631031055705702
+                            },
+                            {
+                                "table":  "name.basics",
+                                "column":  "birthYear",
+                                "total_rows":  15805276,
+                                "missing_rows":  15119622,
+                                "missing_percent":  95.6618663286867
+                            },
+                            {
+                                "table":  "name.basics",
+                                "column":  "deathYear",
+                                "total_rows":  15805276,
+                                "missing_rows":  15539865,
+                                "missing_percent":  98.32074428817315
+                            },
+                            {
+                                "table":  "name.basics",
+                                "column":  "primaryProfession",
+                                "total_rows":  15805276,
+                                "missing_rows":  3217605,
+                                "missing_percent":  20.35779065167859
+                            },
+                            {
+                                "table":  "name.basics",
+                                "column":  "knownForTitles",
+                                "total_rows":  15805276,
+                                "missing_rows":  1915966,
+                                "missing_percent":  12.122319154692395
+                            },
+                            {
+                                "table":  "title.akas",
+                                "column":  "titleId",
+                                "total_rows":  60328927,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.akas",
+                                "column":  "ordering",
+                                "total_rows":  60328927,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.akas",
+                                "column":  "title",
+                                "total_rows":  60328927,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.akas",
+                                "column":  "region",
+                                "total_rows":  60328927,
+                                "missing_rows":  12992179,
+                                "missing_percent":  21.53557115312195
+                            },
+                            {
+                                "table":  "title.akas",
+                                "column":  "language",
+                                "total_rows":  60328927,
+                                "missing_rows":  19641310,
+                                "missing_percent":  32.557035201371974
+                            },
+                            {
+                                "table":  "title.akas",
+                                "column":  "types",
+                                "total_rows":  60328927,
+                                "missing_rows":  40347863,
+                                "missing_percent":  66.87979549180446
+                            },
+                            {
+                                "table":  "title.akas",
+                                "column":  "attributes",
+                                "total_rows":  60328927,
+                                "missing_rows":  60011732,
+                                "missing_percent":  99.47422403186451
+                            },
+                            {
+                                "table":  "title.akas",
+                                "column":  "isOriginalTitle",
+                                "total_rows":  60328927,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.crew",
+                                "column":  "tconst",
+                                "total_rows":  12951914,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.crew",
+                                "column":  "directors",
+                                "total_rows":  12951914,
+                                "missing_rows":  5785304,
+                                "missing_percent":  44.66756033123753
+                            },
+                            {
+                                "table":  "title.crew",
+                                "column":  "writers",
+                                "total_rows":  12951914,
+                                "missing_rows":  6426791,
+                                "missing_percent":  49.62039587353653
+                            },
+                            {
+                                "table":  "title.episode",
+                                "column":  "tconst",
+                                "total_rows":  10025351,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.episode",
+                                "column":  "parentTconst",
+                                "total_rows":  10025351,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.episode",
+                                "column":  "seasonNumber",
+                                "total_rows":  10025351,
+                                "missing_rows":  2120448,
+                                "missing_percent":  21.150860453663917
+                            },
+                            {
+                                "table":  "title.episode",
+                                "column":  "episodeNumber",
+                                "total_rows":  10025351,
+                                "missing_rows":  2120448,
+                                "missing_percent":  21.150860453663917
+                            },
+                            {
+                                "table":  "title.principals",
+                                "column":  "tconst",
+                                "total_rows":  102683165,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.principals",
+                                "column":  "ordering",
+                                "total_rows":  102683165,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.principals",
+                                "column":  "nconst",
+                                "total_rows":  102683165,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.principals",
+                                "column":  "category",
+                                "total_rows":  102683165,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.principals",
+                                "column":  "job",
+                                "total_rows":  102683165,
+                                "missing_rows":  82823599,
+                                "missing_percent":  80.6593748838965
+                            },
+                            {
+                                "table":  "title.principals",
+                                "column":  "characters",
+                                "total_rows":  102683165,
+                                "missing_rows":  52660564,
+                                "missing_percent":  51.2845158210696
+                            },
+                            {
+                                "table":  "title.ratings",
+                                "column":  "tconst",
+                                "total_rows":  1731223,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.ratings",
+                                "column":  "averageRating",
+                                "total_rows":  1731223,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            },
+                            {
+                                "table":  "title.ratings",
+                                "column":  "numVotes",
+                                "total_rows":  1731223,
+                                "missing_rows":  0,
+                                "missing_percent":  0.0
+                            }
+                        ],
+    "top5_missing":  [
+                         {
+                             "table":  "title.akas",
+                             "column":  "attributes",
+                             "total_rows":  60328927,
+                             "missing_rows":  60011732,
+                             "missing_percent":  99.47422403186451
+                         },
+                         {
+                             "table":  "title.basics",
+                             "column":  "endYear",
+                             "total_rows":  12952048,
+                             "missing_rows":  12787696,
+                             "missing_percent":  98.73107326347154
+                         },
+                         {
+                             "table":  "name.basics",
+                             "column":  "deathYear",
+                             "total_rows":  15805276,
+                             "missing_rows":  15539865,
+                             "missing_percent":  98.32074428817315
+                         },
+                         {
+                             "table":  "name.basics",
+                             "column":  "birthYear",
+                             "total_rows":  15805276,
+                             "missing_rows":  15119622,
+                             "missing_percent":  95.6618663286867
+                         },
+                         {
+                             "table":  "title.principals",
+                             "column":  "job",
+                             "total_rows":  102683165,
+                             "missing_rows":  82823599,
+                             "missing_percent":  80.6593748838965
+                         }
+                     ],
+    "original_languages_source":  {
+                                      "source":  "https://query.wikidata.org/sparql",
+                                      "property":  "https://www.wikidata.org/wiki/Property:P364",
+                                      "query":  "SELECT ?tconst ?language ?source_url WHERE {\n  ?source_url wdt:P345 ?tconst ; wdt:P364 ?language .\n  FILTER(STRSTARTS(?tconst, \"tt\"))\n}",
+                                      "retrieved_at":  "2026-11-11T13:32:34.108620+00:00",
+                                      "rows":  369502,
+                                      "sha256":  "51f9809c7f47431846a266bb08f0c8177d15961367d04d6b27069aa8d8784185",
+                                      "license":  "https://creativecommons.org/publicdomain/zero/1.0/",
+                                      "coverage":  "Wikidata statements only; not exhaustive for IMDb; language values are entity URIs",
+                                      "vocabulary_path":  "original-languages-2026-11-11-vocabulary.csv",
+                                      "vocabulary_sha256":  "842f4bc65bf3e7e2174626412cd0d5960cb9e96a20998f0836d8a8ab69ddffa8",
+                                      "vocabulary_query":  "SELECT ?language ?iso_code WHERE {\n ?language (wdt:P218|wdt:P219|wdt:P220) ?iso_code .\n}"
+                                  }
+}

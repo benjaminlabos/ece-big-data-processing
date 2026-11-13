@@ -1,0 +1,14 @@
+{
+  "scope": "controlled_fix_validation_not_full_batch_success",
+  "failed_run": "https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43087424074",
+  "failure": "IMDb name.basics daily update prevented reuse of the previous measured profile",
+  "behavior": "Same source hashes reuse measured profile; changed source hashes independently measure all 39 columns for the new snapshot, then clean that snapshot only",
+  "tests": {
+    "passed": 40,
+    "seconds": 76.06,
+    "spark": "4.2.0"
+  },
+  "regression": "Changed snapshot ignores deliberately stale row counters and reproduces independently measured fixture missingness",
+  "package_check": "Raw profile manifest SHA must match prepared input manifest; profile origin included with verified derived outputs",
+  "full_batch_completed": false
+}
