@@ -13,16 +13,21 @@ Repository for the Big Data Processing labs and project at ECE.
 
 ## Final project
 
-- [Installation and execution guide](PROJECT.md)
-- [Demonstration and verified results](validation/DEMONSTRATION-2026-11-13.md)
-- [Query export manifest and local reproduction](deliverables/query-outputs/)
-- [Factual tables for the personal report](validation/REPORT-FACTS-2026-11-12.md)
+Start with the [installation and execution guide](PROJECT.md).
+
+| Area | Where to look |
+| --- | --- |
+| IMDb preparation and analysis | [Python package](imdb_preparation/), [examples](examples/), [reference data](references/) |
+| Streaming | [Execution guide](PROJECT_STREAMING.md) |
+| Enrichment and collaboration analysis | [Enrichment](project/enrichment/), [collaborations](project/collaborations/) |
+| Reproduction | [Scripts](scripts/), [tests](tests/), [query export guide](deliverables/query-outputs/README.md) |
+| Results and evidence | [Demonstration](validation/DEMONSTRATION-2026-11-13.md), [report evidence](validation/REPORT-FACTS-2026-11-12.md) |
 
 ## Course labs
 
-- [Spark RDD word count](labs/02.introduction-and-rdds/lab_pyspark_jupyter_docker/word_count.ipynb)
-- [Spark SQL and DataFrames](labs/03.sparksql-and-dataframes/)
-- [Kafka](labs/04.kafka_overview/)
+- [Spark RDD word count](02.introduction-and-rdds/lab_pyspark_jupyter_docker/word_count.ipynb)
+- [Spark SQL and DataFrames](03.sparksql-and-dataframes/)
+- [Kafka](04.kafka_overview/)
 - [Structured Streaming — Wikimedia](05.structured-streaming/lab_docker_wikistreams/notebooks/wikistream_pyspark.ipynb)
 
 The Structured Streaming lab also provides the Docker setup used by the project.
