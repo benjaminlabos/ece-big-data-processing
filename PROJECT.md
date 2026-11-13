@@ -19,7 +19,7 @@ manifestes. Le rapport personnel et la soumission restent à clôturer.
 - [Tableaux factuels à utiliser dans le rapport personnel](validation/REPORT-FACTS-2026-11-12.md).
 - [Ordre d’intégration et conflit connu](validation/MERGE-PLAN-2026-11-13.md).
 - [Checklist de rendu](validation/FINAL-RELEASE-CHECKLIST.md).
-- [Sorties CSV complètes de Q1–Q8 et du classement](deliverables/query-outputs/).
+- [Manifeste et génération locale des CSV de Q1–Q8 et du classement](deliverables/query-outputs/).
 
 Les sections datées plus bas conservent l’historique des essais et des reprises.
 Leurs indications « reste à calculer » décrivent l’état à la date de l’essai ;
@@ -1194,3 +1194,7 @@ La conversion a passé sur les sorties réelles, dans le cloud et sur Windows.
 La provenance et les comptes sont conservés dans `COMPLETE_CSV_EXPORT.json`.
 Le prompt de transmission actualisé est
 `validation/message-ben-final-2026-11-12.md` ; aucun message n'est envoyé.
+
+## Attribution IMDb
+
+Information courtesy of IMDb (https://www.imdb.com). Used with permission.

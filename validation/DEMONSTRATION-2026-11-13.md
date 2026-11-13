@@ -48,7 +48,7 @@ python scripts/export_verified_query_csv.py --verified-root results/final/verifi
 Installer DuckDB 1.4.3 dans l’environnement isolé. Le paquet doit être extrait
 vers le chemin fourni ; le script vérifie ses empreintes et les nombres de lignes.
 Les fichiers `query-review/` versionnés sont des aperçus de 100 lignes maximum.
-Les neuf sorties complètes sont livrées dans [deliverables/query-outputs](../deliverables/query-outputs/), avec les effectifs et empreintes de COMPLETE_CSV_EXPORT.json ; REPORT.md devra pointer vers ces fichiers.
+Le [guide de génération locale](../deliverables/query-outputs/README.md) conserve les effectifs et les empreintes des neuf exports. Les CSV complets restent locaux.
 
 ## 2. Enrichissement final v2
 

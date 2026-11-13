@@ -24,12 +24,19 @@ IMDb complet. Le rapport des étudiants reste à rédiger personnellement.
 
 ## Reproduire les contrôles depuis un clone neuf
 
-Ces commandes s'appliquent au candidat local, après import du bundle dans le
-clone Windows existant ; cette branche n'est pas publiée sur GitHub.
+Ouvrir PowerShell dans un dossier de travail neuf. Pour la revue, utiliser la
+branche de livraison et le SHA communiqué dans la PR. Après fusion, utiliser
+`main` et le SHA de soumission.
 
 ```powershell
-git clone --no-local C:\Users\nriha\ece-big-data-peer-reviewed C:\Users\nriha\gr04-clean-check
-Set-Location C:\Users\nriha\gr04-clean-check
+$branch = 'docs/final-integration'
+$expected = Read-Host 'SHA complet du commit a verifier'
+if ($expected -notmatch '^[0-9a-f]{40}$') { throw 'SHA invalide' }
+git clone --branch $branch https://github.com/benjaminlabos/ece-big-data-processing.git gr04-clean-check
+if ($LASTEXITCODE -ne 0) { throw 'Clonage en echec' }
+Set-Location gr04-clean-check
+git checkout --detach $expected
+if ($LASTEXITCODE -ne 0 -or (git rev-parse HEAD) -ne $expected) { throw 'SHA inattendu' }
 # Si l'image du TP n'existe pas encore :
 docker compose -f 05.structured-streaming/lab_docker_wikistreams/compose.yaml build pyspark-notebook
 .\validation\run_cross_component_checks.ps1

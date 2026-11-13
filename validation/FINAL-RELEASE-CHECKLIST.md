@@ -37,7 +37,7 @@ Référence officielle : https://github.com/adaltas/ece-big-data-processing-fall
 | Partie | Résultats / preuves à consulter |
 | --- | --- |
 | Préparation | validation/full-snapshot-43093003953/ |
-| Q1 à Q8 et classement | validation/overnight-43093003953/query-review/QUERY_REVIEW.json ; CSV complets du dossier de livraison ; Parquet du run vérifié |
+| Q1 à Q8 et classement | validation/overnight-43093003953/query-review/QUERY_REVIEW.json ; manifeste des CSV et génération locale ; Parquet du run vérifié |
 | Sélection et neuf seuils | validation/overnight-43093003953/threshold-summary.csv et READY_FOR_REVIEW.json |
 | Enrichissement final initial | project/enrichment/evidence/final-enrichment-2026-11-12.json et final-enrichment-v2-2026-11-13.json |
 | Streaming vivant, reprise, watermark et rejeu | PROJECT_STREAMING.md et project/streaming/evidence/ |

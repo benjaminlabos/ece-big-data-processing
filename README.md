@@ -15,7 +15,7 @@ Repository for the Big Data Processing labs and project at ECE.
 
 - [Installation and execution guide](PROJECT.md)
 - [Demonstration and verified results](validation/DEMONSTRATION-2026-11-13.md)
-- [Complete query CSV outputs](deliverables/query-outputs/)
+- [Query export manifest and local reproduction](deliverables/query-outputs/)
 - [Factual tables for the personal report](validation/REPORT-FACTS-2026-11-12.md)
 
 ## Labs

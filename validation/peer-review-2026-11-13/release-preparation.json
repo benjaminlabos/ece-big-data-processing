@@ -18,9 +18,10 @@
   "github_main_modified": false,
   "report_written": false,
   "documents_sha256": {
-    "PROJECT.md": "020595404533dc6d78fe7a87531f582edea21d6b57119da17987cb854670759e",
-    "validation/MERGE-PLAN-2026-11-13.md": "f38077ff68b52f22453ac7cc7b668365813e41f4d42f9eadb7d749425a95b170",
-    "validation/DEMONSTRATION-2026-11-13.md": "c746693dcad216428926864654245c39935d9dc19712b36df41d31e0c2a7859f",
+    "PROJECT.md": "911e52a63a81f06e5ea895fc6b914f3e310a07fa212154d8f4b2391e20e6d91e",
+    "validation/MERGE-PLAN-2026-11-13.md": "6fc342238ecca49438a3967fe205bfbe5dc90541ec9038be1b89ff12b4c65805",
+    "validation/DEMONSTRATION-2026-11-13.md": "899f1da48f004fdd55d4f0498f320c46afbe1075f21cfdbeeb004f73d34ac605",
     "validation/REPORT-OUTLINE.md": "bc2b15a1e84b019bf34a7de3ed30ba4768b370f948545adb21d335e6959a04db"
-  }
+  },
+  "documents_sha256_scope": "Git blob bytes at this receipt commit"
 }
