@@ -1,0 +1,4 @@
+wiki,title,imdb_id,wikidata_id
+enwiki,"Controlled, ""quoted"" title",tt0000001,Q100
+frwiki,Personne de test,nm0000001,Q101
+enwiki,Outside controlled snapshot,tt9999999,Q102

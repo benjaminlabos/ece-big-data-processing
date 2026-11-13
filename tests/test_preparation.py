@@ -1,28 +1,12 @@
 import json
 
 import pytest
-from pyspark.sql import SparkSession
 
 from imdb_preparation.download import sha256
 from imdb_preparation.fixture import fixture_rows, write_fixture
 from imdb_preparation.prepare import inspect_snapshot, prepare
 from imdb_preparation.quality import clean_values, normalize, partition_keys, profile
 from imdb_preparation.schema import TABLES, raw_schema
-
-
-@pytest.fixture(scope="session")
-def spark():
-    session = (
-        SparkSession.builder.master("local[2]")
-        .appName("IMDb preparation tests")
-        .config("spark.sql.shuffle.partitions", "2")
-        .config("spark.ui.enabled", "false")
-        .config("spark.sql.session.timeZone", "UTC")
-        .getOrCreate()
-    )
-    session.sparkContext.setLogLevel("ERROR")
-    yield session
-    session.stop()
 
 
 @pytest.fixture(scope="module")
