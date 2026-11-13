@@ -59,6 +59,11 @@ sont émis en LF, avec un attribut Git local pour préserver leurs empreintes su
 Il refuse un dossier de sortie existant et publie le résultat après les contrôles.
 Aucun appel Wikimedia n'est effectué.
 
+Compatibilité vérifiée avec Python 3.10.22 et 3.12.14 : les dates ISO terminées
+par `Z` sont acceptées comme UTC ; les dates sans fuseau ou invalides sont refusées.
+Les 16 tests ciblés passent sur les deux versions. La reconstruction réelle sous
+Python 3.10 produit les huit CSV identiques octet pour octet à ceux de `inputs/`.
+
 ## Traitement Spark à faire côté Benjamin
 
 Après la fin du collecteur actuel et l'accord du binôme, figer et sauvegarder un

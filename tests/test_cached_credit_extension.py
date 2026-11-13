@@ -4,7 +4,22 @@ import io
 import json
 
 import pytest
-from scripts.expand_cached_credits import build, digest, pair_bytes
+from scripts.expand_cached_credits import build, digest, has_timezone, pair_bytes
+
+
+@pytest.mark.parametrize('value,expected', [
+    ('2026-11-12T00:00:00Z', True),
+    ('2026-11-12T00:00:00.123456Z', True),
+    ('2026-11-12T00:00:00+00:00', True),
+    ('2026-11-12T01:00:00+01:00', True),
+    ('2026-11-12T00:00:00', False),
+    ('2026-11-12', False),
+    ('invalidZ', False),
+    ('', False),
+    (None, False),
+])
+def test_timestamp_timezone_compatibility(value, expected):
+    assert has_timezone(value) is expected
 
 
 def fixture(root, people=(3,), crlf=False, duplicate=False):

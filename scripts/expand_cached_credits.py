@@ -17,6 +17,15 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def has_timezone(value):
+    """Accept ISO timestamps with a timezone, including Z on Python 3.10."""
+    try:
+        normalized = value[:-1] + '+00:00' if value.endswith('Z') else value
+        return datetime.fromisoformat(normalized).utcoffset() is not None
+    except (AttributeError, TypeError, ValueError):
+        return False
+
+
 def load(path):
     return json.loads(path.read_text(encoding='utf-8-sig'))
 
@@ -100,7 +109,7 @@ def build(baseline, verified, proposal, evidence, output):
                 or not re.fullmatch(r'https://en\.wikipedia\.org/w/index\.php\?oldid=[0-9]+', r['source_url'])
                 or not re.fullmatch(r'https://www\.wikidata\.org/wiki/Q[0-9]+', r['wikidata_url'])
                 or r['license_url'] != 'https://creativecommons.org/licenses/by-sa/4.0/'
-                or datetime.fromisoformat(r['retrieved_at_utc']).utcoffset() is None):
+                or not has_timezone(r['retrieved_at_utc'])):
             raise ValueError('Missing cached biography or inconsistent provenance')
         roles = json.loads(r['all_verified_credit_rows'])
         if [int(r['ordering']), r['category']] not in roles:
