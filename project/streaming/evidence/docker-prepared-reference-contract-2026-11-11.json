@@ -1,0 +1,52 @@
+{
+  "scope": "synthetic_cleaned_parquet_reference_contract",
+  "execution": "windows_docker",
+  "spark_version": "4.2.0",
+  "input_kind": "prepared_parent_parquet",
+  "source": {
+    "title.basics": {
+      "path": "/fixture/clean/title.basics",
+      "sha256_by_file": {
+        "part-00000.parquet": "8982021f7c0efbb80187c8bf77dee7968013bbfe29d4dba96cb47944bab1e404"
+      }
+    },
+    "name.basics": {
+      "path": "/fixture/clean/name.basics",
+      "sha256_by_file": {
+        "part-00000.parquet": "fb40cd3a69a4c1e663c4a53d2f6efa98c1757c09d16d429b0f7b5e7e765f1854"
+      }
+    }
+  },
+  "wikimedia_catalog_sha256": "9ca17f947b8a12b495c14b987441b2f72bd67e3eee81c9d679228cd5ea0a56b7",
+  "streaming_reference_sha256": "e5bf4aad249bee0fa5c500f69b1478b51a1ee63bf3105a84bdf3f51c300ba982",
+  "input_rows": 7,
+  "matched_rows": 3,
+  "matched_pages": 3,
+  "matched_imdb_ids": 3,
+  "duplicate_rows_collapsed": 1,
+  "rejected_counts": {
+    "invalid_reference": 2,
+    "identifier_not_in_prepared_snapshot": 1
+  },
+  "streaming_reader_verified": true,
+  "exact_title_keys_and_identifiers": {
+    "A\nB": [
+      [
+        "tt0000001",
+        "Q1"
+      ]
+    ],
+    "Personne": [
+      [
+        "nm0000001",
+        null
+      ]
+    ],
+    "Titre de test": [
+      [
+        "tt0000002",
+        "Q2"
+      ]
+    ]
+  }
+}

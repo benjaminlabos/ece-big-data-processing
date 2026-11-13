@@ -1,5 +1,7 @@
 # Big Data Processing — gr-04
 
+Navigation : [préparation et exploration](PROJECT.md), [streaming Wikipédia/Kafka/Spark](PROJECT_STREAMING.md).
+
 Guide technique de lancement. Les explications, choix méthodologiques et
 interprétations du rapport sont à écrire par les étudiants dans `REPORT.md`.
 Ce guide couvre la préparation IMDb, les interfaces d’intégration, l’exploration

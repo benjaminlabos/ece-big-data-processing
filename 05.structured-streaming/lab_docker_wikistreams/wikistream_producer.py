@@ -16,6 +16,7 @@ def matches(event, languages, pages, exclude_bots):
     """Filter at the producer, before sending any event to Kafka."""
     return (
         event.get("type") == "edit"
+        and event.get("meta", {}).get("domain") != "canary"
         and ("all" in languages or event.get("server_name") in {f"{lang}.wikipedia.org" for lang in languages})
         and (not pages or event.get("title") in pages)
         and (not exclude_bots or not event.get("bot", False))
@@ -69,7 +70,12 @@ def main():
     try:
         with output.open("a", encoding="utf-8") as audit:
             while time.monotonic() < deadline and (not args.max_events or counts["sent"] < args.max_events):
-                headers = {"User-Agent": "ECE-StructuredStreaming-Lab/1.0 (educational project)", "Accept": "text/event-stream"}
+                headers = {
+                    "User-Agent": os.getenv(
+                        "WIKISTREAM_USER_AGENT", "ECE-StructuredStreaming-Lab/1.0 (educational project)"
+                    ),
+                    "Accept": "text/event-stream",
+                }
                 if last_event_id:
                     headers["Last-Event-ID"] = last_event_id
                 try:
@@ -78,15 +84,19 @@ def main():
                         response.raise_for_status()
                         response.encoding = "utf-8"
                         data_lines = []
+                        pending_event_id = None
                         for line in response.iter_lines(decode_unicode=True):
                             producer.poll(0)
                             if time.monotonic() >= deadline:
                                 break
                             if line.startswith("id:"):
-                                last_event_id = line[3:].strip()
+                                pending_event_id = line[3:].strip()
                             elif line.startswith("data:"):
                                 data_lines.append(line[5:].lstrip())
                             elif not line and data_lines:
+                                if pending_event_id is not None:
+                                    last_event_id = pending_event_id
+                                    pending_event_id = None
                                 try:
                                     event = json.loads("\n".join(data_lines))
                                 except json.JSONDecodeError:

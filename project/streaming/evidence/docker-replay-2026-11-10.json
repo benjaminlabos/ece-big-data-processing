@@ -1,0 +1,8 @@
+{
+  "spark_version": "4.2.0",
+  "mode": "replay_of_real_4_0_1_capture",
+  "kafka_records": 1824,
+  "eligible_wikipedia_edits": 1425,
+  "matched_events": 10,
+  "exact_event_ids_offsets_and_imdb_links_verified": true
+}

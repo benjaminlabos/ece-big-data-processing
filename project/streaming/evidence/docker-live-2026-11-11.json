@@ -1,0 +1,298 @@
+{
+  "scope": "live_wikimedia_to_kafka_to_spark_with_checkpoint_restart",
+  "execution": "windows_docker_compose",
+  "docker_engine_version": "28.5.1",
+  "kafka_broker_image": "apache/kafka-native:4.1.1",
+  "python_version": "3.13.15",
+  "java_version": "21.0.12",
+  "kafka_message_timestamp_type": "CreateTime",
+  "topic": "project-wiki-76da32d10fe6",
+  "capture_started_utc": "2026-11-11T19:04:43.852730+00:00",
+  "capture_seconds_requested": 900,
+  "capture_seconds_including_flush": 925.948,
+  "spark_version": "4.2.0",
+  "reference_sha256": "e1eba2378b826c7bd118ed9145066e0f364279611c35c9206c3beb6571440efc",
+  "producer": {
+    "seen": 29263,
+    "sent": 1845,
+    "delivered": 1845,
+    "duplicates": 0,
+    "errors": 0,
+    "pending": 0,
+    "topic": "project-wiki-76da32d10fe6",
+    "languages": [
+      "en"
+    ]
+  },
+  "kafka_records": 1845,
+  "distinct_kafka_offsets": 1845,
+  "records_with_event_id": 1845,
+  "distinct_event_ids": 1845,
+  "eligible_wikipedia_edits": 1311,
+  "eligible_distinct_events": 1311,
+  "matched_events": 7,
+  "matched_pages": 6,
+  "duplicate_kafka_offsets": 0,
+  "duplicate_event_records": 0,
+  "audit_event_ids_in_kafka_order_verified": true,
+  "restart": {
+    "elapsed_seconds": 300.13,
+    "query_id": "3f545be6-27ba-4b16-a590-9c301f357eeb",
+    "first_run_id": "0fea4804-69b8-40df-b893-ec7d588c1cdd",
+    "resumed_run_id": "a4bac192-776c-4011-a414-e8c0b95dcdac",
+    "previous_batch_id": 18,
+    "previous_end_offset": "{\"project-wiki-76da32d10fe6\": {\"0\": 578}}",
+    "last_batch_id": 31,
+    "last_end_offset": "{\"project-wiki-76da32d10fe6\": {\"0\": 1845}}"
+  },
+  "matched_event_latencies_ms": {
+    "event_to_kafka_ms": {
+      "count": 7,
+      "min": 2504,
+      "p50_p95": [
+        4806.0,
+        6768.599999999999
+      ],
+      "max": 7296,
+      "negative_count": 0
+    },
+    "kafka_to_spark_ms": {
+      "count": 7,
+      "min": 523,
+      "p50_p95": [
+        15359.0,
+        73415.3
+      ],
+      "max": 73670,
+      "negative_count": 0
+    },
+    "event_to_spark_ms": {
+      "count": 7,
+      "min": 6035,
+      "p50_p95": [
+        20165.0,
+        78908.0
+      ],
+      "max": 79208,
+      "negative_count": 0
+    }
+  },
+  "smoke_event_id_verified": false,
+  "examples": [
+    {
+      "wiki": "enwiki",
+      "title": "Emily Hampshire",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "7166202e-6339-4fdf-be0b-be3ed16bf744",
+      "page_url": "https://en.wikipedia.org/wiki/Emily_Hampshire",
+      "revision_id": 1385073598,
+      "event_time": "2026-11-11T19:08:23.000Z",
+      "processing_time": "2026-11-11T19:08:43.165Z",
+      "partition": 0,
+      "offset": 454,
+      "kafka_time": "2026-11-11T19:08:27.806Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0358922",
+          "wikidata_id": "Q3052376"
+        }
+      ],
+      "event_to_kafka_ms": 4806,
+      "kafka_to_spark_ms": 15359,
+      "event_to_spark_ms": 20165
+    },
+    {
+      "wiki": "enwiki",
+      "title": "TobyMac",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "ce5fcf53-7dac-48c8-9377-bf0cf1e02922",
+      "page_url": "https://en.wikipedia.org/wiki/TobyMac",
+      "revision_id": 1385073660,
+      "event_time": "2026-11-11T19:08:51.000Z",
+      "processing_time": "2026-11-11T19:08:58.819Z",
+      "partition": 0,
+      "offset": 519,
+      "kafka_time": "2026-11-11T19:08:58.296Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0571230",
+          "wikidata_id": "Q364884"
+        }
+      ],
+      "event_to_kafka_ms": 7296,
+      "kafka_to_spark_ms": 523,
+      "event_to_spark_ms": 7819
+    },
+    {
+      "wiki": "enwiki",
+      "title": "TobyMac",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "2af7556b-3c81-4e25-80dc-63442a9765e4",
+      "page_url": "https://en.wikipedia.org/wiki/TobyMac",
+      "revision_id": 1385073927,
+      "event_time": "2026-11-11T19:10:50.000Z",
+      "processing_time": "2026-11-11T19:11:00.035Z",
+      "partition": 0,
+      "offset": 765,
+      "kafka_time": "2026-11-11T19:10:53.861Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0571230",
+          "wikidata_id": "Q364884"
+        }
+      ],
+      "event_to_kafka_ms": 3861,
+      "kafka_to_spark_ms": 6174,
+      "event_to_spark_ms": 10035
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Cristin Milioti",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "6d09d06d-3764-492b-b910-6397c21d68a8",
+      "page_url": "https://en.wikipedia.org/wiki/Cristin_Milioti",
+      "revision_id": 1385073935,
+      "event_time": "2026-11-11T19:10:54.000Z",
+      "processing_time": "2026-11-11T19:11:00.035Z",
+      "partition": 0,
+      "offset": 773,
+      "kafka_time": "2026-11-11T19:10:57.081Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm2129662",
+          "wikidata_id": "Q5186320"
+        }
+      ],
+      "event_to_kafka_ms": 3081,
+      "kafka_to_spark_ms": 2954,
+      "event_to_spark_ms": 6035
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Hiroko Emori",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "87448da4-8bf9-4c87-abff-a16bbc9de9b2",
+      "page_url": "https://en.wikipedia.org/wiki/Hiroko_Emori",
+      "revision_id": 1385074160,
+      "event_time": "2026-11-11T19:12:42.000Z",
+      "processing_time": "2026-11-11T19:13:41.803Z",
+      "partition": 0,
+      "offset": 988,
+      "kafka_time": "2026-11-11T19:12:44.504Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0256607",
+          "wikidata_id": "Q3089633"
+        }
+      ],
+      "event_to_kafka_ms": 2504,
+      "kafka_to_spark_ms": 57299,
+      "event_to_spark_ms": 59803
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Herbie: Fully Loaded",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "8ee0f570-4c51-4d2a-a3b5-c0ab1857eb4e",
+      "page_url": "https://en.wikipedia.org/wiki/Herbie:_Fully_Loaded",
+      "revision_id": 1385074575,
+      "event_time": "2026-11-11T19:16:06.000Z",
+      "processing_time": "2026-11-11T19:17:25.208Z",
+      "partition": 0,
+      "offset": 1391,
+      "kafka_time": "2026-11-11T19:16:11.538Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt0400497",
+          "wikidata_id": "Q641492"
+        }
+      ],
+      "event_to_kafka_ms": 5538,
+      "kafka_to_spark_ms": 73670,
+      "event_to_spark_ms": 79208
+    },
+    {
+      "wiki": "enwiki",
+      "title": "Paper Towns (film)",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "acda2137-09b4-497f-84e3-e42132c49d3a",
+      "page_url": "https://en.wikipedia.org/wiki/Paper_Towns_(film)",
+      "revision_id": 1385074574,
+      "event_time": "2026-11-11T19:16:07.000Z",
+      "processing_time": "2026-11-11T19:17:25.208Z",
+      "partition": 0,
+      "offset": 1395,
+      "kafka_time": "2026-11-11T19:16:12.387Z",
+      "eligible": true,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt3622592",
+          "wikidata_id": "Q18603039"
+        }
+      ],
+      "event_to_kafka_ms": 5387,
+      "kafka_to_spark_ms": 72821,
+      "event_to_spark_ms": 78208
+    }
+  ],
+  "verified_wikipedia_revisions": 7,
+  "independent_audit_and_parquet": {
+    "topic": "project-wiki-76da32d10fe6",
+    "kafka_records": 1845,
+    "distinct_event_ids": 1845,
+    "eligible_wikipedia_edits": 1311,
+    "matched_events": 7,
+    "matched_pages": 6,
+    "examples_verified": 7,
+    "capture_seconds_including_flush": 925.948,
+    "parquet_verified": true,
+    "committed_parquet_files": 32,
+    "records_in_offset_order_verified": 1845,
+    "matched_event_latencies_ms": {
+      "event_to_kafka_ms": {
+        "count": 7,
+        "min": 2504,
+        "p50_p95": [
+          4806.0,
+          6768.5999999999985
+        ],
+        "max": 7296,
+        "negative_count": 0
+      },
+      "kafka_to_spark_ms": {
+        "count": 7,
+        "min": 523,
+        "p50_p95": [
+          15359.0,
+          73415.3
+        ],
+        "max": 73670,
+        "negative_count": 0
+      },
+      "event_to_spark_ms": {
+        "count": 7,
+        "min": 6035,
+        "p50_p95": [
+          20165.0,
+          78908.0
+        ],
+        "max": 79208,
+        "negative_count": 0
+      }
+    },
+    "checkpoint_commit_files_verified": true
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "topic": "project-wiki-ff6b804596cf",
+  "capture_started_utc": "2026-11-11T18:34:40.450622+00:00",
+  "capture_seconds_requested": 60,
+  "capture_seconds_including_flush": 2.014,
+  "spark_version": "4.2.0",
+  "reference_sha256": null,
+  "producer": {
+    "seen": 15,
+    "sent": 1,
+    "delivered": 1,
+    "duplicates": 0,
+    "errors": 0,
+    "pending": 0,
+    "topic": "project-wiki-ff6b804596cf",
+    "languages": [
+      "en"
+    ]
+  },
+  "kafka_records": 1,
+  "distinct_kafka_offsets": 1,
+  "records_with_event_id": 1,
+  "distinct_event_ids": 1,
+  "eligible_wikipedia_edits": 1,
+  "eligible_distinct_events": 1,
+  "matched_events": 0,
+  "matched_pages": 0,
+  "duplicate_kafka_offsets": 0,
+  "duplicate_event_records": 0,
+  "audit_event_ids_in_kafka_order_verified": true,
+  "restart": null,
+  "matched_event_latencies_ms": {
+    "event_to_kafka_ms": {
+      "count": 0,
+      "min": null,
+      "p50_p95": null,
+      "max": null,
+      "negative_count": 0
+    },
+    "kafka_to_spark_ms": {
+      "count": 0,
+      "min": null,
+      "p50_p95": null,
+      "max": null,
+      "negative_count": 0
+    },
+    "event_to_spark_ms": {
+      "count": 0,
+      "min": null,
+      "p50_p95": null,
+      "max": null,
+      "negative_count": 0
+    }
+  },
+  "smoke_event_id_verified": true,
+  "examples": [
+    {
+      "title": "Austria national football team",
+      "wiki": "enwiki",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "b7472e79-9771-4697-9ca1-054c92f36c91",
+      "page_url": "https://en.wikipedia.org/wiki/Austria_national_football_team",
+      "revision_id": 1385068548,
+      "event_time": "2026-11-11T18:34:30.000Z",
+      "processing_time": "2026-11-11T18:34:44.737Z",
+      "partition": 0,
+      "offset": 0,
+      "kafka_time": "2026-11-11T18:34:42.169Z",
+      "eligible": true
+    }
+  ]
+}

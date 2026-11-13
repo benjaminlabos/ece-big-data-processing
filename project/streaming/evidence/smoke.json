@@ -1,0 +1,44 @@
+{
+  "topic": "project-wiki-096d48e7b922",
+  "capture_started_utc": "2026-11-10T16:46:06.979046+00:00",
+  "capture_seconds_requested": 60,
+  "capture_seconds_including_flush": 3.011,
+  "spark_version": "4.0.1",
+  "reference_sha256": null,
+  "producer": {
+    "seen": 5,
+    "sent": 1,
+    "delivered": 1,
+    "duplicates": 0,
+    "errors": 0,
+    "pending": 0,
+    "topic": "project-wiki-096d48e7b922",
+    "languages": [
+      "en",
+      "fr"
+    ]
+  },
+  "kafka_records": 1,
+  "distinct_event_ids": 1,
+  "eligible_wikipedia_edits": 0,
+  "matched_events": 0,
+  "matched_pages": 0,
+  "smoke_event_id_verified": true,
+  "examples": [
+    {
+      "title": "Wikipedia:The Asia-Oceania Destubathon",
+      "wiki": "enwiki",
+      "server_name": "en.wikipedia.org",
+      "bot": false,
+      "event_id": "01a7e97e-831a-4c2a-9d5f-1324106a408f",
+      "page_url": "https://en.wikipedia.org/wiki/Wikipedia:The_Asia-Oceania_Destubathon",
+      "revision_id": 1384885248,
+      "event_time": "2026-11-10T16:45:57.000Z",
+      "processing_time": "2026-11-10T16:46:09.762Z",
+      "partition": 0,
+      "offset": 0,
+      "kafka_time": "2026-11-10T16:46:09.003Z",
+      "eligible": false
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "scope": "replay_of_2026_11_11_live_capture_with_full_imdb_reference",
+  "execution": "windows_docker_compose",
+  "spark_version": "4.2.0",
+  "kafka_broker_image": "apache/kafka-native:4.1.1",
+  "source_topic": "project-wiki-76da32d10fe6",
+  "replay_topic": "project-wiki-replay-7d6d884166b9",
+  "capture_sha256": "d142155720e9d7ea3655cd926695baca6285b2e14a9ac8de6d6c7d6e94ee5385",
+  "reference_sha256": "279eb0ddf4fd58515e6b0039575e7490bdacdaabe8e6c13005563dcbdd2dd74b",
+  "kafka_records": 1845,
+  "distinct_event_ids": 1845,
+  "distinct_kafka_offsets": 1845,
+  "eligible_wikipedia_edits": 1311,
+  "matched_events": 7,
+  "matched_pages": 6,
+  "matched_links_equal_live_and_integrated_reference": true,
+  "identifiers_offsets_and_eligibility_equal_live": true,
+  "committed_parquet_files": 1,
+  "checkpoint_end_offset": {
+    "project-wiki-replay-7d6d884166b9": {
+      "0": 1845
+    }
+  },
+  "examples": [
+    {
+      "event_id": "7166202e-6339-4fdf-be0b-be3ed16bf744",
+      "partition": 0,
+      "offset": 454,
+      "title": "Emily Hampshire",
+      "wiki": "enwiki",
+      "revision_id": 1385073598,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0358922",
+          "wikidata_id": "Q3052376"
+        }
+      ]
+    },
+    {
+      "event_id": "ce5fcf53-7dac-48c8-9377-bf0cf1e02922",
+      "partition": 0,
+      "offset": 519,
+      "title": "TobyMac",
+      "wiki": "enwiki",
+      "revision_id": 1385073660,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0571230",
+          "wikidata_id": "Q364884"
+        }
+      ]
+    },
+    {
+      "event_id": "2af7556b-3c81-4e25-80dc-63442a9765e4",
+      "partition": 0,
+      "offset": 765,
+      "title": "TobyMac",
+      "wiki": "enwiki",
+      "revision_id": 1385073927,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0571230",
+          "wikidata_id": "Q364884"
+        }
+      ]
+    },
+    {
+      "event_id": "6d09d06d-3764-492b-b910-6397c21d68a8",
+      "partition": 0,
+      "offset": 773,
+      "title": "Cristin Milioti",
+      "wiki": "enwiki",
+      "revision_id": 1385073935,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm2129662",
+          "wikidata_id": "Q5186320"
+        }
+      ]
+    },
+    {
+      "event_id": "87448da4-8bf9-4c87-abff-a16bbc9de9b2",
+      "partition": 0,
+      "offset": 988,
+      "title": "Hiroko Emori",
+      "wiki": "enwiki",
+      "revision_id": 1385074160,
+      "imdb_matches": [
+        {
+          "imdb_id": "nm0256607",
+          "wikidata_id": "Q3089633"
+        }
+      ]
+    },
+    {
+      "event_id": "8ee0f570-4c51-4d2a-a3b5-c0ab1857eb4e",
+      "partition": 0,
+      "offset": 1391,
+      "title": "Herbie: Fully Loaded",
+      "wiki": "enwiki",
+      "revision_id": 1385074575,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt0400497",
+          "wikidata_id": "Q641492"
+        }
+      ]
+    },
+    {
+      "event_id": "acda2137-09b4-497f-84e3-e42132c49d3a",
+      "partition": 0,
+      "offset": 1395,
+      "title": "Paper Towns (film)",
+      "wiki": "enwiki",
+      "revision_id": 1385074574,
+      "imdb_matches": [
+        {
+          "imdb_id": "tt3622592",
+          "wikidata_id": "Q18603039"
+        }
+      ]
+    }
+  ],
+  "replay_script_verified_audit_event_ids_and_offsets": true
+}

@@ -1,0 +1,4 @@
+{"stage": "initial", "input": [{"event_at": "2026-01-01T12:00:20Z"}], "last_batch": 1, "watermark": "2026-01-01T11:58:20.000Z"}
+{"stage": "advance_watermark", "input": [{"event_at": "2026-01-01T12:05:00Z"}], "last_batch": 3, "watermark": "2026-01-01T12:03:00.000Z"}
+{"stage": "late_inputs", "input": [{"event_at": "2026-01-01T12:04:30Z"}, {"event_at": "2026-01-01T12:00:30Z"}], "last_batch": 4, "watermark": "2026-01-01T12:03:00.000Z"}
+{"numRowsDroppedByWatermark": 1, "windows": [{"window_start_utc": "12:00:00", "events": 1, "last_processed_at_utc": "2026-11-10T18:42:32.590Z"}, {"window_start_utc": "12:04:00", "events": 1, "last_processed_at_utc": "2026-11-10T18:42:38.274Z"}, {"window_start_utc": "12:05:00", "events": 1, "last_processed_at_utc": "2026-11-10T18:42:37.172Z"}]}
