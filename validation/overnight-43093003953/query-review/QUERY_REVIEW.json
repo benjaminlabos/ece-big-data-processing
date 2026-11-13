@@ -1,0 +1,170 @@
+{
+  "scope": "full",
+  "validation": "materialized_query_invariants_not_human_interpretation",
+  "student_validated": false,
+  "spark_version": "4.2.0",
+  "analysis_summary_sha256": "89662e746109f1d858df4dab82be6de3bd46639bef78b7a64470aeaf7ec77c04",
+  "prepared_summary_sha256": "c6ba4f0b9b77110079f65b91cea6b8da4066ba4c1f11eee8836ea823fc03ae74",
+  "questions": {
+    "q1": {
+      "rows": 13640,
+      "preview_rows": 100,
+      "columns": [
+        "genre",
+        "tconst",
+        "titleType",
+        "primaryTitle",
+        "originalTitle",
+        "isAdult",
+        "startYear",
+        "endYear",
+        "runtimeMinutes",
+        "genres",
+        "mean_runtime",
+        "stddev_runtime",
+        "genre_films",
+        "runtime_zscore"
+      ],
+      "invariants": "passed"
+    },
+    "q2": {
+      "rows": 138,
+      "preview_rows": 100,
+      "columns": [
+        "startYear",
+        "genre",
+        "genre_votes",
+        "film_count",
+        "mean_rating",
+        "genre_rank"
+      ],
+      "invariants": "passed"
+    },
+    "q3": {
+      "rows": 92,
+      "preview_rows": 92,
+      "columns": [
+        "startYear",
+        "group",
+        "votes",
+        "genre_memberships",
+        "genres",
+        "mean_rating_per_genre_membership"
+      ],
+      "invariants": "passed"
+    },
+    "q4": {
+      "rows": 47,
+      "preview_rows": 47,
+      "columns": [
+        "nconst",
+        "high_rated_films",
+        "other_films",
+        "other_mean_rating",
+        "primaryName"
+      ],
+      "invariants": "passed"
+    },
+    "q5": {
+      "rows": 535,
+      "preview_rows": 100,
+      "columns": [
+        "parentTconst",
+        "worst_in_last",
+        "best_in_first_two",
+        "qualifying_seasons",
+        "last_season",
+        "worst_rating",
+        "best_rating"
+      ],
+      "invariants": "passed"
+    },
+    "q6": {
+      "rows": 5826,
+      "preview_rows": 100,
+      "columns": [
+        "nconst",
+        "languages",
+        "language_count",
+        "successful_films",
+        "sources",
+        "at_least_three_languages",
+        "primaryName"
+      ],
+      "invariants": "passed"
+    },
+    "q7": {
+      "rows": 6158,
+      "preview_rows": 100,
+      "columns": [
+        "nconst",
+        "first_year",
+        "last_year",
+        "films",
+        "peak_rating",
+        "first_peak_year",
+        "last_peak_year",
+        "primaryName"
+      ],
+      "invariants": "passed"
+    },
+    "q8": {
+      "rows": 127468,
+      "preview_rows": 100,
+      "columns": [
+        "nconst",
+        "multiple_roles",
+        "career_roles",
+        "films",
+        "mean_rating",
+        "votes",
+        "primaryName"
+      ],
+      "invariants": "passed"
+    },
+    "top10_per_genre_year": {
+      "rows": 9089,
+      "preview_rows": 100,
+      "columns": [
+        "tconst",
+        "titleType",
+        "primaryTitle",
+        "originalTitle",
+        "isAdult",
+        "startYear",
+        "endYear",
+        "runtimeMinutes",
+        "genres",
+        "averageRating",
+        "numVotes",
+        "genre",
+        "genre_year_rank"
+      ],
+      "invariants": "passed"
+    }
+  },
+  "status": "passed",
+  "q2_q3_reconciled": true,
+  "selection_reconciled": true,
+  "note": "CSV/JSON files are bounded previews; full outputs remain in source Parquet.",
+  "files_sha256": {
+    "q1-preview.json": "3fb3440ee5099fd89870301885c28defa0b8ee17143be7180ecc712be70b4b57",
+    "q4-preview.csv": "3f49bbf4dde18bb100ee9f338ae4e799dbd8a8b93587110ba296800e7a0b011b",
+    "q3-preview.csv": "4e3491743d620cb789d6f84d0c3fb7504162246e0253f40a3ac81c5c30203fe9",
+    "q2-preview.csv": "55769c2a6bb6f3396f8b22d4fdff7aa1bb6c136095ae5a2951fab0d9d36516f4",
+    "q4-preview.json": "15e1dc70000b07d9d7f90c9cbad08a5f4549d399f6acc8545d805426e03ffdb5",
+    "q7-preview.json": "3538a76a7767764423b1d009e464db925302ffd1997918f0eae0f44fab59837c",
+    "q5-preview.csv": "bd20399e67e48ca0c0f750a7f5e2abad29d8386b5f74ff76d18d8babdf220acb",
+    "q3-preview.json": "5cab4da86f51e6d34aa194941b255bc83d1bf727685e1f4d16171bbf60225452",
+    "q5-preview.json": "6627964a7884b5e29f4e4d4e7e45e3d3ef3a3973efd41415501471e5e877f239",
+    "q6-preview.csv": "852804ab07f6234f7528dd259bff50f42de417945641d32fa8464c9b45c038e5",
+    "q8-preview.csv": "4371de9b1ebad0372684107ad4021598b552e1d31a5331aa98aa09442f563903",
+    "q1-preview.csv": "7ba27dde22e3193fd32957e97cab0f1cafb8b8433f88a78bc8c04910ff83a054",
+    "q6-preview.json": "9ac4d3fa6cf33d91c17f0ffeb812779cdaaaa7834548a7e7d695ebed0ff83c32",
+    "top10_per_genre_year-preview.json": "559f8d462d4a7e635d52fe98e62742d65d3eb6d3a2f79c573276a19ff2c45e5a",
+    "q2-preview.json": "564157b9551e2058a21a4ae7469beb81813fb311bd149424fc79d06d8dbf9878",
+    "q7-preview.csv": "687e05db185a704edad8d8606b7aa26b3bded032008cb204c921fc1135defe04",
+    "top10_per_genre_year-preview.csv": "29b92c72376265e6547a185d0f2d379a6044c0d6144d31a494fe54caab35c984",
+    "q8-preview.json": "ac4e658ea6cc2f8cabb5d314ad4b6f669dd080f8604f06a3f96bfdf62000a191"
+  }
+}

@@ -1,0 +1,8 @@
+services:
+  raw-profile:
+    extends:
+      file: compose.preparation.yaml
+      service: preparation
+    mem_limit: 2g
+    environment:
+      PYSPARK_SUBMIT_ARGS: --driver-memory 1g pyspark-shell

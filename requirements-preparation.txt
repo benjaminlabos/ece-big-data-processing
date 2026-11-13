@@ -1,0 +1,3 @@
+# Same Spark version as the executed TP05 notebook; Java 17+ required.
+pyspark==4.2.0
+pytest==9.0.2

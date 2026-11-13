@@ -1,0 +1,17 @@
+{
+  "scope": "workflow_validation_not_completed_full_batch",
+  "actionlint": "1.7.7 passed",
+  "shell_scripts": "bash -n passed",
+  "embedded_python_blocks": 5,
+  "dag": "recover_relations -> recover_principals -> finalize",
+  "checks": [
+    "Pinned run and commit checked before recovery",
+    "Exact cache keys, no fallback snapshot",
+    "Recovery uses original source commit and existing prepare resume validation",
+    "Full SUCCESS and analysis checksum checks retained",
+    "Diagnostic uploads non-blocking and bounded",
+    "Final output cache plus artifact plus branch small outputs"
+  ],
+  "upstream_run": 43093003953,
+  "student_validated": false
+}

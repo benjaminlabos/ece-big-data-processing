@@ -1,0 +1,78 @@
+{
+    "description":  "Actual integration exports on Windows Docker; no live capture or collection",
+    "docker_server_version":  "28.5.1",
+    "fixture":  {
+                    "scope":  "fixture",
+                    "spark_version":  "4.2.0",
+                    "started_at":  "2026-11-10T17:38:07.787016+00:00",
+                    "inputs":  {
+                                   "prepared_summary_sha256":  "7c15a89e5e967554ab8c80f1edabe5130bcafe28129bb13fb5781c5f90ff24e8",
+                                   "selected_titles":  {
+                                                           "path":  "/home/jovyan/project/examples/integration/fixture-selected.csv",
+                                                           "sha256":  "ff8ff7f5df6b165f26e87de2199b41094116232808e6b629df3bcab711d3628b"
+                                                       },
+                                   "wiki_reference":  {
+                                                          "path":  "/home/jovyan/project/examples/integration/fixture-reference.csv",
+                                                          "sha256":  "e929af24232bdc91d70f79caa2a59f21d7183753c454d137255040c5445572dc"
+                                                      }
+                               },
+                    "movie_catalog_definition":  "IMDb titleType=movie, startYear 1980..2025; no runtime threshold or ranking",
+                    "selection_method":  "external_tconst_list",
+                    "imdb_identifiers":  8,
+                    "movies_1980_2025":  1,
+                    "enrichment":  {
+                                       "requested_rows":  1,
+                                       "distinct_requested_titles":  1,
+                                       "duplicate_selection_rows_collapsed":  0,
+                                       "status_counts":  {
+                                                             "selected":  1
+                                                         },
+                                       "candidate_pairs":  1,
+                                       "principal_rows":  1,
+                                       "duplicate_credit_pairs_collapsed":  0,
+                                       "rejected_credit_rows":  0,
+                                       "films_with_fewer_than_three_candidates":  1,
+                                       "consumer_ready":  true
+                                   },
+                    "streaming_reference":  {
+                                                "input_rows":  3,
+                                                "matched_rows":  2,
+                                                "duplicate_rows_collapsed":  0,
+                                                "rejected_rows":  1,
+                                                "rejection_counts":  {
+                                                                         "identifier_not_in_prepared_snapshot":  1
+                                                                     },
+                                                "absent_identifiers_are_unverified":  false,
+                                                "consumer_ready":  true
+                                            },
+                    "completed_at":  "2026-11-10T17:38:36.933185+00:00"
+                },
+    "sample":  {
+                   "scope":  "sample",
+                   "spark_version":  "4.2.0",
+                   "started_at":  "2026-11-10T17:40:08.834798+00:00",
+                   "inputs":  {
+                                  "prepared_summary_sha256":  "4131a46eb32c212363026060284eef83e4c1e01d793168f07eaef66be43956c1",
+                                  "wiki_reference":  {
+                                                         "path":  "/home/jovyan/project/data/reference/benjamin-pilot.csv",
+                                                         "sha256":  "3a16823f0e028061d1031cd1b1702ffd4012f6b8f10c94e2110f5d338d2fea2a"
+                                                     }
+                              },
+                   "movie_catalog_definition":  "IMDb titleType=movie, startYear 1980..2025; no runtime threshold or ranking",
+                   "selection_method":  "not_requested",
+                   "imdb_identifiers":  2000,
+                   "movies_1980_2025":  0,
+                   "streaming_reference":  {
+                                               "input_rows":  32,
+                                               "matched_rows":  14,
+                                               "duplicate_rows_collapsed":  0,
+                                               "rejected_rows":  18,
+                                               "rejection_counts":  {
+                                                                        "identifier_not_in_prepared_snapshot":  18
+                                                                    },
+                                               "absent_identifiers_are_unverified":  true,
+                                               "consumer_ready":  true
+                                           },
+                   "completed_at":  "2026-11-10T17:40:22.203127+00:00"
+               }
+}

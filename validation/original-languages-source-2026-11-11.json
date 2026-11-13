@@ -1,0 +1,13 @@
+{
+  "source": "https://query.wikidata.org/sparql",
+  "property": "https://www.wikidata.org/wiki/Property:P364",
+  "query": "SELECT ?tconst ?language ?source_url WHERE {\n  ?source_url wdt:P345 ?tconst ; wdt:P364 ?language .\n  FILTER(STRSTARTS(?tconst, \"tt\"))\n}",
+  "retrieved_at": "2026-11-11T12:48:53.492708+00:00",
+  "rows": 369502,
+  "sha256": "c144268fb0d600a84b68841e1a2657ec187a04dc88a01e46834933d74a72fe3d",
+  "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "coverage": "Wikidata statements only; not exhaustive for IMDb; language values are entity URIs",
+  "vocabulary_path": "original-languages-2026-11-11-vocabulary.csv",
+  "vocabulary_sha256": "61b58d00997447f7d844281fa032292d33d7e2e16f48e91fe39372029c1c202f",
+  "vocabulary_query": "SELECT ?language ?iso_code WHERE {\n ?language (wdt:P218|wdt:P219|wdt:P220) ?iso_code .\n}"
+}

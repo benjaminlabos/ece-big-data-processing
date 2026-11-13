@@ -1,0 +1,28 @@
+{
+  "scope": "controlled_followup_validation_not_completed_real_batch",
+  "upstream_run_id": 43093003953,
+  "upstream_commit": "321c07d578fc77daafdf3d2a4553899af40c4ea5",
+  "prior_full_suite": {
+    "passed": 42,
+    "seconds": 121.52
+  },
+  "targeted_cloud_checks": {
+    "passed": 4,
+    "seconds": 57.81,
+    "includes_extended_end_to_end_pipeline": true
+  },
+  "additional_threshold_check": {
+    "passed": 1,
+    "seconds": 11.57
+  },
+  "checks": [
+    "Downloaded payload checksums verified; optional unpublished Hadoop CRC sidecars recorded",
+    "Full fixture pipeline produces bounded handoff, threshold grid and exact input deltas",
+    "Threshold test covers duration and vote exclusions plus vote and ID tie breaks",
+    "Source workflow remains pinned; followup shares concurrency group and waits without a runner",
+    "Only Nicolas PR branch may receive computed CSV/JSON; no forced push after branch movement"
+  ],
+  "student_validated": false,
+  "automatic_report_generation": false,
+  "full_batch_completed": false
+}

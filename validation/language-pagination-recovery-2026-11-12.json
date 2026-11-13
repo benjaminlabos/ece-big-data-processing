@@ -1,0 +1,29 @@
+{
+  "scope": "transport_regression_validation_not_completed_live_recollection",
+  "failure_observed": {
+    "run_id": 43093003953,
+    "job_id": 130862090457,
+    "reference": "cloud-original-languages.csv",
+    "malformed_terminal_record": "t"
+  },
+  "docker_checks": {
+    "spark": "4.2.0",
+    "passed": 9,
+    "seconds": 42.14
+  },
+  "native_transport_checks": {
+    "passed": 8,
+    "deselected_spark_check": 1,
+    "seconds": 10.03
+  },
+  "repairs": [
+    "Validate every CSV record and content length when available",
+    "Collect distinct records in bounded ordered pages",
+    "Reject overlapping or repeated pages and preserve per-page response hashes",
+    "Recollect into a new file without changing the failed source snapshot",
+    "Reuse all seven prepared tables without rerunning cleaning",
+    "Preserve final reference payload and vocabulary in delivery artifacts",
+    "Final artifacts retained for 90 days"
+  ],
+  "student_validated": false
+}

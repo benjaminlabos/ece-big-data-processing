@@ -1,0 +1,55 @@
+{
+  "checked_at_utc": "2026-11-11T22:59:56.827643+00:00",
+  "run_id": 43093003953,
+  "source_manifest_sha256": "aeb5effe20cab570e20fbd3a250309a0f081f7f3a203d02dfafca5da0c999cfd",
+  "status": "passed",
+  "columns": 39,
+  "raw_rows_by_table": {
+    "title.basics": 12952978,
+    "name.basics": 15806985,
+    "title.akas": 60328927,
+    "title.crew": 12952048,
+    "title.episode": 10026073,
+    "title.principals": 102704599,
+    "title.ratings": 1731223
+  },
+  "sum_of_rows_across_tables": 216502833,
+  "top5_missing": [
+    {
+      "table": "title.akas",
+      "column": "attributes",
+      "total_rows": 60328927,
+      "missing_rows": 60011732,
+      "missing_percent": 99.47422403186451
+    },
+    {
+      "table": "title.basics",
+      "column": "endYear",
+      "total_rows": 12952978,
+      "missing_rows": 12788607,
+      "missing_percent": 98.7310176856627
+    },
+    {
+      "table": "name.basics",
+      "column": "deathYear",
+      "total_rows": 15806985,
+      "missing_rows": 15541545,
+      "missing_percent": 98.32074238066272
+    },
+    {
+      "table": "name.basics",
+      "column": "birthYear",
+      "total_rows": 15806985,
+      "missing_rows": 15121253,
+      "missing_percent": 95.66184190090647
+    },
+    {
+      "table": "title.principals",
+      "column": "job",
+      "total_rows": 102704599,
+      "missing_rows": 82843110,
+      "missing_percent": 80.66153882748716
+    }
+  ],
+  "scope": "raw_full_snapshot_producer_evidence_reconciliation_not_independent_parquet_rescan"
+}

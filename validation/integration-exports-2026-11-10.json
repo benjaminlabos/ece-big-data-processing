@@ -1,0 +1,99 @@
+{
+  "description": "Executed integration exports; fixture and real sample are explicitly separated",
+  "test_suite": "13 passed in 47.62s",
+  "runs": {
+    "fixture": {
+      "scope": "fixture",
+      "spark_version": "4.2.0",
+      "started_at": "2026-11-10T17:30:31.038841+00:00",
+      "inputs": {
+        "prepared_summary_sha256": "d0454b712c6f5ae822b3afaacfc4afbe4738a7350201fc176036e4ea148c2c3e",
+        "selected_titles": {
+          "path": "/workspace/ece-big-data-processing/examples/integration/fixture-selected.csv",
+          "sha256": "575d558b1bdd17c77c6b1e5b47905c13d964528f3ed60b75afb799254eca3243"
+        },
+        "wiki_reference": {
+          "path": "/workspace/ece-big-data-processing/examples/integration/fixture-reference.csv",
+          "sha256": "14052a948a42814fd60067c4ab9ee0349e226aac9deff3e0609da717a90fc3b6"
+        }
+      },
+      "movie_catalog_definition": "IMDb titleType=movie, startYear 1980..2025; no runtime threshold or ranking",
+      "selection_method": "external_tconst_list",
+      "imdb_identifiers": 8,
+      "movies_1980_2025": 1,
+      "enrichment": {
+        "requested_rows": 1,
+        "distinct_requested_titles": 1,
+        "duplicate_selection_rows_collapsed": 0,
+        "status_counts": {
+          "selected": 1
+        },
+        "candidate_pairs": 1,
+        "principal_rows": 1,
+        "duplicate_credit_pairs_collapsed": 0,
+        "rejected_credit_rows": 0,
+        "films_with_fewer_than_three_candidates": 1,
+        "consumer_ready": true
+      },
+      "streaming_reference": {
+        "input_rows": 3,
+        "matched_rows": 2,
+        "duplicate_rows_collapsed": 0,
+        "rejected_rows": 1,
+        "rejection_counts": {
+          "identifier_not_in_prepared_snapshot": 1
+        },
+        "absent_identifiers_are_unverified": false,
+        "consumer_ready": true
+      },
+      "completed_at": "2026-11-10T17:30:38.848975+00:00"
+    },
+    "real_sample": {
+      "scope": "sample",
+      "spark_version": "4.2.0",
+      "started_at": "2026-11-10T17:31:06.716730+00:00",
+      "inputs": {
+        "prepared_summary_sha256": "3929e9696c3b6e4030a764520affc44738f778297254610407d9dcc4ed641ea8",
+        "selected_titles": {
+          "path": "/workspace/ece-big-data-processing/data/reference/benjamin-selected-pilot.csv",
+          "sha256": "429fff15d6a0450d3e02fa8cfcc19635bdf43791778a6d47667b5286af8b778a"
+        },
+        "wiki_reference": {
+          "path": "/workspace/ece-big-data-processing/data/reference/benjamin-pilot.csv",
+          "sha256": "3a16823f0e028061d1031cd1b1702ffd4012f6b8f10c94e2110f5d338d2fea2a",
+          "source_uri": "https://github.com/benjaminlabos/ece-big-data-processing/blob/4855223aa45a0af1cf9f1a582d3806083aa3a2f8/05.structured-streaming/lab_docker_wikistreams/jobs/pilot_reference.csv"
+        }
+      },
+      "movie_catalog_definition": "IMDb titleType=movie, startYear 1980..2025; no runtime threshold or ranking",
+      "selection_method": "external_tconst_list",
+      "imdb_identifiers": 2000,
+      "movies_1980_2025": 0,
+      "enrichment": {
+        "requested_rows": 2,
+        "distinct_requested_titles": 2,
+        "duplicate_selection_rows_collapsed": 0,
+        "status_counts": {
+          "not_in_prepared_titles": 2
+        },
+        "candidate_pairs": 0,
+        "principal_rows": 0,
+        "duplicate_credit_pairs_collapsed": 0,
+        "rejected_credit_rows": 0,
+        "films_with_fewer_than_three_candidates": 0,
+        "consumer_ready": false
+      },
+      "streaming_reference": {
+        "input_rows": 32,
+        "matched_rows": 14,
+        "duplicate_rows_collapsed": 0,
+        "rejected_rows": 18,
+        "rejection_counts": {
+          "identifier_not_in_prepared_snapshot": 18
+        },
+        "absent_identifiers_are_unverified": true,
+        "consumer_ready": true
+      },
+      "completed_at": "2026-11-10T17:31:14.928109+00:00"
+    }
+  }
+}

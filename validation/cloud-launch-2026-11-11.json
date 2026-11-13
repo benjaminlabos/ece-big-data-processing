@@ -1,0 +1,16 @@
+{
+  "scope": "cloud_launch_not_completed_full_batch",
+  "run_id": 43087424074,
+  "url": "https://github.com/benjaminlabos/ece-big-data-processing/actions/runs/43087424074",
+  "head_sha": "dd487361b5486dbdbd7e281dc0a84b1685a7ffb2",
+  "status_at_capture": "in_progress",
+  "started_at": "2026-11-11T19:27:50Z",
+  "hosted_runner": "GitHub Actions 1000000026",
+  "labels": [
+    "ubuntu-24.04"
+  ],
+  "pc_required_after_launch": false,
+  "maximum_job_minutes": 350,
+  "results_retention_days": 7,
+  "full_batch_success": false
+}

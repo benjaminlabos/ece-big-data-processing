@@ -1,0 +1,132 @@
+name: Full-history collaboration calculation for peer review
+
+on:
+  push:
+    branches: [feat/imdb-full-analysis]
+    paths: [.github/workflows/imdb-collaborations-full.yml]
+  workflow_dispatch:
+
+concurrency:
+  group: imdb-complete-cloud
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: read
+
+env:
+  SPARK_LOCAL_IP: 127.0.0.1
+  SPARK_LOCAL_DIRS: /tmp/imdb-spark
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  calculate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 8a0d75bb26d6437ead2c927d69da7b8bcff6592d
+          path: peer-source
+          persist-credentials: false
+      - uses: ./.github/actions/imdb-runtime
+      - name: Install the independent SQL verifier
+        run: python -m pip install duckdb==1.4.3
+      - uses: actions/cache/restore@v4
+        with:
+          path: results/cloud-prepared
+          key: imdb-43093003953-prepared-v1
+          fail-on-cache-miss: true
+      - name: Record the complete input and original peer-code provenance
+        run: |
+          python - <<'PYTHON'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          root = Path('results/cloud-prepared')
+          source = json.loads((root / 'summary.json').read_text())
+          assert (root / 'SUCCESS.json').is_file()
+          assert source['scope'] == 'full' and len(source['tables']) == 7
+          assert json.loads((root / 'input_manifest.json').read_text())['scope'] == 'full'
+          sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+          assert sha(root / 'summary.json') == 'c6ba4f0b9b77110079f65b91cea6b8da4066ba4c1f11eee8836ea823fc03ae74'
+          assert sha(root / 'input_manifest.json') == 'aeb5effe20cab570e20fbd3a250309a0f081f7f3a203d02dfafca5da0c999cfd'
+          source_commit = subprocess.check_output(['git','-C','peer-source','rev-parse','HEAD'], text=True).strip()
+          assert source_commit == '8a0d75bb26d6437ead2c927d69da7b8bcff6592d'
+          target = Path('artifacts/collaborations-full')
+          target.mkdir(parents=True)
+          provenance = dict(scope='full', student_validated=False,
+              source_run_id=43093003953,
+              source_commit='321c07d578fc77daafdf3d2a4553899af40c4ea5',
+              analysis_code_commit=source_commit,
+              prepared_summary_sha256=sha(root / 'summary.json'),
+              input_manifest_sha256=sha(root / 'input_manifest.json'),
+              use='Unmodified Benjamin analysis and independent verifier on Nicolas complete prepared tables')
+          (target / 'PROVENANCE.json').write_text(json.dumps(provenance, indent=2)+'\n')
+          PYTHON
+      - name: Calculate all ten comparisons from complete movie history
+        timeout-minutes: 220
+        run: |
+          set -euo pipefail
+          spark-submit --master 'local[4]' --driver-memory 5g \
+            --conf spark.sql.shuffle.partitions=64 --conf spark.ui.enabled=false \
+            peer-source/project/collaborations/analyse.py \
+            --clean-dir results/cloud-prepared/clean \
+            --input-manifest results/cloud-prepared/input_manifest.json \
+            --scope full --output artifacts/collaborations-full/analysis \
+            --start-year 1980 --end-year 2025 \
+            --min-votes 0 100 1000 5000 10000 --min-history-years 2 3 \
+            2>&1 | tee results/collaborations-full.log
+      - name: Independently recalculate counts and averages with DuckDB
+        timeout-minutes: 70
+        run: |
+          set -euo pipefail
+          python peer-source/project/collaborations/audit_sql.py \
+            results/cloud-prepared/clean artifacts/collaborations-full/analysis/summary.json \
+            | tee artifacts/collaborations-full/INDEPENDENT_AUDIT.json
+          python - <<'PYTHON'
+          import csv, hashlib, json
+          from pathlib import Path
+          root = Path('artifacts/collaborations-full')
+          summary = json.loads((root / 'analysis/summary.json').read_text())
+          audit = json.loads((root / 'INDEPENDENT_AUDIT.json').read_text())
+          assert summary['scope'] == audit['scope'] == 'full'
+          assert audit['verified_cells'] == len(summary['comparisons']) == 10
+          with (root / 'comparisons.csv').open('w', newline='') as out:
+              writer = csv.DictWriter(out, fieldnames=list(summary['comparisons'][0]))
+              writer.writeheader()
+              writer.writerows(summary['comparisons'])
+          files = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+                   for p in root.rglob('*') if p.is_file() and not p.name.startswith('.')}
+          (root / 'VERIFIED_FOR_PEER_REVIEW.json').write_text(json.dumps(dict(
+              scope='full', student_validated=False, independently_verified_cells=10,
+              files_sha256=files), indent=2)+'\n')
+          PYTHON
+      - name: Preserve results and provenance even if the verifier fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: imdb-collaborations-full-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            artifacts/collaborations-full/
+            results/collaborations-full.log
+          retention-days: 90
+          if-no-files-found: error
+      - name: Publish small verified results on Nicolas existing branch
+        if: success()
+        run: |
+          set -euo pipefail
+          git fetch origin feat/imdb-full-analysis
+          if [ "$(git rev-parse FETCH_HEAD)" != "$GITHUB_SHA" ]; then
+            echo 'Branch moved; recover verified results from the artifact.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git checkout -B feat/imdb-full-analysis "$GITHUB_SHA"
+          target=validation/collaborations-full-43093003953
+          mkdir -p "$target"
+          cp artifacts/collaborations-full/*.json artifacts/collaborations-full/*.csv "$target/"
+          cp artifacts/collaborations-full/analysis/summary.json "$target/"
+          git add -- "$target"
+          git -c user.name='Nicolas Rihana' -c user.email='nrihana1@gmail.com' commit --only \
+            -m 'Record independently verified full-history collaboration calculations' -- "$target"
+          git push origin HEAD:refs/heads/feat/imdb-full-analysis

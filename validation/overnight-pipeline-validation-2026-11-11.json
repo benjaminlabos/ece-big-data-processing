@@ -1,0 +1,26 @@
+{
+  "scope": "controlled_multijob_checkpoint_validation_not_full_batch_success",
+  "tests": {
+    "passed": 42,
+    "seconds": 121.52,
+    "spark": "4.2.0"
+  },
+  "checkpoint_phases": [
+    "name.basics",
+    "title.episode",
+    "title.ratings"
+  ],
+  "checks": [
+    "All seven final tables equal uninterrupted fixture run",
+    "All seven metric dictionaries and 39 profiles equal baseline",
+    "Partial prefixes publish CHECKPOINT without SUCCESS and are refused by downstream reader",
+    "Modern checkpoint context validated on each resume",
+    "Six-job dependency graph and cache source/path matching checked",
+    "Small profile and language artifacts independent of old heavy cache eviction",
+    "No fallback source download or cross-run cache restore"
+  ],
+  "hosted_job_limit_hours": 6,
+  "configured_compute_job_limit_minutes": 350,
+  "workflow_can_exceed_six_hours": true,
+  "guaranteed_completion_before_morning": false
+}

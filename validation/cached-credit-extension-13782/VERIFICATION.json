@@ -1,0 +1,12 @@
+{
+  "scope": "real_input_generation_and_strict_collector_contract_not_live_collection",
+  "status": "passed",
+  "expected_lookup_ids": 25630,
+  "lookup_sets_unchanged": true,
+  "input_pairs": 32285,
+  "supplementary_pairs": 1060,
+  "new_requests": 0,
+  "unit_tests_passed": 7,
+  "raw_cache_rescanned": false,
+  "binome_confirmation": "pending"
+}

@@ -1,0 +1,120 @@
+{
+  "scope": "full",
+  "student_validated": false,
+  "spark_version": "4.2.0",
+  "completed_at_utc": "2026-11-12T00:40:55.894141+00:00",
+  "input_manifest_sha256": "aeb5effe20cab570e20fbd3a250309a0f081f7f3a203d02dfafca5da0c999cfd",
+  "start_year": 1980,
+  "end_year": 2025,
+  "include_self": false,
+  "diagnostics": {
+    "movie_pair_films_before_self_policy": 4379203,
+    "self_pair_films": 69179,
+    "pair_films_unknown_year": 177134,
+    "pair_films_in_period_without_rating": 729348,
+    "first_year_pair_films_in_period_before_vote_filter": 2568488,
+    "later_year_pair_films_in_period_before_vote_filter": 276227
+  },
+  "comparisons": [
+    {
+      "min_votes": 0,
+      "min_history_years": 2,
+      "pairs": 108766,
+      "first_year_pair_films": 113638,
+      "later_year_pair_films": 160885,
+      "mean_first_year_rating_per_pair": 5.975872769968676,
+      "mean_later_year_rating_per_pair": 5.802543360512754,
+      "mean_within_pair_change": -0.17332940945592182
+    },
+    {
+      "min_votes": 0,
+      "min_history_years": 3,
+      "pairs": 27603,
+      "first_year_pair_films": 29746,
+      "later_year_pair_films": 77120,
+      "mean_first_year_rating_per_pair": 6.055184476440046,
+      "mean_later_year_rating_per_pair": 5.868473010709314,
+      "mean_within_pair_change": -0.18671146573072994
+    },
+    {
+      "min_votes": 100,
+      "min_history_years": 2,
+      "pairs": 52108,
+      "first_year_pair_films": 53447,
+      "later_year_pair_films": 73664,
+      "mean_first_year_rating_per_pair": 5.979776841687776,
+      "mean_later_year_rating_per_pair": 5.710716883595769,
+      "mean_within_pair_change": -0.2690599580920093
+    },
+    {
+      "min_votes": 100,
+      "min_history_years": 3,
+      "pairs": 14185,
+      "first_year_pair_films": 14790,
+      "later_year_pair_films": 34949,
+      "mean_first_year_rating_per_pair": 6.073367054400189,
+      "mean_later_year_rating_per_pair": 5.773383412318757,
+      "mean_within_pair_change": -0.29998364208143
+    },
+    {
+      "min_votes": 1000,
+      "min_history_years": 2,
+      "pairs": 16884,
+      "first_year_pair_films": 17158,
+      "later_year_pair_films": 23023,
+      "mean_first_year_rating_per_pair": 6.5296913251204325,
+      "mean_later_year_rating_per_pair": 6.18198301883445,
+      "mean_within_pair_change": -0.3477083062859799
+    },
+    {
+      "min_votes": 1000,
+      "min_history_years": 3,
+      "pairs": 4971,
+      "first_year_pair_films": 5105,
+      "later_year_pair_films": 10976,
+      "mean_first_year_rating_per_pair": 6.622294306980489,
+      "mean_later_year_rating_per_pair": 6.262351899014453,
+      "mean_within_pair_change": -0.3599424079660333
+    },
+    {
+      "min_votes": 5000,
+      "min_history_years": 2,
+      "pairs": 6486,
+      "first_year_pair_films": 6549,
+      "later_year_pair_films": 8565,
+      "mean_first_year_rating_per_pair": 6.836709836571076,
+      "mean_later_year_rating_per_pair": 6.430578935916587,
+      "mean_within_pair_change": -0.40613090065448987
+    },
+    {
+      "min_votes": 5000,
+      "min_history_years": 3,
+      "pairs": 1776,
+      "first_year_pair_films": 1802,
+      "later_year_pair_films": 3805,
+      "mean_first_year_rating_per_pair": 6.986402027027029,
+      "mean_later_year_rating_per_pair": 6.580518944268946,
+      "mean_within_pair_change": -0.40588308275808277
+    },
+    {
+      "min_votes": 10000,
+      "min_history_years": 2,
+      "pairs": 4528,
+      "first_year_pair_films": 4572,
+      "later_year_pair_films": 5872,
+      "mean_first_year_rating_per_pair": 6.912974823321555,
+      "mean_later_year_rating_per_pair": 6.513968266715617,
+      "mean_within_pair_change": -0.39900655660593815
+    },
+    {
+      "min_votes": 10000,
+      "min_history_years": 3,
+      "pairs": 1229,
+      "first_year_pair_films": 1249,
+      "later_year_pair_films": 2554,
+      "mean_first_year_rating_per_pair": 7.045728234336858,
+      "mean_later_year_rating_per_pair": 6.6666381706170155,
+      "mean_within_pair_change": -0.37909006371984405
+    }
+  ]
+}

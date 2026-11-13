@@ -1,0 +1,63 @@
+{
+  "policy_version": "v2-cached-supplement-13782",
+  "decision_owner": "Nicolas",
+  "binome_confirmation": "pending",
+  "student_validated": false,
+  "categories": "same IMDb principal categories as baseline, including self and archives",
+  "primary_policy_unchanged": true,
+  "initial_reserves_unchanged": true,
+  "maximum_supplementary_credits_per_film": 3,
+  "supplementary_source_commit": "4ad5567",
+  "scope": "versioned_inputs_and_frozen_snapshot_projection_not_final_spark_results",
+  "films": 6256,
+  "distinct_people": 19374,
+  "primary_pairs": 18761,
+  "initial_reserve_pairs": 12464,
+  "supplementary_pairs": 1060,
+  "reserve_pairs": 13524,
+  "input_pairs": 32285,
+  "additional_wikimedia_requests": 0,
+  "new_lookup_ids": 0,
+  "source_prepared_sha256": "c6ba4f0b9b77110079f65b91cea6b8da4066ba4c1f11eee8836ea823fc03ae74",
+  "source_snapshot": {
+    "cache_records": 13782,
+    "sha256": "e2ad59a3b19c53b031227e3749fe3ab2282a8c03f0e84a39d4569dcad5e9d35e"
+  },
+  "raw_cache_independently_rescanned": false,
+  "projected_gain_on_same_frozen_snapshot": {
+    "three_biographies": 417,
+    "synopsis_and_three": 62
+  },
+  "baseline_fingerprints": {
+    "selected-titles.csv": {
+      "observed_sha256": "757d0caa2c8993747d215993a7efa36bb506cf10786aac9fe86d88e0180c766f",
+      "lf_sha256": "757d0caa2c8993747d215993a7efa36bb506cf10786aac9fe86d88e0180c766f"
+    },
+    "top10.csv": {
+      "observed_sha256": "191cb0c8d3ae8bcbc990e7d512c2b74e672b324f64000eca0db83ca44f7175dc",
+      "lf_sha256": "191cb0c8d3ae8bcbc990e7d512c2b74e672b324f64000eca0db83ca44f7175dc"
+    },
+    "primary.csv": {
+      "observed_sha256": "11bd009a3f1d8c12f5c53327111d5979831908f426e7b10395ddc8504c2a2391",
+      "lf_sha256": "11bd009a3f1d8c12f5c53327111d5979831908f426e7b10395ddc8504c2a2391"
+    },
+    "reserves.csv": {
+      "observed_sha256": "c8f4dff6999f7da31e198f89ea70cef0b745f187b6af8f7e1e8272eb6cdcb656",
+      "lf_sha256": "c8f4dff6999f7da31e198f89ea70cef0b745f187b6af8f7e1e8272eb6cdcb656"
+    },
+    "enrichment-input.csv": {
+      "observed_sha256": "5d7ab3af623e1bc276a183a4dbf586592366fb1cb62f68a05b53dcb25d330091",
+      "lf_sha256": "5d7ab3af623e1bc276a183a4dbf586592366fb1cb62f68a05b53dcb25d330091"
+    }
+  },
+  "files_sha256": {
+    "reserves.csv": "420c5ea612fd51d477412b5d4c8c003a5efef4e48b0cdf3210e4c22dc933c179",
+    "top10.csv": "191cb0c8d3ae8bcbc990e7d512c2b74e672b324f64000eca0db83ca44f7175dc",
+    "initial-reserves.csv": "c8f4dff6999f7da31e198f89ea70cef0b745f187b6af8f7e1e8272eb6cdcb656",
+    "supplementary-provenance.csv": "fd0831874fcfb102639d877ddd3b337e78352d9450948bae5eb8ae86da380d97",
+    "enrichment-input.csv": "4a8db8260069b8e263602c073240ed97ce72b25f49fffd2c1d089f32f6fd0892",
+    "primary.csv": "11bd009a3f1d8c12f5c53327111d5979831908f426e7b10395ddc8504c2a2391",
+    "supplementary.csv": "067eb5bf0871b4a115b12cfe799e465815601bf95252c84e2bb111c9f69fc75f",
+    "selected-titles.csv": "757d0caa2c8993747d215993a7efa36bb506cf10786aac9fe86d88e0180c766f"
+  }
+}

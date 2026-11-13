@@ -1,0 +1,1002 @@
+[
+  {
+    "nconst": "nm0000001",
+    "first_year": 1933,
+    "last_year": 1981,
+    "films": 39,
+    "peak_rating": 7.7,
+    "first_peak_year": 1935,
+    "last_peak_year": 1935,
+    "primaryName": "Fred Astaire"
+  },
+  {
+    "nconst": "nm0000006",
+    "first_year": 1935,
+    "last_year": 1978,
+    "films": 45,
+    "peak_rating": 8.5,
+    "first_peak_year": 1942,
+    "last_peak_year": 1942,
+    "primaryName": "Ingrid Bergman"
+  },
+  {
+    "nconst": "nm0000014",
+    "first_year": 1935,
+    "last_year": 2009,
+    "films": 47,
+    "peak_rating": 8.1,
+    "first_peak_year": 1949,
+    "last_peak_year": 1949,
+    "primaryName": "Olivia de Havilland"
+  },
+  {
+    "nconst": "nm0000018",
+    "first_year": 1946,
+    "last_year": 2004,
+    "films": 72,
+    "peak_rating": 8.4,
+    "first_peak_year": 1957,
+    "last_peak_year": 1957,
+    "primaryName": "Kirk Douglas"
+  },
+  {
+    "nconst": "nm0000021",
+    "first_year": 1935,
+    "last_year": 2012,
+    "films": 45,
+    "peak_rating": 8.0,
+    "first_peak_year": 1940,
+    "last_peak_year": 1940,
+    "primaryName": "Joan Fontaine"
+  },
+  {
+    "nconst": "nm0000030",
+    "first_year": 1948,
+    "last_year": 1989,
+    "films": 25,
+    "peak_rating": 8.0,
+    "first_peak_year": 1953,
+    "last_peak_year": 1953,
+    "primaryName": "Audrey Hepburn"
+  },
+  {
+    "nconst": "nm0000036",
+    "first_year": 1920,
+    "last_year": 1966,
+    "films": 43,
+    "peak_rating": 8.1,
+    "first_peak_year": 1924,
+    "last_peak_year": 1926,
+    "primaryName": "Buster Keaton"
+  },
+  {
+    "nconst": "nm0000039",
+    "first_year": 1941,
+    "last_year": 1985,
+    "films": 44,
+    "peak_rating": 8.0,
+    "first_peak_year": 1943,
+    "last_peak_year": 1943,
+    "primaryName": "Deborah Kerr"
+  },
+  {
+    "nconst": "nm0000043",
+    "first_year": 1941,
+    "last_year": 1970,
+    "films": 21,
+    "peak_rating": 7.9,
+    "first_peak_year": 1941,
+    "last_peak_year": 1941,
+    "primaryName": "Veronica Lake"
+  },
+  {
+    "nconst": "nm0000046",
+    "first_year": 1935,
+    "last_year": 1965,
+    "films": 18,
+    "peak_rating": 8.2,
+    "first_peak_year": 1939,
+    "last_peak_year": 1939,
+    "primaryName": "Vivien Leigh"
+  },
+  {
+    "nconst": "nm0000050",
+    "first_year": 1929,
+    "last_year": 1990,
+    "films": 19,
+    "peak_rating": 7.8,
+    "first_peak_year": 1935,
+    "last_peak_year": 1935,
+    "primaryName": "Groucho Marx"
+  },
+  {
+    "nconst": "nm0000053",
+    "first_year": 1943,
+    "last_year": 1997,
+    "films": 99,
+    "peak_rating": 7.9,
+    "first_peak_year": 1947,
+    "last_peak_year": 1955,
+    "primaryName": "Robert Mitchum"
+  },
+  {
+    "nconst": "nm0000057",
+    "first_year": 1935,
+    "last_year": 1983,
+    "films": 83,
+    "peak_rating": 8.0,
+    "first_peak_year": 1946,
+    "last_peak_year": 1946,
+    "primaryName": "David Niven"
+  },
+  {
+    "nconst": "nm0000058",
+    "first_year": 1938,
+    "last_year": 1991,
+    "films": 54,
+    "peak_rating": 7.9,
+    "first_peak_year": 1947,
+    "last_peak_year": 1947,
+    "primaryName": "Maureen O'Hara"
+  },
+  {
+    "nconst": "nm0000059",
+    "first_year": 1930,
+    "last_year": 1989,
+    "films": 53,
+    "peak_rating": 8.0,
+    "first_peak_year": 1940,
+    "last_peak_year": 1940,
+    "primaryName": "Laurence Olivier"
+  },
+  {
+    "nconst": "nm0000071",
+    "first_year": 1935,
+    "last_year": 1991,
+    "films": 78,
+    "peak_rating": 8.6,
+    "first_peak_year": 1946,
+    "last_peak_year": 1946,
+    "primaryName": "James Stewart"
+  },
+  {
+    "nconst": "nm0000074",
+    "first_year": 1940,
+    "last_year": 1964,
+    "films": 36,
+    "peak_rating": 7.9,
+    "first_peak_year": 1944,
+    "last_peak_year": 1944,
+    "primaryName": "Gene Tierney"
+  },
+  {
+    "nconst": "nm0000079",
+    "first_year": 1965,
+    "last_year": 2017,
+    "films": 29,
+    "peak_rating": 7.2,
+    "first_peak_year": 1973,
+    "last_peak_year": 1973,
+    "primaryName": "Raquel Welch"
+  },
+  {
+    "nconst": "nm0000080",
+    "first_year": 1937,
+    "last_year": 1987,
+    "films": 77,
+    "peak_rating": 8.2,
+    "first_peak_year": 1941,
+    "last_peak_year": 1941,
+    "primaryName": "Orson Welles"
+  },
+  {
+    "nconst": "nm0000081",
+    "first_year": 1946,
+    "last_year": 1983,
+    "films": 43,
+    "peak_rating": 7.9,
+    "first_peak_year": 1947,
+    "last_peak_year": 1947,
+    "primaryName": "Natalie Wood"
+  },
+  {
+    "nconst": "nm0000084",
+    "first_year": 1988,
+    "last_year": 2020,
+    "films": 35,
+    "peak_rating": 8.3,
+    "first_peak_year": 1994,
+    "last_peak_year": 1994,
+    "primaryName": "Gong Li"
+  },
+  {
+    "nconst": "nm0000087",
+    "first_year": 1973,
+    "last_year": 2022,
+    "films": 27,
+    "peak_rating": 7.9,
+    "first_peak_year": 1979,
+    "last_peak_year": 1979,
+    "primaryName": "Elena Koreneva"
+  },
+  {
+    "nconst": "nm0000092",
+    "first_year": 1968,
+    "last_year": 2024,
+    "films": 64,
+    "peak_rating": 8.1,
+    "first_peak_year": 1975,
+    "last_peak_year": 1975,
+    "primaryName": "John Cleese"
+  },
+  {
+    "nconst": "nm0000095",
+    "first_year": 1965,
+    "last_year": 2018,
+    "films": 39,
+    "peak_rating": 7.9,
+    "first_peak_year": 1977,
+    "last_peak_year": 1977,
+    "primaryName": "Woody Allen"
+  },
+  {
+    "nconst": "nm0000098",
+    "first_year": 1993,
+    "last_year": 2023,
+    "films": 37,
+    "peak_rating": 8.1,
+    "first_peak_year": 1999,
+    "last_peak_year": 1999,
+    "primaryName": "Jennifer Aniston"
+  },
+  {
+    "nconst": "nm0000101",
+    "first_year": 1976,
+    "last_year": 2025,
+    "films": 66,
+    "peak_rating": 7.9,
+    "first_peak_year": 1980,
+    "last_peak_year": 1980,
+    "primaryName": "Dan Aykroyd"
+  },
+  {
+    "nconst": "nm0000106",
+    "first_year": 1980,
+    "last_year": 2026,
+    "films": 45,
+    "peak_rating": 7.9,
+    "first_peak_year": 1982,
+    "last_peak_year": 1982,
+    "primaryName": "Drew Barrymore"
+  },
+  {
+    "nconst": "nm0000110",
+    "first_year": 1987,
+    "last_year": 2026,
+    "films": 40,
+    "peak_rating": 8.1,
+    "first_peak_year": 1995,
+    "last_peak_year": 1995,
+    "primaryName": "Kenneth Branagh"
+  },
+  {
+    "nconst": "nm0000114",
+    "first_year": 1985,
+    "last_year": 2026,
+    "films": 92,
+    "peak_rating": 8.2,
+    "first_peak_year": 1992,
+    "last_peak_year": 1992,
+    "primaryName": "Steve Buscemi"
+  },
+  {
+    "nconst": "nm0000126",
+    "first_year": 1981,
+    "last_year": 2024,
+    "films": 51,
+    "peak_rating": 8.0,
+    "first_peak_year": 1990,
+    "last_peak_year": 1991,
+    "primaryName": "Kevin Costner"
+  },
+  {
+    "nconst": "nm0000133",
+    "first_year": 1982,
+    "last_year": 2023,
+    "films": 23,
+    "peak_rating": 7.6,
+    "first_peak_year": 1986,
+    "last_peak_year": 1991,
+    "primaryName": "Geena Davis"
+  },
+  {
+    "nconst": "nm0000134",
+    "first_year": 1968,
+    "last_year": 2026,
+    "films": 101,
+    "peak_rating": 9.0,
+    "first_peak_year": 1974,
+    "last_peak_year": 1974,
+    "primaryName": "Robert De Niro"
+  },
+  {
+    "nconst": "nm0000139",
+    "first_year": 1994,
+    "last_year": 2026,
+    "films": 40,
+    "peak_rating": 7.9,
+    "first_peak_year": 2001,
+    "last_peak_year": 2001,
+    "primaryName": "Cameron Diaz"
+  },
+  {
+    "nconst": "nm0000142",
+    "first_year": 1955,
+    "last_year": 2021,
+    "films": 53,
+    "peak_rating": 8.8,
+    "first_peak_year": 1966,
+    "last_peak_year": 1966,
+    "primaryName": "Clint Eastwood"
+  },
+  {
+    "nconst": "nm0000143",
+    "first_year": 1982,
+    "last_year": 2017,
+    "films": 23,
+    "peak_rating": 7.9,
+    "first_peak_year": 1982,
+    "last_peak_year": 1982,
+    "primaryName": "Erika Eleniak"
+  },
+  {
+    "nconst": "nm0000144",
+    "first_year": 1984,
+    "last_year": 2025,
+    "films": 69,
+    "peak_rating": 8.0,
+    "first_peak_year": 1987,
+    "last_peak_year": 1987,
+    "primaryName": "Cary Elwes"
+  },
+  {
+    "nconst": "nm0000145",
+    "first_year": 1984,
+    "last_year": 2023,
+    "films": 37,
+    "peak_rating": 7.4,
+    "first_peak_year": 1992,
+    "last_peak_year": 1992,
+    "primaryName": "Sherilyn Fenn"
+  },
+  {
+    "nconst": "nm0000146",
+    "first_year": 1992,
+    "last_year": 2026,
+    "films": 64,
+    "peak_rating": 9.0,
+    "first_peak_year": 1993,
+    "last_peak_year": 1993,
+    "primaryName": "Ralph Fiennes"
+  },
+  {
+    "nconst": "nm0000148",
+    "first_year": 1967,
+    "last_year": 2025,
+    "films": 56,
+    "peak_rating": 8.7,
+    "first_peak_year": 1980,
+    "last_peak_year": 1980,
+    "primaryName": "Harrison Ford"
+  },
+  {
+    "nconst": "nm0000150",
+    "first_year": 1980,
+    "last_year": 2019,
+    "films": 28,
+    "peak_rating": 8.5,
+    "first_peak_year": 1985,
+    "last_peak_year": 1985,
+    "primaryName": "Michael J. Fox"
+  },
+  {
+    "nconst": "nm0000157",
+    "first_year": 1982,
+    "last_year": 2026,
+    "films": 28,
+    "peak_rating": 8.6,
+    "first_peak_year": 1991,
+    "last_peak_year": 1991,
+    "primaryName": "Linda Hamilton"
+  },
+  {
+    "nconst": "nm0000162",
+    "first_year": 1993,
+    "last_year": 2023,
+    "films": 40,
+    "peak_rating": 7.7,
+    "first_peak_year": 1997,
+    "last_peak_year": 1997,
+    "primaryName": "Anne Heche"
+  },
+  {
+    "nconst": "nm0000165",
+    "first_year": 1959,
+    "last_year": 2001,
+    "films": 15,
+    "peak_rating": 7.7,
+    "first_peak_year": 1962,
+    "last_peak_year": 1962,
+    "primaryName": "Ron Howard"
+  },
+  {
+    "nconst": "nm0000167",
+    "first_year": 1988,
+    "last_year": 2024,
+    "films": 25,
+    "peak_rating": 7.0,
+    "first_peak_year": 1997,
+    "last_peak_year": 1997,
+    "primaryName": "Elizabeth Hurley"
+  },
+  {
+    "nconst": "nm0000168",
+    "first_year": 1987,
+    "last_year": 2026,
+    "films": 112,
+    "peak_rating": 8.8,
+    "first_peak_year": 1994,
+    "last_peak_year": 1994,
+    "primaryName": "Samuel L. Jackson"
+  },
+  {
+    "nconst": "nm0000170",
+    "first_year": 1988,
+    "last_year": 2025,
+    "films": 41,
+    "peak_rating": 7.6,
+    "first_peak_year": 1993,
+    "last_peak_year": 1997,
+    "primaryName": "Milla Jovovich"
+  },
+  {
+    "nconst": "nm0000171",
+    "first_year": 1992,
+    "last_year": 2024,
+    "films": 38,
+    "peak_rating": 8.3,
+    "first_peak_year": 1995,
+    "last_peak_year": 1995,
+    "primaryName": "Ashley Judd"
+  },
+  {
+    "nconst": "nm0000176",
+    "first_year": 1975,
+    "last_year": 2026,
+    "films": 53,
+    "peak_rating": 8.1,
+    "first_peak_year": 1984,
+    "last_peak_year": 1984,
+    "primaryName": "Nastassja Kinski"
+  },
+  {
+    "nconst": "nm0000177",
+    "first_year": 1982,
+    "last_year": 2025,
+    "films": 49,
+    "peak_rating": 7.5,
+    "first_peak_year": 1982,
+    "last_peak_year": 1992,
+    "primaryName": "Kevin Kline"
+  },
+  {
+    "nconst": "nm0000188",
+    "first_year": 1978,
+    "last_year": 2016,
+    "films": 41,
+    "peak_rating": 7.6,
+    "first_peak_year": 1987,
+    "last_peak_year": 1987,
+    "primaryName": "Steve Martin"
+  },
+  {
+    "nconst": "nm0000191",
+    "first_year": 1994,
+    "last_year": 2026,
+    "films": 71,
+    "peak_rating": 8.1,
+    "first_peak_year": 1996,
+    "last_peak_year": 1996,
+    "primaryName": "Ewan McGregor"
+  },
+  {
+    "nconst": "nm0000192",
+    "first_year": 1984,
+    "last_year": 2026,
+    "films": 22,
+    "peak_rating": 6.7,
+    "first_peak_year": 1985,
+    "last_peak_year": 1985,
+    "primaryName": "Alyssa Milano"
+  },
+  {
+    "nconst": "nm0000193",
+    "first_year": 1981,
+    "last_year": 2026,
+    "films": 44,
+    "peak_rating": 7.8,
+    "first_peak_year": 1992,
+    "last_peak_year": 1992,
+    "primaryName": "Demi Moore"
+  },
+  {
+    "nconst": "nm0000194",
+    "first_year": 1990,
+    "last_year": 2026,
+    "films": 72,
+    "peak_rating": 8.1,
+    "first_peak_year": 1998,
+    "last_peak_year": 1998,
+    "primaryName": "Julianne Moore"
+  },
+  {
+    "nconst": "nm0000199",
+    "first_year": 1971,
+    "last_year": 2026,
+    "films": 60,
+    "peak_rating": 9.2,
+    "first_peak_year": 1972,
+    "last_peak_year": 1972,
+    "primaryName": "Al Pacino"
+  },
+  {
+    "nconst": "nm0000200",
+    "first_year": 1981,
+    "last_year": 2017,
+    "films": 55,
+    "peak_rating": 8.4,
+    "first_peak_year": 1986,
+    "last_peak_year": 1986,
+    "primaryName": "Bill Paxton"
+  },
+  {
+    "nconst": "nm0000201",
+    "first_year": 1980,
+    "last_year": 2025,
+    "films": 47,
+    "peak_rating": 8.3,
+    "first_peak_year": 1983,
+    "last_peak_year": 1983,
+    "primaryName": "Michelle Pfeiffer"
+  },
+  {
+    "nconst": "nm0000204",
+    "first_year": 1994,
+    "last_year": 2026,
+    "films": 41,
+    "peak_rating": 8.5,
+    "first_peak_year": 1994,
+    "last_peak_year": 1994,
+    "primaryName": "Natalie Portman"
+  },
+  {
+    "nconst": "nm0000205",
+    "first_year": 1994,
+    "last_year": 2025,
+    "films": 49,
+    "peak_rating": 7.5,
+    "first_peak_year": 2000,
+    "last_peak_year": 2000,
+    "primaryName": "Parker Posey"
+  },
+  {
+    "nconst": "nm0000207",
+    "first_year": 1990,
+    "last_year": 2026,
+    "films": 50,
+    "peak_rating": 7.4,
+    "first_peak_year": 1998,
+    "last_peak_year": 1998,
+    "primaryName": "Christina Ricci"
+  },
+  {
+    "nconst": "nm0000208",
+    "first_year": 1982,
+    "last_year": 2025,
+    "films": 33,
+    "peak_rating": 7.8,
+    "first_peak_year": 1985,
+    "last_peak_year": 1985,
+    "primaryName": "Molly Ringwald"
+  },
+  {
+    "nconst": "nm0000212",
+    "first_year": 1981,
+    "last_year": 2023,
+    "films": 35,
+    "peak_rating": 7.7,
+    "first_peak_year": 1989,
+    "last_peak_year": 1989,
+    "primaryName": "Meg Ryan"
+  },
+  {
+    "nconst": "nm0000214",
+    "first_year": 1985,
+    "last_year": 2024,
+    "films": 18,
+    "peak_rating": 7.8,
+    "first_peak_year": 1986,
+    "last_peak_year": 1986,
+    "primaryName": "Mia Sara"
+  },
+  {
+    "nconst": "nm0000218",
+    "first_year": 1986,
+    "last_year": 2026,
+    "films": 67,
+    "peak_rating": 7.9,
+    "first_peak_year": 1996,
+    "last_peak_year": 1996,
+    "primaryName": "Kristin Scott Thomas"
+  },
+  {
+    "nconst": "nm0000220",
+    "first_year": 1989,
+    "last_year": 2014,
+    "films": 16,
+    "peak_rating": 6.9,
+    "first_peak_year": 1989,
+    "last_peak_year": 1989,
+    "primaryName": "Joan Severance"
+  },
+  {
+    "nconst": "nm0000221",
+    "first_year": 1983,
+    "last_year": 2019,
+    "films": 46,
+    "peak_rating": 8.0,
+    "first_peak_year": 1986,
+    "last_peak_year": 1986,
+    "primaryName": "Charlie Sheen"
+  },
+  {
+    "nconst": "nm0000222",
+    "first_year": 1976,
+    "last_year": 2026,
+    "films": 33,
+    "peak_rating": 6.5,
+    "first_peak_year": 1978,
+    "last_peak_year": 1978,
+    "primaryName": "Brooke Shields"
+  },
+  {
+    "nconst": "nm0000223",
+    "first_year": 1984,
+    "last_year": 2026,
+    "films": 39,
+    "peak_rating": 7.8,
+    "first_peak_year": 1989,
+    "last_peak_year": 1989,
+    "primaryName": "Elisabeth Shue"
+  },
+  {
+    "nconst": "nm0000225",
+    "first_year": 1985,
+    "last_year": 2026,
+    "films": 74,
+    "peak_rating": 7.9,
+    "first_peak_year": 1993,
+    "last_peak_year": 1993,
+    "primaryName": "Christian Slater"
+  },
+  {
+    "nconst": "nm0000228",
+    "first_year": 1988,
+    "last_year": 2026,
+    "films": 57,
+    "peak_rating": 8.6,
+    "first_peak_year": 1995,
+    "last_peak_year": 1995,
+    "primaryName": "Kevin Spacey"
+  },
+  {
+    "nconst": "nm0000230",
+    "first_year": 1970,
+    "last_year": 2025,
+    "films": 61,
+    "peak_rating": 8.1,
+    "first_peak_year": 1976,
+    "last_peak_year": 1976,
+    "primaryName": "Sylvester Stallone"
+  },
+  {
+    "nconst": "nm0000235",
+    "first_year": 1987,
+    "last_year": 2025,
+    "films": 45,
+    "peak_rating": 8.8,
+    "first_peak_year": 1994,
+    "last_peak_year": 1994,
+    "primaryName": "Uma Thurman"
+  },
+  {
+    "nconst": "nm0000238",
+    "first_year": 1983,
+    "last_year": 2015,
+    "films": 29,
+    "peak_rating": 6.1,
+    "first_peak_year": 1983,
+    "last_peak_year": 1983,
+    "primaryName": "Shannon Tweed"
+  },
+  {
+    "nconst": "nm0000240",
+    "first_year": 1996,
+    "last_year": 2025,
+    "films": 23,
+    "peak_rating": 7.7,
+    "first_peak_year": 1997,
+    "last_peak_year": 1997,
+    "primaryName": "Skeet Ulrich"
+  },
+  {
+    "nconst": "nm0000246",
+    "first_year": 1987,
+    "last_year": 2023,
+    "films": 101,
+    "peak_rating": 8.8,
+    "first_peak_year": 1994,
+    "last_peak_year": 1994,
+    "primaryName": "Bruce Willis"
+  },
+  {
+    "nconst": "nm0000254",
+    "first_year": 1970,
+    "last_year": 2025,
+    "films": 45,
+    "peak_rating": 7.5,
+    "first_peak_year": 1976,
+    "last_peak_year": 1976,
+    "primaryName": "Isabelle Adjani"
+  },
+  {
+    "nconst": "nm0000255",
+    "first_year": 1992,
+    "last_year": 2026,
+    "films": 51,
+    "peak_rating": 8.4,
+    "first_peak_year": 1997,
+    "last_peak_year": 1997,
+    "primaryName": "Ben Affleck"
+  },
+  {
+    "nconst": "nm0000256",
+    "first_year": 1964,
+    "last_year": 2024,
+    "films": 32,
+    "peak_rating": 7.6,
+    "first_peak_year": 1971,
+    "last_peak_year": 1971,
+    "primaryName": "Jenny Agutter"
+  },
+  {
+    "nconst": "nm0000261",
+    "first_year": 1978,
+    "last_year": 2026,
+    "films": 39,
+    "peak_rating": 8.4,
+    "first_peak_year": 1981,
+    "last_peak_year": 1981,
+    "primaryName": "Karen Allen"
+  },
+  {
+    "nconst": "nm0000263",
+    "first_year": 1981,
+    "last_year": 2015,
+    "films": 21,
+    "peak_rating": 6.8,
+    "first_peak_year": 1988,
+    "last_peak_year": 1988,
+    "primaryName": "Kirstie Alley"
+  },
+  {
+    "nconst": "nm0000266",
+    "first_year": 1955,
+    "last_year": 2005,
+    "films": 33,
+    "peak_rating": 7.2,
+    "first_peak_year": 1962,
+    "last_peak_year": 1962,
+    "primaryName": "Ursula Andress"
+  },
+  {
+    "nconst": "nm0000267",
+    "first_year": 1964,
+    "last_year": 2022,
+    "films": 29,
+    "peak_rating": 8.1,
+    "first_peak_year": 1965,
+    "last_peak_year": 1965,
+    "primaryName": "Julie Andrews"
+  },
+  {
+    "nconst": "nm0000268",
+    "first_year": 1962,
+    "last_year": 2021,
+    "films": 49,
+    "peak_rating": 7.2,
+    "first_peak_year": 1965,
+    "last_peak_year": 1965,
+    "primaryName": "Ann-Margret"
+  },
+  {
+    "nconst": "nm0000270",
+    "first_year": 1991,
+    "last_year": 2011,
+    "films": 25,
+    "peak_rating": 8.0,
+    "first_peak_year": 1992,
+    "last_peak_year": 1992,
+    "primaryName": "Gabrielle Anwar"
+  },
+  {
+    "nconst": "nm0000274",
+    "first_year": 1992,
+    "last_year": 2026,
+    "films": 68,
+    "peak_rating": 7.5,
+    "first_peak_year": 1996,
+    "last_peak_year": 1996,
+    "primaryName": "David Arquette"
+  },
+  {
+    "nconst": "nm0000275",
+    "first_year": 1983,
+    "last_year": 2026,
+    "films": 66,
+    "peak_rating": 7.6,
+    "first_peak_year": 1985,
+    "last_peak_year": 1985,
+    "primaryName": "Rosanna Arquette"
+  },
+  {
+    "nconst": "nm0000279",
+    "first_year": 1994,
+    "last_year": 2022,
+    "films": 27,
+    "peak_rating": 7.5,
+    "first_peak_year": 1994,
+    "last_peak_year": 1994,
+    "primaryName": "Hank Azaria"
+  },
+  {
+    "nconst": "nm0000284",
+    "first_year": 1980,
+    "last_year": 2024,
+    "films": 39,
+    "peak_rating": 8.2,
+    "first_peak_year": 1987,
+    "last_peak_year": 1987,
+    "primaryName": "Adam Baldwin"
+  },
+  {
+    "nconst": "nm0000286",
+    "first_year": 1988,
+    "last_year": 2024,
+    "films": 57,
+    "peak_rating": 8.5,
+    "first_peak_year": 1995,
+    "last_peak_year": 1995,
+    "primaryName": "Stephen Baldwin"
+  },
+  {
+    "nconst": "nm0000289",
+    "first_year": 1982,
+    "last_year": 2023,
+    "films": 43,
+    "peak_rating": 7.6,
+    "first_peak_year": 1986,
+    "last_peak_year": 1986,
+    "primaryName": "Ellen Barkin"
+  },
+  {
+    "nconst": "nm0000292",
+    "first_year": 1981,
+    "last_year": 2026,
+    "films": 42,
+    "peak_rating": 6.2,
+    "first_peak_year": 1982,
+    "last_peak_year": 1982,
+    "primaryName": "Michelle Bauer"
+  },
+  {
+    "nconst": "nm0000296",
+    "first_year": 1982,
+    "last_year": 2018,
+    "films": 16,
+    "peak_rating": 6.8,
+    "first_peak_year": 1982,
+    "last_peak_year": 1982,
+    "primaryName": "Robert Beltran"
+  },
+  {
+    "nconst": "nm0000299",
+    "first_year": 1978,
+    "last_year": 2026,
+    "films": 61,
+    "peak_rating": 8.4,
+    "first_peak_year": 1986,
+    "last_peak_year": 1986,
+    "primaryName": "Michael Biehn"
+  },
+  {
+    "nconst": "nm0000300",
+    "first_year": 1985,
+    "last_year": 2026,
+    "films": 67,
+    "peak_rating": 7.8,
+    "first_peak_year": 1993,
+    "last_peak_year": 1993,
+    "primaryName": "Juliette Binoche"
+  },
+  {
+    "nconst": "nm0000301",
+    "first_year": 1991,
+    "last_year": 2025,
+    "films": 28,
+    "peak_rating": 8.3,
+    "first_peak_year": 1999,
+    "last_peak_year": 1999,
+    "primaryName": "Thora Birch"
+  },
+  {
+    "nconst": "nm0000302",
+    "first_year": 1967,
+    "last_year": 2026,
+    "films": 64,
+    "peak_rating": 8.0,
+    "first_peak_year": 1973,
+    "last_peak_year": 1973,
+    "primaryName": "Jacqueline Bisset"
+  },
+  {
+    "nconst": "nm0000303",
+    "first_year": 1948,
+    "last_year": 2012,
+    "films": 42,
+    "peak_rating": 7.9,
+    "first_peak_year": 1958,
+    "last_peak_year": 1958,
+    "primaryName": "Honor Blackman"
+  },
+  {
+    "nconst": "nm0000304",
+    "first_year": 1970,
+    "last_year": 2021,
+    "films": 31,
+    "peak_rating": 8.1,
+    "first_peak_year": 1973,
+    "last_peak_year": 1973,
+    "primaryName": "Linda Blair"
+  },
+  {
+    "nconst": "nm0000312",
+    "first_year": 1995,
+    "last_year": 2021,
+    "films": 20,
+    "peak_rating": 8.3,
+    "first_peak_year": 1995,
+    "last_peak_year": 1995,
+    "primaryName": "Amy Brenneman"
+  },
+  {
+    "nconst": "nm0000316",
+    "first_year": 1970,
+    "last_year": 2026,
+    "films": 18,
+    "peak_rating": 7.7,
+    "first_peak_year": 1974,
+    "last_peak_year": 1974,
+    "primaryName": "Mel Brooks"
+  }
+]
