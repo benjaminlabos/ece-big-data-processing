@@ -176,6 +176,22 @@ Après décision du binôme, refaire le rapprochement sur le cache final, conser
 
 Le rapprochement sur le cache final a identifié 342 couples complémentaires avec une biographie disponible. Leur ajout ferait passer 220 films au seuil de trois biographies, dont 152 avec un synopsis. Ce calcul utilise les crédits de la même préparation IMDb et les textes déjà en cache. Les résultats publiés ci-dessus utilisent la sélection initiale. [Rapprochement final dans le manifeste](evidence/final-enrichment-2026-11-12.json)
 
+### Exécution Spark avec les entrées v2 de la PR #8
+
+Le 13 novembre, Spark 4.2.0 a retraité le même cache final et les 1 060 couples exacts de la PR #8 au commit `0746647`. La variante conserve les 18 761 prioritaires et les 12 464 réserves initiales, pour 32 285 couples et les mêmes 25 630 identifiants traités. Les catégories `self`, `archive_footage` et `archive_sound` restent admises. Les compléments sont bornés à trois par film. Le calcul est disponible pour la décision du binôme.
+
+| Couverture | Sélection initiale | Entrées v2 |
+| --- | ---: | ---: |
+| Synopsis | 5 174 | 5 174 |
+| Biographies distinctes | 13 159 | 13 159 |
+| Films ayant au moins trois biographies | 5 229 | 5 369 |
+| Films ayant aussi un synopsis | 4 608 | 4 710 |
+| Films incomplets | 1 648 | 1 546 |
+
+Les réserves initiales permettent à 970 films d’atteindre trois biographies. Les compléments v2 en ajoutent 140, dont 102 avec un synopsis. Les cinq cas avec moins de trois candidats restent présents. Le rapprochement de 342 couples sur le cache complet et la projection de 417 films sur le cache intermédiaire figurent dans leurs preuves respectives. [Manifeste v2](evidence/final-enrichment-v2-2026-11-13.json) · [979 groupes](evidence/coverage-by-year-genre-v2-2026-11-13.csv) · [Films incomplets](evidence/incomplete-films-v2-2026-11-13.csv) · [Films qui passent le seuil](evidence/supplement-gains-v2-2026-11-13.csv)
+
+Pour rejouer v2, récupérer l’archive de reproduction auprès du binôme et vérifier son SHA-256 dans le manifeste. L’archive contient les entrées versionnées de la PR #8, la sauvegarde du cache, les reçus, les quatre Parquet et les instructions de restauration et d’audit. Pour utiliser une copie existante du cache, suivre les commandes Spark et PyArrow ci-dessus en définissant `$inputs` sur le dossier `inputs` v2 et en choisissant un nouveau dossier de sortie. Utiliser `--require-complete` pour vérifier que tous les identifiants ont une réponse.
+
 ## Sorties
 
 - `work/results/films` contient une ligne par film.
