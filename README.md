@@ -11,17 +11,21 @@ Repository for the Big Data Processing labs and project at ECE.
 | Nicolas Rihana | [nicohris](https://github.com/nicohris) |
 | Benjamin Labos | [benjaminlabos](https://github.com/benjaminlabos) |
 
-## Project
+## Final project
 
 - [Installation and execution guide](PROJECT.md)
 - [Demonstration and verified results](validation/DEMONSTRATION-2026-11-13.md)
 - [Query export manifest and local reproduction](deliverables/query-outputs/)
 - [Factual tables for the personal report](validation/REPORT-FACTS-2026-11-12.md)
 
-## Labs
+## Course labs
 
-- [Spark RDD word count](02.introduction-and-rdds/lab_pyspark_jupyter_docker/word_count.ipynb)
+- [Spark RDD word count](labs/02.introduction-and-rdds/lab_pyspark_jupyter_docker/word_count.ipynb)
+- [Spark SQL and DataFrames](labs/03.sparksql-and-dataframes/)
+- [Kafka](labs/04.kafka_overview/)
 - [Structured Streaming — Wikimedia](05.structured-streaming/lab_docker_wikistreams/notebooks/wikistream_pyspark.ipynb)
+
+The Structured Streaming lab also provides the Docker setup used by the project.
 
 ## Bonus — Travaux facultatifs
 
