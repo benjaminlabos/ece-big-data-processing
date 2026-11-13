@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "scope": "offline_published_payload_provenance_and_counter_reconciliation",
+  "streaming": {
+    "events": 1845,
+    "eligible": 1311,
+    "matches": 7,
+    "pages": 6,
+    "demo_ids_in_current_full_imdb_catalog": 6,
+    "new_live_capture": false
+  },
+  "enrichment": {
+    "four_input_hashes_explained_by_windows_crlf": true,
+    "published_counters_reconciled": true,
+    "full_cache_independently_rescanned": false,
+    "collection_complete": false
+  },
+  "collaborations": {
+    "peer_full_summary_identical": true,
+    "six_peer_artifact_hashes_identical": true
+  },
+  "newline_details": {
+    "selected-titles.csv": "exact after LF to CRLF conversion",
+    "enrichment-input.csv": "exact after LF to CRLF conversion",
+    "primary.csv": "exact after LF to CRLF conversion",
+    "top10.csv": "exact after LF to CRLF conversion"
+  }
+}

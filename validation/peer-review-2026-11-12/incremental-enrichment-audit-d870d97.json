@@ -1,0 +1,10 @@
+{
+  "scope": "synthetic_auditor_acceptance_and_rejection_not_real_ben_cache",
+  "peer_commit": "d870d97c227147258690821750549f9e0915e3ee",
+  "status": "passed",
+  "pyarrow": "26.0.1",
+  "valid_complete_snapshot_accepted": true,
+  "incomplete_snapshot_rejected_with_require_complete": true,
+  "altered_source_provenance_rejected": true,
+  "real_final_snapshot_audited": false
+}

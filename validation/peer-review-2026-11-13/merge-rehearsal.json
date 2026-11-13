@@ -1,0 +1,62 @@
+{
+  "scope": "local_merge_rehearsal_not_github_main",
+  "base": "143127560f1dc182cd43cc4437e5b2bf2bdd424d",
+  "order": [
+    {
+      "pr": 1,
+      "head": "630fd4d723b7082d493929e761539a102b8a8d1e",
+      "conflicts": [],
+      "resolved": false
+    },
+    {
+      "pr": 4,
+      "head": "668954933a2af63809d0a27facf0cbc65db5f76c",
+      "conflicts": [],
+      "resolved": false
+    },
+    {
+      "pr": 5,
+      "head": "7790935f6db72fdd223b47b35bcff02f62ffdfb3",
+      "conflicts": [],
+      "resolved": false
+    },
+    {
+      "pr": 8,
+      "head": "07466477fec8a414a012c4cb411620135a71a64f",
+      "conflicts": [],
+      "resolved": false
+    },
+    {
+      "pr": 2,
+      "head": "e6e5933c177ec612fa93538002e0169240b4548a",
+      "conflicts": [
+        "PROJECT.md"
+      ],
+      "resolved": true
+    },
+    {
+      "pr": 3,
+      "head": "409f167f62cf571e72e0caffaa033a2800d1ac1a",
+      "conflicts": [],
+      "resolved": false
+    },
+    {
+      "pr": 6,
+      "head": "4bfbf2a0b7c37e66a66b2c8709255cff07e1bdc7",
+      "conflicts": [],
+      "resolved": false
+    }
+  ],
+  "code_equal_to_previously_audited_candidate": true,
+  "compared_paths": [
+    "imdb_preparation",
+    "project",
+    "scripts",
+    "tests",
+    "05.structured-streaming/lab_docker_wikistreams",
+    "requirements-preparation.txt",
+    "compose.preparation.yaml"
+  ],
+  "github_main_modified": false,
+  "merge_rehearsal_commit": "495efbab01473b2ac965ab97f7a68c464eccd0c1"
+}

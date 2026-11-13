@@ -1,0 +1,11 @@
+{
+  "scope": "controlled_materialized_review_acceptance_not_full_imdb",
+  "spark_version": "4.2.0",
+  "status": "passed",
+  "checks": [
+    "All nine materialized fixture outputs and Q2/Q3 totals accepted",
+    "Reversed popularity ordering rejected even with valid row values",
+    "A director violating the exactly-one-high-rating condition rejected",
+    "Tampered manifest counts rejected without a published success report"
+  ]
+}

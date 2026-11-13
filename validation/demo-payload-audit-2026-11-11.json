@@ -1,0 +1,10 @@
+{
+  "scope": "independent_offline_reconciliation_of_existing_demo_not_new_live_capture",
+  "status": "passed",
+  "sha256_verified": true,
+  "duplicate_event_ids": 0,
+  "kafka_records": 1845,
+  "eligible_wikipedia_edits": 1311,
+  "matched_events": 7,
+  "matched_pages": 6
+}

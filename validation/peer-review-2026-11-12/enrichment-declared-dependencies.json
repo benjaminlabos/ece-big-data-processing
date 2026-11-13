@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "beautifulsoup4": "4.14.3",
+  "pure_html_cases": 3,
+  "spark_output_verified": true
+}

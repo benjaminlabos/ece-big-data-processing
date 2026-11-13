@@ -1,0 +1,13 @@
+{
+  "commit": "4781544fbd2282088a2bb51ec156be40cd0fdc3e",
+  "source": "fresh_clone_of_public_github_main",
+  "test_command": "python -m pytest -q tests",
+  "result": "69 passed",
+  "duration_seconds": 133.61,
+  "python": "3.12.14",
+  "spark": "4.2.0",
+  "java": "21",
+  "log_sha256": "142a3c1a848b6e922409869cb6f509fbe909f27e04339413e5d76ab68aa77749",
+  "report_present": false,
+  "final_submission_ready": false
+}

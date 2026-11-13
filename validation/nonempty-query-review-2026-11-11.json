@@ -1,0 +1,17 @@
+{
+  "scope": "controlled_nonempty_query_fixtures_not_full_imdb",
+  "spark_version": "4.2.0",
+  "status": "passed",
+  "query_outputs_checked": [
+    "q1",
+    "q2",
+    "q3",
+    "q4",
+    "q5",
+    "q6",
+    "q7",
+    "q8",
+    "top10_per_genre_year"
+  ],
+  "existing_exploration_assertions": "passed"
+}

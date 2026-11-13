@@ -1,0 +1,27 @@
+{
+  "scope": "release_preparation_documentation_not_final_submission",
+  "local_links_checked": 15,
+  "merge_rehearsal": "merge-rehearsal.json",
+  "demo_payload": "../../results/demo-payload-audit.json",
+  "complete_csv_rows": {
+    "q1": 13640,
+    "q2": 138,
+    "q3": 92,
+    "q4": 47,
+    "q5": 535,
+    "q6": 5826,
+    "q7": 6158,
+    "q8": 127468,
+    "top10_per_genre_year": 9089
+  },
+  "free_question_comparisons": 10,
+  "github_main_modified": false,
+  "report_written": false,
+  "documents_sha256": {
+    "PROJECT.md": "a7c74e00e44ca72ca475802a57e865c17ccc11d41c3790ebd6cccef93fe997ad",
+    "validation/MERGE-PLAN-2026-11-13.md": "6fc342238ecca49438a3967fe205bfbe5dc90541ec9038be1b89ff12b4c65805",
+    "validation/DEMONSTRATION-2026-11-13.md": "899f1da48f004fdd55d4f0498f320c46afbe1075f21cfdbeeb004f73d34ac605",
+    "validation/REPORT-OUTLINE.md": "bc2b15a1e84b019bf34a7de3ed30ba4768b370f948545adb21d335e6959a04db"
+  },
+  "documents_sha256_scope": "Git blob bytes at this receipt commit"
+}

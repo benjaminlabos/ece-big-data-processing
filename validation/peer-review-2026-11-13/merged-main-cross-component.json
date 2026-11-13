@@ -1,0 +1,92 @@
+{
+  "main_commit": "4781544fbd2282088a2bb51ec156be40cd0fdc3e",
+  "status": "passed",
+  "production_code_equal_to_main": true,
+  "collector_unit_tests": 6,
+  "cross_component": {
+    "scope": "synthetic_cross_branch_contract_test_not_real_imdb",
+    "started_at_utc": "2026-11-13T10:20:03.702639+00:00",
+    "spark_version": "4.2.0",
+    "assertions": [
+      "Exported candidate CSV accepted by Benjamin strict reader",
+      "Streaming consumer accepts normalized producer CSV; blank and absent IDs rejected",
+      "Producer selection and top CSV feed Spark enrichment with exact coverage; complete cache does not imply three biographies",
+      "Collaborations consumes the actual seven-table producer schemas and handles insufficient history"
+    ],
+    "status": "passed",
+    "enrichment": {
+      "spark_version": "4.2.0",
+      "input_sha256": {
+        "candidates": "502cf5aaea62ed05cebb04e76fc81125e1b33401d70b866a60a8d7ce3bea1c46",
+        "titles": "575d558b1bdd17c77c6b1e5b47905c13d964528f3ed60b75afb799254eca3243",
+        "priority": "502cf5aaea62ed05cebb04e76fc81125e1b33401d70b866a60a8d7ce3bea1c46",
+        "top": "ebc042615d32b2fffddc09ce1a9a3be43d9a237bca06f1b36b9ea2bc2162fb8e"
+      },
+      "films_requested": 1,
+      "people_requested": 1,
+      "candidate_pairs": 1,
+      "films_by_status": {
+        "available": 1
+      },
+      "people_by_status": {
+        "available": 1
+      },
+      "credits_by_status": {
+        "available": 1
+      },
+      "films_with_three_biographies": 0,
+      "films_with_fewer_than_three_candidates": 1,
+      "films_reaching_three_with_reserves": 0,
+      "collection_complete": true
+    },
+    "streaming_reference_rows": 1,
+    "rejected_reference_rows": 2,
+    "collaborations": {
+      "scope": "fixture",
+      "student_validated": false,
+      "spark_version": "4.2.0",
+      "completed_at_utc": "2026-11-13T10:20:52.765811+00:00",
+      "input_manifest_sha256": "a62767125f437d43b7b9a078f2adf01283dd445b3b1ffdc29bc265ba30a40f92",
+      "start_year": 1980,
+      "end_year": 2025,
+      "include_self": false,
+      "diagnostics": {
+        "movie_pair_films_before_self_policy": 1,
+        "self_pair_films": 1,
+        "pair_films_unknown_year": 0,
+        "pair_films_in_period_without_rating": 0,
+        "first_year_pair_films_in_period_before_vote_filter": 0,
+        "later_year_pair_films_in_period_before_vote_filter": 0
+      },
+      "comparisons": [
+        {
+          "min_votes": 0,
+          "min_history_years": 2,
+          "pairs": 0,
+          "first_year_pair_films": 0,
+          "later_year_pair_films": 0,
+          "mean_first_year_rating_per_pair": null,
+          "mean_later_year_rating_per_pair": null,
+          "mean_within_pair_change": null
+        },
+        {
+          "min_votes": 1000,
+          "min_history_years": 2,
+          "pairs": 0,
+          "first_year_pair_films": 0,
+          "later_year_pair_films": 0,
+          "mean_first_year_rating_per_pair": null,
+          "mean_later_year_rating_per_pair": null,
+          "mean_within_pair_change": null
+        }
+      ]
+    },
+    "completed_at_utc": "2026-11-13T10:20:52.767972+00:00"
+  },
+  "query_review_acceptance": "nine outputs accepted; reversed ordering, invalid director and tampered counts rejected",
+  "log_sha256": {
+    "enrichment-unit-review.log": "b95b5805bef96b568b1b2424b637003cd6f306e6312d682e4f2e4e23f635b26a",
+    "cross-pipeline-review.log": "d955a3d3e8373bde437b0a8885fb18fd86f738979f1b9aa669dcba3b25a17119",
+    "query-review-review.log": "0b4e08018b827d35cc369e84427ebf46b2d0a4ea76850816d0dc219d8918e356"
+  }
+}

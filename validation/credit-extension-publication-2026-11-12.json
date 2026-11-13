@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-11-12T18:34:43.829518+00:00",
+  "extension_pr": "https://github.com/benjaminlabos/ece-big-data-processing/pull/8",
+  "extension_head": "cc874176d7b83ceda8237c35dce66ccb492a072b",
+  "linux_unit_tests": 7,
+  "windows_generation": "passed",
+  "csv_hashes_identical_linux_windows": true,
+  "collector_lookup_ids_unchanged": 25630,
+  "input_pairs": 32285,
+  "approved_prs": {
+    "2": "e6e5933c177ec612fa93538002e0169240b4548a",
+    "6": "4bfbf2a0b7c37e66a66b2c8709255cff07e1bdc7"
+  },
+  "approval_author": "nicohris",
+  "ben_latest_published_audit": {
+    "local_time": "2026-11-12 17:19 Europe/Paris",
+    "responses": 18769,
+    "expected": 25630,
+    "documented_absences": 4439,
+    "final_spark_published": false
+  },
+  "main_merged": false
+}

@@ -4,11 +4,11 @@ import shutil
 import sys
 import tempfile
 from pathlib import Path
-sys.path.insert(0,'/job')
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from pyspark.sql import SparkSession
 from imdb_preparation.review_outputs import run,audit_frame
 
-root=Path('/job')
+root=Path(__file__).resolve().parents[1]
 fixture=root/'results/cross-pipeline-v1'
 spark=(SparkSession.builder.master('local[2]').appName('Query review acceptance checks')
        .config('spark.sql.shuffle.partitions',2).config('spark.ui.enabled','false').getOrCreate())

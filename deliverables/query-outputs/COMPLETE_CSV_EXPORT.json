@@ -1,0 +1,60 @@
+{
+  "scope": "complete_materialized_query_csv_exports",
+  "source_scope": "full",
+  "student_validated": false,
+  "duckdb": "1.4.3",
+  "queries": {
+    "q1": {
+      "rows": 13640,
+      "json_columns": [
+        "genres"
+      ],
+      "sha256": "5ae8a61631201c655f99dabab7f2493a40d25404a1bcb430751041666094d7ed"
+    },
+    "q2": {
+      "rows": 138,
+      "json_columns": [],
+      "sha256": "ecc57090b49b2064cd6a39a958ec7a02645227bbcf15920d62a3fe436304d2e6"
+    },
+    "q3": {
+      "rows": 92,
+      "json_columns": [],
+      "sha256": "cb5b31f75b4adf503bca98b5c0a3cb06dc69755046a58eb2db9972df214eeadb"
+    },
+    "q4": {
+      "rows": 47,
+      "json_columns": [],
+      "sha256": "070901c6567e11493b558ec9b7b17eaa2bf7ac1b36f99e91321769a8cf0e7dfe"
+    },
+    "q5": {
+      "rows": 535,
+      "json_columns": [],
+      "sha256": "ab6363cdd653a79ed070976a600551e9769dfc0fa05edc5841ace58af5032f58"
+    },
+    "q6": {
+      "rows": 5826,
+      "json_columns": [
+        "languages",
+        "sources"
+      ],
+      "sha256": "a2d0cd27d3754ddeae6f2291925410683a4064ce51372d7ea8c5e501a920a06f"
+    },
+    "q7": {
+      "rows": 6158,
+      "json_columns": [],
+      "sha256": "87364da32e85a536bbf0d821715b0adbf1a63c6d338197b9879f72008e2a4ac8"
+    },
+    "q8": {
+      "rows": 127468,
+      "json_columns": [],
+      "sha256": "3d7b0ea02e1599ccc5dbe1679264a2d1fe4c13938c4a749f0617c62123778cd7"
+    },
+    "top10_per_genre_year": {
+      "rows": 9089,
+      "json_columns": [
+        "genres"
+      ],
+      "sha256": "a78d88a4d18db7e221f6a1d1bdbf8345e7a9d22ca20e0e6219cd693400f2bfe5"
+    }
+  }
+}

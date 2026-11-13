@@ -1,0 +1,61 @@
+{
+  "main": "4781544fbd2282088a2bb51ec156be40cd0fdc3e",
+  "merges": [
+    {
+      "pr": 1,
+      "head": "630fd4d723b7082d493929e761539a102b8a8d1e",
+      "merge_commit": "d8a9dd12b041706b7dd6716a360a1837f451ac76",
+      "state": "closed",
+      "merged": true,
+      "url": "https://github.com/benjaminlabos/ece-big-data-processing/pull/1"
+    },
+    {
+      "pr": 4,
+      "head": "668954933a2af63809d0a27facf0cbc65db5f76c",
+      "merge_commit": "913369ae5caa1b2c6c83096bf50918a4d8dd5add",
+      "state": "closed",
+      "merged": true,
+      "url": "https://github.com/benjaminlabos/ece-big-data-processing/pull/4"
+    },
+    {
+      "pr": 5,
+      "head": "7790935f6db72fdd223b47b35bcff02f62ffdfb3",
+      "merge_commit": "435f4b8ab2fc0f71c8934eee7117a76edfa5cdbd",
+      "state": "closed",
+      "merged": true,
+      "url": "https://github.com/benjaminlabos/ece-big-data-processing/pull/5"
+    },
+    {
+      "pr": 8,
+      "head": "07466477fec8a414a012c4cb411620135a71a64f",
+      "merge_commit": "19d62e0245a25ff76b239cc677519d4ddc690d0b",
+      "state": "closed",
+      "merged": true,
+      "url": "https://github.com/benjaminlabos/ece-big-data-processing/pull/8"
+    },
+    {
+      "pr": 2,
+      "head": "a5584e9d708301318e04ac5a5f02aad9e5f6f720",
+      "merge_commit": "189d13181b7fbb925b603bf6b45325135c21d371",
+      "state": "closed",
+      "merged": true,
+      "url": "https://github.com/benjaminlabos/ece-big-data-processing/pull/2"
+    },
+    {
+      "pr": 3,
+      "head": "409f167f62cf571e72e0caffaa033a2800d1ac1a",
+      "merge_commit": "c3d7641490e541513b86c83df5c0ef9739ae5fc6",
+      "state": "closed",
+      "merged": true,
+      "url": "https://github.com/benjaminlabos/ece-big-data-processing/pull/3"
+    },
+    {
+      "pr": 6,
+      "head": "4bfbf2a0b7c37e66a66b2c8709255cff07e1bdc7",
+      "merge_commit": "4781544fbd2282088a2bb51ec156be40cd0fdc3e",
+      "state": "closed",
+      "merged": true,
+      "url": "https://github.com/benjaminlabos/ece-big-data-processing/pull/6"
+    }
+  ]
+}
