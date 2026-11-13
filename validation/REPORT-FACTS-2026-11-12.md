@@ -33,8 +33,9 @@ Les mises à null et retraits de références ont leurs comptes séparés dans
 ## Exploration et classement
 
 Source : validation/overnight-43093003953/query-review/QUERY_REVIEW.json.
-Les CSV de query-review sont des aperçus de 100 lignes maximum ; les Parquet
-et les CSV intégraux du dossier de livraison contiennent les sorties complètes.
+The query-review CSV files contain previews of up to 100 rows. See the
+[query export guide](../deliverables/query-outputs/README.md) for the verified
+Parquet artifact and local generation of the complete CSV files.
 
 | Sortie | Lignes complètes |
 | --- | ---: |
