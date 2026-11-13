@@ -1,0 +1,165 @@
+{
+  "input_source": {
+    "pr": "https://github.com/benjaminlabos/ece-big-data-processing/pull/5",
+    "commit": "0f82d8349a9dae7c9c43fea53fc559d4bd8e9b23",
+    "student_validated": false
+  },
+  "transformation_environment": "Docker Desktop on Windows",
+  "spark_image": "tp05-wikistreams-notebook:local",
+  "collection_environment": "Windows Python 3.10, requests 2.32.3",
+  "source_language": "en",
+  "coverage": {
+    "spark_version": "4.2.0",
+    "input_sha256": {
+      "candidates": "df3678d800c22c81787ba230f319979be47096a4641a3ce27b4cddee9e06e771",
+      "titles": "fb98cfe62fe5ed91c85a7a43088a9c0c6690caf0d22a784620bfccd2d40e2c76",
+      "priority": "a7f5ff3a98ea6ce93ad1df5d1e6531053754be307f2ec2132919261713785609",
+      "top": "66ea6d25a943f716f17a76fe4034f729b531e954995bc9f79e7d9a35892470c3"
+    },
+    "films_requested": 13,
+    "people_requested": 48,
+    "candidate_pairs": 48,
+    "films_by_status": {
+      "plot_not_found": 3,
+      "available": 6,
+      "no_wikidata_item": 2,
+      "no_english_wikipedia_article": 2
+    },
+    "people_by_status": {
+      "ambiguous_wikidata_match": 1,
+      "available": 33,
+      "no_wikidata_item": 13,
+      "no_english_wikipedia_article": 1
+    },
+    "credits_by_status": {
+      "ambiguous_wikidata_match": 1,
+      "available": 33,
+      "no_wikidata_item": 13,
+      "no_english_wikipedia_article": 1
+    },
+    "films_with_three_biographies": 7,
+    "films_with_fewer_than_three_candidates": 5,
+    "films_reaching_three_with_reserves": 2,
+    "collection_complete": true
+  },
+  "film_ids": [
+    "tt0100332",
+    "tt0137226",
+    "tt0187231",
+    "tt0364236",
+    "tt1339248",
+    "tt18687124",
+    "tt2082197",
+    "tt2415372",
+    "tt3665486",
+    "tt38164776",
+    "tt38907532",
+    "tt5375100",
+    "tt9610262"
+  ],
+  "collection_first_pass": {
+    "requested": 61,
+    "cached_at_start": 0,
+    "written": 15,
+    "remaining": 46,
+    "elapsed_seconds": 22.219
+  },
+  "interruption_test": {
+    "cached_before_interruption_test": 15,
+    "cached_after_termination": 21,
+    "cached_after_resume": 61,
+    "preserved_records": 21,
+    "verified": [
+      "sha256",
+      "mtime_ns"
+    ]
+  },
+  "collection_resume": {
+    "requested": 61,
+    "cached_at_start": 21,
+    "written": 40,
+    "remaining": 0,
+    "elapsed_seconds": 46.719
+  },
+  "audit": {
+    "verified_parquet_rows": {
+      "films": 13,
+      "principals": 48,
+      "coverage": 13,
+      "coverage_by_year_genre": 23
+    },
+    "structural_shortages": [
+      "tt18687124",
+      "tt2415372",
+      "tt3665486",
+      "tt38164776",
+      "tt5375100"
+    ],
+    "examples": {
+      "films": [
+        {
+          "page_title": "Barking at the Stars",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1372180801",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q213108",
+          "retrieved_at_utc": "2026-11-11T18:32:00.562389+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0187231",
+          "text_characters": 1415
+        },
+        {
+          "page_title": "Billa (1980 film)",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1376420592",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q2903422",
+          "retrieved_at_utc": "2026-11-11T18:35:17.962220+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt0364236",
+          "text_characters": 3460
+        },
+        {
+          "page_title": "Apthamitra",
+          "section": "Plot",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380065478",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q4782241",
+          "retrieved_at_utc": "2026-11-11T18:35:31.998658+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "tt1339248",
+          "text_characters": 3841
+        }
+      ],
+      "people": [
+        {
+          "page_title": "Ramesh Aravind",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1380388626",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q7289374",
+          "retrieved_at_utc": "2026-11-11T18:35:34.409300+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0033243",
+          "text_characters": 1626
+        },
+        {
+          "page_title": "György Bárdy",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1269842110",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q304586",
+          "retrieved_at_utc": "2026-11-11T18:31:52.689885+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0126585",
+          "text_characters": 83
+        },
+        {
+          "page_title": "Dorian Corey",
+          "section": "Lead",
+          "source_url": "https://en.wikipedia.org/w/index.php?oldid=1382194538",
+          "wikidata_url": "https://www.wikidata.org/wiki/Q5297781",
+          "retrieved_at_utc": "2026-11-11T18:31:47.051937+00:00",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "imdb_id": "nm0179776",
+          "text_characters": 198
+        }
+      ]
+    }
+  }
+}
