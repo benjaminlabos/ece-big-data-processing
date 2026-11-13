@@ -1,0 +1,576 @@
+{
+  "description": "Aggregate execution evidence; not a student methodology write-up",
+  "run_directory": "results/fixture-v1",
+  "summary": {
+    "scope": "fixture",
+    "reference_policy": "repair_against_clean_parents",
+    "as_of_year": 2026,
+    "started_at": "2026-11-10T16:34:37.951545+00:00",
+    "completed_at": "2026-11-10T16:35:12.567005+00:00",
+    "spark_version": "4.2.0",
+    "python_version": "3.12.14",
+    "java_version": "21.0.13",
+    "tables": {
+      "title.basics": {
+        "raw_rows": 9,
+        "normalized_duplicate_rows_removed": 1,
+        "invalid_or_conflicting_key_rows": 3,
+        "quarantined_rows": 3,
+        "clean_rows": 5,
+        "anomalies": [
+          {
+            "column": "endYear",
+            "rule": "end_before_start",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "genres",
+            "rule": "duplicate_array_element",
+            "action": "deduplicate_elements",
+            "count": 1
+          },
+          {
+            "column": "genres",
+            "rule": "missing_array_element",
+            "action": "remove_missing_elements",
+            "count": 1
+          },
+          {
+            "column": "isAdult",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "runtimeMinutes",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "runtimeMinutes",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          }
+        ]
+      },
+      "name.basics": {
+        "raw_rows": 3,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 3,
+        "anomalies": [
+          {
+            "column": "birthYear",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "deathYear",
+            "rule": "death_before_birth",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "knownForTitles",
+            "rule": "duplicate_array_element",
+            "action": "deduplicate_elements",
+            "count": 1
+          },
+          {
+            "column": "knownForTitles",
+            "rule": "reference_not_in_clean_parent",
+            "action": "remove_reference",
+            "count": 1
+          }
+        ]
+      },
+      "title.akas": {
+        "raw_rows": 5,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 3,
+        "quarantined_rows": 4,
+        "clean_rows": 1,
+        "anomalies": [
+          {
+            "column": "isOriginalTitle",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "titleId",
+            "rule": "reference_not_in_clean_parent",
+            "action": "quarantine_row",
+            "count": 1
+          }
+        ]
+      },
+      "title.crew": {
+        "raw_rows": 4,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 1,
+        "clean_rows": 3,
+        "anomalies": [
+          {
+            "column": "directors",
+            "rule": "duplicate_array_element",
+            "action": "deduplicate_elements",
+            "count": 1
+          },
+          {
+            "column": "directors",
+            "rule": "reference_not_in_clean_parent",
+            "action": "remove_reference",
+            "count": 2
+          },
+          {
+            "column": "tconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "quarantine_row",
+            "count": 1
+          }
+        ]
+      },
+      "title.episode": {
+        "raw_rows": 2,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 0,
+        "clean_rows": 2,
+        "anomalies": [
+          {
+            "column": "episodeNumber",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "parentTconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "seasonNumber",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 1
+          }
+        ]
+      },
+      "title.principals": {
+        "raw_rows": 4,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 1,
+        "quarantined_rows": 2,
+        "clean_rows": 2,
+        "anomalies": [
+          {
+            "column": "nconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "tconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "quarantine_row",
+            "count": 1
+          }
+        ]
+      },
+      "title.ratings": {
+        "raw_rows": 5,
+        "normalized_duplicate_rows_removed": 0,
+        "invalid_or_conflicting_key_rows": 0,
+        "quarantined_rows": 2,
+        "clean_rows": 3,
+        "anomalies": [
+          {
+            "column": "averageRating",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "averageRating",
+            "rule": "out_of_range",
+            "action": "set_null",
+            "count": 1
+          },
+          {
+            "column": "numVotes",
+            "rule": "invalid_numeric",
+            "action": "set_null",
+            "count": 2
+          },
+          {
+            "column": "tconst",
+            "rule": "reference_not_in_clean_parent",
+            "action": "quarantine_row",
+            "count": 2
+          }
+        ]
+      }
+    }
+  },
+  "missing_profile": [
+    {
+      "table": "title.basics",
+      "column": "tconst",
+      "total_rows": 9,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.basics",
+      "column": "titleType",
+      "total_rows": 9,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.basics",
+      "column": "primaryTitle",
+      "total_rows": 9,
+      "missing_rows": 1,
+      "missing_percent": 11.11111111111111
+    },
+    {
+      "table": "title.basics",
+      "column": "originalTitle",
+      "total_rows": 9,
+      "missing_rows": 1,
+      "missing_percent": 11.11111111111111
+    },
+    {
+      "table": "title.basics",
+      "column": "isAdult",
+      "total_rows": 9,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.basics",
+      "column": "startYear",
+      "total_rows": 9,
+      "missing_rows": 1,
+      "missing_percent": 11.11111111111111
+    },
+    {
+      "table": "title.basics",
+      "column": "endYear",
+      "total_rows": 9,
+      "missing_rows": 8,
+      "missing_percent": 88.88888888888889
+    },
+    {
+      "table": "title.basics",
+      "column": "runtimeMinutes",
+      "total_rows": 9,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.basics",
+      "column": "genres",
+      "total_rows": 9,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "name.basics",
+      "column": "nconst",
+      "total_rows": 3,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "name.basics",
+      "column": "primaryName",
+      "total_rows": 3,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "name.basics",
+      "column": "birthYear",
+      "total_rows": 3,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "name.basics",
+      "column": "deathYear",
+      "total_rows": 3,
+      "missing_rows": 1,
+      "missing_percent": 33.333333333333336
+    },
+    {
+      "table": "name.basics",
+      "column": "primaryProfession",
+      "total_rows": 3,
+      "missing_rows": 1,
+      "missing_percent": 33.333333333333336
+    },
+    {
+      "table": "name.basics",
+      "column": "knownForTitles",
+      "total_rows": 3,
+      "missing_rows": 1,
+      "missing_percent": 33.333333333333336
+    },
+    {
+      "table": "title.akas",
+      "column": "titleId",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.akas",
+      "column": "ordering",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.akas",
+      "column": "title",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.akas",
+      "column": "region",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.akas",
+      "column": "language",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.akas",
+      "column": "types",
+      "total_rows": 5,
+      "missing_rows": 4,
+      "missing_percent": 80.0
+    },
+    {
+      "table": "title.akas",
+      "column": "attributes",
+      "total_rows": 5,
+      "missing_rows": 5,
+      "missing_percent": 100.0
+    },
+    {
+      "table": "title.akas",
+      "column": "isOriginalTitle",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.crew",
+      "column": "tconst",
+      "total_rows": 4,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.crew",
+      "column": "directors",
+      "total_rows": 4,
+      "missing_rows": 1,
+      "missing_percent": 25.0
+    },
+    {
+      "table": "title.crew",
+      "column": "writers",
+      "total_rows": 4,
+      "missing_rows": 3,
+      "missing_percent": 75.0
+    },
+    {
+      "table": "title.episode",
+      "column": "tconst",
+      "total_rows": 2,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.episode",
+      "column": "parentTconst",
+      "total_rows": 2,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.episode",
+      "column": "seasonNumber",
+      "total_rows": 2,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.episode",
+      "column": "episodeNumber",
+      "total_rows": 2,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.principals",
+      "column": "tconst",
+      "total_rows": 4,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.principals",
+      "column": "ordering",
+      "total_rows": 4,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.principals",
+      "column": "nconst",
+      "total_rows": 4,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.principals",
+      "column": "category",
+      "total_rows": 4,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.principals",
+      "column": "job",
+      "total_rows": 4,
+      "missing_rows": 4,
+      "missing_percent": 100.0
+    },
+    {
+      "table": "title.principals",
+      "column": "characters",
+      "total_rows": 4,
+      "missing_rows": 2,
+      "missing_percent": 50.0
+    },
+    {
+      "table": "title.ratings",
+      "column": "tconst",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.ratings",
+      "column": "averageRating",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    },
+    {
+      "table": "title.ratings",
+      "column": "numVotes",
+      "total_rows": 5,
+      "missing_rows": 0,
+      "missing_percent": 0.0
+    }
+  ],
+  "top5_missing": [
+    {
+      "table": "title.akas",
+      "column": "attributes",
+      "total_rows": 5,
+      "missing_rows": 5,
+      "missing_percent": 100.0
+    },
+    {
+      "table": "title.principals",
+      "column": "job",
+      "total_rows": 4,
+      "missing_rows": 4,
+      "missing_percent": 100.0
+    },
+    {
+      "table": "title.basics",
+      "column": "endYear",
+      "total_rows": 9,
+      "missing_rows": 8,
+      "missing_percent": 88.88888888888889
+    },
+    {
+      "table": "title.akas",
+      "column": "types",
+      "total_rows": 5,
+      "missing_rows": 4,
+      "missing_percent": 80.0
+    },
+    {
+      "table": "title.crew",
+      "column": "writers",
+      "total_rows": 4,
+      "missing_rows": 3,
+      "missing_percent": 75.0
+    }
+  ],
+  "input_manifest": {
+    "scope": "fixture",
+    "description": "Synthetic controlled test, not IMDb",
+    "files": {
+      "title.basics": {
+        "path": "title.basics.tsv",
+        "sha256": "0bd34f9bbcd82ac56c672e5b053f902b498d49d326378e2b17df32ee5fba4f79",
+        "rows": 9
+      },
+      "name.basics": {
+        "path": "name.basics.tsv",
+        "sha256": "78b2c2b2b26167864a934d5f1199acd341980c75c5c7b0eef6b87311c1af5a90",
+        "rows": 3
+      },
+      "title.akas": {
+        "path": "title.akas.tsv",
+        "sha256": "ea8266c44bd9d68f34bf828f6442e7d074b826a0c750f6ee4aac62dd2ccb2240",
+        "rows": 5
+      },
+      "title.crew": {
+        "path": "title.crew.tsv",
+        "sha256": "b4a490e50116de0d2b4cb13a87327343d55dc22d87c4012a73b607cb152d2ea7",
+        "rows": 4
+      },
+      "title.episode": {
+        "path": "title.episode.tsv",
+        "sha256": "0906f57590b7d54a6b66124b7137ff20780ca689e858b938c489e7b7e7289e29",
+        "rows": 2
+      },
+      "title.principals": {
+        "path": "title.principals.tsv",
+        "sha256": "3513e259b4e6509364046de5857048aff9202cca526db1dd38931d890d204848",
+        "rows": 4
+      },
+      "title.ratings": {
+        "path": "title.ratings.tsv",
+        "sha256": "55bec189564bdb7a935de59fbd85694e411158725f00e95ab026de937ec1f062",
+        "rows": 5
+      }
+    }
+  }
+}
