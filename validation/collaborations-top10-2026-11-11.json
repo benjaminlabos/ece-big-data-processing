@@ -1,0 +1,153 @@
+{
+  "environment": {
+    "runtime": "Docker Desktop",
+    "image": "tp05-wikistreams-notebook:local",
+    "image_id": "sha256:926b34c5615a9f371670a71999ea996e619ec4f42f7aef09c117d181ab064a5b",
+    "spark_version": "4.2.0",
+    "java_version": "21.0.12+8-1-24.04-Ubuntu",
+    "local_threads": 2,
+    "driver_memory": "2g",
+    "shuffle_partitions": 16
+  },
+  "preparation_source_commit": "0f82d8349a9dae7c9c43fea53fc559d4bd8e9b23",
+  "analysis_code_commit": "e6eeafbbf58cd8dd476de32705f45260807cc6b9",
+  "source_slice": {
+    "scope": "title_slice",
+    "source_manifest_sha256": "5a44e3d79f8ceded5b995911f01bd59c3653cf6ebfe5e0c03b5ae9ffde9f71bc",
+    "selected_titles_sha256": "72a6ae26406a33da81116e18f9d6321be4a7c5502943488495786470d674c581",
+    "selected_titles": 6257,
+    "files": {
+      "title.basics": {
+        "source_sha256": "0c79f4e44df509b6cc05d614acc4d243bd8864c81d01920beaf219af21703e9c",
+        "sha256": "8ba357e149ac5f4e7f677d348c46c8e93a9889e0e5b0348df724a758dc483ab4",
+        "rows": 6257
+      },
+      "title.crew": {
+        "source_sha256": "4a5ac1d5f13d1715dd57b1d04e749337be53a588dca86aec187567b50ca50809",
+        "sha256": "5530388a638ce93b44e8c264c10e035b0e66ba29446a5823e989a3047eee5fa2",
+        "rows": 6257
+      },
+      "title.principals": {
+        "source_sha256": "34c4bb856cfec5773df1bc2ebbbf55f349a3f774a46928aa8ea13cebaefb9f8f",
+        "sha256": "a5149e4733c5914e453135e78fc384b86453c98c9c45dfa96b5bc0705b13d253",
+        "rows": 124499
+      },
+      "title.ratings": {
+        "source_sha256": "26fb6829b012e0f93e7a5e5ee1330effcf4e06a00b104a208bee5c382933914d",
+        "sha256": "742e149f8b7b75cf2387bc7516521015b04f78973d21b2b8a2e4f8787a596b52",
+        "rows": 6257
+      },
+      "name.basics": {
+        "source_sha256": "3898bacdbd6b04dd3285f4e709983c4b4db4ea7b3fefd092612f41baf23659b7",
+        "sha256": "f3db94230762af0809a35d67427523717144062814eccdd409e68be061ccf5b3",
+        "rows": 67216
+      }
+    }
+  },
+  "prepared_inputs": {
+    "scope": "sample",
+    "selected_titles_sha256": "72a6ae26406a33da81116e18f9d6321be4a7c5502943488495786470d674c581",
+    "source_manifest_sha256": "5a44e3d79f8ceded5b995911f01bd59c3653cf6ebfe5e0c03b5ae9ffde9f71bc",
+    "slice_manifest_sha256": "6ffa7d94cff11d339a1aae958d2ea251f767dfdc37bab3ac977971dd27137674",
+    "sources": {
+      "title.basics": "0c79f4e44df509b6cc05d614acc4d243bd8864c81d01920beaf219af21703e9c",
+      "title.crew": "4a5ac1d5f13d1715dd57b1d04e749337be53a588dca86aec187567b50ca50809",
+      "title.principals": "34c4bb856cfec5773df1bc2ebbbf55f349a3f774a46928aa8ea13cebaefb9f8f",
+      "title.ratings": "26fb6829b012e0f93e7a5e5ee1330effcf4e06a00b104a208bee5c382933914d",
+      "name.basics": "3898bacdbd6b04dd3285f4e709983c4b4db4ea7b3fefd092612f41baf23659b7"
+    },
+    "as_of_year": 2026,
+    "spark_version": "4.2.0",
+    "projected_clean_rows": {
+      "title.basics": 6257,
+      "title.crew": 6257,
+      "title.principals": 56449,
+      "title.ratings": 6257
+    }
+  },
+  "analysis": {
+    "scope": "sample",
+    "student_validated": false,
+    "spark_version": "4.2.0",
+    "completed_at_utc": "2026-11-11T19:45:14.052962+00:00",
+    "input_manifest_sha256": "7bc39936c1e05a41e466cdc832dff96f31d7f94f92fad49e481dcc2f440363c5",
+    "start_year": 1980,
+    "end_year": 2025,
+    "include_self": false,
+    "diagnostics": {
+      "movie_pair_films_before_self_policy": 60571,
+      "self_pair_films": 362,
+      "pair_films_unknown_year": 0,
+      "pair_films_in_period_without_rating": 0,
+      "first_year_pair_films_in_period_before_vote_filter": 57099,
+      "later_year_pair_films_in_period_before_vote_filter": 3110
+    },
+    "comparisons": [
+      {
+        "min_votes": 1000,
+        "min_history_years": 2,
+        "pairs": 2389,
+        "first_year_pair_films": 2457,
+        "later_year_pair_films": 3110,
+        "mean_first_year_rating_per_pair": 7.576454583507744,
+        "mean_later_year_rating_per_pair": 7.482336868052648,
+        "mean_within_pair_change": -0.09411771545509508
+      },
+      {
+        "min_votes": 1000,
+        "min_history_years": 3,
+        "pairs": 460,
+        "first_year_pair_films": 491,
+        "later_year_pair_films": 1149,
+        "mean_first_year_rating_per_pair": 7.642717391304348,
+        "mean_later_year_rating_per_pair": 7.608701690821254,
+        "mean_within_pair_change": -0.03401570048309178
+      },
+      {
+        "min_votes": 5000,
+        "min_history_years": 2,
+        "pairs": 1315,
+        "first_year_pair_films": 1342,
+        "later_year_pair_films": 1643,
+        "mean_first_year_rating_per_pair": 7.605247148288973,
+        "mean_later_year_rating_per_pair": 7.479506970849176,
+        "mean_within_pair_change": -0.1257401774397972
+      },
+      {
+        "min_votes": 5000,
+        "min_history_years": 3,
+        "pairs": 271,
+        "first_year_pair_films": 285,
+        "later_year_pair_films": 588,
+        "mean_first_year_rating_per_pair": 7.703321033210332,
+        "mean_later_year_rating_per_pair": 7.651666666666667,
+        "mean_within_pair_change": -0.051654366543665405
+      },
+      {
+        "min_votes": 10000,
+        "min_history_years": 2,
+        "pairs": 1052,
+        "first_year_pair_films": 1076,
+        "later_year_pair_films": 1323,
+        "mean_first_year_rating_per_pair": 7.650427756653992,
+        "mean_later_year_rating_per_pair": 7.498353929024082,
+        "mean_within_pair_change": -0.15207382762991126
+      },
+      {
+        "min_votes": 10000,
+        "min_history_years": 3,
+        "pairs": 228,
+        "first_year_pair_films": 242,
+        "later_year_pair_films": 492,
+        "mean_first_year_rating_per_pair": 7.729385964912281,
+        "mean_later_year_rating_per_pair": 7.677492690058481,
+        "mean_within_pair_change": -0.05189327485380114
+      }
+    ]
+  },
+  "independent_parquet_audit": {
+    "comparison_rows_verified": 6,
+    "diagnostics_verified": true,
+    "summary_sha256": "644b234a3000052241654f447c6f48a6a216ac4f544ee7948bbc298665591bd9"
+  }
+}
