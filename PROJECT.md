@@ -91,7 +91,9 @@ Check for `SUCCESS.json` and inspect the manifests and quality outputs before us
 
 Nicolas used OpenAI Codex to help inspect the repository and official documentation, set up the environment, implement and debug PySpark and download code, write and run tests, and draft technical documentation and pull request descriptions. The assistance also supported learning: we used it to understand Spark behavior, explore implementation options, and work through failures.
 
-The team discussed the architecture and reviewed its trade-offs, including how to separate batch processing from streaming, define the data interfaces, and make runs reproducible. We checked the implementation through peer review, execution, and comparisons with saved results. The reported figures come from executed code and checked artifacts. The students will write the explanations and reasoning in `REPORT.md` themselves. We will update this disclosure before submission to reflect any additional use by either contributor.
+Benjamin used OpenAI Codex to build and test the Wikimedia–Kafka–Spark pipeline, including IMDb matching, replay, checkpoint recovery, and late-event tests. Codex also assisted with the Wikimedia enrichment collector, Spark transformations, source and coverage audits, the Spark collaboration analysis and its verification, and the technical documentation and integration checks.
+
+The team discussed the architecture and reviewed its trade-offs, including how to separate batch processing from streaming, define the data interfaces, and make runs reproducible. We checked the implementation through peer review, execution, and comparisons with saved results. The reported figures come from executed code and checked artifacts. The students will write the explanations and reasoning in `REPORT.md` themselves.
 
 ## References
 
