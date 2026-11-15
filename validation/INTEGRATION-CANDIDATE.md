@@ -72,8 +72,7 @@ GitHub n'est produite par ces scripts.
 ## Préparation de clôture du 13 novembre
 
 Les têtes publiées ont été fusionnées dans une répétition isolée depuis le
-main initial. L’ordre et la résolution du seul conflit PROJECT.md sont dans
-[MERGE-PLAN-2026-11-13.md](MERGE-PLAN-2026-11-13.md). Le code obtenu est
+main initial. Le seul conflit concernait PROJECT.md. Le code obtenu est
 identique au candidat audité ; cette répétition ne modifie pas GitHub main.
 Le guide [DEMONSTRATION-2026-11-13.md](DEMONSTRATION-2026-11-13.md) distingue
 les commandes du clone, les artefacts locaux vérifiés et les résultats complets.

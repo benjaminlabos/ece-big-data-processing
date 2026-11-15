@@ -14,8 +14,8 @@ Référence officielle : https://github.com/adaltas/ece-big-data-processing-fall
 
 ## À clôturer
 
-- [x] Nicolas : répétition locale de l’ordre #1 → #4 → #5 → #8 → #2 → #3 → #6 ; seul conflit PROJECT.md résolu, code identique au candidat audité. Voir MERGE-PLAN-2026-11-13.md.
-- [x] Nicolas : guide de démonstration, vérification hors ligne du jeu streaming, comptes des neuf CSV complets et dix comparaisons, trame du rapport personnel. Voir DEMONSTRATION-2026-11-13.md et REPORT-OUTLINE.md.
+- [x] Nicolas : répétition locale de l’ordre #1 → #4 → #5 → #8 → #2 → #3 → #6. Le seul conflit concernait PROJECT.md. Le code est identique au candidat audité.
+- [x] Nicolas : guide de démonstration, vérification hors ligne du jeu streaming, comptes des neuf CSV complets et dix comparaisons. Voir le [guide de démonstration](DEMONSTRATION-2026-11-13.md).
 
 - [x] Benjamin : collecte initiale terminée et manifeste final publié dans #3 : 25 630 réponses, zéro en attente, zéro fichier endommagé signalé.
 - [x] Benjamin : calcul Spark initial final publié ; deux CSV et 979 groupes recoupés indépendamment ici. Leurs octets ont ensuite été contrôlés sur la copie reçue par Nicolas, voir la ligne archive ci-dessous.
@@ -26,7 +26,7 @@ Référence officielle : https://github.com/adaltas/ece-big-data-processing-fall
 - [x] Benjamin : #8 approuvée sur 0746647 ; la politique proposée est recommandée, accord final du binôme encore à enregistrer.
 - [x] Paramètres de livraison retenus par Nicolas après délégation explicite : 40 min / 1 000 votes, question principale 1 000 votes / deux années, politique v2 ; les manifestes historiques conservent leur statut original. Voir DECISIONS-BINOME.md.
 - [x] Benjamin : APPROVE #4/#5/#8 publiés le 13 novembre à 11 h 03 (Paris) et vérifiés sur GitHub, reviews 5889168032 / 5889168540 / 5889169011. #1/#2/#3/#6 ont aussi une approbation sur les têtes connues ; recontrôler immédiatement avant fusion.
-- [ ] Ajouter au dépôt REPORT.md, qui n'est pas présent dans les fichiers suivis du candidat examiné. Inclure les résultats, métriques et explications méthodologiques personnelles requises pour chaque section.
+- [x] Le [rapport](../REPORT.md) a été ajouté via la PR #13.
 - [x] PR #1/#4/#5/#8/#2/#3/#6 fusionnées avec merge commits, cibles dépendantes actualisées. Conflit PROJECT.md résolu dans a5584e9 et nouvelle approbation #2 enregistrée avant fusion. Main technique : 4781544fbd2282088a2bb51ec156be40cd0fdc3e.
 - [x] Main technique 4781544 : clone neuf public, 69 tests réussis en 133,61 s ; six tests du collecteur et contrats croisés exécutés sur le code identique. Rejeu hors ligne du jeu démo vérifié.
 - [ ] Après intégration des derniers documents et du rapport personnel, noter le SHA de soumission et vérifier une dernière fois ses liens et artefacts.
