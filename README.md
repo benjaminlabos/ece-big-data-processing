@@ -11,6 +11,8 @@ Repository for the Big Data Processing labs and project at ECE.
 | Nicolas Rihana | [nicohris](https://github.com/nicohris) |
 | Benjamin Labos | [benjaminlabos](https://github.com/benjaminlabos) |
 
+> **Commit attribution.** While I was temporarily unable to access my GitHub account, I used the account of Basile Frelaux, a fellow ECE student in the Energy major, to keep working on the project. I made both changes (`0746647` and `a5584e9`), which GitHub attributes to his account, `BazFouFou`. The attribution correction is documented in [PR #10](https://github.com/benjaminlabos/ece-big-data-processing/pull/10).
+
 ## Final project
 
 Start with the [installation and execution guide](PROJECT.md).
