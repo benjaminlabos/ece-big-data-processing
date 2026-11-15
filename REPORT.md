@@ -34,6 +34,8 @@ We calculated the average runtime and standard deviation for each genre. Then we
 
 For each year from 1980 to 2025, we added up the votes for films in each genre and kept the top three. With this method, a genre can rank high because it has a lot of films, even if each film gets fewer votes. In Q3, we compared the top three with the other genres using total votes, the number of film–genre pairs, and the average rating. A film with several genres can appear in both groups. We got 138 rows for Q2 and 92 for Q3.
 
+For example, in 1980 the top three genres had 7,551,475 votes across 244 film-genre pairs, with an average rating of 6.22. The other 19 genres had 9,436,537 votes across 441 pairs, with an average rating of 6.30. The [Q3 results by year](validation/overnight-43093003953/query-review/q3-preview.csv) contain all 92 rows.
+
 ### Q4 — Directors with one highly rated film
 
 We looked for directors with exactly one film rated 8 or higher and at least two other films with an average rating of 6 or lower. One of those other films can still be above 6 as long as their average stays at 6 or lower. We got 47 rows.
