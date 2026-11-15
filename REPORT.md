@@ -10,7 +10,7 @@ We kept the three parts separate. We can rerun calculations from Parquet, resume
 
 ## IMDb data preparation
 
-We processed 216,502,833 rows across seven tables. We checked 39 columns for missing values. The column "title.akas.attributes" had the most missing values, at 99.47%. Here are the five columns with the highest rates.
+We processed 216,502,833 rows across seven tables. We checked [39 columns](validation/full-snapshot-43093003953/missing-profile.csv) for missing values. The column "title.akas.attributes" had the most missing values, at 99.47%. Here are the [five columns with the highest rates](validation/full-snapshot-43093003953/top5-missing.csv).
 
 | Column | Missing values |
 | --- | ---: |
@@ -32,7 +32,7 @@ We calculated the average runtime and standard deviation for each genre. We kept
 
 ### Q2 and Q3 — Most popular genres
 
-For each year from 1980 to 2025, we added up film votes by genre and kept the top three. A genre with many films can rank high even if each film gets fewer votes. In Q3, we compared the top three with the other genres. We used total votes, the number of film–genre pairs, and the average rating. A film with several genres can appear in both groups. We got 138 rows for Q2 and 92 for Q3.
+For each year from 1980 to 2025, we added up film votes by genre and kept the top three. A genre with many films can rank high even if each film gets fewer votes. In Q3, we compared the top three with the other genres. We used total votes, the number of film–genre pairs, and the average rating. A film with several genres can appear in both groups. We got 138 rows for Q2 and [92 for Q3](validation/overnight-43093003953/query-review/q3-preview.csv).
 
 In 1980, the top three had 7,551,475 votes across 244 film–genre pairs. Their average rating was 6.22. The other 19 genres had 9,436,537 votes across 441 pairs. Their average was 6.30.
 
