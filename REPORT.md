@@ -10,7 +10,15 @@ We kept the batch processing, enrichment, and streaming separate. If we change a
 
 ## IMDb data preparation
 
-We processed 216,502,833 rows across the seven tables and checked for missing values in 39 columns. The column with the most missing values was `title.akas.attributes`, at 99.47%. The preparation results show the percentage for each column and the five columns with the most missing values.
+We processed 216,502,833 rows across the seven tables and checked for missing values in 39 columns. The column with the most missing values was `title.akas.attributes`, at 99.47%. The [full profile](validation/full-snapshot-43093003953/missing-profile.csv) gives the percentage for each column. The [top five](validation/full-snapshot-43093003953/top5-missing.csv) are listed below.
+
+| Column | Missing values |
+| --- | ---: |
+| `title.akas.attributes` | 99.47% |
+| `title.basics.endYear` | 98.73% |
+| `name.basics.deathYear` | 98.32% |
+| `name.basics.birthYear` | 95.66% |
+| `title.principals.job` | 80.66% |
 
 One thing we found was that 28 people had a death year earlier than their birth year. We set `deathYear` to `null` and kept the rest of the record. Since we join on `nconst`, we can still find their credits. Using `0` could cause problems later if a calculation treated it as an actual year.
 
@@ -36,7 +44,7 @@ We kept series and miniseries with at least three seasons of ten episodes or mor
 
 ### Q6 — Performers who worked in several languages
 
-We started with films rated 7 or higher and joined their credits with a source that gives the original language of each film. We kept performers linked to at least two different films and at least two original languages. We also added a flag for performers who reach three languages or more. The source only covers part of IMDb, so films without a language match are left out of the calculation. The full output has 5,826 rows. We still need to filter it to show the performers with three languages or more in the presentation.
+We started with films rated 7 or higher and joined their credits with a source that gives the original language of each film. We kept performers linked to at least two different films and at least two original languages. We also added a flag for performers who reach three languages or more. The source only covers part of IMDb, so films without a language match are left out of the calculation. The full output has 5,826 rows. Of those, 2,391 reached at least three languages. To get the full list, follow the [export guide](deliverables/query-outputs/README.md) and filter `q6.csv` for `at_least_three_languages=true`.
 
 ### Q7 — Performers who reached their highest rating early in their career
 
@@ -44,7 +52,7 @@ We kept performers with at least 15 films and credits spanning at least 20 years
 
 ### Q8 — Having several roles on the same film
 
-We grouped credits by person and film to see when someone had more than one type of role on the same project. For those people, we calculated the average rating and film count separately for films where they had one role and films where they had several. The output has 127,468 rows. When comparing the averages for one person, we also need to look at how many films are in each group. If someone had several roles on just one film, the average for that group is simply the rating of that film.
+We kept people with at least two types of roles across their career. For each film in the analysis, we checked whether they had one role or several. We then calculated the average rating and film count separately for films where they had one role and films where they had several. The output has 127,468 rows. For 87,757 people, the films in the analysis only had single-role entries. When comparing the averages for one person, we also need to look at how many films are in each group. If someone had several roles on just one film, the average for that group is simply the rating of that film.
 
 ## Film enrichment
 
@@ -58,7 +66,7 @@ Out of the 6,256 films, 5,174 have a plot summary and 5,369 have at least three 
 
 The producer collects Wikipedia edits and sends them to Kafka. Spark reads the events, filters them, and checks whether the edited page is in our Wikipedia–IMDb catalogue. We ran a live capture for about 15 minutes and 26 seconds. Spark read back 1,845 events from that capture. After filtering, 1,311 edits met our criteria. Seven of those matched the catalogue, across six different pages.
 
-We also replayed events from an earlier capture to check the processing. For late events, we tested the watermark, which uses the time when the edit happened. We used the checkpoint to test whether Spark could resume after an interruption. The streaming guide contains the commands and results for these tests and for the live capture.
+We also replayed events from an earlier capture to check the processing. For late events, we tested the watermark, which uses the time when the edit happened. In the separate synthetic test, we used one-minute windows and a two-minute watermark. Spark dropped one late row. We used the checkpoint to test whether Spark could resume after an interruption. The streaming guide contains the commands and results for these tests and for the live capture.
 
 ## Open question — Collaborations between directors and performers
 
