@@ -64,17 +64,23 @@ To find the right pages, we started with the IMDb IDs, looked them up in Wikidat
 
 Out of the 6,256 films, 5,174 have a plot summary and 5,369 have at least three biographies. A total of 4,710 films meet both conditions, which is about three quarters of the selection.
 
+We still had 1,546 films with something missing. A second source could give us some of the plot summaries or biographies we did not find. We would check the IMDb ID when it is available, or check details like the title and year for a film and the name and credits for a person. We would also check the licence and keep the URL of the text we used. [Enrichment results](project/enrichment/evidence/final-enrichment-v2-2026-11-13.json)
+
 ## Wikipedia streaming
 
 The producer collects Wikipedia edits and sends them to Kafka. Spark reads the events, filters them, and checks whether the edited page is in our Wikipedia–IMDb catalogue. We ran a live capture for about 15 minutes and 26 seconds. Spark read back 1,845 events from that capture. After filtering, 1,311 edits met our criteria. Seven of those matched the catalogue, across six different pages.
 
 We also replayed events from an earlier capture to check the processing. For late events, we tested the watermark, which uses the time when the edit happened. In the separate synthetic test, we used one-minute windows and a two-minute watermark. Spark dropped one late row. We used the checkpoint to test whether Spark could resume after an interruption. The streaming guide contains the commands and results for these tests and for the live capture.
 
+We used two minutes for the small synthetic test because we could show both cases with just a few edits: one late edit still fits in an open window and one comes after its window is closed. This value was set for the test. With more time, Spark could keep more late edits, and it would keep the window data longer and give the final counts later. [Streaming test](PROJECT_STREAMING.md#horaires-et-test-des-%C3%A9v%C3%A9nements-tardifs)
+
 ## Open question — Collaborations between directors and performers
 
 We wanted to see if films were rated higher at the start of a collaboration between a director and a performer. For each pair, we compared the ratings of their films in the first year we saw them work together in the data with the ratings of their films in later years. In the main analysis, we kept films with at least 1,000 votes and pairs that worked together in at least two different years. Each pair had the same weight in the final average.
 
 For the 16,884 pairs we kept, the average was 6.53 in the first year and 6.18 in the following years. That is a difference of about 0.35 points. This is what we found with the data and thresholds we used. Some pairs may have worked together before the first year we can see in IMDb. The types of films they made and their popularity could also explain part of the difference.
+
+We gave the same weight to each pair because we wanted to know how the rating changes for a pair between the two periods. If each film had the same weight, a pair with twenty films could count more than a pair with only two. The result would tell us more about the films as a whole. [Comparison results](validation/collaborations-full-43093003953/comparisons.csv)
 
 ## Running the project and finding the results
 
